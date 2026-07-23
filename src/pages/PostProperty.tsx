@@ -44,6 +44,19 @@ export const PostProperty = () => {
     }
     
     setLoading(true);
+
+    let latitude = null;
+    let longitude = null;
+    try {
+      const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(formData.location)}`);
+      const data = await response.json();
+      if (data && data.length > 0) {
+        latitude = parseFloat(data[0].lat);
+        longitude = parseFloat(data[0].lon);
+      }
+    } catch (err) {
+      console.error("Geocoding failed", err);
+    }
     
     const uploadedUrls: string[] = [];
     
@@ -79,6 +92,8 @@ export const PostProperty = () => {
       bhk: formData.bhk,
       type: formData.type === 'Rent out' ? 'Rent' : formData.type,
       images: uploadedUrls,
+      latitude,
+      longitude,
       user_id: user.id
     };
 
