@@ -51,25 +51,50 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
   );
 };
 
-const SearchHero = () => (
-  <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 min-h-[500px] flex flex-col justify-center items-center text-center">
-    {/* Background Image */}
-    <div className="absolute inset-0 z-0">
-      <img 
-        src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=2000" 
-        alt="Bangalore Skyline" 
-        className="w-full h-full object-cover opacity-40"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/60 to-gray-900/90"></div>
-    </div>
-    
-    <div className="relative z-10 max-w-5xl mx-auto w-full mt-8">
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4">
-        Find Verified Homes in <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">Bangalore.</span>
-      </h1>
-      <p className="text-lg md:text-xl text-gray-300 font-medium mb-10">
-        No Fake Listings. Zero Brokerage Options. Faster Decisions.
-      </p>
+const TAGLINES = [
+  "Verified homes. Zero confusion. Faster decisions.",
+  "Helping Bangalore Find Home.",
+  "Find Your Next Home in Minutes.",
+  "Finding Home Should Feel Easy.",
+  "Find the Place You'll Love Coming Back To."
+];
+
+const SearchHero = () => {
+  const [taglineIndex, setTaglineIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTaglineIndex((prev) => (prev + 1) % TAGLINES.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 min-h-[500px] flex flex-col justify-center items-center text-center">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=2000" 
+          alt="Bangalore Skyline" 
+          className="w-full h-full object-cover opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/60 to-gray-900/90"></div>
+      </div>
+      
+      <div className="relative z-10 max-w-5xl mx-auto w-full mt-8">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4">
+          Find Verified Homes in <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">Bangalore.</span>
+        </h1>
+        
+        <div className="min-h-[40px] mb-10">
+          <p 
+            key={taglineIndex}
+            className="text-lg md:text-xl text-gray-300 font-medium animate-fade-in-up"
+            style={{ animation: 'fadeInUp 0.8s ease-out' }}
+          >
+            {TAGLINES[taglineIndex]}
+          </p>
+        </div>
 
       {/* Quick-Choice Intent Chips */}
       <div className="flex flex-wrap justify-center gap-3 mb-6">
