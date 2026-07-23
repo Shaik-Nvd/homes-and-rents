@@ -1,0 +1,3677 @@
+[
+  {
+    "id": "excel-1",
+    "title": "Anand Alpine",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/190531/002592.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.256Z"
+  },
+  {
+    "id": "excel-2",
+    "title": "Arunodaya Blue Bells",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/472/PR/180728/001948.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-3",
+    "title": "Assetz 63 Degree East  Tower B",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/190504/002547 .",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-4",
+    "title": "Assetz Marq 3",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/240122/004654.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-5",
+    "title": "Assetz Mizumi Reserve",
+    "description": "A beautiful property located in HSR Layout, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/310/PR/040226/008450.",
+    "price": "₹ 2.47 - 3.22 Cr",
+    "location": "HSR Layout, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-6",
+    "title": "Assetz Ren and Rei",
+    "description": "A beautiful property located in Hosa Road, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/130225/007501.",
+    "price": "₹ 1.89 - 2.5 Cr",
+    "location": "Hosa Road, Bangalore",
+    "bhk": "3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-7",
+    "title": "Assetz Sun and Sanctum",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/200211/003279.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-8",
+    "title": "Avani Abode",
+    "description": "A beautiful property located in 4 BHK Villa in Budigere Cross, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "2.11 - 4.21 Cr",
+    "location": "4 BHK Villa in Budigere Cross, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-9",
+    "title": "Baldota Thumbprint",
+    "description": "A beautiful property located in 3, 4 BHK Villa in Vidyaranyapura, Bangalore North. Status: Under Construction (Completion in Apr, 2025), RERA: N/A.",
+    "price": "1.82 - 3.95 Cr",
+    "location": "3, 4 BHK Villa in Vidyaranyapura, Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-10",
+    "title": "Bhartiya City Nikoo Homes Phase 2",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/309/PR/171014/000188.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-11",
+    "title": "Bhuvi by Amsha",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/181010/002033.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-12",
+    "title": "Bluejay Signature",
+    "description": "A beautiful property located in Land in Tumkur Road, Bangalore West. Status: N/A, RERA: N/A.",
+    "price": "61.2 L - 1.22 Cr",
+    "location": "Land in Tumkur Road, Bangalore West",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-13",
+    "title": "Brigade 7 Gardens",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/171021/000508.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-14",
+    "title": "Brigade Bricklane",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/309/PR/180808/001981.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-15",
+    "title": "Brigade Calista",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Budigere Cross Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "55.75 L - 1.48 Cr",
+    "location": "2, 3 BHK Apartment in Budigere Cross Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-16",
+    "title": "Brigade Citrine",
+    "description": "A beautiful property located in Budigere Cross, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1250/304/PR/131224/007287.",
+    "price": "₹ 1.86 - 2.62 Cr",
+    "location": "Budigere Cross, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-17",
+    "title": "Brigade Cornerstone Utopia",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA:  PRM/KA/RERA/1251/446/PR/181219/002236.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-18",
+    "title": "Brigade Laguna",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/309/PR/170322/004775.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-19",
+    "title": "Candeur Signature",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/200121/003217.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-20",
+    "title": "Candeur Sunshine",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/211229/004603.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-21",
+    "title": "Casagrand Boulevard",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment in Chikkagubbi Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "64 L - 1.08 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment in Chikkagubbi Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-22",
+    "title": "Casagrand Hazen",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment in Gottigere Bangalore South. Status: N/A, RERA: N/A.",
+    "price": "66.36 L - 1.34 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment in Gottigere Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-23",
+    "title": "Concorde Antares",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment in Vidyaranyapura, Bangalore. Status: Under Construction (Completion in Dec, 2027), RERA: N/A.",
+    "price": "82.6 L - 2.09 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment in Vidyaranyapura, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-24",
+    "title": "Concorde Equity",
+    "description": "A beautiful property located in Land in Malur Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "17.43 - 29.06 L",
+    "location": "Land in Malur Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-25",
+    "title": "Countryside Raindance",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Electronics City Phase 1, Bangalore. Status: Ready To Move, RERA: N/A.",
+    "price": "1.2 - 1.57 Cr",
+    "location": "2, 3 BHK Apartment in Electronics City Phase 1, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-26",
+    "title": "DS Max Sovereign",
+    "description": "A beautiful property located in 1, 2, 3 BHK Apartment in Hallehalli Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "32.44 - 66.7 L",
+    "location": "1, 2, 3 BHK Apartment in Hallehalli Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-27",
+    "title": "DSR RR Avenues",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/472/PR/190809/002785.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-28",
+    "title": "Elegant Altima",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/190724/002717.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-29",
+    "title": "Esteem Misty Hills",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: N/A.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-30",
+    "title": "Godrej Athena",
+    "description": "A beautiful property located in 1, 2, 3 BHK Apartment in Indira Nagar Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "65.88 L - 3.17 Cr",
+    "location": "1, 2, 3 BHK Apartment in Indira Nagar Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-31",
+    "title": "Godrej Avenues",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/309/PR/170905/000229.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-32",
+    "title": "Godrej Woodscapes",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Budigere Cross, Bangalore East. Status: New Launch (Completion from Jan, 2027 onwards), RERA: N/A.",
+    "price": "1.42 - 3.15 Cr",
+    "location": "3, 4 BHK Apartment in Budigere Cross, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-33",
+    "title": "Gopalan Olympia",
+    "description": "A beautiful property located in Mysore Road, Bangalore. Status: Ready To Move, RERA: PRM/KA/RERA/1251/310/PR/171208/000986.",
+    "price": "₹ 82.3 L - 1.13 Cr",
+    "location": "Mysore Road, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-34",
+    "title": "Green Edge Royal View",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Seegehalli, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "1.01 - 1.21 Cr",
+    "location": "2, 3 BHK Apartment in Seegehalli, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-35",
+    "title": "Ishtika Agastya",
+    "description": "A beautiful property located in 2 BHK Apartment in Tumkur Road Bangalore West. Status: Ready To Move (Since Jun, 2022), RERA: N/A.",
+    "price": "57 - 63.7 L",
+    "location": "2 BHK Apartment in Tumkur Road Bangalore West",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-36",
+    "title": "Joy Sunshine",
+    "description": "A beautiful property located in Land in Malur Bangalore East. Status: Ready To Move (Since Nov, 2022), RERA: N/A.",
+    "price": "21.59 - 40.12 L",
+    "location": "Land in Malur Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-37",
+    "title": "KNS Candrill",
+    "description": "A beautiful property located in Doddaballapur, Doddaballapur Road. Status: Under Construction, RERA: PRM/KA/RERA/1250/301/PR/050924/007000.",
+    "price": "₹ 47.99 - 95.98 L",
+    "location": "Doddaballapur, Doddaballapur Road",
+    "bhk": "",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-38",
+    "title": "KNS Samooha",
+    "description": "A beautiful property located in Nelamangala, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1250/307/PR/060325/007551.",
+    "price": "₹ 69 L - 2.63 Cr",
+    "location": "Nelamangala, Bangalore",
+    "bhk": "",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-39",
+    "title": "Keerthi Krishna Viva",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/171031/001600.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-40",
+    "title": "Keya The Lake Terraces",
+    "description": "A beautiful property located in Electronics City Phase 1, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/308/PR/170824/006975.",
+    "price": "₹ 1.17 - 2.29 Cr",
+    "location": "Electronics City Phase 1, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-41",
+    "title": "Kumar Prospera",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/210302/003980.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-42",
+    "title": "L and T Raintree Boulevard",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/309/PR/171014/000245.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-43",
+    "title": "M1 Terra Alegria",
+    "description": "A beautiful property located in 4 BHK Villa in Budigere Cross, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "1.79 - 2.16 Cr",
+    "location": "4 BHK Villa in Budigere Cross, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-44",
+    "title": "Mahaveer Ranches",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/171015/000421.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-45",
+    "title": "Mahaveer Trident",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/190219/002385.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-46",
+    "title": "Orchid Whitefield",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/171201/000402.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-47",
+    "title": "Park Avenue",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/181103/002124.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-48",
+    "title": "Pavani Sarovar Phase 2",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/181226/002237.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-49",
+    "title": "Prestige Finsbury Park",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/472/PR/191206/003055.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-50",
+    "title": "Prestige Green Gables",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/140222/004706.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-51",
+    "title": "Prestige North Point",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/190506/002549.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-52",
+    "title": "Prestige PineWood",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/170913/000109.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-53",
+    "title": "Prestige Rapperswil",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: N/A.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-54",
+    "title": "Privilege Green Groves",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1265/347/PR/200121/003209.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-55",
+    "title": "Provident Capella",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1250/304/PR/190606/002596.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-56",
+    "title": "Provident Park One",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/200226/003305.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-57",
+    "title": "Provident Park Square",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/180217/002476.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-58",
+    "title": "Provident Sunworth City",
+    "description": "A beautiful property located in Mysore Road, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/310/PR/190529/002585.",
+    "price": "₹ 64.99 L - 1.3 Cr",
+    "location": "Mysore Road, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-59",
+    "title": "Provident Toogoodhomes",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/472/PR/180808/001982.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-60",
+    "title": "Purva Celestial",
+    "description": "A beautiful property located in 2, 3, 4 BHK Apartment in Hosahalli Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "87 L - 1.77 Cr",
+    "location": "2, 3, 4 BHK Apartment in Hosahalli Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-61",
+    "title": "Purva Meraki",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in HSR Layout Bangalore South. Status: N/A, RERA: N/A.",
+    "price": "3.65 - 5.3 Cr",
+    "location": "3, 4 BHK Apartment in HSR Layout Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-62",
+    "title": "Purva Oakshire",
+    "description": "A beautiful property located in Land in Rampura Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "81.83 L - 3.37 Cr",
+    "location": "Land in Rampura Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-63",
+    "title": "Purva Promenade",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/200205/003243.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-64",
+    "title": "Purva Sparkling Springs",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/170916/000230.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-65",
+    "title": "Rain bow Oaks",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/190706/002657.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-66",
+    "title": "Ranka Countryside",
+    "description": "A beautiful property located in 3 BHK Villa in Jigani Bangalore South. Status: Under Construction (Completion in Dec, 2023), RERA: N/A.",
+    "price": "82 - 83.24 L",
+    "location": "3 BHK Villa in Jigani Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-67",
+    "title": "S B Skanda Lake Front",
+    "description": "A beautiful property located in 2, 3, 4 BHK Apartment in Uttarahalli Bangalore South. Status: Under Construction (Completion in Dec, 2022), RERA: N/A.",
+    "price": "97.06 L - 1.44 Cr",
+    "location": "2, 3, 4 BHK Apartment in Uttarahalli Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-68",
+    "title": "S B Temple Tree",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Bommanahalli Bangalore South. Status: Ready To Move (Since Mar, 2023), RERA: N/A.",
+    "price": "1.03 - 1.51 Cr",
+    "location": "2, 3 BHK Apartment in Bommanahalli Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-69",
+    "title": "SM Art",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Panathur, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "88.65 L - 1.29 Cr",
+    "location": "2, 3 BHK Apartment in Panathur, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-70",
+    "title": "SNN Raj Grandeur",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/170918/000681.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-71",
+    "title": "SNN Raj Greenbay",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/170920/000621.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-72",
+    "title": "SNN Raj Serenity",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: N/A.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-73",
+    "title": "SNN Raj Viviente",
+    "description": "A beautiful property located in 4 BHK Villa in Hulimavu Bangalore South. Status: Under Construction (Completion in Jul, 2026), RERA: N/A.",
+    "price": "3.7 - 3.77 Cr",
+    "location": "4 BHK Villa in Hulimavu Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-74",
+    "title": "Salarpuria Sattva Cadenza",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/170920/000501.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-75",
+    "title": "Salarpuria Sattva Exotic",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/309/PR/190427/002538.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-76",
+    "title": "Sattva Exotic",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/309/PR/190427/002538.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-77",
+    "title": "Sattva Luxuria",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: N/A.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-78",
+    "title": "Sattva Misty Charm",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/180507/001635.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-79",
+    "title": "Shriram Blue",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/180728/001966.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-80",
+    "title": "Siddartha Solitaire",
+    "description": "A beautiful property located in Hosa Road, Bangalore. Status: Ready To Move, RERA: PRM/KA/RERA/1251/310/PR/180507/001653.",
+    "price": "₹ 96.29 L - 1.27 Cr",
+    "location": "Hosa Road, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-81",
+    "title": "Sizzle Bhoo Siri",
+    "description": "A beautiful property located in Land in Budigere Cross Bangalore East. Status: Ready To Move (Since Apr, 2017), RERA: N/A.",
+    "price": "54.9 - 65.88 L",
+    "location": "Land in Budigere Cross Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-82",
+    "title": "Sizzle Sunrise",
+    "description": "A beautiful property located in 3 BHK Villa, Land in Old Madras Road Bangalore East. Status: Ready To Move, RERA: N/A.",
+    "price": "33.6 L - 1.05 Cr",
+    "location": "3 BHK Villa, Land in Old Madras Road Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-83",
+    "title": "Sobha Dream Acres",
+    "description": "A beautiful property located in 1, 2 BHK Apartment in Balagere Bangalore East. Status: Partially Ready To Move (Completion in Jul, 2024), RERA: N/A.",
+    "price": "60 L - 1.11 Cr",
+    "location": "1, 2 BHK Apartment in Balagere Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-84",
+    "title": "Sobha Neopolis",
+    "description": "A beautiful property located in 1, 3, 4 BHK Apartment in Panathur, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "84 L - 3.72 Cr",
+    "location": "1, 3, 4 BHK Apartment in Panathur, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-85",
+    "title": "Sobha Sentosa",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/310322/004796.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-86",
+    "title": "Sobha Town Park Manhattan Towers",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/308/PR/210518/004150.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-87",
+    "title": "Sobha Victoria park phase 1",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/309/PR/310322/004800.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-88",
+    "title": "Sowparnika Columns",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1250/304/PR/171024/000764.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-89",
+    "title": "Subham Antique City",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/180504/001573.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-90",
+    "title": "Sumadhura Pramoda",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Rajarajeshwari Nagar, Bangalore. Status: New Launch (Completion in Dec, 2029), RERA: N/A.",
+    "price": "1.2 - 1.78 Cr",
+    "location": "2, 3 BHK Apartment in Rajarajeshwari Nagar, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-91",
+    "title": "Sumadhura Sushantham Phase 2",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Sahakara Nagar, Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "94.33 L - 1.51 Cr",
+    "location": "2, 3 BHK Apartment in Sahakara Nagar, Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-92",
+    "title": "Suraksha Tranquil Gardens",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/210331/004077.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-93",
+    "title": "TG Ascent",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/180504/001591.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-94",
+    "title": "TVS Emerald Jardin",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/310/PR/160522/004884.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-95",
+    "title": "The Golden Wattle",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: N/A.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-96",
+    "title": "Trendsquare Akino",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Panathur, Bangalore. Status: Under Construction (Completion in Dec, 2027), RERA: N/A.",
+    "price": "1.6 - 2.11 Cr",
+    "location": "3, 4 BHK Apartment in Panathur, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-97",
+    "title": "Trifecta Verde En Resplandor",
+    "description": "A beautiful property located in 4, 5 BHK Villa in Budigere Cross Bangalore East. Status: Under Construction (Completion in Dec, 2023), RERA: N/A.",
+    "price": "1.4 - 2.04 Cr",
+    "location": "4, 5 BHK Villa in Budigere Cross Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-98",
+    "title": "Trifecta Verde En Resplandor Phase 3",
+    "description": "A beautiful property located in 4 BHK Villa in Budigere Cross, Bangalore. Status: New Launch (Completion in Sep, 2026), RERA: N/A.",
+    "price": "1.92 - 4.23 Cr",
+    "location": "4 BHK Villa in Budigere Cross, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-99",
+    "title": "Vaibhav Upavan",
+    "description": "A beautiful property located in Land in Jangamakote, Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "15.6 - 31.2 L",
+    "location": "Land in Jangamakote, Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-100",
+    "title": "Vaishnavi AT One Krishna Brindavan",
+    "description": "A beautiful property located in Banashankari Stage 2, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/310/PR/081025/008140.",
+    "price": "₹ 3.46 - 4.43 Cr",
+    "location": "Banashankari Stage 2, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-101",
+    "title": "Vaishno Lotus",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/446/PR/191102/002984.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-102",
+    "title": "Valmark Orchards",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1250/303/PR/190706/002652.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-103",
+    "title": "Woodfield",
+    "description": "A beautiful property located in Central/Other Bangalore. Status: N/A, RERA: PRM/KA/RERA/1251/308/PR/200211/003268.",
+    "price": "Price on Request",
+    "location": "Central/Other Bangalore",
+    "bhk": "",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-104",
+    "title": "2gTula",
+    "description": "A beautiful property located in 3 BHK Apartment in Hoodi Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "1.35 - 1.39 Cr",
+    "location": "3 BHK Apartment in Hoodi Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-105",
+    "title": "Adithi Elegance",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Varthur, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "75.19 - 84.42 L",
+    "location": "2, 3 BHK Apartment in Varthur, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-106",
+    "title": "Adithi Elysian",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Varthur, Bangalore. Status: New Launch (Completion in Mar, 2027), RERA: N/A.",
+    "price": "1.1 - 1.78 Cr",
+    "location": "2, 3 BHK Apartment in Varthur, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-107",
+    "title": "Amberstone Ventara Residences",
+    "description": "A beautiful property located in Sarjapur Road, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/308/PR/051224/007269.",
+    "price": "₹ 1.49 - 2.51 Cr",
+    "location": "Sarjapur Road, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-108",
+    "title": "Arvind Forest Trails",
+    "description": "A beautiful property located in 5 BHK Villa in Sarjapur Road, Bangalore. Status: Under Construction (Completion in Jun, 2029), RERA: N/A.",
+    "price": "2.57 - 2.9 Cr",
+    "location": "5 BHK Villa in Sarjapur Road, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-109",
+    "title": "Assetz 63 Degree East",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment in Sarjapur  Road Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "32 L - 2.01 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment in Sarjapur  Road Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-110",
+    "title": "Assetz 66 and Shibui",
+    "description": "A beautiful property located in Whitefield, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/300124/006601.",
+    "price": "₹ 3.25 - 4.28 Cr",
+    "location": "Whitefield, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-111",
+    "title": "Assetz Bloom And Dell",
+    "description": "A beautiful property located in 3 BHK Apartment in Whitefield Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "1.53 - 1.98 Cr",
+    "location": "3 BHK Apartment in Whitefield Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-112",
+    "title": "Assetz Trees and Tandem",
+    "description": "A beautiful property located in Sarjapur Road, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/308/PR/280325/007636.",
+    "price": "₹ 1.35 - 2.3 Cr",
+    "location": "Sarjapur Road, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-113",
+    "title": "Bilva 2 by Bhavisha Homes",
+    "description": "A beautiful property located in 2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore. Status: Under Construction (Completion in Dec, 2026), RERA: N/A.",
+    "price": "1.15 - 3.21 Cr",
+    "location": "2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-114",
+    "title": "Birla Evara",
+    "description": "A beautiful property located in Sarjapur Road, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/060225/007487.",
+    "price": "₹ 77.99 L - 2.98 Cr",
+    "location": "Sarjapur Road, Bangalore",
+    "bhk": "1,2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-115",
+    "title": "Bren Zahara",
+    "description": "A beautiful property located in 3 BHK Apartment in Sarjapur Road, Bangalore. Status: Ready To Move (Since Mar, 2024), RERA: N/A.",
+    "price": "2.32 - 2.49 Cr",
+    "location": "3 BHK Apartment in Sarjapur Road, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-116",
+    "title": "Brigade Lakecrest",
+    "description": "A beautiful property located in Battarahalli, Near KR Puram, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/240625/007866.",
+    "price": "₹ 59 L - 2.63 Cr",
+    "location": "Battarahalli, Near KR Puram, Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-117",
+    "title": "Brigade Sanctuary",
+    "description": "A beautiful property located in 1, 3, 4 BHK Apartment in Varthur, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "76.01 L - 2.89 Cr",
+    "location": "1, 3, 4 BHK Apartment in Varthur, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-118",
+    "title": "Candeur Novo Gardenia",
+    "description": "A beautiful property located in 3 BHK Apartment in Varthur, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "1.25 - 1.59 Cr",
+    "location": "3 BHK Apartment in Varthur, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-119",
+    "title": "Casagrand Meridian",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in KR Puram Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "91 L - 1.19 Cr",
+    "location": "2, 3 BHK Apartment in KR Puram Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-120",
+    "title": "Century Mirai",
+    "description": "A beautiful property located in Marathahalli, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/181025/008182.",
+    "price": "₹ 2.16 - 4.85 Cr",
+    "location": "Marathahalli, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-121",
+    "title": "DRA Ranka PalmLakeside",
+    "description": "A beautiful property located in Land in Varthur Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "1.75 - 3.62 Cr",
+    "location": "Land in Varthur Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-122",
+    "title": "DSR Highland Greenz",
+    "description": "A beautiful property located in Sarjapur Road, Bangalore. Status: Ready To Move, RERA: PRM/KA/RERA/1251/446/PR/110522/004876.",
+    "price": "₹ 88.37 L - 1.61 Cr",
+    "location": "Sarjapur Road, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-123",
+    "title": "DSR Parkway",
+    "description": "A beautiful property located in 1, 2, 3 BHK Apartment in Sarjapur  Road Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "46.44 L - 1.11 Cr",
+    "location": "1, 2, 3 BHK Apartment in Sarjapur  Road Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-124",
+    "title": "DSR The Address",
+    "description": "A beautiful property located in Sarjapur Road, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/308/PR/050924/006996.",
+    "price": "₹ 1.14 - 2.79 Cr",
+    "location": "Sarjapur Road, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-125",
+    "title": "DSR The Courtyard",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Sarjapur  Road, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "94.59 L - 1.52 Cr",
+    "location": "2, 3 BHK Apartment in Sarjapur  Road, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-126",
+    "title": "Eastfield by Urbanest Realty",
+    "description": "A beautiful property located in Hoskote, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1250/304/PR/131224/007290.",
+    "price": "₹ 1.27 - 1.38 Cr",
+    "location": "Hoskote, Bangalore",
+    "bhk": "3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-127",
+    "title": "Encore In The Shire",
+    "description": "A beautiful property located in 4 BHK Villa in Whitefield, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "2.5 - 2.61 Cr",
+    "location": "4 BHK Villa in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-128",
+    "title": "Folium By Sumadhura Phase 1",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment in Whitefield Bangalore East. Status: Under Construction (Completion in Jun, 2025), RERA: N/A.",
+    "price": "1.07 - 1.78 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment in Whitefield Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-129",
+    "title": "Folium By Sumadhura Phase 2",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Whitefield, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "2.15 - 3.74 Cr",
+    "location": "3, 4 BHK Apartment in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-130",
+    "title": "Folium by Sumadhura Phase 3",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Whitefield, Bangalore East. Status: New Launch (Completion in Dec, 2026), RERA: N/A.",
+    "price": "2.15 - 3.65 Cr",
+    "location": "3, 4 BHK Apartment in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-131",
+    "title": "Godrej 24",
+    "description": "A beautiful property located in 1, 2, 3 BHK Apartment, 3 BHK Villa in Sarjapur Road, Bangalore. Status: Under Construction (Completion in Jun, 2025), RERA: N/A.",
+    "price": "75 L - 2 Cr",
+    "location": "1, 2, 3 BHK Apartment, 3 BHK Villa in Sarjapur Road, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-132",
+    "title": "Godrej Lakeside Orchard",
+    "description": "A beautiful property located in Sarjapur Road, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/300924/007105.",
+    "price": "₹ 1.5 - 3.29 Cr",
+    "location": "Sarjapur Road, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-133",
+    "title": "Godrej Park Retreat",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore East. Status: Under Construction (Completion in Feb, 2027), RERA: N/A.",
+    "price": "1.38 - 3.7 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-134",
+    "title": "Godrej Parkshire",
+    "description": "A beautiful property located in Hoskote, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1250/304/PR/090126/008393.",
+    "price": "₹ 1.17 - 1.91 Cr",
+    "location": "Hoskote, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-135",
+    "title": "Godrej Splendour",
+    "description": "A beautiful property located in 1, 2, 3 BHK Apartment, 1 RK Studio Apartment in Whitefield Bangalore East. Status: Under Construction (Completion from Dec, 2025 onwards), RERA: N/A.",
+    "price": "49.61 L - 1.35 Cr",
+    "location": "1, 2, 3 BHK Apartment, 1 RK Studio Apartment in Whitefield Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-136",
+    "title": "Goyal Orchid Platinum",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Whitefield, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "1.86 - 2.66 Cr",
+    "location": "3, 4 BHK Apartment in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-137",
+    "title": "HM Scottsville",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Sarjapur Road, Bangalore. Status: Under Construction (Completion in Jun, 2026), RERA: N/A.",
+    "price": "1.7 - 2.43 Cr",
+    "location": "2, 3 BHK Apartment in Sarjapur Road, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-138",
+    "title": "Inspira Infinity",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Carmelaram, Sarjapur Road. Status: Under Construction (Completion in Dec, 2026), RERA: N/A.",
+    "price": "1.25 - 1.62 Cr",
+    "location": "2, 3 BHK Apartment in Carmelaram, Sarjapur Road",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-139",
+    "title": "Isha HILife",
+    "description": "A beautiful property located in Whitefield, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1250/304/PR/030524/006836.",
+    "price": "₹ 1.02 - 1.15 Cr",
+    "location": "Whitefield, Bangalore",
+    "bhk": "3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-140",
+    "title": "JRC Wild Woods",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Sarjapur  Road Bangalore East. Status: Under Construction (Completion in Dec, 2023), RERA: N/A.",
+    "price": "95.16 L - 1.73 Cr",
+    "location": "2, 3 BHK Apartment in Sarjapur  Road Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-141",
+    "title": "Jhanavi Noreste",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Sarjapur  Road Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "55 - 63 L",
+    "location": "2, 3 BHK Apartment in Sarjapur  Road Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-142",
+    "title": "Jupiter Homes",
+    "description": "A beautiful property located in 2 BHK Apartment in Whitefield, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "44 - 52.26 L",
+    "location": "2 BHK Apartment in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-143",
+    "title": "Keya Around The Life",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Whitefield, Bangalore East. Status: Under Construction (Completion in Nov, 2024), RERA: N/A.",
+    "price": "1.82 - 2.5 Cr",
+    "location": "3, 4 BHK Apartment in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-144",
+    "title": "Keya The Urban Forest",
+    "description": "A beautiful property located in 2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore. Status: New Launch (Completion in Dec, 2027), RERA: N/A.",
+    "price": "1.56 - 3.02 Cr",
+    "location": "2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-145",
+    "title": "Mahaveer Camelia",
+    "description": "A beautiful property located in 1, 2 BHK Apartment in Hoodi Bangalore East. Status: New Launch (Completion in Dec, 2025), RERA: N/A.",
+    "price": "40 - 66.41 L",
+    "location": "1, 2 BHK Apartment in Hoodi Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-146",
+    "title": "Mahindra Blossom",
+    "description": "A beautiful property located in Whitefield, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/171225/008348.",
+    "price": "₹ 1.88 - 3.68 Cr",
+    "location": "Whitefield, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-147",
+    "title": "Mana Dale",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Sarjapur Road, Bangalore East. Status: Under Construction (Completion in Dec, 2032), RERA: N/A.",
+    "price": "1.6 - 2.13 Cr",
+    "location": "3, 4 BHK Apartment in Sarjapur Road, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-148",
+    "title": "Mana Skandas The Right Life",
+    "description": "A beautiful property located in Sarjapur Road, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/308/PR/280324/006766.",
+    "price": "₹ 1.74 - 2.52 Cr",
+    "location": "Sarjapur Road, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-149",
+    "title": "Mathapathi Grand Field",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Varthur, Bangalore. Status: Ready To Move (Since Jan, 2025), RERA: N/A.",
+    "price": "1.08 - 1.43 Cr",
+    "location": "2, 3 BHK Apartment in Varthur, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-150",
+    "title": "Modern Spaaces Engrace Vista",
+    "description": "A beautiful property located in Sarjapur Road, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/308/PR/060324/006691.",
+    "price": "₹ 1.55 - 1.61 Cr",
+    "location": "Sarjapur Road, Bangalore",
+    "bhk": "3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-151",
+    "title": "NVT Under the Open Sky",
+    "description": "A beautiful property located in 4, 5 BHK Villa in Whitefield, Bangalore. Status: Under Construction (Completion in Jun, 2027), RERA: N/A.",
+    "price": "4.56 - 5.77 Cr",
+    "location": "4, 5 BHK Villa in Whitefield, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-152",
+    "title": "Nambiar District 25",
+    "description": "A beautiful property located in Sarjapur Road, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/308/PR/100125/007377.",
+    "price": "₹ 93.75 L - 3.69 Cr",
+    "location": "Sarjapur Road, Bangalore",
+    "bhk": "1,2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-153",
+    "title": "Pavani Mirabilia",
+    "description": "A beautiful property located in Whitefield, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/446/PR/120922/005235.",
+    "price": "₹ 1.1 - 2.55 Cr",
+    "location": "Whitefield, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-154",
+    "title": "Platinum East Woods",
+    "description": "A beautiful property located in Whitefield, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/446/PR/100423/005855.",
+    "price": "₹ 1.01 - 2.14 Cr",
+    "location": "Whitefield, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-155",
+    "title": "Prestige Elm Park",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Whitefield Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "2.16 - 3.1 Cr",
+    "location": "3, 4 BHK Apartment in Whitefield Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-156",
+    "title": "Prestige Lavender Fields",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment in Varthur Bangalore East. Status: New Launch (Completion in May, 2027), RERA: N/A.",
+    "price": "75 L - 2.93 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment in Varthur Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-157",
+    "title": "Prestige Park Grove",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment, 4 BHK Villa in Whitefield, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "59.86 L - 5 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment, 4 BHK Villa in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-158",
+    "title": "Prestige Raintree Park",
+    "description": "A beautiful property located in Whitefield, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/270824/006981.",
+    "price": "₹ 3.01 - 5.55 Cr",
+    "location": "Whitefield, Bangalore",
+    "bhk": "3,4,5",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-159",
+    "title": "Pride Euphora",
+    "description": "A beautiful property located in KR Puram, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/446/PR/080824/006965.",
+    "price": "₹ 1.79 - 4.59 Cr",
+    "location": "KR Puram, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-160",
+    "title": "Provident Botanico",
+    "description": "A beautiful property located in Soukya Road, Whitefield, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1250/304/PR/210324/006726.",
+    "price": "₹ 90.99 L - 1.46 Cr",
+    "location": "Soukya Road, Whitefield, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-161",
+    "title": "Purvi Arvindam",
+    "description": "A beautiful property located in 3 BHK Apartment in Varthur, Bangalore. Status: Under Construction (Completion in Jul, 2026), RERA: N/A.",
+    "price": "1.41 - 1.7 Cr",
+    "location": "3 BHK Apartment in Varthur, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-162",
+    "title": "S R Sky Blue",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Sarjapur Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "34.5 - 67.85 L",
+    "location": "2, 3 BHK Apartment in Sarjapur Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-163",
+    "title": "SSVR Niyaara",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Varthur, Bangalore. Status: Under Construction (Completion in Dec, 2026), RERA: N/A.",
+    "price": "1 - 1.36 Cr",
+    "location": "2, 3 BHK Apartment in Varthur, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-164",
+    "title": "Sanjeevini Aarna",
+    "description": "A beautiful property located in Hoskote, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1250/304/PR/170524/006887.",
+    "price": "₹ 69 L - 1.23 Cr",
+    "location": "Hoskote, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-165",
+    "title": "Sanjeevini Srushti",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Whitefield, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "52 - 70.9 L",
+    "location": "2, 3 BHK Apartment in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-166",
+    "title": "Sarang by Sumadhura",
+    "description": "A beautiful property located in Whitefield, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/180723/006075.",
+    "price": "₹ 1.35 - 2.94 Cr",
+    "location": "Whitefield, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-167",
+    "title": "Sarang by Sumadhura Phase 1",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Whitefield, Bangalore East. Status: New Launch (Completion in Dec, 2026), RERA: N/A.",
+    "price": "1.68 - 2.6 Cr",
+    "location": "3, 4 BHK Apartment in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-168",
+    "title": "Serene Heights by Modern Spaaces",
+    "description": "A beautiful property located in Sarjapur Road, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/308/PR/160724/006942.",
+    "price": "₹ 1.35 - 1.68 Cr",
+    "location": "Sarjapur Road, Bangalore",
+    "bhk": "3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-169",
+    "title": "Sipani City",
+    "description": "A beautiful property located in Gunjur, Near Varthur, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/308/PR/171025/008179.",
+    "price": "₹ 72.01 L - 1.12 Cr",
+    "location": "Gunjur, Near Varthur, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-170",
+    "title": "Sizzle East Coast",
+    "description": "A beautiful property located in Land in KR Puram Bangalore East. Status: Ready To Move, RERA: N/A.",
+    "price": "32 L - 1.28 Cr",
+    "location": "Land in KR Puram Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-171",
+    "title": "Sizzle Serenity Woods",
+    "description": "A beautiful property located in Land in Whitefield, Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "91.2 L - 1.22 Cr",
+    "location": "Land in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-172",
+    "title": "Soulace By Modern Spaaces",
+    "description": "A beautiful property located in 4, 5 BHK Villa, Land in Kada Agrahara, Sarjapur Road, Bangalore. Status: Under Construction (Completion in Jul, 2025), RERA: N/A.",
+    "price": "3.7 - 5.1 Cr",
+    "location": "4, 5 BHK Villa, Land in Kada Agrahara, Sarjapur Road, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-173",
+    "title": "Sowparnika Rhythm of Rain",
+    "description": "A beautiful property located in Whitefield, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1250/304/PR/290125/007454.",
+    "price": "₹ 49 L - 1.53 Cr",
+    "location": "Whitefield, Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-174",
+    "title": "Sumadhura Capitol Residences",
+    "description": "A beautiful property located in Whitefield, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/446/PR/051024/007125.",
+    "price": "₹ 2.49 - 3.27 Cr",
+    "location": "Whitefield, Bangalore",
+    "bhk": "1,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-175",
+    "title": "Sumadhura Edition",
+    "description": "A beautiful property located in Nallurhalli, Whitefield. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/111225/008328.",
+    "price": "₹ 1.7 - 3.05 Cr",
+    "location": "Nallurhalli, Whitefield",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-176",
+    "title": "Sumadhura Solace",
+    "description": "A beautiful property located in Marathahalli, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/111225/008330.",
+    "price": "₹ 2.47 - 4.19 Cr",
+    "location": "Marathahalli, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-177",
+    "title": "Sunny Groves by Cynosure Homez",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Sarjapur Road, Bangalore. Status: New Launch (Completion in Dec, 2027), RERA: N/A.",
+    "price": "1.23 - 2.61 Cr",
+    "location": "3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-178",
+    "title": "Trendcon Aurelius Phase 1",
+    "description": "A beautiful property located in 4, 5 BHK Villa in Varthur, Bangalore. Status: Under Construction (Completion in Jun, 2026), RERA: N/A.",
+    "price": "2.88 - 3.68 Cr",
+    "location": "4, 5 BHK Villa in Varthur, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-179",
+    "title": "Trifecta Vanto",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Sarjapur Road, Bangalore. Status: Under Construction (Completion in Aug, 2027), RERA: N/A.",
+    "price": "1.06 - 1.33 Cr",
+    "location": "2, 3 BHK Apartment in Sarjapur Road, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-180",
+    "title": "Udbhav Gokulam",
+    "description": "A beautiful property located in 3 BHK Apartment in Varthur, Bangalore. Status: Under Construction (Completion in Jun, 2026), RERA: N/A.",
+    "price": "1.14 - 1.5 Cr",
+    "location": "3 BHK Apartment in Varthur, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-181",
+    "title": "United Sai Green Woods",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Whitefield Bangalore East. Status: N/A, RERA: N/A.",
+    "price": "72.79 L - 1.1 Cr",
+    "location": "2, 3 BHK Apartment in Whitefield Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-182",
+    "title": "United Sai Silicon Heights",
+    "description": "A beautiful property located in 2, 3, 4 BHK Apartment in Whitefield, Bangalore East. Status: New Launch (Completion in Dec, 2025), RERA: N/A.",
+    "price": "1.41 - 2.9 Cr",
+    "location": "2, 3, 4 BHK Apartment in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-183",
+    "title": "VIHA by ROAHA INFRA",
+    "description": "A beautiful property located in Sarjapur, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/446/PR/301224/007327.",
+    "price": "₹ 1.72 - 2.24 Cr",
+    "location": "Sarjapur, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-184",
+    "title": "Vaishno Serene",
+    "description": "A beautiful property located in 3 BHK Apartment in Whitefield, Bangalore East. Status: Under Construction (Completion in Dec, 2026), RERA: N/A.",
+    "price": "1.14 - 1.36 Cr",
+    "location": "3 BHK Apartment in Whitefield, Bangalore East",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-185",
+    "title": "Wone 8 Royal Nest",
+    "description": "A beautiful property located in Sarjapur, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/308/PR/180825/008007.",
+    "price": "₹ 42.13 L - 1.35 Cr",
+    "location": "Sarjapur, Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-186",
+    "title": "AMBIKA SERENE SQUARE",
+    "description": "A beautiful property located in Land in Devanahalli Bangalore North. Status: Ready To Move (Since Feb, 2017), RERA: N/A.",
+    "price": "29.99 - 33.74 L",
+    "location": "Land in Devanahalli Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-187",
+    "title": "Ajmera Marina",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Kempanahalli, Near Yelahanka New Town, Bangalore. Status: New Launch (Completion in Jan, 2028), RERA: N/A.",
+    "price": "1.11 - 1.49 Cr",
+    "location": "2, 3 BHK Apartment in Kempanahalli, Near Yelahanka New Town, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-188",
+    "title": "Arvind Bel Air",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Yelahanka, Bangalore. Status: Under Construction (Completion in Jun, 2026), RERA: N/A.",
+    "price": "1.18 - 1.51 Cr",
+    "location": "2, 3 BHK Apartment in Yelahanka, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-189",
+    "title": "Assetz Sora and Saki",
+    "description": "A beautiful property located in Bagalur, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/309/PR/060324/006692.",
+    "price": "₹ 1.94 - 2.36 Cr",
+    "location": "Bagalur, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-190",
+    "title": "Assetz Zen and Sato",
+    "description": "A beautiful property located in Yelahanka, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/472/PR/080525/007728.",
+    "price": "₹ 2.7 - 3.7 Cr",
+    "location": "Yelahanka, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-191",
+    "title": "Barca At Godrej MSR City",
+    "description": "A beautiful property located in Devanahalli, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1250/303/PR/010425/007644.",
+    "price": "₹ 1.35 - 1.98 Cr",
+    "location": "Devanahalli, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-192",
+    "title": "Bhartiya City Nikoo Homes 4",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment, 1 RK Studio Apartment in Thanisandra Bangalore North. Status: Under Construction (Completion in Jul, 2025), RERA: N/A.",
+    "price": "43 L - 2.73 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment, 1 RK Studio Apartment in Thanisandra Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-193",
+    "title": "Bhartiya Nikoo Homes 5",
+    "description": "A beautiful property located in 2, 3, 4 BHK Apartment, 1 RK Studio Apartment in Thanisandra, Bangalore North. Status: Under Construction (Completion from Aug, 2029 onwards), RERA: N/A.",
+    "price": "1.03 - 2.55 Cr",
+    "location": "2, 3, 4 BHK Apartment, 1 RK Studio Apartment in Thanisandra, Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-194",
+    "title": "Bhoo Aabharana",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Hennur Road, Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "79.29 L - 1.28 Cr",
+    "location": "2, 3 BHK Apartment in Hennur Road, Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-195",
+    "title": "Blue Bell BSNL Urban Greens",
+    "description": "A beautiful property located in Land in Devanahalli Bangalore North. Status: Ready To Move, RERA: N/A.",
+    "price": "11.7 - 39 L",
+    "location": "Land in Devanahalli Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-196",
+    "title": "Brigade El Dorado",
+    "description": "A beautiful property located in Bagalur, Bangalore. Status: Partially Ready To Move, RERA: PRM/KA/RERA/1251/472/PR/190427/002540.",
+    "price": "₹ 49 L - 1.77 Cr",
+    "location": "Bagalur, Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-197",
+    "title": "Brigade Eternia",
+    "description": "A beautiful property located in Yelahanka, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/309/PR/070325/007559.",
+    "price": "₹ 2.16 - 4.38 Cr",
+    "location": "Yelahanka, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-198",
+    "title": "Brigade Orchards Apartments",
+    "description": "A beautiful property located in 1, 2, 3 BHK Apartment, 5 BHK Villa in Devanahalli Bangalore North. Status: Partially Ready To Move (Completion in Jun, 2024), RERA: N/A.",
+    "price": "57.6 - 97.95 L",
+    "location": "1, 2, 3 BHK Apartment, 5 BHK Villa in Devanahalli Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-199",
+    "title": "Casagrand Estancia",
+    "description": "A beautiful property located in Kogilu, Near Yelahanka, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/472/PR/110925/008086.",
+    "price": "₹ 1.26 - 2.2 Cr",
+    "location": "Kogilu, Near Yelahanka, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-200",
+    "title": "Casagrand Orlena",
+    "description": "A beautiful property located in 2, 3 BHK Apartment, 1 RK Studio Apartment in Thanisandra Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "69 - 98.48 L",
+    "location": "2, 3 BHK Apartment, 1 RK Studio Apartment in Thanisandra Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-201",
+    "title": "Casagrand Promenade",
+    "description": "A beautiful property located in Yelahanka, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/309/PR/070525/007719.",
+    "price": "₹ 1.02 - 2.08 Cr",
+    "location": "Yelahanka, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-202",
+    "title": "Concorde Mayfair",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Yelahanka, Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "1.48 - 2.1 Cr",
+    "location": "2, 3 BHK Apartment in Yelahanka, Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-203",
+    "title": "Concorde Neo",
+    "description": "A beautiful property located in Thanisandra, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/309/PR/270924/007088.",
+    "price": "₹ 99 L - 1.35 Cr",
+    "location": "Thanisandra, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-204",
+    "title": "DNR Parklink",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment in Hennur Road, Bangalore North. Status: New Launch (Completion from Dec, 2027 onwards), RERA: N/A.",
+    "price": "1.15 - 2.74 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment in Hennur Road, Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-205",
+    "title": "Dhatri Ultima",
+    "description": "A beautiful property located in 2 BHK Apartment in Yelahanka, Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "49.19 - 64.99 L",
+    "location": "2 BHK Apartment in Yelahanka, Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-206",
+    "title": "Embassy Verde",
+    "description": "A beautiful property located in Devanahalli, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1250/303/PR/101224/007284.",
+    "price": "₹ 62 L - 1.34 Cr",
+    "location": "Devanahalli, Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-207",
+    "title": "Godrej Ananda",
+    "description": "A beautiful property located in 2, 3 BHK Apartment, 1 RK Studio Apartment in Bagalur, Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "29.33 L - 1.38 Cr",
+    "location": "2, 3 BHK Apartment, 1 RK Studio Apartment in Bagalur, Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-208",
+    "title": "Godrej Woods",
+    "description": "A beautiful property located in Thanisandra, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/472/PR/121125/008248.",
+    "price": "₹ 1.63 - 2.91 Cr",
+    "location": "Thanisandra, Bangalore",
+    "bhk": "2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-209",
+    "title": "Lodha Mirabelle",
+    "description": "A beautiful property located in Thanisandra, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/309/PR/131023/006321.",
+    "price": "₹ 2.67 - 4.6 Cr",
+    "location": "Thanisandra, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-210",
+    "title": "Lodha Mirabelle ",
+    "description": "A beautiful property located in Hebbal, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/309/PR/131023/006321.",
+    "price": "₹ 1.49 - 5.43 Cr",
+    "location": "Hebbal, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-211",
+    "title": "Nava Gokulam",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Horamavu Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "65.65 - 94.66 L",
+    "location": "2, 3 BHK Apartment in Horamavu Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-212",
+    "title": "Provident Deansgate",
+    "description": "A beautiful property located in IVC Road, Devanahalli. Status: Under Construction, RERA: PRM/KA/RERA/1250/303/PR/041123/006373.",
+    "price": "₹ 2.35 Cr",
+    "location": "IVC Road, Devanahalli",
+    "bhk": "3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-213",
+    "title": "Provident Ecopolitan",
+    "description": "A beautiful property located in Huvinayakanahalli, Near Bagalur, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/309/PR/110823/006162.",
+    "price": "₹ 38.81 L - 1.47 Cr",
+    "location": "Huvinayakanahalli, Near Bagalur, Bangalore",
+    "bhk": "1,2,3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-214",
+    "title": "Purva Atmosphere",
+    "description": "A beautiful property located in 2, 3, 4 BHK Apartment in Thanisandra Main Road Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "1.31 - 3.1 Cr",
+    "location": "2, 3, 4 BHK Apartment in Thanisandra Main Road Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-215",
+    "title": "Purva Tivoli Hills",
+    "description": "A beautiful property located in Land in Devanahalli Bangalore North. Status: Under Construction (Completion in Jun, 2026), RERA: N/A.",
+    "price": "67 L - 13.17 Cr",
+    "location": "Land in Devanahalli Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-216",
+    "title": "RG Orchids Gardenia",
+    "description": "A beautiful property located in 3 BHK Apartment in Hebbal, Bangalore. Status: Under Construction (Completion in Apr, 2026), RERA: N/A.",
+    "price": "2.99 - 4.05 Cr",
+    "location": "3 BHK Apartment in Hebbal, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-217",
+    "title": "SNN Estates Felicity",
+    "description": "A beautiful property located in Thanisandra, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/309/PR/220124/006568.",
+    "price": "₹ 90.43 L - 2.98 Cr",
+    "location": "Thanisandra, Bangalore",
+    "bhk": "1,2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-218",
+    "title": "Sobha Dream Gardens",
+    "description": "A beautiful property located in 1, 2 BHK Apartment in Thanisandra Bangalore North. Status: Partially Ready To Move (Completion in Dec, 2026), RERA: N/A.",
+    "price": "44.91 - 94.01 L",
+    "location": "1, 2 BHK Apartment in Thanisandra Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-219",
+    "title": "Springfields By Reilly Homes",
+    "description": "A beautiful property located in Land in Devanahalli Bangalore North. Status: Ready To Move, RERA: N/A.",
+    "price": "40.8 - 81.6 L",
+    "location": "Land in Devanahalli Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-220",
+    "title": "Sri Balaji Signature",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Hennur Road Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "50.99 - 75.06 L",
+    "location": "2, 3 BHK Apartment in Hennur Road Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-221",
+    "title": "Sumadhura Epitome 1",
+    "description": "A beautiful property located in 2, 3, 4 BHK Apartment in Hebbal, Bangalore. Status: New Launch (Completion in Dec, 2027), RERA: N/A.",
+    "price": "1.46 - 2.39 Cr",
+    "location": "2, 3, 4 BHK Apartment in Hebbal, Bangalore",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-222",
+    "title": "Sumadhura Panorama",
+    "description": "A beautiful property located in Devanahalli, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1250/303/PR/220125/007412.",
+    "price": "₹ 1.2 - 2.4 Cr",
+    "location": "Devanahalli, Bangalore",
+    "bhk": "",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-223",
+    "title": "Trendsquares Ortus 3",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Hebbal Bangalore North. Status: Under Construction (Completion in Dec, 2023), RERA: N/A.",
+    "price": "75.76 L - 1.54 Cr",
+    "location": "2, 3 BHK Apartment in Hebbal Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-224",
+    "title": "VSR Tranquil",
+    "description": "A beautiful property located in Horamavu, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/446/PR/200323/003370.",
+    "price": "₹ 1.12 - 2.75 Cr",
+    "location": "Horamavu, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-225",
+    "title": "Vaishnavi Serene",
+    "description": "A beautiful property located in 1, 2, 3 BHK Apartment in Yelahanka Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "45.57 - 78.26 L",
+    "location": "1, 2, 3 BHK Apartment in Yelahanka Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-226",
+    "title": "Abhignas Misty Woods",
+    "description": "A beautiful property located in 3, 4, 5 BHK Apartment in 6th Phase JP Nagar Bangalore South. Status: N/A, RERA: N/A.",
+    "price": "2 - 2.32 Cr",
+    "location": "3, 4, 5 BHK Apartment in 6th Phase JP Nagar Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-227",
+    "title": "Assetz Canvas and Cove",
+    "description": "A beautiful property located in Begur, Bangalore. Status: Partially Ready To Move, RERA: PRM/KA/RERA/1251/310/PR/200702/003480.",
+    "price": "₹ 1.75 - 2.73 Cr",
+    "location": "Begur, Bangalore",
+    "bhk": "3",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-228",
+    "title": "Bhanupriya Balaji Garden",
+    "description": "A beautiful property located in Land in Kanakapura Road Bangalore South. Status: N/A, RERA: N/A.",
+    "price": "48 - 96 L",
+    "location": "Land in Kanakapura Road Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-229",
+    "title": "Brigade Valencia",
+    "description": "A beautiful property located in Electronic City, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/308/PR/120123/005613.",
+    "price": "₹ 1.15 - 3.16 Cr",
+    "location": "Electronic City, Bangalore",
+    "bhk": "2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-230",
+    "title": "Casagrand Casablanca",
+    "description": "A beautiful property located in Kanakapura Road, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/310/PR/040524/006862.",
+    "price": "₹ 88.61 L - 3.67 Cr",
+    "location": "Kanakapura Road, Bangalore",
+    "bhk": "2,3,4,5",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-231",
+    "title": "Casagrand Zaiden",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Kanakapura Road, Bangalore South. Status: N/A, RERA: N/A.",
+    "price": "75 L - 1.13 Cr",
+    "location": "2, 3 BHK Apartment in Kanakapura Road, Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-232",
+    "title": "Concorde Opus 2",
+    "description": "A beautiful property located in Land in Kanakapura Road, Bangalore South. Status: N/A, RERA: N/A.",
+    "price": "86.65 L - 1.16 Cr",
+    "location": "Land in Kanakapura Road, Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-233",
+    "title": "JCSV Pride",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in 8th Phase JP Nagar, Bangalore South. Status: Ready To Move (Since Aug, 2024), RERA: N/A.",
+    "price": "78.78 L - 1.56 Cr",
+    "location": "2, 3 BHK Apartment in 8th Phase JP Nagar, Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-234",
+    "title": "Lodha Azur",
+    "description": "A beautiful property located in Bannerghatta Road, Bangalore. Status: Under Construction, RERA: PRM/KA/RERA/1251/310/PR/220324/006728.",
+    "price": "₹ 2.3 - 3.6 Cr",
+    "location": "Bannerghatta Road, Bangalore",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-235",
+    "title": "Mantri Serenity",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Kanakapura Road, Bangalore South. Status: N/A, RERA: N/A.",
+    "price": "76 L - 1.54 Cr",
+    "location": "2, 3 BHK Apartment in Kanakapura Road, Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-236",
+    "title": "Meru and Meadow",
+    "description": "A beautiful property located in Kanakapura, Kanakapura Road. Status: New Launch, RERA: PRM/KA/RERA/1251/310/PR/130625/007828.",
+    "price": "₹ 2.65 - 4.54 Cr",
+    "location": "Kanakapura, Kanakapura Road",
+    "bhk": "3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-237",
+    "title": "Nandi Citadel",
+    "description": "A beautiful property located in 1, 2, 3 BHK Apartment, 1 RK Studio Apartment in Bannerghatta Road Bangalore South. Status: N/A, RERA: N/A.",
+    "price": "35 L - 1.03 Cr",
+    "location": "1, 2, 3 BHK Apartment, 1 RK Studio Apartment in Bannerghatta Road Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-238",
+    "title": "Prestige Southern Star",
+    "description": "A beautiful property located in Begur Road, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/310/PR/210325/007603.",
+    "price": "₹ 79 L - 3.35 Cr",
+    "location": "Begur Road, Bangalore",
+    "bhk": "1,2,3,4",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-239",
+    "title": "Puravankara Purva Park Hill",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Kanakapura Road Bangalore South. Status: N/A, RERA: N/A.",
+    "price": "85 L - 1.77 Cr",
+    "location": "2, 3 BHK Apartment in Kanakapura Road Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-240",
+    "title": "Raj High Gardens",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Hosur Road, Bangalore South. Status: Under Construction (Completion in Apr, 2028), RERA: N/A.",
+    "price": "80.67 L - 1.49 Cr",
+    "location": "2, 3 BHK Apartment in Hosur Road, Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-241",
+    "title": "Sobha Brooklyn Towers",
+    "description": "A beautiful property located in 1, 2, 3, 4 BHK Apartment in Hosur Road, Bangalore South. Status: N/A, RERA: N/A.",
+    "price": "1.35 - 3.51 Cr",
+    "location": "1, 2, 3, 4 BHK Apartment in Hosur Road, Bangalore South",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-242",
+    "title": "Casagrand Aquene",
+    "description": "A beautiful property located in 1, 2, 3 BHK Apartment in Kengeri Bangalore West. Status: N/A, RERA: N/A.",
+    "price": "55 - 68.18 L",
+    "location": "1, 2, 3 BHK Apartment in Kengeri Bangalore West",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-243",
+    "title": "KNS Sampada",
+    "description": "A beautiful property located in Kengeri, Bangalore. Status: New Launch, RERA: PRM/KA/RERA/1251/310/PR/250725/007953.",
+    "price": "₹ 82.79 L - 1.9 Cr",
+    "location": "Kengeri, Bangalore",
+    "bhk": "",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-244",
+    "title": "Renaissance Reserva",
+    "description": "A beautiful property located in 2, 3 BHK Apartment in Yeshwanthpur Bangalore North. Status: N/A, RERA: N/A.",
+    "price": "1.05 - 1.37 Cr",
+    "location": "2, 3 BHK Apartment in Yeshwanthpur Bangalore North",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  },
+  {
+    "id": "excel-245",
+    "title": "Shapoorji Pallonji Parkwest",
+    "description": "A beautiful property located in 3, 4 BHK Apartment in Binny Pete, Magadi Road. Status: Ready To Move (Since Sep, 2023), RERA: N/A.",
+    "price": "3.11 - 4.22 Cr",
+    "location": "3, 4 BHK Apartment in Binny Pete, Magadi Road",
+    "bhk": "2",
+    "type": "Sale",
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&q=80&w=800"
+    ],
+    "latitude": 12.9716,
+    "longitude": 77.5946,
+    "created_at": "2026-07-23T10:04:40.257Z"
+  }
+]

@@ -8,6 +8,7 @@ import { PostProperty } from './pages/PostProperty';
 import { supabase } from './lib/supabase';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthModal } from './components/AuthModal';
+import excelProperties from './data/excelProperties.json';
 
 // Mock Data removed, using Supabase
 
@@ -46,13 +47,13 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
       <div className="border-t border-gray-100 overflow-x-auto no-scrollbar">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between sm:justify-start sm:gap-12 py-3 min-w-max">
           {[
-            { name: 'Buy', icon: <HomeIcon className="h-5 w-5 text-blue-600" /> },
-            { name: 'Rent', icon: <Building2 className="h-5 w-5 text-blue-600" /> },
-            { name: 'New Projects', icon: <MapPin className="h-5 w-5 text-blue-600" /> },
+            { name: 'Buy', icon: <HomeIcon className="h-5 w-5 text-blue-600" />, type: 'Sale' },
+            { name: 'Rent', icon: <Building2 className="h-5 w-5 text-blue-600" />, type: 'Rent' },
+            { name: 'New Projects', icon: <MapPin className="h-5 w-5 text-blue-600" />, type: 'Sale' },
             { name: 'Insights', icon: <Search className="h-5 w-5 text-blue-600" /> },
             { name: 'Commercial', icon: <Building2 className="h-5 w-5 text-blue-600" /> },
           ].map((cat) => (
-            <div key={cat.name} className="flex flex-col items-center gap-1 cursor-pointer group px-2 sm:px-0">
+            <div key={cat.name} onClick={() => cat.type && window.dispatchEvent(new CustomEvent('changeTab', { detail: cat.type }))} className="flex flex-col items-center gap-1 cursor-pointer group px-2 sm:px-0">
               <div className="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
                 {cat.icon}
               </div>
@@ -148,8 +149,14 @@ function getDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
 const Home = () => {
   const [properties, setProperties] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab] = useState<'Rent' | 'Sale'>('Rent');
+  const [activeTab, setActiveTab] = useState<'Rent' | 'Sale'>('Sale'); // Default to Sale as requested
   const [userLocation, setUserLocation] = useState<{lat: number, lng: number} | null>(null);
+
+  useEffect(() => {
+    const handleTabChange = (e: any) => setActiveTab(e.detail);
+    window.addEventListener('changeTab', handleTabChange);
+    return () => window.removeEventListener('changeTab', handleTabChange);
+  }, []);
 
   useEffect(() => {
     if ("geolocation" in navigator) {
@@ -175,17 +182,24 @@ const Home = () => {
       
       if (error) {
         console.error('Error fetching properties:', error);
-      } else if (data) {
+      }
+      
+      const localData = excelProperties.filter(p => p.type === activeTab);
+      const combinedData = [...(data || []), ...localData];
+
+      if (combinedData.length > 0) {
         if (userLocation) {
-          const sorted = [...data].sort((a, b) => {
+          const sorted = [...combinedData].sort((a, b) => {
              const distA = getDistance(userLocation.lat, userLocation.lng, a.latitude, a.longitude);
              const distB = getDistance(userLocation.lat, userLocation.lng, b.latitude, b.longitude);
              return distA - distB;
           });
-          setProperties(sorted.slice(0, 8));
+          setProperties(sorted.slice(0, 15));
         } else {
-          setProperties(data.slice(0, 8));
+          setProperties(combinedData.slice(0, 15));
         }
+      } else {
+        setProperties([]);
       }
       setLoading(false);
     };
