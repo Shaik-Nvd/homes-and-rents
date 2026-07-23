@@ -100,16 +100,19 @@ const SearchHero = () => {
         </div>
 
       {/* Quick-Choice Intent Chips */}
-      <div className="flex flex-wrap justify-center gap-3 mb-6">
-        <div className="flex gap-2 bg-white/10 p-1.5 rounded-xl backdrop-blur-md border border-white/10">
-          <Link to="/search?type=rent" className="px-4 py-1.5 bg-white text-gray-900 font-bold rounded-lg shadow-sm text-sm">Rent homes</Link>
-          <Link to="/search?type=buy" className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Buy homes</Link>
+      <div className="flex flex-col items-center gap-4 mb-6">
+        {/* Dominant Primary Actions */}
+        <div className="flex gap-2 bg-white/15 p-2 rounded-2xl backdrop-blur-md border border-white/20 shadow-xl">
+          <Link to="/search?type=rent" className="px-8 py-3 bg-white text-gray-900 font-extrabold rounded-xl shadow-md text-lg hover:scale-105 transition-transform">Rent homes</Link>
+          <Link to="/search?type=buy" className="px-8 py-3 text-white font-bold hover:bg-white/10 rounded-xl transition-all text-lg hover:scale-105">Buy homes</Link>
         </div>
-        <div className="flex flex-wrap justify-center gap-2 bg-white/10 p-1.5 rounded-xl backdrop-blur-md border border-white/10">
-          <Link to="/search?amenities=furnished" className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🛋️ Fully Furnished</Link>
-          <Link to="/search?amenities=gated" className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🛡️ Gated Community</Link>
-          <Link to="/search?amenities=metro" className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🚇 Near Metro</Link>
-          <Link to="/search?brokerage=zero" className="px-3 py-1.5 text-emerald-400 font-bold hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🟢 Zero Brokerage</Link>
+        
+        {/* Subtle Amenity Filters */}
+        <div className="flex flex-wrap justify-center gap-2">
+          <Link to="/search?amenities=furnished" className="px-3 py-1.5 bg-white/5 hover:bg-white/15 border border-white/10 text-gray-200 font-medium rounded-lg transition-colors text-xs flex items-center gap-1">🛋️ Fully Furnished</Link>
+          <Link to="/search?amenities=gated" className="px-3 py-1.5 bg-white/5 hover:bg-white/15 border border-white/10 text-gray-200 font-medium rounded-lg transition-colors text-xs flex items-center gap-1">🛡️ Gated Community</Link>
+          <Link to="/search?amenities=metro" className="px-3 py-1.5 bg-white/5 hover:bg-white/15 border border-white/10 text-gray-200 font-medium rounded-lg transition-colors text-xs flex items-center gap-1">🚇 Near Metro</Link>
+          <Link to="/search?brokerage=zero" className="px-3 py-1.5 bg-white/5 hover:bg-emerald-900/30 border border-emerald-500/30 text-emerald-400 font-bold rounded-lg transition-colors text-xs flex items-center gap-1">🟢 Zero Brokerage</Link>
         </div>
       </div>
 
