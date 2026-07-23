@@ -30,7 +30,7 @@ export const SearchPage = () => {
     <div className="bg-gray-50 min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-6">
         {/* Sidebar Filters */}
-        <div className="w-full md:w-64 bg-white p-5 rounded-xl shadow-sm border border-gray-100 h-fit sticky top-24">
+        <div className="w-full md:w-64 bg-white p-5 rounded-xl shadow-sm border border-gray-100 h-fit md:sticky md:top-24">
           <div className="flex items-center gap-2 mb-6 pb-4 border-b">
             <Filter className="h-5 w-5 text-gray-500" />
             <h2 className="text-lg font-bold text-gray-900">Filters</h2>
