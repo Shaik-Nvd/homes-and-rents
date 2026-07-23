@@ -24,10 +24,10 @@ export const PostProperty = () => {
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      const file = e.target.files[0];
-      const url = URL.createObjectURL(file);
-      setImageFiles([...imageFiles, file]);
-      setImages([...images, url]);
+      const newFiles = Array.from(e.target.files);
+      const newUrls = newFiles.map(file => URL.createObjectURL(file));
+      setImageFiles([...imageFiles, ...newFiles]);
+      setImages([...images, ...newUrls]);
     }
   };
 
@@ -248,7 +248,7 @@ export const PostProperty = () => {
                 <label className="border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center aspect-square cursor-pointer hover:bg-gray-50 hover:border-primary transition-colors">
                   <Upload className="h-8 w-8 text-gray-400 mb-2" />
                   <span className="text-sm font-medium text-primary">Add Photo</span>
-                  <input type="file" className="hidden" accept="image/*,video/*" onChange={handleImageUpload} />
+                  <input type="file" multiple className="hidden" accept="image/*,video/*" onChange={handleImageUpload} />
                 </label>
               </div>
               <p className="text-xs text-gray-500">You can upload up to 20 photos and 1 video. High quality images improve your ad's visibility.</p>
