@@ -104,11 +104,9 @@ const SearchHero = () => {
         <div className="flex gap-2 bg-white/10 p-1.5 rounded-xl backdrop-blur-md border border-white/10">
           <Link to="/search?type=rent" className="px-4 py-1.5 bg-white text-gray-900 font-bold rounded-lg shadow-sm text-sm">Rent</Link>
           <Link to="/search?type=buy" className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Buy</Link>
-          <Link to="/search?type=commercial" className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Commercial</Link>
         </div>
         <div className="flex gap-2 bg-white/10 p-1.5 rounded-xl backdrop-blur-md border border-white/10">
           <Link to="/search?type=family" className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Family</Link>
-          <Link to="/search?type=bachelor" className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Bachelor / Co-living</Link>
         </div>
         <div className="flex flex-wrap justify-center gap-2 bg-white/10 p-1.5 rounded-xl backdrop-blur-md border border-white/10">
           <Link to="/search?amenities=furnished" className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🛋️ Fully Furnished</Link>
