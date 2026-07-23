@@ -18,8 +18,9 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
     <nav className="bg-white border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-1">
-            <span className="text-2xl font-bold text-blue-600">99acres</span>
+          <Link to="/" className="flex items-center gap-2">
+            <Building2 className="h-8 w-8 text-blue-600" />
+            <span className="text-2xl font-bold text-blue-600">Homes and Rents</span>
           </Link>
           <div className="flex items-center gap-6">
             <Link to="/post" className="flex items-center gap-2 border border-gray-200 bg-white hover:bg-gray-50 text-blue-600 px-4 py-1.5 rounded-full font-medium transition-colors shadow-sm text-sm">
