@@ -19,15 +19,19 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
     <nav className="bg-white border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-2">
-            <Building2 className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-blue-600">Homes and Rents</span>
+          <Link to="/" className="flex items-center gap-2 group">
+            <div className="bg-indigo-600 p-2 rounded-xl group-hover:bg-indigo-700 transition-colors shadow-sm border border-indigo-500">
+              <HomeIcon className="h-5 w-5 text-white" />
+            </div>
+            <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 tracking-tight">
+              Homes & Rents
+            </span>
           </Link>
           <div className="flex items-center gap-6">
-            <Link to="/post" className="flex items-center gap-2 border border-gray-200 bg-white hover:bg-gray-50 text-blue-600 px-4 py-1.5 rounded-full font-medium transition-colors shadow-sm text-sm">
-              <span className="hidden sm:inline">Post Property</span>
-              <span className="sm:hidden">Sell/Rent</span>
-              <span className="bg-green-600 text-white text-[10px] px-1.5 py-0.5 rounded uppercase font-bold">Free</span>
+            <Link to="/post" className="flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-5 py-2 rounded-xl font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 text-sm">
+              <span className="hidden sm:inline">List Property</span>
+              <span className="sm:hidden">List</span>
+              <span className="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wider backdrop-blur-sm">Free</span>
             </Link>
             {user ? (
               <div className="flex items-center gap-4 hidden sm:flex">
