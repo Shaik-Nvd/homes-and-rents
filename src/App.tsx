@@ -194,9 +194,9 @@ const Home = () => {
              const distB = getDistance(userLocation.lat, userLocation.lng, b.latitude, b.longitude);
              return distA - distB;
           });
-          setProperties(sorted.slice(0, 15));
+          setProperties(sorted);
         } else {
-          setProperties(combinedData.slice(0, 15));
+          setProperties(combinedData);
         }
       } else {
         setProperties([]);
