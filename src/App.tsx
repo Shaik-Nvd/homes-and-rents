@@ -119,11 +119,16 @@ const SearchHero = () => {
       </div>
 
       {/* Locality Chips */}
-      <div className="mt-8 pt-6 border-t border-white/10">
+      <div className="mt-8 pt-6 border-t border-white/10 w-full overflow-hidden relative">
         <div className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-3">Popular Bangalore Hubs</div>
-        <div className="flex overflow-x-auto gap-2 pb-2 snap-x snap-mandatory no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-          {['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'].map(loc => (
-            <Link to={`/search?location=${encodeURIComponent(loc)}`} key={loc} className="px-4 py-1.5 bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs rounded-full border border-gray-700 cursor-pointer transition-colors whitespace-nowrap snap-start">
+        
+        {/* Gradient fades for the edges */}
+        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none mt-12"></div>
+        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none mt-12"></div>
+        
+        <div className="flex w-max animate-marquee gap-2 pb-2 hover:pause">
+          {[...['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'], ...['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar']].map((loc, i) => (
+            <Link to={`/search?location=${encodeURIComponent(loc)}`} key={i} className="px-4 py-1.5 bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs rounded-full border border-gray-700 cursor-pointer transition-colors whitespace-nowrap">
               {loc}
             </Link>
           ))}
