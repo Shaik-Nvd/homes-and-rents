@@ -310,8 +310,8 @@ const Home = () => {
   );
 };
 
-const BottomNav = () => (
-  <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 sm:hidden">
+const BottomNav = ({ onMenuClick, user }: { onMenuClick: () => void, user: any }) => (
+  <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 sm:hidden pb-safe">
     <div className="flex justify-between px-6 py-2">
       <Link to="/" className="flex flex-col items-center gap-1 text-gray-900">
         <HomeIcon className="h-5 w-5" />
@@ -319,15 +319,15 @@ const BottomNav = () => (
       </Link>
       <Link to="/search" className="flex flex-col items-center gap-1 text-gray-500">
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-        <span className="text-[10px] font-medium">Buy Homes</span>
+        <span className="text-[10px] font-medium">Buy</span>
       </Link>
       <Link to="/search" className="flex flex-col items-center gap-1 text-gray-500">
         <Building2 className="h-5 w-5" />
-        <span className="text-[10px] font-medium">Rent Homes</span>
+        <span className="text-[10px] font-medium">Rent</span>
       </Link>
-      <button className="flex flex-col items-center gap-1 text-gray-500">
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-        <span className="text-[10px] font-medium">Menu</span>
+      <button onClick={onMenuClick} className="flex flex-col items-center gap-1 text-gray-500">
+        <User className="h-5 w-5" />
+        <span className="text-[10px] font-medium">{user ? 'Profile' : 'Login'}</span>
       </button>
     </div>
   </div>
@@ -335,6 +335,7 @@ const BottomNav = () => (
 
 const AppContent = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const { user } = useAuth();
 
   return (
     <BrowserRouter>
@@ -347,7 +348,7 @@ const AppContent = () => {
           <Route path="/post" element={<PostProperty />} />
           <Route path="*" element={<div className="p-12 text-center text-xl">Page Under Construction</div>} />
         </Routes>
-        <BottomNav />
+        <BottomNav onMenuClick={() => setIsAuthModalOpen(true)} user={user} />
         <Analytics />
       </div>
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
