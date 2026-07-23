@@ -54,7 +54,6 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
 const TAGLINES = [
   "Verified homes. Zero confusion. Faster decisions.",
   "Helping Bangalore Find Home.",
-  "The Smarter Way to Find a Home.",
   "Find Your Next Home in Minutes.",
   "Finding Home Should Feel Easy.",
   "Find the Place You'll Love Coming Back To."
