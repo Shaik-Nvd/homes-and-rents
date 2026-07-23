@@ -6,31 +6,44 @@ import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
 import { PostProperty } from './pages/PostProperty';
 import { supabase } from './lib/supabase';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthModal } from './components/AuthModal';
 
 // Mock Data removed, using Supabase
 
-const Navbar = () => (
-  <nav className="bg-white shadow-sm border-b sticky top-0 z-50">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex justify-between items-center h-16">
-        <Link to="/" className="flex items-center gap-2">
-          <Building2 className="h-8 w-8 text-primary" />
-          <span className="text-xl font-bold text-primary">Homes and Rents</span>
-        </Link>
-        <div className="flex items-center gap-6">
-          <div className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
-            <User className="h-5 w-5" />
-            <span className="font-medium hidden sm:block">Login</span>
-          </div>
-          <Link to="/post" className="flex items-center gap-2 bg-secondary hover:bg-secondary-hover text-white px-5 py-2 rounded-full font-medium transition-colors shadow-md">
-            <PlusCircle className="h-5 w-5" />
-            <span className="hidden sm:block">SELL / RENT</span>
+const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
+  const { user, signOut } = useAuth();
+  
+  return (
+    <nav className="bg-white shadow-sm border-b sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <Link to="/" className="flex items-center gap-2">
+            <Building2 className="h-8 w-8 text-primary" />
+            <span className="text-xl font-bold text-primary">Homes and Rents</span>
           </Link>
+          <div className="flex items-center gap-6">
+            {user ? (
+              <div className="flex items-center gap-4">
+                <span className="text-sm font-medium text-gray-600 hidden sm:block">{user.email}</span>
+                <button onClick={signOut} className="text-sm text-gray-500 hover:text-gray-800 font-medium">Logout</button>
+              </div>
+            ) : (
+              <div onClick={onLoginClick} className="flex items-center gap-2 cursor-pointer hover:text-primary transition-colors">
+                <User className="h-5 w-5" />
+                <span className="font-medium hidden sm:block">Login</span>
+              </div>
+            )}
+            <Link to="/post" className="flex items-center gap-2 bg-secondary hover:bg-secondary-hover text-white px-5 py-2 rounded-full font-medium transition-colors shadow-md">
+              <PlusCircle className="h-5 w-5" />
+              <span className="hidden sm:block">SELL / RENT</span>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
-);
+    </nav>
+  );
+};
 
 const SearchHero = () => (
   <div className="bg-primary py-12 px-4 sm:px-6 lg:px-8">
@@ -138,19 +151,32 @@ const Home = () => {
   );
 };
 
-const App = () => {
+const AppContent = () => {
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/property/:id" element={<PropertyDetail />} />
-        <Route path="/post" element={<PostProperty />} />
-        <Route path="*" element={<div className="p-12 text-center text-xl">Page Under Construction</div>} />
-      </Routes>
-      <Analytics />
+      <div className="min-h-screen flex flex-col font-sans">
+        <Navbar onLoginClick={() => setIsAuthModalOpen(true)} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/property/:id" element={<PropertyDetail />} />
+          <Route path="/post" element={<PostProperty />} />
+          <Route path="*" element={<div className="p-12 text-center text-xl">Page Under Construction</div>} />
+        </Routes>
+        <Analytics />
+      </div>
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </BrowserRouter>
+  );
+};
+
+const App = () => {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 };
 

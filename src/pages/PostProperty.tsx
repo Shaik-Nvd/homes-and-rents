@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { Upload, X, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
+import { useAuth } from '../contexts/AuthContext';
 
 export const PostProperty = () => {
-  const [images, setImages] = useState<string[]>([]);
+  const { user } = useAuth();
+  const [imageFiles, setImageFiles] = useState<File[]>([]);
+  const [images, setImages] = useState<string[]>([]); // Preview URLs
   const navigate = useNavigate();
 
   // Form State
@@ -20,30 +23,63 @@ export const PostProperty = () => {
   const [loading, setLoading] = useState(false);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Mock image upload
     if (e.target.files && e.target.files.length > 0) {
-      const url = URL.createObjectURL(e.target.files[0]);
+      const file = e.target.files[0];
+      const url = URL.createObjectURL(file);
+      setImageFiles([...imageFiles, file]);
       setImages([...images, url]);
     }
   };
 
   const removeImage = (index: number) => {
     setImages(images.filter((_, i) => i !== index));
+    setImageFiles(imageFiles.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!user) {
+      alert("You must be logged in to post a property!");
+      return;
+    }
+    
     setLoading(true);
+    
+    const uploadedUrls: string[] = [];
+    
+    // Upload images to Supabase Storage
+    for (const file of imageFiles) {
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `${user.id}/${fileName}`;
+      
+      const { error: uploadError } = await supabase.storage
+        .from('property-images')
+        .upload(filePath, file);
+        
+      if (uploadError) {
+        alert('Error uploading image: ' + uploadError.message);
+        setLoading(false);
+        return;
+      }
+      
+      const { data: { publicUrl } } = supabase.storage
+        .from('property-images')
+        .getPublicUrl(filePath);
+        
+      uploadedUrls.push(publicUrl);
+    }
 
     // Prepare data
     const insertData = {
       title: formData.title,
       description: formData.description,
-      price: `₹${formData.price} / month`, // Simplification
+      price: `₹${formData.price} / month`, 
       location: formData.location,
       bhk: formData.bhk,
       type: formData.type === 'Rent out' ? 'Rent' : formData.type,
-      images: images // Using local blob URLs for now (in a real app, upload to Supabase Storage first)
+      images: uploadedUrls,
+      user_id: user.id
     };
 
     const { error } = await supabase.from('properties').insert([insertData]);
@@ -56,6 +92,21 @@ export const PostProperty = () => {
       navigate('/');
     }
   };
+
+  if (!user) {
+    return (
+      <div className="bg-gray-50 min-h-screen py-12 flex items-center justify-center">
+        <div className="bg-white p-8 rounded-2xl shadow-sm text-center max-w-md w-full">
+          <div className="bg-orange-100 text-orange-600 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+            <span className="font-bold text-2xl">!</span>
+          </div>
+          <h2 className="text-xl font-bold mb-2">Login Required</h2>
+          <p className="text-gray-600 mb-6">You must be logged in to post a property. Please log in using the button in the top right corner.</p>
+          <button onClick={() => navigate('/')} className="text-secondary font-medium hover:underline">Go back Home</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-50 min-h-screen py-12">
