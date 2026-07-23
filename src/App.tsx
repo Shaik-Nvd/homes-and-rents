@@ -126,8 +126,8 @@ const SearchHero = () => {
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Mock Generator for specific Bangalore data since the DB doesn't have it yet
 const getMockData = (id: string) => {
