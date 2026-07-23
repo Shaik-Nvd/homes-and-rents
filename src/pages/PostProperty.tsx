@@ -92,8 +92,8 @@ export const PostProperty = () => {
       bhk: formData.bhk,
       type: formData.type === 'Rent out' ? 'Rent' : formData.type,
       images: uploadedUrls,
-      // latitude,  // Temporarily commented out until columns are added to DB
-      // longitude, // Temporarily commented out until columns are added to DB
+      latitude,
+      longitude,
       user_id: user.id
     };
 
