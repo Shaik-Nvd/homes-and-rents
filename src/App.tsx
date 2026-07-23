@@ -102,18 +102,18 @@ const SearchHero = () => {
       {/* Quick-Choice Intent Chips */}
       <div className="flex flex-wrap justify-center gap-3 mb-6">
         <div className="flex gap-2 bg-white/10 p-1.5 rounded-xl backdrop-blur-md border border-white/10">
-          <button className="px-4 py-1.5 bg-white text-gray-900 font-bold rounded-lg shadow-sm text-sm">Rent</button>
-          <button className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Buy</button>
-          <button className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Commercial</button>
+          <Link to="/search?type=rent" className="px-4 py-1.5 bg-white text-gray-900 font-bold rounded-lg shadow-sm text-sm">Rent</Link>
+          <Link to="/search?type=buy" className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Buy</Link>
+          <Link to="/search?type=commercial" className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Commercial</Link>
         </div>
         <div className="flex gap-2 bg-white/10 p-1.5 rounded-xl backdrop-blur-md border border-white/10">
-          <button className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Family</button>
-          <button className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Bachelor / Co-living</button>
+          <Link to="/search?type=family" className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Family</Link>
+          <Link to="/search?type=bachelor" className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Bachelor / Co-living</Link>
         </div>
         <div className="flex gap-2 bg-white/10 p-1.5 rounded-xl backdrop-blur-md border border-white/10 hidden md:flex">
-          <button className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🐶 Pet Friendly</button>
-          <button className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🚇 Near Metro</button>
-          <button className="px-3 py-1.5 text-emerald-400 font-bold hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🟢 Zero Brokerage</button>
+          <Link to="/search?amenities=pets" className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🐶 Pet Friendly</Link>
+          <Link to="/search?amenities=metro" className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🚇 Near Metro</Link>
+          <Link to="/search?brokerage=zero" className="px-3 py-1.5 text-emerald-400 font-bold hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🟢 Zero Brokerage</Link>
         </div>
       </div>
 
@@ -122,9 +122,9 @@ const SearchHero = () => {
         <div className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-3">Popular Bangalore Hubs</div>
         <div className="flex flex-wrap justify-center gap-2">
           {['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'].map(loc => (
-            <span key={loc} className="px-3 py-1.5 bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs rounded-full border border-gray-700 cursor-pointer transition-colors">
+            <Link to={`/search?location=${encodeURIComponent(loc)}`} key={loc} className="px-3 py-1.5 bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs rounded-full border border-gray-700 cursor-pointer transition-colors block">
               {loc}
-            </span>
+            </Link>
           ))}
         </div>
       </div>
