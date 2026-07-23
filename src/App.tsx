@@ -43,25 +43,6 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
           </div>
         </div>
       </div>
-      {/* Category Strip */}
-      <div className="border-t border-gray-100 overflow-x-auto no-scrollbar">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between sm:justify-start sm:gap-12 py-3 min-w-max">
-          {[
-            { name: 'Buy', icon: <HomeIcon className="h-5 w-5 text-blue-600" />, type: 'Sale' },
-            { name: 'Rent', icon: <Building2 className="h-5 w-5 text-blue-600" />, type: 'Rent' },
-            { name: 'New Projects', icon: <MapPin className="h-5 w-5 text-blue-600" />, type: 'Sale' },
-            { name: 'Insights', icon: <Search className="h-5 w-5 text-blue-600" /> },
-            { name: 'Commercial', icon: <Building2 className="h-5 w-5 text-blue-600" /> },
-          ].map((cat) => (
-            <div key={cat.name} onClick={() => cat.type && window.dispatchEvent(new CustomEvent('changeTab', { detail: cat.type }))} className="flex flex-col items-center gap-1 cursor-pointer group px-2 sm:px-0">
-              <div className="bg-blue-50 p-2 rounded-lg group-hover:bg-blue-100 transition-colors">
-                {cat.icon}
-              </div>
-              <span className="text-[11px] sm:text-xs font-medium text-gray-700">{cat.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
     </nav>
   );
 };
