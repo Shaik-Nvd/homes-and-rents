@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Search, MapPin, User, PlusCircle, Building2, Home as HomeIcon } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
 import { PostProperty } from './pages/PostProperty';
@@ -148,6 +149,7 @@ const App = () => {
         <Route path="/post" element={<PostProperty />} />
         <Route path="*" element={<div className="p-12 text-center text-xl">Page Under Construction</div>} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 };
