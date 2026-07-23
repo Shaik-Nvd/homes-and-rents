@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Search, User, Building2, Home as HomeIcon } from 'lucide-react';
+import { User, Building2, Home as HomeIcon } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
