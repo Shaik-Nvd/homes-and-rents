@@ -119,7 +119,7 @@ const SearchHero = () => {
 
       {/* Locality Chips */}
       <div className="mt-8 pt-6 border-t border-white/10">
-        <div className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-3">One-Click High-Demand Corridors</div>
+        <div className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-3">Popular Bangalore Hubs</div>
         <div className="flex flex-wrap justify-center gap-2">
           {['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'].map(loc => (
             <span key={loc} className="px-3 py-1.5 bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs rounded-full border border-gray-700 cursor-pointer transition-colors">
