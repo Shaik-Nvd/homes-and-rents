@@ -51,42 +51,73 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
   );
 };
 
-const SearchHero = () => (
-  <div className="relative py-12 px-4 sm:px-6 lg:px-8 bg-gray-100 min-h-[300px] flex flex-col justify-end">
-    {/* Background Image */}
-    <div className="absolute inset-0 z-0">
-      <img 
-        src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=2000" 
-        alt="Hero Background" 
-        className="w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-    </div>
-    
-    <div className="relative z-10 max-w-4xl mx-auto w-full mt-24">
-      <div className="bg-white p-2 rounded-xl flex items-center shadow-xl border border-gray-100">
-        <Search className="text-gray-400 h-5 w-5 ml-3 mr-2 flex-shrink-0" />
-        <input 
-          type="text" 
-          placeholder='Search "Raj High Gardens Hosur Road ..."'
-          className="w-full outline-none text-gray-700 py-3 text-sm sm:text-base bg-transparent"
-        />
-        <button className="p-2 text-blue-600 hover:bg-blue-50 rounded-full transition-colors flex-shrink-0">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
-        </button>
-      </div>
+const TAGLINES = [
+  "Verified homes. Zero confusion. Faster decisions.",
+  "Helping Bangalore Find Home.",
+  "The Smarter Way to Find a Home.",
+  "Find Your Next Home in Minutes.",
+  "Finding Home Should Feel Easy.",
+  "Find the Place You'll Love Coming Back To."
+];
 
-      <div className="flex items-center gap-3 mt-4 overflow-x-auto no-scrollbar pb-2">
-        <div className="flex items-center text-xs text-white/90 whitespace-nowrap">
-          <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          Recent Search
+const SearchHero = () => {
+  const [taglineIndex, setTaglineIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTaglineIndex((prev) => (prev + 1) % TAGLINES.length);
+    }, 4000); // Change tagline every 4 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gray-100 min-h-[450px] flex flex-col justify-center items-center text-center">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=2000" 
+          alt="Hero Background" 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80 backdrop-blur-[2px]"></div>
+      </div>
+      
+      <div className="relative z-10 max-w-4xl mx-auto w-full">
+        {/* Rotating Tagline */}
+        <div className="min-h-[100px] md:min-h-[80px] flex items-center justify-center mb-8">
+          <h1 
+            key={taglineIndex} 
+            className="text-4xl md:text-5xl lg:text-6xl font-black text-white drop-shadow-2xl tracking-tight animate-fade-in-up"
+            style={{ animation: 'fadeInUp 0.8s ease-out' }}
+          >
+            {TAGLINES[taglineIndex]}
+          </h1>
         </div>
-        <span className="bg-white/90 text-gray-800 text-xs px-3 py-1.5 rounded-full border border-gray-200 whitespace-nowrap cursor-pointer hover:bg-white">Rent in Bangalore Central</span>
-        <span className="bg-white/90 text-gray-800 text-xs px-3 py-1.5 rounded-full border border-gray-200 whitespace-nowrap cursor-pointer hover:bg-white">All Recent Searches</span>
+
+        <div className="bg-white/95 backdrop-blur-md p-2.5 rounded-2xl flex items-center shadow-2xl border border-white/20 transform transition-all duration-300 hover:shadow-indigo-500/20 hover:scale-[1.01]">
+          <Search className="text-gray-400 h-6 w-6 ml-4 mr-3 flex-shrink-0" />
+          <input 
+            type="text" 
+            placeholder='Search "Raj High Gardens Hosur Road ..."'
+            className="w-full outline-none text-gray-800 py-4 text-base sm:text-lg bg-transparent font-medium placeholder-gray-400"
+          />
+          <button className="p-3 text-white bg-indigo-600 hover:bg-indigo-700 rounded-xl transition-colors flex-shrink-0 shadow-md">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path></svg>
+          </button>
+        </div>
+
+        <div className="flex items-center justify-center gap-3 mt-6 overflow-x-auto no-scrollbar pb-2">
+          <div className="flex items-center text-sm font-medium text-white/90 whitespace-nowrap drop-shadow-md">
+            <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Recent Search
+          </div>
+          <span className="bg-white/10 backdrop-blur-md text-white text-xs font-semibold px-4 py-2 rounded-full border border-white/20 whitespace-nowrap cursor-pointer hover:bg-white/20 transition-colors shadow-lg">Rent in Bangalore Central</span>
+          <span className="bg-white/10 backdrop-blur-md text-white text-xs font-semibold px-4 py-2 rounded-full border border-white/20 whitespace-nowrap cursor-pointer hover:bg-white/20 transition-colors shadow-lg">All Recent Searches</span>
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const PropertyCard = ({ property }: { property: any }) => (
   <Link to={`/property/${property.id}`} className="block group w-[280px] sm:w-[320px] flex-shrink-0 snap-start">
