@@ -111,7 +111,8 @@ const SearchHero = () => {
           <Link to="/search?type=bachelor" className="px-4 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm">Bachelor / Co-living</Link>
         </div>
         <div className="flex gap-2 bg-white/10 p-1.5 rounded-xl backdrop-blur-md border border-white/10 hidden md:flex">
-          <Link to="/search?amenities=pets" className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🐶 Pet Friendly</Link>
+          <Link to="/search?amenities=furnished" className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🛋️ Fully Furnished</Link>
+          <Link to="/search?amenities=gated" className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🛡️ Gated Community</Link>
           <Link to="/search?amenities=metro" className="px-3 py-1.5 text-white font-medium hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🚇 Near Metro</Link>
           <Link to="/search?brokerage=zero" className="px-3 py-1.5 text-emerald-400 font-bold hover:bg-white/10 rounded-lg transition-colors text-sm flex items-center gap-1">🟢 Zero Brokerage</Link>
         </div>
