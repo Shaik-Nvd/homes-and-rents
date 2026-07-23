@@ -5,6 +5,8 @@
   --color-primary-hover: #004f56;
   --color-secondary: #3a77ff;
   --color-secondary-hover: #2a5cd6;
+  --font-sans: 'Inter', sans-serif;
+  --font-jakarta: 'Plus Jakarta Sans', sans-serif;
 }
 
 @layer base {

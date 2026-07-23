@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { User, Building2, Home as HomeIcon } from 'lucide-react';
+import { User, Building2, Home as HomeIcon, CheckCircle2 } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
@@ -20,10 +20,13 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center gap-2 group">
-            <div className="bg-indigo-600 p-2 rounded-xl group-hover:bg-indigo-700 transition-colors shadow-sm border border-indigo-500">
-              <HomeIcon className="h-5 w-5 text-white" />
+            <div className="relative flex items-center justify-center">
+              <HomeIcon className="h-8 w-8 text-indigo-600 group-hover:text-indigo-700 transition-colors" strokeWidth={2} />
+              <div className="absolute -bottom-1 -right-1 bg-white rounded-full">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500" fill="currentColor" stroke="white" />
+              </div>
             </div>
-            <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 tracking-tight">
+            <span className="font-jakarta text-2xl font-extrabold text-gray-900 tracking-tight ml-1">
               Homes & Rents
             </span>
           </Link>
@@ -82,7 +85,7 @@ const SearchHero = () => {
       </div>
       
       <div className="relative z-10 max-w-5xl mx-auto w-full mt-8">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight mb-4">
+        <h1 className="font-jakarta text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4">
           Find Verified Homes in <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">Bangalore.</span>
         </h1>
         
@@ -126,7 +129,8 @@ const SearchHero = () => {
         </div>
       </div>
     </div>
-  );
+  </div>
+);
 };
 
 // Mock Generator for specific Bangalore data since the DB doesn't have it yet
