@@ -32,7 +32,7 @@ import excelProperties from './data/excelProperties.json';
 
 // Mock Data removed, using Supabase
 
-const Navbar = () => {
+const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
   const { user, signOut } = useAuth();
   
   return (
@@ -51,9 +51,17 @@ const Navbar = () => {
             </span>
           </Link>
           <div className="flex items-center">
-            <Link to="/post" className="flex items-center gap-1.5 bg-[#8b45f7] text-white px-4 py-2 rounded-xl font-bold text-sm">
+            {!user && (
+              <button 
+                onClick={onLoginClick}
+                className="text-sm font-bold text-gray-700 hover:text-indigo-600 transition-colors mr-3 sm:mr-4"
+              >
+                Login / Signup
+              </button>
+            )}
+            <Link to="/post" className="flex items-center gap-1.5 bg-[#8b45f7] text-white px-3 sm:px-4 py-2 rounded-xl font-bold text-xs sm:text-sm">
               <span>List</span>
-              <span className="bg-white/30 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">FREE</span>
+              <span className="bg-white/30 text-white text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded shadow-sm">FREE</span>
             </Link>
             {user && (
               <div className="items-center gap-4 hidden sm:flex ml-4">
@@ -362,7 +370,7 @@ const AppContent = () => {
   return (
     <BrowserRouter>
       <div className="min-h-screen flex flex-col font-sans pb-16 sm:pb-0">
-        <Navbar />
+        <Navbar onLoginClick={() => setIsAuthModalOpen(true)} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
