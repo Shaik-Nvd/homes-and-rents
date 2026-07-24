@@ -37,31 +37,32 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
   
   return (
     <nav className="bg-white border-b sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-1">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-14 sm:h-16">
+          <Link to="/" className="flex items-center gap-1 sm:gap-1.5 flex-shrink-0">
             <div className="relative flex items-center justify-center">
-              <HomeIcon className="h-8 w-8 text-indigo-700" strokeWidth={2.5} />
+              <HomeIcon className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-700" strokeWidth={2.5} />
               <div className="absolute -bottom-0 -right-0 bg-white rounded-full">
-                <CheckCircle2 className="h-4 w-4 text-emerald-500" fill="currentColor" stroke="white" />
+                <CheckCircle2 className="h-3 w-3 sm:h-4 sm:w-4 text-emerald-500" fill="currentColor" stroke="white" />
               </div>
             </div>
-            <span className="text-[22px] font-extrabold text-gray-900 tracking-tight ml-1">
+            <span className="text-[17px] sm:text-[22px] font-extrabold text-gray-900 tracking-tight ml-0.5 sm:ml-1 leading-none">
               Homes & Rents
             </span>
           </Link>
-          <div className="flex items-center">
+          <div className="flex items-center flex-shrink-0">
             {!user && (
               <button 
                 onClick={onLoginClick}
-                className="text-sm font-bold text-gray-700 hover:text-indigo-600 transition-colors mr-3 sm:mr-4"
+                className="text-[13px] sm:text-sm font-bold text-gray-700 hover:text-indigo-600 transition-colors mr-2 sm:mr-4 whitespace-nowrap"
               >
-                Login / Signup
+                <span className="sm:hidden">Login</span>
+                <span className="hidden sm:inline">Login / Signup</span>
               </button>
             )}
-            <Link to="/post" className="flex items-center gap-1.5 bg-[#8b45f7] text-white px-3 sm:px-4 py-2 rounded-xl font-bold text-xs sm:text-sm">
+            <Link to="/post" className="flex items-center gap-1.5 bg-[#8b45f7] text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl font-bold text-[12px] sm:text-sm whitespace-nowrap">
               <span>List</span>
-              <span className="bg-white/30 text-white text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded shadow-sm">FREE</span>
+              <span className="bg-white/30 text-white text-[9px] sm:text-[10px] px-1 sm:px-1.5 py-0.5 rounded shadow-sm">FREE</span>
             </Link>
             {user && (
               <div className="items-center gap-4 hidden sm:flex ml-4">
