@@ -1,6 +1,25 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, Component, ErrorInfo, ReactNode } from 'react';
+
+class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean, error: Error | null}> {
+  constructor(props: {children: ReactNode}) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error("ErrorBoundary caught an error", error, errorInfo);
+  }
+  render() {
+    if (this.state.hasError) {
+      return <div style={{padding: '2rem', color: 'red'}}><h1>Something went wrong.</h1><pre>{this.state.error?.toString()}</pre></div>;
+    }
+    return this.props.children;
+  }
+}
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { User, Building2, Home as HomeIcon, CheckCircle2 } from 'lucide-react';
+import { Building2, Home as HomeIcon, CheckCircle2, Search, Menu } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
@@ -12,39 +31,33 @@ import excelProperties from './data/excelProperties.json';
 
 // Mock Data removed, using Supabase
 
-const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
+const Navbar = () => {
   const { user, signOut } = useAuth();
   
   return (
     <nav className="bg-white border-b sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-1">
             <div className="relative flex items-center justify-center">
-              <HomeIcon className="h-8 w-8 text-indigo-600 group-hover:text-indigo-700 transition-colors" strokeWidth={2} />
-              <div className="absolute -bottom-1 -right-1 bg-white rounded-full">
+              <HomeIcon className="h-8 w-8 text-indigo-700" strokeWidth={2.5} />
+              <div className="absolute -bottom-0 -right-0 bg-white rounded-full">
                 <CheckCircle2 className="h-4 w-4 text-emerald-500" fill="currentColor" stroke="white" />
               </div>
             </div>
-            <span className="font-jakarta text-2xl font-extrabold text-gray-900 tracking-tight ml-1">
+            <span className="text-[22px] font-extrabold text-gray-900 tracking-tight ml-1">
               Homes & Rents
             </span>
           </Link>
-          <div className="flex items-center gap-6">
-            <Link to="/post" className="flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-5 py-2 rounded-xl font-semibold transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 text-sm">
-              <span className="hidden sm:inline">List Property</span>
-              <span className="sm:hidden">List</span>
-              <span className="bg-white/20 text-white text-[10px] px-2 py-0.5 rounded uppercase font-bold tracking-wider backdrop-blur-sm">Free</span>
+          <div className="flex items-center">
+            <Link to="/post" className="flex items-center gap-1.5 bg-[#8b45f7] text-white px-4 py-2 rounded-xl font-bold text-sm">
+              <span>List</span>
+              <span className="bg-white/30 text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm">FREE</span>
             </Link>
-            {user ? (
-              <div className="flex items-center gap-4 hidden sm:flex">
+            {user && (
+              <div className="items-center gap-4 hidden sm:flex ml-4">
                 <span className="text-sm font-medium text-gray-600">{user.email}</span>
                 <button onClick={signOut} className="text-sm text-gray-500 hover:text-gray-800 font-medium">Logout</button>
-              </div>
-            ) : (
-              <div onClick={onLoginClick} className="hidden sm:flex items-center gap-2 cursor-pointer hover:text-blue-600 transition-colors">
-                <User className="h-5 w-5" />
-                <span className="font-medium">Login</span>
               </div>
             )}
           </div>
@@ -54,87 +67,80 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
   );
 };
 
-const TAGLINES = [
-  "Verified homes. Zero confusion. Faster decisions.",
-  "Helping Bangalore Find Home.",
-  "Find Your Next Home in Minutes.",
-  "Finding Home Should Feel Easy.",
-  "Find the Place You'll Love Coming Back To."
-];
-
 const SearchHero = () => {
-  const [taglineIndex, setTaglineIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTaglineIndex((prev) => (prev + 1) % TAGLINES.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-900 min-h-[500px] flex flex-col justify-center items-center text-center">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=2000" 
-          alt="Bangalore Skyline" 
-          className="w-full h-full object-cover opacity-40"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/60 to-gray-900/90"></div>
-      </div>
-      
-      <div className="relative z-10 max-w-5xl mx-auto w-full mt-8">
-        <h1 className="font-jakarta text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4">
-          Find Verified Homes in <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">Bangalore.</span>
-        </h1>
-        
-        <div className="min-h-[40px] mb-10">
-          <p 
-            key={taglineIndex}
-            className="text-lg md:text-xl text-gray-300 font-medium animate-fade-in-up"
-            style={{ animation: 'fadeInUp 0.8s ease-out' }}
-          >
-            {TAGLINES[taglineIndex]}
-          </p>
+    <div className="bg-white px-4 pt-4 pb-2 flex flex-col max-w-lg mx-auto w-full">
+      {/* Popular Hubs */}
+      <div className="text-center">
+        <div className="text-[10px] font-bold text-gray-600 uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
+          <span>Popular Bangalore Hubs</span>
         </div>
-
-      {/* Quick-Choice Intent Chips */}
-      <div className="flex flex-col items-center gap-4 mb-6">
-        {/* Dominant Primary Actions */}
-        <div className="flex gap-2 bg-white/15 p-2 rounded-2xl backdrop-blur-md border border-white/20 shadow-xl">
-          <Link to="/search?type=rent" className="px-8 py-3 bg-white text-gray-900 font-extrabold rounded-xl shadow-md text-lg hover:scale-105 transition-transform">Rent homes</Link>
-          <Link to="/search?type=buy" className="px-8 py-3 text-white font-bold hover:bg-white/10 rounded-xl transition-all text-lg hover:scale-105">Buy homes</Link>
-        </div>
-        
-        {/* Subtle Amenity Filters */}
-        <div className="flex flex-wrap justify-center gap-2">
-          <Link to="/search?amenities=furnished" className="px-3 py-1.5 bg-white/5 hover:bg-white/15 border border-white/10 text-gray-200 font-medium rounded-lg transition-colors text-xs flex items-center gap-1">🛋️ Fully Furnished</Link>
-          <Link to="/search?amenities=gated" className="px-3 py-1.5 bg-white/5 hover:bg-white/15 border border-white/10 text-gray-200 font-medium rounded-lg transition-colors text-xs flex items-center gap-1">🛡️ Gated Community</Link>
-          <Link to="/search?amenities=metro" className="px-3 py-1.5 bg-white/5 hover:bg-white/15 border border-white/10 text-gray-200 font-medium rounded-lg transition-colors text-xs flex items-center gap-1">🚇 Near Metro</Link>
-          <Link to="/search?brokerage=zero" className="px-3 py-1.5 bg-white/5 hover:bg-emerald-900/30 border border-emerald-500/30 text-emerald-400 font-bold rounded-lg transition-colors text-xs flex items-center gap-1">🟢 Zero Brokerage</Link>
-        </div>
-      </div>
-
-      {/* Locality Chips */}
-      <div className="mt-8 pt-6 border-t border-white/10 w-full overflow-hidden relative">
-        <div className="text-xs text-gray-400 uppercase tracking-widest font-bold mb-3">Popular Bangalore Hubs</div>
-        
-        {/* Gradient fades for the edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-900 to-transparent z-10 pointer-events-none mt-12"></div>
-        <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-900 to-transparent z-10 pointer-events-none mt-12"></div>
-        
-        <div className="flex w-max animate-marquee gap-2 pb-2 hover:pause">
-          {[...['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'], ...['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar']].map((loc, i) => (
-            <Link to={`/search?location=${encodeURIComponent(loc)}`} key={i} className="px-4 py-1.5 bg-gray-800/80 hover:bg-gray-700 text-gray-200 text-xs rounded-full border border-gray-700 cursor-pointer transition-colors whitespace-nowrap">
+        <div className="flex overflow-x-auto no-scrollbar gap-2 pb-2">
+          {['Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra'].map((loc, i) => (
+            <span key={i} className="px-3 py-1 bg-[#1a202c] text-white text-xs rounded-full whitespace-nowrap">
               {loc}
-            </Link>
+            </span>
           ))}
         </div>
       </div>
+
+      {/* Headline */}
+      <div className="text-center mt-3">
+        <h1 className="text-2xl font-extrabold text-gray-600 shadow-sm" style={{textShadow: "0px 1px 1px rgba(0,0,0,0.2)"}}>
+          Helping Bangalore Find Home.
+        </h1>
+        <div className="flex justify-center gap-2 mt-2">
+          <span className="px-3 py-1 bg-[#2d3748] text-white rounded-full text-xs font-semibold flex items-center gap-1">
+            🚆 Near Metro
+          </span>
+          <span className="px-3 py-1 bg-[#2d3748] text-white rounded-full text-xs font-semibold flex items-center gap-1">
+            <span className="w-2 h-2 rounded-full bg-green-400"></span> Zero Brokerage
+          </span>
+        </div>
+      </div>
+
+      {/* Toggle */}
+      <div className="mt-5 bg-[#4a5568] p-1 rounded-2xl flex">
+        <button className="flex-1 bg-white text-gray-900 rounded-xl py-3 font-bold text-sm shadow-sm">
+          Rent homes
+        </button>
+        <button className="flex-1 text-white rounded-xl py-3 font-bold text-sm">
+          Buy homes
+        </button>
+      </div>
+
+      {/* Search Bar */}
+      <div className="mt-4 flex gap-2">
+        <div className="flex-1 border border-gray-200 rounded-xl flex items-center px-4 bg-white shadow-sm">
+          <input 
+            type="text" 
+            placeholder="Search by locality or landmark" 
+            className="w-full outline-none text-sm text-gray-700 bg-transparent placeholder-gray-400" 
+          />
+        </div>
+        <button className="bg-[#fb4b62] text-white p-3 rounded-xl shadow-sm flex-shrink-0">
+          <Search className="w-5 h-5" />
+        </button>
+      </div>
+
+      {/* Banner */}
+      <div className="mt-5 bg-[#5c473b] rounded-2xl p-4 pr-32 relative overflow-hidden text-white shadow-md">
+        <div className="z-10 relative">
+          <h3 className="font-bold text-sm mb-2 text-white/90">Looking for Tenants / Buyers ?</h3>
+          <ul className="text-xs space-y-1.5 mb-4 text-white/80">
+            <li className="flex items-center gap-1.5">⚡ Faster & Verified Tenants/Buyers</li>
+            <li className="flex items-center gap-1.5">◉ Pay ZERO brokerage</li>
+          </ul>
+          <Link to="/post" className="inline-block bg-[#fb4b62] hover:bg-[#e84155] text-white text-sm font-bold py-2 px-4 rounded-xl shadow-sm transition-colors">
+            Post FREE Property Ad
+          </Link>
+        </div>
+        <div className="absolute right-0 bottom-0 h-full w-32 flex items-end">
+          <img src="https://cdn3d.iconscout.com/3d/premium/thumb/hand-giving-house-key-5147822-4301540.png" alt="House Keys" className="w-full object-contain -mr-4 -mb-2" />
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
 };
 
 // Mock Generator for specific Bangalore data since the DB doesn't have it yet
@@ -288,13 +294,13 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <SearchHero />
-      <main className="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-        <div className="flex flex-col mb-6">
-          <h2 className="text-xl font-bold text-gray-900">
-            Recently posted properties
+      <main className="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full">
+        <div className="flex flex-col mb-4">
+          <h2 className="text-xl font-extrabold text-[#0a192f] tracking-tight">
+            Recommended Properties
           </h2>
-          <p className="text-gray-500 text-sm mt-1">
-            {userLocation ? `Closest ${activeTab === 'Rent' ? 'rentals' : 'properties for sale'} based on your location` : `Fresh properties, be quick before they rent out`}
+          <p className="text-gray-400 text-sm mt-0.5">
+            Curated especially for you
           </p>
         </div>
         
@@ -314,24 +320,24 @@ const Home = () => {
   );
 };
 
-const BottomNav = ({ onMenuClick, user }: { onMenuClick: () => void, user: any }) => (
+const BottomNav = ({ onMenuClick }: { onMenuClick: () => void }) => (
   <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 sm:hidden pb-safe">
-    <div className="flex justify-between px-6 py-2">
-      <Link to="/" className="flex flex-col items-center gap-1 text-gray-900">
-        <HomeIcon className="h-5 w-5" />
-        <span className="text-[10px] font-medium">Home</span>
+    <div className="flex justify-between px-8 py-3">
+      <Link to="/" className="flex flex-col items-center gap-1 text-[#1a202c]">
+        <HomeIcon className="h-6 w-6" strokeWidth={2} />
+        <span className="text-[11px] font-medium">Home</span>
       </Link>
-      <Link to="/search" className="flex flex-col items-center gap-1 text-gray-500">
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-        <span className="text-[10px] font-medium">Buy</span>
+      <Link to="/search?type=buy" className="flex flex-col items-center gap-1 text-gray-500 hover:text-gray-800 transition-colors">
+        <Building2 className="h-6 w-6" strokeWidth={1.5} />
+        <span className="text-[11px] font-medium">Buy</span>
       </Link>
-      <Link to="/search" className="flex flex-col items-center gap-1 text-gray-500">
-        <Building2 className="h-5 w-5" />
-        <span className="text-[10px] font-medium">Rent</span>
+      <Link to="/search?type=rent" className="flex flex-col items-center gap-1 text-gray-500 hover:text-gray-800 transition-colors">
+        <Building2 className="h-6 w-6" strokeWidth={1.5} />
+        <span className="text-[11px] font-medium">Rent</span>
       </Link>
-      <button onClick={onMenuClick} className="flex flex-col items-center gap-1 text-gray-500">
-        <User className="h-5 w-5" />
-        <span className="text-[10px] font-medium">{user ? 'Profile' : 'Login'}</span>
+      <button onClick={onMenuClick} className="flex flex-col items-center gap-1 text-gray-500 hover:text-gray-800 transition-colors">
+        <Menu className="h-6 w-6" strokeWidth={1.5} />
+        <span className="text-[11px] font-medium">Menu</span>
       </button>
     </div>
   </div>
@@ -339,12 +345,11 @@ const BottomNav = ({ onMenuClick, user }: { onMenuClick: () => void, user: any }
 
 const AppContent = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const { user } = useAuth();
 
   return (
     <BrowserRouter>
       <div className="min-h-screen flex flex-col font-sans pb-16 sm:pb-0">
-        <Navbar onLoginClick={() => setIsAuthModalOpen(true)} />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
@@ -352,7 +357,7 @@ const AppContent = () => {
           <Route path="/post" element={<PostProperty />} />
           <Route path="*" element={<div className="p-12 text-center text-xl">Page Under Construction</div>} />
         </Routes>
-        <BottomNav onMenuClick={() => setIsAuthModalOpen(true)} user={user} />
+        <BottomNav onMenuClick={() => setIsAuthModalOpen(true)} />
         <Analytics />
       </div>
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
@@ -362,9 +367,11 @@ const AppContent = () => {
 
 const App = () => {
   return (
-    <AuthProvider>
-      <AppContent />
-    </AuthProvider>
+    <ErrorBoundary>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
+    </ErrorBoundary>
   );
 };
 
