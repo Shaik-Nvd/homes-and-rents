@@ -149,22 +149,7 @@ const SearchHero = () => {
         </button>
       </div>
 
-      {/* Banner */}
-      <div className="mt-5 bg-[#5c473b] rounded-2xl p-4 pr-32 relative overflow-hidden text-white shadow-md">
-        <div className="z-10 relative">
-          <h3 className="font-bold text-sm mb-2 text-white/90">Looking for Tenants / Buyers ?</h3>
-          <ul className="text-xs space-y-1.5 mb-4 text-white/80">
-            <li className="flex items-center gap-1.5">⚡ Faster & Verified Tenants/Buyers</li>
-            <li className="flex items-center gap-1.5">◉ Pay ZERO brokerage</li>
-          </ul>
-          <Link to="/post" className="inline-block bg-[#fb4b62] hover:bg-[#e84155] text-white text-sm font-bold py-2 px-4 rounded-xl shadow-sm transition-colors">
-            Post FREE Property Ad
-          </Link>
-        </div>
-        <div className="absolute right-0 bottom-0 h-full w-32 flex items-end">
-          <img src="https://cdn3d.iconscout.com/3d/premium/thumb/hand-giving-house-key-5147822-4301540.png" alt="House Keys" className="w-full object-contain -mr-4 -mb-2" />
-        </div>
-      </div>
+
     </div>
   );
 };
