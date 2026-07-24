@@ -86,70 +86,85 @@ const SearchHero = () => {
   }, []);
 
   return (
-    <div className="bg-white px-4 pt-4 pb-2 flex flex-col max-w-lg mx-auto w-full">
-      {/* Popular Hubs */}
-      <div className="text-center">
-        <div className="text-[10px] font-bold text-gray-600 uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
-          <span>Popular Bangalore Hubs</span>
-        </div>
-        <div className="overflow-hidden relative w-full">
-          <div className="flex animate-marquee gap-2 pb-2 w-max">
+    <div className="bg-gradient-to-br from-indigo-950 via-indigo-900 to-slate-900 px-4 pt-12 pb-16 w-full shadow-2xl relative overflow-hidden">
+      {/* Decorative Blur Circles */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-pink-600/20 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[100px] translate-x-1/4 translate-y-1/4 pointer-events-none"></div>
+      
+      <div className="flex flex-col max-w-3xl mx-auto w-full relative z-10">
+        
+        {/* Popular Hubs Marquee */}
+        <div className="mb-10 overflow-hidden relative w-full rounded-3xl bg-white/5 backdrop-blur-md border border-white/10 p-4 shadow-xl">
+          <div className="text-[10px] font-bold text-indigo-200/80 uppercase tracking-[0.2em] mb-4 flex items-center justify-center gap-3">
+            <span className="w-12 h-[1px] bg-gradient-to-r from-transparent to-indigo-300/50"></span>
+            <span>Popular Bangalore Hubs</span>
+            <span className="w-12 h-[1px] bg-gradient-to-l from-transparent to-indigo-300/50"></span>
+          </div>
+          <div className="flex animate-marquee gap-3 w-max items-center">
             {[...['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'], ...['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar']].map((loc, i) => (
-              <span key={i} className="px-3 py-1 bg-[#1a202c] text-white text-xs rounded-full whitespace-nowrap flex-shrink-0">
+              <span key={i} className="px-5 py-2 bg-white/5 hover:bg-white/15 text-indigo-50 text-[13px] font-semibold rounded-2xl whitespace-nowrap flex-shrink-0 border border-white/10 transition-all cursor-default shadow-sm">
                 {loc}
               </span>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Headline */}
-      <div className="text-center mt-3 h-16 flex flex-col justify-center items-center">
-        <h1 
-          key={taglineIndex}
-          className="text-xl sm:text-2xl font-extrabold text-gray-600 shadow-sm animate-fade-in text-center px-2" 
-          style={{textShadow: "0px 1px 1px rgba(0,0,0,0.2)", animation: "fadeIn 0.5s ease-in-out"}}
-        >
-          {TAGLINES[taglineIndex]}
-        </h1>
-        <div className="flex justify-center flex-wrap gap-2 mt-2">
-          <span className="px-3 py-1 bg-[#2d3748] text-white rounded-full text-xs font-semibold flex items-center gap-1">
-            🚆 Near Metro
+        {/* Dynamic Taglines */}
+        <div className="text-center h-24 sm:h-32 flex flex-col justify-center items-center mb-8">
+          <h1 
+            key={taglineIndex}
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-indigo-100 to-indigo-300 drop-shadow-sm text-center px-2 tracking-tight" 
+            style={{animation: "fadeIn 0.7s cubic-bezier(0.4, 0, 0.2, 1)"}}
+          >
+            {TAGLINES[taglineIndex]}
+          </h1>
+        </div>
+
+        {/* Feature Tags */}
+        <div className="flex justify-center flex-wrap gap-4 mb-10">
+          <span className="px-5 py-2.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 rounded-2xl text-[13px] font-bold flex items-center gap-2 shadow-lg backdrop-blur-md transition-transform hover:-translate-y-0.5">
+            <span className="text-emerald-400 text-lg leading-none">🚆</span> Near Metro
           </span>
-          <span className="px-3 py-1 bg-[#2d3748] text-white rounded-full text-xs font-semibold flex items-center gap-1">
-            <span className="w-2 h-2 rounded-full bg-green-400"></span> Zero Brokerage
+          <span className="px-5 py-2.5 bg-pink-500/10 border border-pink-500/20 text-pink-300 rounded-2xl text-[13px] font-bold flex items-center gap-2.5 shadow-lg backdrop-blur-md transition-transform hover:-translate-y-0.5">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500"></span>
+            </span>
+            Zero Brokerage
           </span>
-          <span className="px-3 py-1 bg-[#2d3748] text-white rounded-full text-xs font-semibold flex items-center gap-1">
-            🛡️ Gated Community
+          <span className="px-5 py-2.5 bg-blue-500/10 border border-blue-500/20 text-blue-300 rounded-2xl text-[13px] font-bold flex items-center gap-2 shadow-lg backdrop-blur-md transition-transform hover:-translate-y-0.5">
+            <span className="text-blue-400 text-lg leading-none">🛡️</span> Gated Community
           </span>
         </div>
-      </div>
 
-      {/* Toggle */}
-      <div className="mt-5 bg-[#4a5568] p-1 rounded-2xl flex">
-        <button className="flex-1 bg-white text-gray-900 rounded-xl py-3 font-bold text-sm shadow-sm">
-          Rent homes
-        </button>
-        <button className="flex-1 text-white rounded-xl py-3 font-bold text-sm">
-          Buy homes
-        </button>
-      </div>
+        {/* Action Area (Toggle + Search) */}
+        <div className="bg-white/10 backdrop-blur-xl p-4 sm:p-5 rounded-[2rem] border border-white/20 shadow-2xl">
+          {/* Toggle */}
+          <div className="bg-slate-900/50 p-1.5 rounded-3xl flex mb-4 border border-white/5">
+            <button className="flex-1 bg-white text-indigo-950 rounded-2xl py-3.5 font-extrabold text-sm shadow-[0_4px_14px_0_rgba(255,255,255,0.39)] transition-all">
+              Rent homes
+            </button>
+            <button className="flex-1 text-indigo-200 hover:text-white rounded-2xl py-3.5 font-extrabold text-sm transition-all hover:bg-white/5">
+              Buy homes
+            </button>
+          </div>
 
-      {/* Search Bar */}
-      <div className="mt-4 flex gap-2">
-        <div className="flex-1 border border-gray-200 rounded-xl flex items-center px-4 bg-white shadow-sm">
-          <input 
-            type="text" 
-            placeholder="Search by locality or landmark" 
-            className="w-full outline-none text-sm text-gray-700 bg-transparent placeholder-gray-400" 
-          />
+          {/* Search Bar */}
+          <div className="flex gap-3">
+            <div className="flex-1 bg-white rounded-2xl flex items-center px-6 shadow-inner focus-within:ring-4 focus-within:ring-indigo-500/30 transition-all border border-gray-100">
+              <input 
+                type="text" 
+                placeholder="Search by locality or landmark..." 
+                className="w-full outline-none text-[15px] text-gray-800 bg-transparent placeholder-gray-400 py-4.5 font-semibold" 
+              />
+            </div>
+            <button className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-6 py-4 rounded-2xl shadow-[0_4px_14px_0_rgba(244,63,94,0.39)] flex-shrink-0 transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center">
+              <Search className="w-6 h-6 stroke-[2.5]" />
+            </button>
+          </div>
         </div>
-        <button className="bg-[#fb4b62] text-white p-3 rounded-xl shadow-sm flex-shrink-0">
-          <Search className="w-5 h-5" />
-        </button>
+
       </div>
-
-
     </div>
   );
 };
