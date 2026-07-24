@@ -76,9 +76,9 @@ const SearchHero = () => {
         <div className="text-[10px] font-bold text-gray-600 uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
           <span>Popular Bangalore Hubs</span>
         </div>
-        <div className="flex overflow-x-auto no-scrollbar gap-2 pb-2">
-          {['Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra'].map((loc, i) => (
-            <span key={i} className="px-3 py-1 bg-[#1a202c] text-white text-xs rounded-full whitespace-nowrap">
+        <div className="flex overflow-x-auto no-scrollbar gap-2 pb-2 scroll-smooth">
+          {['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'].map((loc, i) => (
+            <span key={i} className="px-3 py-1 bg-[#1a202c] text-white text-xs rounded-full whitespace-nowrap flex-shrink-0">
               {loc}
             </span>
           ))}
@@ -90,12 +90,15 @@ const SearchHero = () => {
         <h1 className="text-2xl font-extrabold text-gray-600 shadow-sm" style={{textShadow: "0px 1px 1px rgba(0,0,0,0.2)"}}>
           Helping Bangalore Find Home.
         </h1>
-        <div className="flex justify-center gap-2 mt-2">
+        <div className="flex justify-center flex-wrap gap-2 mt-2">
           <span className="px-3 py-1 bg-[#2d3748] text-white rounded-full text-xs font-semibold flex items-center gap-1">
             🚆 Near Metro
           </span>
           <span className="px-3 py-1 bg-[#2d3748] text-white rounded-full text-xs font-semibold flex items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-green-400"></span> Zero Brokerage
+          </span>
+          <span className="px-3 py-1 bg-[#2d3748] text-white rounded-full text-xs font-semibold flex items-center gap-1">
+            🛡️ Gated Community
           </span>
         </div>
       </div>
