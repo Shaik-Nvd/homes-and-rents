@@ -76,12 +76,14 @@ const SearchHero = () => {
         <div className="text-[10px] font-bold text-gray-600 uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
           <span>Popular Bangalore Hubs</span>
         </div>
-        <div className="flex overflow-x-auto no-scrollbar gap-2 pb-2 scroll-smooth">
-          {['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'].map((loc, i) => (
-            <span key={i} className="px-3 py-1 bg-[#1a202c] text-white text-xs rounded-full whitespace-nowrap flex-shrink-0">
-              {loc}
-            </span>
-          ))}
+        <div className="overflow-hidden relative w-full">
+          <div className="flex animate-marquee gap-2 pb-2 w-max">
+            {[...['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'], ...['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar']].map((loc, i) => (
+              <span key={i} className="px-3 py-1 bg-[#1a202c] text-white text-xs rounded-full whitespace-nowrap flex-shrink-0">
+                {loc}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
