@@ -68,7 +68,23 @@ const Navbar = () => {
   );
 };
 
+const TAGLINES = [
+  "Verified homes. Zero confusion. Faster decisions.",
+  "Helping Bangalore Find Home.",
+  "Find Your Next Home in Minutes.",
+  "Finding Home Should Feel Easy."
+];
+
 const SearchHero = () => {
+  const [taglineIndex, setTaglineIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTaglineIndex(prev => (prev + 1) % TAGLINES.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="bg-white px-4 pt-4 pb-2 flex flex-col max-w-lg mx-auto w-full">
       {/* Popular Hubs */}
@@ -88,9 +104,13 @@ const SearchHero = () => {
       </div>
 
       {/* Headline */}
-      <div className="text-center mt-3">
-        <h1 className="text-2xl font-extrabold text-gray-600 shadow-sm" style={{textShadow: "0px 1px 1px rgba(0,0,0,0.2)"}}>
-          Helping Bangalore Find Home.
+      <div className="text-center mt-3 h-16 flex flex-col justify-center items-center">
+        <h1 
+          key={taglineIndex}
+          className="text-xl sm:text-2xl font-extrabold text-gray-600 shadow-sm animate-fade-in text-center px-2" 
+          style={{textShadow: "0px 1px 1px rgba(0,0,0,0.2)", animation: "fadeIn 0.5s ease-in-out"}}
+        >
+          {TAGLINES[taglineIndex]}
         </h1>
         <div className="flex justify-center flex-wrap gap-2 mt-2">
           <span className="px-3 py-1 bg-[#2d3748] text-white rounded-full text-xs font-semibold flex items-center gap-1">
