@@ -20,7 +20,7 @@ class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean,
   }
 }
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Building2, Home as HomeIcon, CheckCircle2, Search, Menu } from 'lucide-react';
+import { Home as HomeIcon, CheckCircle2, Search } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
