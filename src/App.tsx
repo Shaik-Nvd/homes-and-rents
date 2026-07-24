@@ -75,7 +75,7 @@ const TAGLINES = [
   "Finding Home Should Feel Easy."
 ];
 
-const SearchHero = () => {
+const SearchHero = ({ activeTab = 'Sale', setActiveTab }: { activeTab?: 'Rent' | 'Sale', setActiveTab?: (tab: 'Rent' | 'Sale') => void }) => {
   const [taglineIndex, setTaglineIndex] = useState(0);
 
   useEffect(() => {
@@ -141,10 +141,16 @@ const SearchHero = () => {
         <div className="bg-white/10 backdrop-blur-xl p-2.5 sm:p-5 rounded-2xl sm:rounded-[2rem] border border-white/20 shadow-2xl">
           {/* Toggle */}
           <div className="bg-slate-900/50 p-1 sm:p-1.5 rounded-xl sm:rounded-3xl flex mb-2.5 sm:mb-4 border border-white/5">
-            <button className="flex-1 bg-white text-indigo-950 rounded-lg sm:rounded-2xl py-2 sm:py-3 font-extrabold text-[13px] sm:text-sm shadow-[0_4px_14px_0_rgba(255,255,255,0.39)] transition-all">
+            <button 
+              onClick={() => setActiveTab?.('Rent')}
+              className={`flex-1 rounded-lg sm:rounded-2xl py-2 sm:py-3 font-extrabold text-[13px] sm:text-sm transition-all ${activeTab === 'Rent' ? 'bg-white text-indigo-950 shadow-[0_4px_14px_0_rgba(255,255,255,0.39)]' : 'text-indigo-200 hover:text-white hover:bg-white/5'}`}
+            >
               Rent homes
             </button>
-            <button className="flex-1 text-indigo-200 hover:text-white rounded-lg sm:rounded-2xl py-2 sm:py-3 font-extrabold text-[13px] sm:text-sm transition-all hover:bg-white/5">
+            <button 
+              onClick={() => setActiveTab?.('Sale')}
+              className={`flex-1 rounded-lg sm:rounded-2xl py-2 sm:py-3 font-extrabold text-[13px] sm:text-sm transition-all ${activeTab === 'Sale' ? 'bg-white text-indigo-950 shadow-[0_4px_14px_0_rgba(255,255,255,0.39)]' : 'text-indigo-200 hover:text-white hover:bg-white/5'}`}
+            >
               Buy homes
             </button>
           </div>
@@ -319,7 +325,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <SearchHero />
+      <SearchHero activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-grow w-full relative z-20 -mt-8 sm:-mt-12 px-2 sm:px-0">
         <div className="bg-gray-50 rounded-t-[2rem] pt-6 sm:pt-8 px-4 sm:px-6 lg:px-8 pb-6 max-w-5xl mx-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
           <div className="flex flex-col mb-4">
@@ -348,28 +354,7 @@ const Home = () => {
   );
 };
 
-const BottomNav = ({ onMenuClick }: { onMenuClick: () => void }) => (
-  <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-50 sm:hidden pb-safe">
-    <div className="flex justify-between px-8 py-3">
-      <Link to="/" className="flex flex-col items-center gap-1 text-[#1a202c]">
-        <HomeIcon className="h-6 w-6" strokeWidth={2} />
-        <span className="text-[11px] font-medium">Home</span>
-      </Link>
-      <Link to="/search?type=buy" className="flex flex-col items-center gap-1 text-gray-500 hover:text-gray-800 transition-colors">
-        <Building2 className="h-6 w-6" strokeWidth={1.5} />
-        <span className="text-[11px] font-medium">Buy</span>
-      </Link>
-      <Link to="/search?type=rent" className="flex flex-col items-center gap-1 text-gray-500 hover:text-gray-800 transition-colors">
-        <Building2 className="h-6 w-6" strokeWidth={1.5} />
-        <span className="text-[11px] font-medium">Rent</span>
-      </Link>
-      <button onClick={onMenuClick} className="flex flex-col items-center gap-1 text-gray-500 hover:text-gray-800 transition-colors">
-        <Menu className="h-6 w-6" strokeWidth={1.5} />
-        <span className="text-[11px] font-medium">Menu</span>
-      </button>
-    </div>
-  </div>
-);
+
 
 const AppContent = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -385,7 +370,6 @@ const AppContent = () => {
           <Route path="/post" element={<PostProperty />} />
           <Route path="*" element={<div className="p-12 text-center text-xl">Page Under Construction</div>} />
         </Routes>
-        <BottomNav onMenuClick={() => setIsAuthModalOpen(true)} />
         <Analytics />
       </div>
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
