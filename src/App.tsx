@@ -320,27 +320,29 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <SearchHero />
-      <main className="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 w-full relative z-20 -mt-10 sm:-mt-16">
-        <div className="flex flex-col mb-4">
-          <h2 className="text-xl font-extrabold text-[#0a192f] tracking-tight">
-            Recommended Properties
-          </h2>
-          <p className="text-gray-400 text-sm mt-0.5">
-            Curated especially for you
-          </p>
-        </div>
-        
-        {loading ? (
-          <div className="text-center py-12 text-gray-500">Loading properties...</div>
-        ) : properties.length === 0 ? (
-          <div className="text-center py-12 text-gray-500">No properties found. Connect your database to see listings!</div>
-        ) : (
-          <div className="flex overflow-x-auto gap-4 pb-6 snap-x snap-mandatory no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-            {properties.map(prop => (
-              <PropertyCard key={prop.id} property={prop} />
-            ))}
+      <main className="flex-grow w-full relative z-20 -mt-8 sm:-mt-12 px-2 sm:px-0">
+        <div className="bg-gray-50 rounded-t-[2rem] pt-6 sm:pt-8 px-4 sm:px-6 lg:px-8 pb-6 max-w-5xl mx-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
+          <div className="flex flex-col mb-4">
+            <h2 className="text-xl font-extrabold text-[#0a192f] tracking-tight">
+              Recommended Properties
+            </h2>
+            <p className="text-gray-400 text-sm mt-0.5">
+              Curated especially for you
+            </p>
           </div>
-        )}
+          
+          {loading ? (
+            <div className="text-center py-12 text-gray-500">Loading properties...</div>
+          ) : properties.length === 0 ? (
+            <div className="text-center py-12 text-gray-500">No properties found. Connect your database to see listings!</div>
+          ) : (
+            <div className="flex overflow-x-auto gap-4 pb-6 snap-x snap-mandatory no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
+              {properties.map(prop => (
+                <PropertyCard key={prop.id} property={prop} />
+              ))}
+            </div>
+          )}
+        </div>
       </main>
     </div>
   );
