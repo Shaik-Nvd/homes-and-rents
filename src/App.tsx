@@ -24,6 +24,7 @@ import { Home as HomeIcon, CheckCircle2, Search } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
+import { ProjectDetail } from './pages/ProjectDetail';
 import { PostProperty } from './pages/PostProperty';
 import { ProjectCard } from './components/ProjectCard';
 import { supabase } from './lib/supabase';
@@ -384,6 +385,7 @@ const AppContent = () => {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/property/:id" element={<PropertyDetail />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/post" element={<PostProperty />} />
           <Route path="*" element={<div className="p-12 text-center text-xl">Page Under Construction</div>} />
         </Routes>
