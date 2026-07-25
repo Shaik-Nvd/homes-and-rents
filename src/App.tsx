@@ -226,6 +226,25 @@ const Home = () => {
                   description: "Check out 3,4 BHK apartments in Nallurhalli, now available for..."
                 }}
               />
+              <ProjectCard
+                project={{
+                  id: "roach-cicada",
+                  title: "Roach Cicada",
+                  subtitle: "3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+                  priceConfigs: [
+                    { label: "3 BHK Apartment", price: "₹2.86 - 3.17 Cr" },
+                    { label: "4 BHK Apartment", price: "₹3.6 - 3.9 Cr" }
+                  ],
+                  nearby: ["Glentree Academy School", "Amrita Vishwa Vidyapeetam", "PNR felicity mall", "Narayana Hospital", "Kempegowda International Airport"],
+                  builder: "Roach Lifescapes",
+                  status: "New Launch · Completion in Dec, 2029",
+                  imageSrc: "/All Projects Cards/screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_12_15-2.png",
+                  imageCount: "1/8",
+                  tag: "NEW BOOKING",
+                  badges: ["RERA", "ZERO BROKERAGE", "3D"],
+                  description: "Spacious 3,4 BHK apartments in Sarjapur Road are available for..."
+                }}
+              />
             </div>
           </div>
 
