@@ -1,6 +1,13 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Home, Heart, ChevronRight, ChevronDown, Download, Image as ImageIcon, PlayCircle, X, Info, ChevronLeft } from 'lucide-react';
+import { ProjectOverview } from '../components/ProjectOverview';
+import { ProjectFloorPlans } from '../components/ProjectFloorPlans';
+import { ProjectAmenities } from '../components/ProjectAmenities';
+import { ProjectAbout } from '../components/ProjectAbout';
+import { ProjectLocation } from '../components/ProjectLocation';
+import { ProjectReviews } from '../components/ProjectReviews';
+
 
 export const ProjectDetail = () => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);
@@ -209,6 +216,16 @@ export const ProjectDetail = () => {
                   </div>
                 </div>
               </div>
+            </div>
+
+            {/* New Sections */}
+            <div className="flex flex-col gap-8 mt-8">
+              <ProjectOverview />
+              <ProjectFloorPlans />
+              <ProjectAmenities />
+              <ProjectAbout />
+              <ProjectLocation />
+              <ProjectReviews />
             </div>
 
           </div>
