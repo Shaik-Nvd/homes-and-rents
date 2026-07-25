@@ -205,22 +205,7 @@ const Home = () => {
             <h2 className="text-xl font-extrabold text-[#0a192f] tracking-tight mb-4">
               Recommended Projects
             </h2>
-            <div className="flex flex-col gap-6">
-              {[
-                "screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_08_18.png",
-                "screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_11_35.png",
-                "screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_12_15-2.png",
-                "screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_12_15-3.png",
-                "screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_12_15.png",
-                "screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_15_46.png",
-                "screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_16_22.png",
-                "screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_16_59.png",
-                "screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_17_30.png",
-                "screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_18_06.png"
-              ].map((filename) => (
-                <ProjectCard key={filename} imageSrc={`/All Projects Cards/${filename}`} />
-              ))}
-            </div>
+            <ProjectCard />
           </div>
 
 

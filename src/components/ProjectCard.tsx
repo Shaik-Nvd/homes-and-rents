@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Heart, Download, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-export const ProjectCard = ({ imageSrc }: { imageSrc?: string }) => {
+export const ProjectCard = () => {
   const [showMoreNearby, setShowMoreNearby] = useState(false);
 
   return (
@@ -12,8 +12,8 @@ export const ProjectCard = ({ imageSrc }: { imageSrc?: string }) => {
       {/* Left Side: Image Container */}
       <div className="relative h-64 md:h-auto md:w-[40%] flex-shrink-0 bg-gray-200">
         <img
-          src={imageSrc || "/gr-samskruthi.jpg"}
-          alt="Project"
+          src="/gr-samskruthi.jpg"
+          alt="GR Samskruthi"
           className="w-full h-full object-cover"
         />
         {/* Top Badges */}
