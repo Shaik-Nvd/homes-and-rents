@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Heart, Download, Info } from 'lucide-react';
+import { Heart, Download, Info, Home } from 'lucide-react';
 
 export const ProjectCard = () => {
   const [showMoreNearby, setShowMoreNearby] = useState(false);
+  const [showAllFeatures, setShowAllFeatures] = useState(false);
 
   return (
     <div className="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
@@ -96,6 +97,56 @@ export const ProjectCard = () => {
               </div>
             )}
           </div>
+        </div>
+
+        {/* Why consider */}
+        <div className="mt-2 pt-4 border-t border-gray-100">
+          <div className="flex items-start gap-2 mb-3">
+            <div className="bg-[#f29f43] p-1.5 rounded-md text-white mt-0.5">
+              <Home className="w-4 h-4" />
+            </div>
+            <h4 className="text-[17px] font-bold text-[#0a192f] leading-tight">
+              Why you should consider GR Samskruthi?
+            </h4>
+          </div>
+          <ul className="space-y-3 mb-3 pl-1">
+            <li className="flex items-start gap-3 text-[14px] text-[#3a4556]">
+              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#5a6a7c] flex-shrink-0"></span>
+              Easily find Zen with GR Samskruthi's yoga spaces.
+            </li>
+            <li className="flex items-start gap-3 text-[14px] text-[#3a4556]">
+              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#5a6a7c] flex-shrink-0"></span>
+              Vastu compliant 2 & 3 bhk spacious home with modern amenities
+            </li>
+            <li className="flex items-start gap-3 text-[14px] text-[#3a4556]">
+              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#5a6a7c] flex-shrink-0"></span>
+              20 min to Electronic City; 10 min to Bommasandra metro.
+            </li>
+            {showAllFeatures && (
+              <>
+                <li className="flex items-start gap-3 text-[14px] text-[#3a4556]">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#5a6a7c] flex-shrink-0"></span>
+                  High-end co-working space within the resident community
+                </li>
+                <li className="flex items-start gap-3 text-[14px] text-[#3a4556]">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#5a6a7c] flex-shrink-0"></span>
+                  360 ventilation
+                </li>
+                <li className="flex items-start gap-3 text-[14px] text-[#3a4556]">
+                  <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#5a6a7c] flex-shrink-0"></span>
+                  Properties with 100% power backup available
+                </li>
+              </>
+            )}
+          </ul>
+          {!showAllFeatures && (
+            <button 
+              onClick={() => setShowAllFeatures(true)}
+              className="text-[#0066cc] font-medium text-sm hover:underline flex items-center gap-1 pl-1"
+            >
+              View 3 more <span className="text-lg leading-none">&rarr;</span>
+            </button>
+          )}
         </div>
 
         {/* Spacer to push footer to bottom on large cards */}
