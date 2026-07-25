@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Heart, ChevronRight, ChevronDown, Download, Image as ImageIcon, PlayCircle, X, Info } from 'lucide-react';
+import { Home, Heart, ChevronRight, ChevronDown, Download, Image as ImageIcon, PlayCircle, X, Info, ChevronLeft } from 'lucide-react';
 
 export const ProjectDetail = () => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   const allImages = [
     '/GR%20Samskruthi/gr-samskruthi.jpg',
@@ -336,11 +337,53 @@ export const ProjectDetail = () => {
           <div className="flex-1 overflow-y-auto pt-20 pb-10 px-4 sm:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
               {allImages.map((src, idx) => (
-                <div key={idx} className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-900 border border-gray-800">
+                <div 
+                  key={idx} 
+                  className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-900 border border-gray-800 cursor-pointer hover:border-gray-500 transition-colors"
+                  onClick={() => setSelectedImageIndex(idx)}
+                >
                   <img src={src} alt={`Gallery image ${idx + 1}`} className="w-full h-full object-contain" />
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox for Individual Image */}
+      {selectedImageIndex !== null && (
+        <div className="fixed inset-0 z-[70] bg-black/95 flex flex-col items-center justify-center">
+          <button 
+            onClick={() => setSelectedImageIndex(null)} 
+            className="absolute top-4 right-4 text-white hover:text-gray-300 p-2 z-10"
+          >
+            <X className="w-8 h-8" />
+          </button>
+          
+          <button 
+            onClick={() => setSelectedImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : allImages.length - 1))}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 p-2 z-10 bg-black/30 rounded-full"
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+          
+          <div className="w-full h-full p-4 sm:p-12 flex items-center justify-center">
+            <img 
+              src={allImages[selectedImageIndex]} 
+              alt="Full screen view" 
+              className="max-w-full max-h-full object-contain"
+            />
+          </div>
+
+          <button 
+            onClick={() => setSelectedImageIndex((prev) => (prev !== null && prev < allImages.length - 1 ? prev + 1 : 0))}
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 p-2 z-10 bg-black/30 rounded-full"
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
+          
+          <div className="absolute bottom-4 text-white text-sm">
+            {selectedImageIndex + 1} / {allImages.length}
           </div>
         </div>
       )}
