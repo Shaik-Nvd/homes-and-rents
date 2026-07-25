@@ -26,8 +26,7 @@ import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { PostProperty } from './pages/PostProperty';
-import { ProjectCard } from './components/ProjectCard';
-import { supabase } from './lib/supabase';
+import { MobileNav } from './components/MobileNav';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthModal } from './components/AuthModal';
 
@@ -195,142 +194,14 @@ const getMockData = (id: string) => {
   return { isZeroBrokerage, metroDist, pets, parking };
 };
 
-const PropertyCard = ({ property }: { property: any }) => {
-  const mockData = getMockData(property.id);
-  
-  return (
-    <Link to={`/property/${property.id}`} className="block group w-[300px] sm:w-[340px] flex-shrink-0 snap-start">
-      <div className="bg-white rounded-2xl overflow-hidden border border-gray-200 hover:border-indigo-300 hover:shadow-xl transition-all relative h-full flex flex-col">
-        {/* Image Section */}
-        <div className="relative h-48 overflow-hidden bg-gray-100 flex-shrink-0">
-          <img src={property.images?.[0] || 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=800'} alt={property.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          
-          <div className="absolute top-3 left-3 flex flex-col gap-2">
-            <div className="bg-emerald-500 text-white px-2.5 py-1 rounded-md text-[11px] font-bold flex items-center shadow-md">
-              Owner Verified ✅
-            </div>
-            {mockData.isZeroBrokerage && (
-              <div className="bg-white/95 text-emerald-600 px-2.5 py-1 rounded-md text-[11px] font-bold flex items-center shadow-md border border-emerald-100">
-                Zero Brokerage 🟢
-              </div>
-            )}
-          </div>
-          
-          <div className="absolute bottom-3 left-3 bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-lg shadow-lg border border-gray-100">
-            <div className="font-extrabold text-gray-900">{property.price}</div>
-          </div>
-        </div>
-        
-        {/* Details Section */}
-        <div className="p-4 flex-grow flex flex-col">
-          <h3 className="font-bold text-gray-900 text-[15px] mb-1 line-clamp-1">{property.bhk} BHK {property.propertyType || 'Apartment'}</h3>
-          <p className="text-gray-500 text-xs mb-4 truncate font-medium">{property.location}</p>
-          
-          {/* Micro Specs */}
-          <div className="grid grid-cols-2 gap-2 mb-4 bg-gray-50 p-3 rounded-xl border border-gray-100">
-            <div className="flex items-center gap-1.5 text-[11px] text-gray-700 font-medium">
-              <span className="text-indigo-600">🚇</span> {mockData.metroDist} mins to Metro
-            </div>
-            <div className="flex items-center gap-1.5 text-[11px] text-gray-700 font-medium">
-              <span className="text-indigo-600">🛜</span> Fiber Ready
-            </div>
-            <div className="flex items-center gap-1.5 text-[11px] text-gray-700 font-medium">
-              <span>{mockData.pets.includes('Allowed') ? '🐶' : '🚫'}</span> {mockData.pets.replace(/🐶|🚫/, '')}
-            </div>
-            <div className="flex items-center gap-1.5 text-[11px] text-gray-700 font-medium">
-              <span>{mockData.parking.includes('Covered') ? '🚗' : '🅿️'}</span> {mockData.parking.replace(/🚗/, '')}
-            </div>
-          </div>
-
-          {/* Actions */}
-          <div className="mt-auto grid grid-cols-2 gap-2">
-            <button className="w-full bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold py-2 rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
-              Call Owner
-            </button>
-            <button className="w-full bg-green-50 hover:bg-green-100 text-green-700 font-bold py-2 rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
-              WhatsApp
-            </button>
-          </div>
-        </div>
-      </div>
-    </Link>
-  );
-};
-
-function getDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
-  if (!lat1 || !lon1 || !lat2 || !lon2) return 999999;
-  const R = 6371; // Radius of the earth in km
-  const dLat = (lat2 - lat1) * Math.PI / 180;
-  const dLon = (lon2 - lon1) * Math.PI / 180;
-  const a = 
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
-    Math.sin(dLon/2) * Math.sin(dLon/2)
-    ; 
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-  const d = R * c; // Distance in km
-  return d;
-}
-
 const Home = () => {
-  const [properties, setProperties] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<'Rent' | 'Sale'>('Sale'); // Default to Sale as requested
-  const [userLocation, setUserLocation] = useState<{lat: number, lng: number} | null>(null);
 
   useEffect(() => {
     const handleTabChange = (e: any) => setActiveTab(e.detail);
     window.addEventListener('changeTab', handleTabChange);
     return () => window.removeEventListener('changeTab', handleTabChange);
   }, []);
-
-  useEffect(() => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          setUserLocation({ lat: position.coords.latitude, lng: position.coords.longitude });
-        },
-        (error) => {
-          console.warn("Location access denied or error:", error);
-        }
-      );
-    }
-  }, []);
-
-  useEffect(() => {
-    const fetchProperties = async () => {
-      setLoading(true);
-      const { data, error } = await supabase
-        .from('properties')
-        .select('*')
-        .eq('type', activeTab)
-        .order('created_at', { ascending: false });
-      
-      if (error) {
-        console.error('Error fetching properties:', error);
-      }
-      
-      const combinedData = data || [];
-
-      if (combinedData.length > 0) {
-        if (userLocation) {
-          const sorted = [...combinedData].sort((a, b) => {
-             const distA = getDistance(userLocation.lat, userLocation.lng, a.latitude, a.longitude);
-             const distB = getDistance(userLocation.lat, userLocation.lng, b.latitude, b.longitude);
-             return distA - distB;
-          });
-          setProperties(sorted);
-        } else {
-          setProperties(combinedData);
-        }
-      } else {
-        setProperties([]);
-      }
-      setLoading(false);
-    };
-
-    fetchProperties();
-  }, [activeTab, userLocation]);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
