@@ -346,26 +346,7 @@ const Home = () => {
             <ProjectCard />
           </div>
 
-          <div className="flex flex-col mb-4">
-            <h2 className="text-xl font-extrabold text-[#0a192f] tracking-tight">
-              Genuine Properties
-            </h2>
-            <p className="text-gray-400 text-sm mt-0.5">
-              Available from our database
-            </p>
-          </div>
-          
-          {loading ? (
-            <div className="text-center py-12 text-gray-500">Loading properties...</div>
-          ) : properties.length === 0 ? (
-            <div className="text-center py-12 text-gray-500">No properties found. Connect your database to see listings!</div>
-          ) : (
-            <div className="flex overflow-x-auto gap-4 pb-6 snap-x snap-mandatory no-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0">
-              {properties.map(prop => (
-                <PropertyCard key={prop.id} property={prop} />
-              ))}
-            </div>
-          )}
+
         </div>
       </main>
     </div>
