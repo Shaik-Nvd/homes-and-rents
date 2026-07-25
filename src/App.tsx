@@ -28,7 +28,6 @@ import { PostProperty } from './pages/PostProperty';
 import { supabase } from './lib/supabase';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthModal } from './components/AuthModal';
-import excelProperties from './data/excelProperties.json';
 
 // Mock Data removed, using Supabase
 
@@ -309,8 +308,7 @@ const Home = () => {
         console.error('Error fetching properties:', error);
       }
       
-      const localData = excelProperties.filter(p => p.type === activeTab);
-      const combinedData = [...(data || []), ...localData];
+      const combinedData = data || [];
 
       if (combinedData.length > 0) {
         if (userLocation) {
@@ -337,14 +335,6 @@ const Home = () => {
       <SearchHero activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-grow w-full relative z-20 -mt-8 sm:-mt-12 px-2 sm:px-0">
         <div className="bg-gray-50 rounded-t-[2rem] pt-6 sm:pt-8 px-4 sm:px-6 lg:px-8 pb-6 max-w-5xl mx-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
-          <div className="flex flex-col mb-4">
-            <h2 className="text-xl font-extrabold text-[#0a192f] tracking-tight">
-              Recommended Properties
-            </h2>
-            <p className="text-gray-400 text-sm mt-0.5">
-              Curated especially for you
-            </p>
-          </div>
           
           {loading ? (
             <div className="text-center py-12 text-gray-500">Loading properties...</div>
