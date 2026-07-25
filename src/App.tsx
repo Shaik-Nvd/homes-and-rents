@@ -303,6 +303,25 @@ const Home = () => {
                   description: "Spacious and elegant 3,4 BHK Villa are for sale in The Berries For Birds, Whitefield. Villas size in The Berries For Birds varies from 1,900 - 4,500 sqft. Swimming Pool, Gymnasium and Club House are some of the major amenities offered here. Villas in The Berries For Birds are New Launch"
                 }}
               />
+              <ProjectCard
+                project={{
+                  id: "trifecta-veranza",
+                  title: "Trifecta Veranza",
+                  subtitle: "2, 3 BHK Apartment in Sarjapur, Bangalore",
+                  priceConfigs: [
+                    { label: "2 BHK Apartment", price: "₹1.08 Cr" },
+                    { label: "3 BHK Apartment", price: "₹1.23 - 1.67 Cr" }
+                  ],
+                  nearby: ["The International School", "National Highway 948A", "Wipro SEZ", "Greenwood International School", "Azim Premji University"],
+                  builder: "Trifecta Projects",
+                  status: "New Launch · Completion in Dec, 2029",
+                  imageSrc: "/All Projects Cards/screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_18_50.png",
+                  imageCount: "1/2",
+                  tag: "NEW BOOKING",
+                  badges: ["RERA", "ZERO BROKERAGE", "3D"],
+                  description: "Here are beautifully built 2,3 BHK apartments in Sarjapur, available for sale at Trifecta Veranza. Trifecta Veranza 's RERA registration number is PRM/KA/RERA/1251/308/PR/210126/008418. Apartments in this complex are available in price range of Rs. 1.08 - 1.67 Cr. Trifecta Veranza apartments are available in multiples sizes, ranging from 1,165 - 1,745 sqft SUPER area"
+                }}
+              />
             </div>
           </div>
 
