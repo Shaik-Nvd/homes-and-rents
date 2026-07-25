@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Home, ArrowLeft } from 'lucide-react';
 
 export const ProjectDetail = () => {
-  const { id } = useParams();
   const [showAllFeatures, setShowAllFeatures] = useState(false);
 
   // In a real app, you would fetch project details by ID here.
