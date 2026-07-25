@@ -205,7 +205,28 @@ const Home = () => {
             <h2 className="text-xl font-extrabold text-[#0a192f] tracking-tight mb-4">
               Recommended Projects
             </h2>
-            <ProjectCard />
+            <div className="flex flex-col gap-6">
+              <ProjectCard />
+              <ProjectCard
+                project={{
+                  id: "sumadhura-edition",
+                  title: "Sumadhura Edition",
+                  subtitle: "3, 4 BHK Apartment in Nallurhalli, Whitefield",
+                  priceConfigs: [
+                    { label: "3 BHK Apartment", price: "₹2.54 - 3.88 Cr" },
+                    { label: "4 BHK Apartment", price: "₹3.37 - 3.89 Cr" }
+                  ],
+                  nearby: ["Manipal Hospital Varthur Road", "Brookefield Mall", "CMR Institute of Technology", "National Highway 44", "Seetharam Palya Metro Station"],
+                  builder: "Sumadhura Group",
+                  status: "New Launch · Completion in Dec, 2029",
+                  imageSrc: "/All Projects Cards/screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_11_35.png",
+                  imageCount: "1/3",
+                  tag: "NEW BOOKING",
+                  badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
+                  description: "Check out 3,4 BHK apartments in Nallurhalli, now available for..."
+                }}
+              />
+            </div>
           </div>
 
 
