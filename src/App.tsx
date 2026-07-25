@@ -26,7 +26,7 @@ import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { PostProperty } from './pages/PostProperty';
-import { MobileNav } from './components/MobileNav';
+import { ProjectCard } from './components/ProjectCard';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthModal } from './components/AuthModal';
 
@@ -184,15 +184,6 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab }: { activeTab?: 'Rent' |
   );
 };
 
-// Mock Generator for specific Bangalore data since the DB doesn't have it yet
-const getMockData = (id: string) => {
-  const hash = id.toString().length;
-  const isZeroBrokerage = hash % 2 === 0;
-  const metroDist = (hash % 10) + 2;
-  const pets = hash % 3 === 0 ? 'Pets Allowed 🐶' : 'No Pets 🚫';
-  const parking = hash % 2 !== 0 ? 'Covered Parking 🚗' : 'Street Parking';
-  return { isZeroBrokerage, metroDist, pets, parking };
-};
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState<'Rent' | 'Sale'>('Sale'); // Default to Sale as requested
