@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Home, Heart, ChevronRight, ChevronDown, Download, Image as ImageIcon, PlayCircle, X } from 'lucide-react';
+import { Home, Heart, ChevronRight, ChevronDown, Download, Image as ImageIcon, PlayCircle, X, Info } from 'lucide-react';
 
 export const ProjectDetail = () => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);
