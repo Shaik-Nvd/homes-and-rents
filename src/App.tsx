@@ -265,6 +265,25 @@ const Home = () => {
                   description: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Roa..."
                 }}
               />
+              <ProjectCard
+                project={{
+                  id: "vaishnavi-at-one-krishna-brindavan",
+                  title: "Vaishnavi AT One Krishna Brindavan",
+                  subtitle: "3, 4 BHK Apartment in Banashankari Stage 2, Bangalore",
+                  priceConfigs: [
+                    { label: "3 BHK Apartment", price: "₹3.5 - 3.54 Cr" },
+                    { label: "4 BHK Apartment", price: "₹5 Cr" }
+                  ],
+                  nearby: ["ORCHIDS The International School", "Dayananda Sagar University", "Manipal Hospitals Jayanagar", "Forum South Bengaluru", "Kempegowda International Airport"],
+                  builder: "Vaishnavi Group Bangalore",
+                  status: "New Launch · Completion in Jun, 2030",
+                  imageSrc: "/All Projects Cards/screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_15_46.png",
+                  imageCount: "1/4",
+                  tag: "NEW BOOKING",
+                  badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
+                  description: "Beautiful 3,4 BHK apartments in Banashankari Stage 2, are now available in Vaishnavi AT One Krishna Brindavan housing project. Apartments in this complex are available in price range of Rs. 3.5 - 5 Cr. Vaishnavi AT One Krishna Brindavan 's RERA registration number is PRM/KA/RERA/1251/310/PR/081025/008140. Apartments in Vaishnavi AT One Krishna Brindavan have SUPER area ranging between 2,050 - 2,566 sqft"
+                }}
+              />
             </div>
           </div>
 
