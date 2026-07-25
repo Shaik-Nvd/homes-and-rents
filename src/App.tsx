@@ -284,6 +284,25 @@ const Home = () => {
                   description: "Beautiful 3,4 BHK apartments in Banashankari Stage 2, are now available in Vaishnavi AT One Krishna Brindavan housing project. Apartments in this complex are available in price range of Rs. 3.5 - 5 Cr. Vaishnavi AT One Krishna Brindavan 's RERA registration number is PRM/KA/RERA/1251/310/PR/081025/008140. Apartments in Vaishnavi AT One Krishna Brindavan have SUPER area ranging between 2,050 - 2,566 sqft"
                 }}
               />
+              <ProjectCard
+                project={{
+                  id: "the-berries-for-birds",
+                  title: "The Berries For Birds",
+                  subtitle: "3, 4 BHK Villa in Whitefield, Bangalore",
+                  priceConfigs: [
+                    { label: "3 BHK Villa", price: "₹2.25 Cr" },
+                    { label: "4 BHK Villa", price: "₹2.33 - 4.28 Cr" }
+                  ],
+                  nearby: ["DPS Whitefield", "Rudrappa Healthcare", "Winmore academy Whitefield", "Arya Hub Mall", "Kempegowda International Airport"],
+                  builder: "Sanjeevini Group",
+                  status: "New Launch · Completion in Jul, 2028",
+                  imageSrc: "/All Projects Cards/screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_16_22.png",
+                  imageCount: "1/7",
+                  tag: "NEW BOOKING",
+                  badges: ["RERA", "ZERO BROKERAGE", "3D"],
+                  description: "Spacious and elegant 3,4 BHK Villa are for sale in The Berries For Birds, Whitefield. Villas size in The Berries For Birds varies from 1,900 - 4,500 sqft. Swimming Pool, Gymnasium and Club House are some of the major amenities offered here. Villas in The Berries For Birds are New Launch"
+                }}
+              />
             </div>
           </div>
 
