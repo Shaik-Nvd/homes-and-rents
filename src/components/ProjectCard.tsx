@@ -8,7 +8,7 @@ export const ProjectCard = () => {
   return (
     <div className="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow relative">
       {/* Clickable Overlay */}
-      <Link to="/project/gr-samskruthi" className="absolute inset-0 z-0"></Link>
+      <Link to="/project/gr-samskruthi" className="absolute inset-0 z-[5]"></Link>
       {/* Left Side: Image Container */}
       <div className="relative h-64 md:h-auto md:w-[40%] flex-shrink-0 bg-gray-200">
         <img
@@ -34,7 +34,7 @@ export const ProjectCard = () => {
           </span>
         </div>
         {/* Heart Icon (ensure it stays on top of the link overlay) */}
-        <div className="absolute top-3 right-3 z-10">
+        <div className="absolute top-3 right-3 z-20">
           <button className="text-white hover:text-red-500 transition-colors">
             <Heart className="w-6 h-6 stroke-[1.5]" />
           </button>
@@ -83,7 +83,7 @@ export const ProjectCard = () => {
           <span className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs">Sri Sai Hospitals, Attibele</span>
           
           <div 
-            className="relative z-10"
+            className="relative z-20"
             onMouseEnter={() => setShowMoreNearby(true)}
             onMouseLeave={() => setShowMoreNearby(false)}
           >
@@ -105,7 +105,7 @@ export const ProjectCard = () => {
         <div className="flex-grow"></div>
 
         {/* Footer */}
-        <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gray-50/50 -mx-4 -mb-4 p-4 md:-mx-5 md:-mb-5 md:p-5 rounded-b-2xl md:rounded-br-2xl md:rounded-bl-none z-10 relative">
+        <div className="mt-4 pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-gray-50/50 -mx-4 -mb-4 p-4 md:-mx-5 md:-mb-5 md:p-5 rounded-b-2xl md:rounded-br-2xl md:rounded-bl-none z-20 relative">
           <div>
             <p className="text-xs text-gray-500 mb-0.5">Builder</p>
             <p className="text-sm font-semibold text-[#0a192f]">GR Constructions</p>
