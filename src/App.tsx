@@ -245,6 +245,26 @@ const Home = () => {
                   description: "Spacious 3,4 BHK apartments in Sarjapur Road are available for..."
                 }}
               />
+              <ProjectCard
+                project={{
+                  id: "keya-the-urban-forest",
+                  title: "Keya The Urban Forest",
+                  subtitle: "2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+                  priceConfigs: [
+                    { label: "2 BHK Apartment", price: "₹1.7 Cr" },
+                    { label: "3 BHK Apartment", price: "₹2.14 - 2.39 Cr" },
+                    { label: "4 BHK Apartment", price: "₹3 - 3.3 Cr" }
+                  ],
+                  nearby: ["BRS Global School", "Amrita Vishwa Vidyapeetam", "BRS Global School", "Centro", "Kempegowda International"],
+                  builder: "Keya Homes",
+                  status: "Under Construction · Completion in Dec, 2027",
+                  imageSrc: "/All Projects Cards/screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_12_15-3.png",
+                  imageCount: "1/8",
+                  tag: "NEW BOOKING",
+                  badges: ["RERA", "ZERO BROKERAGE", "3D"],
+                  description: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Roa..."
+                }}
+              />
             </div>
           </div>
 
