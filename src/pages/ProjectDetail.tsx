@@ -4,6 +4,33 @@ import { Home, Heart, ChevronRight, ChevronDown, Download, Image as ImageIcon, P
 
 export const ProjectDetail = () => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);
+  const [showGallery, setShowGallery] = useState(false);
+
+  const allImages = [
+    '/GR Samskruthi/gr-samskruthi.jpg',
+    '/GR Samskruthi/Gemini_Generated_Image_netgznnetgznnetg.png',
+    '/GR Samskruthi/Gemini_Generated_Image_xtui3sxtui3sxtui.png',
+    '/GR Samskruthi/Gemini_Generated_Image_yxk4kkyxk4kkyxk4.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025156.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025208.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025217.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025231.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025243.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025251.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025300.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025311.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025319.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025328.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025337.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025344.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025352.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025359.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025407.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025456.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025511.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025533.png',
+    '/GR Samskruthi/Screenshot 2026-07-26 025547.png'
+  ];
 
   return (
     <div className="bg-white min-h-screen pb-16 font-sans">
@@ -26,10 +53,10 @@ export const ProjectDetail = () => {
           <div className="lg:w-[65%] xl:w-[68%] space-y-6 sm:space-y-8">
             
             {/* Image Gallery */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 h-[250px] sm:h-[300px] md:h-[350px] rounded-lg overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 h-[250px] sm:h-[300px] md:h-[350px] rounded-lg overflow-hidden" onClick={() => setShowGallery(true)}>
               <div className="sm:col-span-2 relative h-full bg-gray-200 group cursor-pointer">
                 <img 
-                  src="/gr-samskruthi.jpg" 
+                  src={allImages[0]} 
                   alt="GR Samskruthi" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
@@ -38,13 +65,13 @@ export const ProjectDetail = () => {
                   <span>All Photos & Videos</span>
                 </div>
                 <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded text-xs flex items-center gap-1.5">
-                  <ImageIcon className="w-3 h-3" /> 26
+                  <ImageIcon className="w-3 h-3" /> {allImages.length}
                 </div>
               </div>
               <div className="hidden sm:flex flex-col gap-2 h-full">
                 <div className="h-1/2 relative bg-gray-200 group cursor-pointer overflow-hidden">
                   <img 
-                    src="/gr-samskruthi.jpg" 
+                    src={allImages[1]} 
                     alt="Video" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -58,9 +85,9 @@ export const ProjectDetail = () => {
                 </div>
                 <div className="h-1/2 relative bg-gray-200 group cursor-pointer overflow-hidden">
                   <img 
-                    src="/gr-samskruthi.jpg" 
+                    src={allImages[2]} 
                     alt="Outdoors" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale-[30%]"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-2 left-2 text-white font-medium text-xs">Outdoors</div>
@@ -130,10 +157,10 @@ export const ProjectDetail = () => {
                   </div>
                   <p className="text-[10px] text-gray-400 font-bold tracking-widest uppercase mt-1">Price Range</p>
                 </div>
-                <button className="flex items-center gap-1.5 border border-[#0078d4] text-[#0078d4] px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors">
+                <a href="/GR Samskruthi/GR Samskruthi_Brouchure.pdf" download target="_blank" rel="noreferrer" className="flex items-center gap-1.5 border border-[#0078d4] text-[#0078d4] px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors">
                   <Download className="w-4 h-4" strokeWidth={2.5} />
                   Download Brochure
-                </button>
+                </a>
               </div>
 
               <h3 className="text-[#0a192f] font-bold mb-4">2, 3 BHK Apartment</h3>
@@ -292,6 +319,27 @@ export const ProjectDetail = () => {
               <button className="w-full bg-[#0078d4] text-white py-3.5 rounded-lg font-bold text-[15px] hover:bg-blue-700 transition-colors shadow-sm">
                 I'm interested in this project
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Full Screen Image Gallery Modal */}
+      {showGallery && (
+        <div className="fixed inset-0 z-[60] bg-black flex flex-col">
+          <div className="flex justify-between items-center p-4 bg-black/50 text-white fixed top-0 w-full z-10">
+            <span className="font-medium text-lg">All Photos & Videos ({allImages.length})</span>
+            <button onClick={() => setShowGallery(false)} className="hover:text-gray-300 p-2">
+              <X className="w-8 h-8" />
+            </button>
+          </div>
+          <div className="flex-1 overflow-y-auto pt-20 pb-10 px-4 sm:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+              {allImages.map((src, idx) => (
+                <div key={idx} className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-900 border border-gray-800">
+                  <img src={src} alt={`Gallery image ${idx + 1}`} className="w-full h-full object-contain" />
+                </div>
+              ))}
             </div>
           </div>
         </div>
