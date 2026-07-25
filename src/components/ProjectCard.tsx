@@ -47,11 +47,11 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
   const hiddenNearby = data.nearby.slice(2);
 
   return (
-    <div className="flex flex-col md:flex-row bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow relative">
+    <div className="flex flex-col md:flex-row bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow relative">
       {/* Clickable Overlay */}
       <Link to={`/project/${data.id}`} className="absolute inset-0 z-[5]"></Link>
       {/* Left Side: Image Container */}
-      <div className="relative h-64 md:h-auto md:w-[40%] flex-shrink-0 bg-gray-200">
+      <div className="relative h-64 md:h-auto md:w-[40%] flex-shrink-0 bg-gray-200 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none overflow-hidden">
         <img
           src={data.imageSrc}
           alt={data.title}
