@@ -9,7 +9,7 @@ export const ProjectCard = () => {
       {/* Left Side: Image Container */}
       <div className="relative h-64 md:h-auto md:w-[40%] flex-shrink-0 bg-gray-200">
         <img
-          src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
+          src="/gr-samskruthi.jpg"
           alt="GR Samskruthi"
           className="w-full h-full object-cover"
         />
