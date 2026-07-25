@@ -7,29 +7,29 @@ export const ProjectDetail = () => {
   const [showGallery, setShowGallery] = useState(false);
 
   const allImages = [
-    '/GR Samskruthi/gr-samskruthi.jpg',
-    '/GR Samskruthi/Gemini_Generated_Image_netgznnetgznnetg.png',
-    '/GR Samskruthi/Gemini_Generated_Image_xtui3sxtui3sxtui.png',
-    '/GR Samskruthi/Gemini_Generated_Image_yxk4kkyxk4kkyxk4.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025156.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025208.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025217.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025231.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025243.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025251.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025300.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025311.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025319.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025328.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025337.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025344.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025352.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025359.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025407.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025456.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025511.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025533.png',
-    '/GR Samskruthi/Screenshot 2026-07-26 025547.png'
+    '/GR%20Samskruthi/gr-samskruthi.jpg',
+    '/GR%20Samskruthi/Gemini_Generated_Image_netgznnetgznnetg.png',
+    '/GR%20Samskruthi/Gemini_Generated_Image_xtui3sxtui3sxtui.png',
+    '/GR%20Samskruthi/Gemini_Generated_Image_yxk4kkyxk4kkyxk4.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025156.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025208.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025217.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025231.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025243.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025251.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025300.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025311.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025319.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025328.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025337.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025344.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025352.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025359.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025407.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025456.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025511.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025533.png',
+    '/GR%20Samskruthi/Screenshot%202026-07-26%20025547.png'
   ];
 
   return (
@@ -157,7 +157,7 @@ export const ProjectDetail = () => {
                   </div>
                   <p className="text-[10px] text-gray-400 font-bold tracking-widest uppercase mt-1">Price Range</p>
                 </div>
-                <a href="/GR Samskruthi/GR Samskruthi_Brouchure.pdf" download target="_blank" rel="noreferrer" className="flex items-center gap-1.5 border border-[#0078d4] text-[#0078d4] px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors">
+                <a href="/GR%20Samskruthi/GR%20Samskruthi_Brouchure.pdf" download target="_blank" rel="noreferrer" className="flex items-center gap-1.5 border border-[#0078d4] text-[#0078d4] px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors">
                   <Download className="w-4 h-4" strokeWidth={2.5} />
                   Download Brochure
                 </a>
