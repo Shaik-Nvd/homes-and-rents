@@ -215,34 +215,40 @@ const Home = ({ onOpenRentalModal }: { onOpenRentalModal?: () => void }) => {
           
           {/* Builder Filter Section */}
           <div className="mb-8">
-            <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Browse by Builder</h3>
-            <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
-              <button
-                onClick={() => setSelectedBuilder(null)}
-                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold border transition-colors ${
-                  selectedBuilder === null 
-                    ? 'bg-[#0078d4] text-white border-[#0078d4]' 
-                    : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
-                }`}
-              >
-                All Projects
-              </button>
-              {builders.map((builder, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedBuilder(builder)}
-                  className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold border transition-colors flex items-center gap-2 ${
-                    selectedBuilder === builder 
-                      ? 'bg-[#0078d4] text-white border-[#0078d4]' 
-                      : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
-                  }`}
-                >
-                  <div className="w-5 h-5 rounded bg-gray-100 flex items-center justify-center text-[10px] font-extrabold text-gray-800">
-                    {builder.substring(0, 2).toUpperCase()}
-                  </div>
-                  {builder}
-                </button>
-              ))}
+            <div className="text-[10px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-3">
+              <span>Browse by Builder</span>
+              <span className="flex-grow h-[1px] bg-gray-200"></span>
+            </div>
+            
+            <div className="overflow-hidden relative w-full pb-2">
+              {/* Fade masks for smooth edges */}
+              <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+              <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+              
+              <div className="flex animate-marquee gap-3 w-max items-center hover:[animation-play-state:paused]">
+                {[...[null, ...builders], ...[null, ...builders]].map((builder, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setSelectedBuilder(builder)}
+                    className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold border transition-colors flex items-center gap-2 ${
+                      selectedBuilder === builder 
+                        ? 'bg-[#0078d4] text-white border-[#0078d4]' 
+                        : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50 shadow-sm hover:border-gray-300'
+                    }`}
+                  >
+                    {builder === null ? (
+                      <span>All Projects</span>
+                    ) : (
+                      <>
+                        <div className="w-5 h-5 rounded bg-gray-100 flex items-center justify-center text-[10px] font-extrabold text-gray-800">
+                          {builder.substring(0, 2).toUpperCase()}
+                        </div>
+                        {builder}
+                      </>
+                    )}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
