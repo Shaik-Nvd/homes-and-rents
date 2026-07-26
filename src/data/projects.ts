@@ -430,5 +430,23 @@ export const projects: ProjectData[] = [
     description: "Beautiful 2,3 BHK apartments in Sarjapur Road, are now available in Vrushabadri Winter Park housing project. Vrushabadri Winter Park apartments are available in multiples sizes, ranging from 1,270 - 1,755 sqft SUPER area. Prices of apartments in this project, vary between Rs. 88.9 L - 1.23 Cr. Vrushabadri Winter Park is a RERA- registered society and PRM/KA/RERA/1251/308/PR/070526/008631 is the RERA registration number",
     galleryImages: ['/Vrushabadri_Winter_Park.jpg'],
     aboutText: "Beautiful 2,3 BHK apartments in Sarjapur Road, are now available in Vrushabadri Winter Park housing project. Vrushabadri Winter Park apartments are available in multiples sizes, ranging from 1,270 - 1,755 sqft SUPER area. Prices of apartments in this project, vary between Rs. 88.9 L - 1.23 Cr. Vrushabadri Winter Park is a RERA- registered society and PRM/KA/RERA/1251/308/PR/070526/008631 is the RERA registration number"
+  },
+  {
+    id: "sj-park-ville",
+    title: "SJ Park Ville",
+    subtitle: "4 BHK Villa in Whitefield, Bangalore",
+    priceConfigs: [
+      { label: "4 BHK Villa", price: "₹2.99 - 3.24 Cr" }
+    ],
+    nearby: ["Pratham International School", "Euro School", "Sigma Tech Park", "ITPL", "Tesco"],
+    builder: "SJ Constructions",
+    status: "New Launch · Completion in Dec, 2029",
+    imageSrc: "/SJ_Park_Ville.jpg",
+    imageCount: "1/8",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "SJ Park Ville brings 4 BHK Villa in Whitefield, one of the preferred locations in the city. Sizes of Villas vary in 2,955 - 2,985 sqft. Villas in SJ Park Ville are offered in the price range of Rs. 2.99 - 3.24 Cr. Villas in SJ Park Ville are New Launch",
+    galleryImages: ['/SJ_Park_Ville.jpg'],
+    aboutText: "SJ Park Ville brings 4 BHK Villa in Whitefield, one of the preferred locations in the city. Sizes of Villas vary in 2,955 - 2,985 sqft. Villas in SJ Park Ville are offered in the price range of Rs. 2.99 - 3.24 Cr. Villas in SJ Park Ville are New Launch"
   }
 ];
