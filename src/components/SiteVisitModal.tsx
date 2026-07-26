@@ -21,6 +21,15 @@ export const SiteVisitModal = ({ isOpen, onClose, project }: SiteVisitModalProps
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Construct WhatsApp message
+    const projectName = project ? project.title : 'Selected Project';
+    const message = `Hi, I would like to schedule a site visit for ${projectName}.\n\nDetails:\nName: ${formData.name}\nPhone: ${formData.phone}\nPreferred Date: ${formData.date}\nTiming: ${formData.timing}`;
+    const whatsappUrl = `https://wa.me/919739063840?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+
     setSubmitted(true);
     setTimeout(() => {
       onClose();
