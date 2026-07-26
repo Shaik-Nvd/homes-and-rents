@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Home, Heart, ChevronRight, ChevronDown, Download, Image as ImageIcon, PlayCircle, X, Info, ChevronLeft } from 'lucide-react';
 import { ProjectOverview } from '../components/ProjectOverview';
 import { ProjectFloorPlans } from '../components/ProjectFloorPlans';
@@ -7,38 +7,33 @@ import { ProjectAmenities } from '../components/ProjectAmenities';
 import { ProjectAbout } from '../components/ProjectAbout';
 import { ProjectLocation } from '../components/ProjectLocation';
 import { ProjectReviews } from '../components/ProjectReviews';
+import { projects } from '../data/projects';
 
 
 export const ProjectDetail = () => {
+  const { id } = useParams<{ id: string }>();
+  const project = projects.find((p) => p.id === id);
+
   const [showAllFeatures, setShowAllFeatures] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
-  const allImages = [
-    '/GR%20Samskruthi/gr-samskruthi.jpg',
-    '/GR%20Samskruthi/Gemini_Generated_Image_netgznnetgznnetg.png',
-    '/GR%20Samskruthi/Gemini_Generated_Image_xtui3sxtui3sxtui.png',
-    '/GR%20Samskruthi/Gemini_Generated_Image_yxk4kkyxk4kkyxk4.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025156.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025208.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025217.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025231.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025243.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025251.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025300.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025311.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025319.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025328.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025337.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025344.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025352.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025359.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025407.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025456.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025511.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025533.png',
-    '/GR%20Samskruthi/Screenshot%202026-07-26%20025547.png'
-  ];
+  if (!project) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">Project not found</h2>
+          <p className="text-gray-600 mb-6">The project you are looking for does not exist.</p>
+          <Link to="/" className="bg-[#0078d4] text-white px-6 py-2.5 rounded-lg font-bold">Go Back Home</Link>
+        </div>
+      </div>
+    );
+  }
+
+  // Use project gallery if available, otherwise fallback to project imageSrc
+  const allImages = project.galleryImages?.length 
+    ? project.galleryImages 
+    : [project.imageSrc];
 
   return (
     <div className="bg-white min-h-screen pb-16 font-sans">
@@ -52,7 +47,7 @@ export const ProjectDetail = () => {
           <ChevronRight className="w-3 h-3" />
           <span className="hover:text-gray-900 transition-colors cursor-pointer">Sarjapura Attibele Road</span>
           <ChevronRight className="w-3 h-3" />
-          <span className="text-gray-900 font-medium">GR Samskruthi</span>
+          <span className="text-gray-900 font-medium">{project.title}</span>
         </div>
         
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 relative">
@@ -65,7 +60,7 @@ export const ProjectDetail = () => {
               <div className="sm:col-span-2 relative h-full bg-gray-200 group cursor-pointer">
                 <img 
                   src={allImages[0]} 
-                  alt="GR Samskruthi" 
+                  alt={project.title} 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
@@ -76,51 +71,55 @@ export const ProjectDetail = () => {
                   <ImageIcon className="w-3 h-3" /> {allImages.length}
                 </div>
               </div>
-              <div className="hidden sm:flex flex-col gap-2 h-full">
-                <div className="h-1/2 relative bg-gray-200 group cursor-pointer overflow-hidden">
-                  <img 
-                    src={allImages[1]} 
-                    alt="Video" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
-                    <PlayCircle className="w-8 h-8 text-white/90" strokeWidth={1.5} />
+              {allImages.length > 1 && (
+                <div className="hidden sm:flex flex-col gap-2 h-full">
+                  <div className="h-1/2 relative bg-gray-200 group cursor-pointer overflow-hidden">
+                    <img 
+                      src={allImages[1]} 
+                      alt="Video" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                      <PlayCircle className="w-8 h-8 text-white/90" strokeWidth={1.5} />
+                    </div>
+                    <div className="absolute bottom-2 left-2 text-white font-medium text-xs">Videos</div>
+                    <div className="absolute bottom-2 right-2 text-white font-medium text-xs flex items-center gap-1">
+                      <PlayCircle className="w-3 h-3" /> 3
+                    </div>
                   </div>
-                  <div className="absolute bottom-2 left-2 text-white font-medium text-xs">Videos</div>
-                  <div className="absolute bottom-2 right-2 text-white font-medium text-xs flex items-center gap-1">
-                    <PlayCircle className="w-3 h-3" /> 3
-                  </div>
+                  {allImages.length > 2 && (
+                    <div className="h-1/2 relative bg-gray-200 group cursor-pointer overflow-hidden">
+                      <img 
+                        src={allImages[2]} 
+                        alt="Outdoors" 
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <div className="absolute bottom-2 left-2 text-white font-medium text-xs">Outdoors</div>
+                      <div className="absolute bottom-2 right-2 text-white font-medium text-xs flex items-center gap-1">
+                        <ImageIcon className="w-3 h-3" /> {allImages.length - 2}
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div className="h-1/2 relative bg-gray-200 group cursor-pointer overflow-hidden">
-                  <img 
-                    src={allImages[2]} 
-                    alt="Outdoors" 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute bottom-2 left-2 text-white font-medium text-xs">Outdoors</div>
-                  <div className="absolute bottom-2 right-2 text-white font-medium text-xs flex items-center gap-1">
-                    <ImageIcon className="w-3 h-3" /> 4
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
 
             {/* Header Info */}
             <div className="flex flex-col sm:flex-row justify-between items-start gap-4 sm:gap-0 border-b border-gray-100 pb-6">
               <div className="flex gap-4">
-                <div className="w-20 h-12 bg-[#1a1a1a] flex items-center justify-center border border-gray-200 rounded shrink-0">
-                  <span className="text-[9px] text-white tracking-widest uppercase">GR Samskruthi</span>
+                <div className="w-20 h-12 bg-[#1a1a1a] flex items-center justify-center border border-gray-200 rounded shrink-0 p-1 text-center">
+                  <span className="text-[9px] text-white tracking-widest uppercase line-clamp-2 leading-tight">{project.title}</span>
                 </div>
                 <div>
                   <div className="flex items-center gap-3">
-                    <h1 className="text-2xl font-extrabold text-[#0a192f]">GR Samskruthi</h1>
+                    <h1 className="text-2xl font-extrabold text-[#0a192f]">{project.title}</h1>
                     <button className="text-gray-400 hover:text-red-500 transition-colors">
                       <Heart className="w-5 h-5 stroke-[1.5]" />
                     </button>
                   </div>
                   <p className="text-gray-500 text-sm mt-1">
-                    Sarjapura Attibele Road, Bangalore
+                    {project.subtitle}
                   </p>
                 </div>
               </div>
@@ -131,15 +130,17 @@ export const ProjectDetail = () => {
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2 text-[11px] font-medium">
-              <span className="bg-[#00d8b6] text-white px-2 py-1 rounded flex items-center gap-1">
-                <span className="text-[10px]">✓</span> RERA <Info className="w-3 h-3" />
-              </span>
-              <span className="bg-[#e6f7ef] text-[#00a859] px-2 py-1 rounded">
-                No Brokerage
-              </span>
-              <span className="bg-[#f0ebf8] text-[#8b45f7] px-2 py-1 rounded flex items-center gap-1">
-                <span className="border border-[#8b45f7] rounded-sm p-[1px] text-[8px] leading-none">3D</span> 3D Floor Plans Available
-              </span>
+              {project.badges?.map((badge, idx) => (
+                <span key={idx} className={`px-2 py-1 rounded flex items-center gap-1 ${
+                  badge === 'RERA' ? 'bg-[#00d8b6] text-white' : 
+                  badge === 'ZERO BROKERAGE' ? 'bg-[#e6f7ef] text-[#00a859]' : 
+                  'bg-[#f0ebf8] text-[#8b45f7]'
+                }`}>
+                  {badge === 'RERA' && <span className="text-[10px]">✓</span>}
+                  {badge}
+                  {badge === 'RERA' && <Info className="w-3 h-3" />}
+                </span>
+              ))}
               <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded">
                 +10 Top Facilities
               </span>
@@ -149,8 +150,8 @@ export const ProjectDetail = () => {
             <div className="bg-[#f2f8fc] rounded-xl p-5 border border-blue-50/50 cursor-pointer group hover:bg-[#ebf4fa] transition-colors flex justify-between items-center">
               <div>
                 <p className="text-[11px] text-gray-500 font-bold tracking-wider uppercase mb-2">Construction Status</p>
-                <p className="text-[#0a192f] font-bold text-lg">Under Construction</p>
-                <p className="text-gray-600 text-sm">Completion in Nov, 2025</p>
+                <p className="text-[#0a192f] font-bold text-lg">{project.status.split('·')[0].trim()}</p>
+                <p className="text-gray-600 text-sm">{project.status.split('·')[1]?.trim()}</p>
               </div>
               <ChevronDown className="w-5 h-5 text-[#0078d4] group-hover:translate-y-0.5 transition-transform" />
             </div>
@@ -160,7 +161,7 @@ export const ProjectDetail = () => {
               <div className="flex justify-between items-start mb-6">
                 <div>
                   <div className="flex items-center gap-2 text-[#0a192f] text-2xl font-extrabold">
-                    <span>₹ 75.24 - 98.69 L</span>
+                    <span>{project.priceConfigs?.[0]?.price || "Price on Request"}</span>
                     <span className="text-[#0078d4] text-xs font-bold bg-blue-50 px-2 py-0.5 rounded cursor-pointer">+ Charges</span>
                   </div>
                   <p className="text-[10px] text-gray-400 font-bold tracking-widest uppercase mt-1">Price Range</p>
@@ -171,50 +172,32 @@ export const ProjectDetail = () => {
                 </a>
               </div>
 
-              <h3 className="text-[#0a192f] font-bold mb-4">2, 3 BHK Apartment</h3>
+              <h3 className="text-[#0a192f] font-bold mb-4">{project.priceConfigs?.map(c => c.label.split(' ')[0]).join(', ')} BHK Apartment</h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* 2 BHK Card */}
-                <div className="border border-blue-100 bg-white rounded-xl overflow-hidden hover:shadow-md transition-shadow cursor-pointer relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="bg-[#f9faff] px-4 py-3 border-b border-blue-50">
-                    <h4 className="text-[#0a192f] font-bold text-sm"><span className="text-[#0078d4]">2 BHK</span> Apartment</h4>
-                  </div>
-                  <div className="p-4 flex flex-col justify-between h-32">
-                    <div>
-                      <p className="text-xs text-gray-400 mb-0.5">Super Built-up Area</p>
-                      <p className="text-xs text-gray-700 flex items-center gap-1">
-                        1075 sqft <span className="text-gray-400">(99.87 sqm)</span>
-                        <ChevronDown className="w-3 h-3 text-gray-400" />
-                      </p>
+                {project.priceConfigs?.map((config, idx) => (
+                  <div key={idx} className="border border-blue-100 bg-white rounded-xl overflow-hidden hover:shadow-md transition-shadow cursor-pointer relative group">
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="bg-[#f9faff] px-4 py-3 border-b border-blue-50">
+                      <h4 className="text-[#0a192f] font-bold text-sm">
+                        <span className="text-[#0078d4]">{config.label.split(' ')[0]} BHK</span> {config.label.split(' ').slice(1).join(' ')}
+                      </h4>
                     </div>
-                    <div className="flex items-center gap-2 mt-4">
-                      <p className="text-[#0a192f] font-extrabold">₹ 75.24 L</p>
-                      <span className="text-[#0078d4] text-[10px] font-bold cursor-pointer">+ Charges</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 3 BHK Card */}
-                <div className="border border-blue-100 bg-white rounded-xl overflow-hidden hover:shadow-md transition-shadow cursor-pointer relative group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="bg-[#f9faff] px-4 py-3 border-b border-blue-50">
-                    <h4 className="text-[#0a192f] font-bold text-sm"><span className="text-[#0078d4]">3 BHK</span> Apartment</h4>
-                  </div>
-                  <div className="p-4 flex flex-col justify-between h-32">
-                    <div>
-                      <p className="text-xs text-gray-400 mb-0.5">Super Built-up Area</p>
-                      <p className="text-xs text-gray-700 flex items-center gap-1">
-                        1330 - 1410 sqft <span className="text-gray-400">(123.56 - 130.99 sqm)</span>
-                        <ChevronDown className="w-3 h-3 text-gray-400" />
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2 mt-4">
-                      <p className="text-[#0a192f] font-extrabold">₹ 93.09 - 98.69 L</p>
-                      <span className="text-[#0078d4] text-[10px] font-bold cursor-pointer">+ Charges</span>
+                    <div className="p-4 flex flex-col justify-between h-32">
+                      <div>
+                        <p className="text-xs text-gray-400 mb-0.5">Price</p>
+                        <p className="text-xs text-gray-700 flex items-center gap-1">
+                          Estimated Cost
+                          <ChevronDown className="w-3 h-3 text-gray-400" />
+                        </p>
+                      </div>
+                      <div className="flex items-center gap-2 mt-4">
+                        <p className="text-[#0a192f] font-extrabold">{config.price}</p>
+                        <span className="text-[#0078d4] text-[10px] font-bold cursor-pointer">+ Charges</span>
+                      </div>
                     </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -223,8 +206,8 @@ export const ProjectDetail = () => {
               <ProjectOverview />
               <ProjectFloorPlans />
               <ProjectAmenities />
-              <ProjectAbout />
-              <ProjectLocation />
+              <ProjectAbout project={project} />
+              <ProjectLocation project={project} />
               <ProjectReviews />
             </div>
 
@@ -241,7 +224,7 @@ export const ProjectDetail = () => {
                     <Home className="w-6 h-6" fill="currentColor" />
                   </div>
                   <h4 className="text-xl font-bold text-[#0a192f] leading-tight">
-                    Why you should consider GR Samskruthi?
+                    Why you should consider {project.title}?
                   </h4>
                 </div>
                 
@@ -271,10 +254,10 @@ export const ProjectDetail = () => {
                 <div className="mt-8 pt-6 border-t border-gray-100 flex items-center justify-between">
                   <div>
                     <p className="text-[10px] font-bold text-gray-400 tracking-widest uppercase mb-1">Developed By</p>
-                    <p className="text-[15px] font-bold text-[#0a192f]">Gr Constructions Builders</p>
+                    <p className="text-[15px] font-bold text-[#0a192f]">{project.builder}</p>
                   </div>
                   <div className="w-20 h-10 flex items-center justify-center opacity-70">
-                    <span className="text-xs font-bold uppercase tracking-tighter text-[#f29f43] border border-[#f29f43] px-1 py-0.5 rounded-sm">GR</span>
+                    <span className="text-xs font-bold uppercase tracking-tighter text-[#f29f43] border border-[#f29f43] px-1 py-0.5 rounded-sm line-clamp-1">{project.builder.substring(0,2)}</span>
                   </div>
                 </div>
               </div>
@@ -296,7 +279,7 @@ export const ProjectDetail = () => {
                   <Home className="w-6 h-6" fill="currentColor" />
                 </div>
                 <h4 className="text-xl font-bold text-[#0a192f] leading-tight">
-                  Why you should consider GR Samskruthi?
+                  Why you should consider {project.title}?
                 </h4>
               </div>
               <button onClick={() => setShowAllFeatures(false)} className="text-gray-400 hover:text-gray-900 transition-colors p-1">

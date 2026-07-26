@@ -22,6 +22,7 @@ class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean,
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Home as HomeIcon, CheckCircle2, Search } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
+import { projects } from './data/projects';
 import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
 import { ProjectDetail } from './pages/ProjectDetail';
@@ -205,160 +206,10 @@ const Home = () => {
             <h2 className="text-xl font-extrabold text-[#0a192f] tracking-tight mb-4">
               Recommended Projects
             </h2>
-            <div className="flex flex-col gap-6">
-              <ProjectCard />
-              <ProjectCard
-                project={{
-                  id: "sumadhura-edition",
-                  title: "Sumadhura Edition",
-                  subtitle: "3, 4 BHK Apartment in Nallurhalli, Whitefield",
-                  priceConfigs: [
-                    { label: "3 BHK Apartment", price: "₹2.54 - 3.88 Cr" },
-                    { label: "4 BHK Apartment", price: "₹3.37 - 3.89 Cr" }
-                  ],
-                  nearby: ["Manipal Hospital Varthur Road", "Brookefield Mall", "CMR Institute of Technology", "National Highway 44", "Seetharam Palya Metro Station"],
-                  builder: "Sumadhura Group",
-                  status: "New Launch · Completion in Dec, 2029",
-                  imageSrc: "/Sumadhura_Edition.jpg",
-                  imageCount: "1/3",
-                  tag: "NEW BOOKING",
-                  badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
-                  description: "Check out 3,4 BHK apartments in Nallurhalli, now available for..."
-                }}
-              />
-              <ProjectCard
-                project={{
-                  id: "roach-cicada",
-                  title: "Roach Cicada",
-                  subtitle: "3, 4 BHK Apartment in Sarjapur Road, Bangalore",
-                  priceConfigs: [
-                    { label: "3 BHK Apartment", price: "₹2.86 - 3.17 Cr" },
-                    { label: "4 BHK Apartment", price: "₹3.6 - 3.9 Cr" }
-                  ],
-                  nearby: ["Glentree Academy School", "Amrita Vishwa Vidyapeetam", "PNR felicity mall", "Narayana Hospital", "Kempegowda International Airport"],
-                  builder: "Roach Lifescapes",
-                  status: "New Launch · Completion in Dec, 2029",
-                  imageSrc: "/Roach_Cicada.jpg",
-                  imageCount: "1/8",
-                  tag: "NEW BOOKING",
-                  badges: ["RERA", "ZERO BROKERAGE", "3D"],
-                  description: "Spacious 3,4 BHK apartments in Sarjapur Road are available for..."
-                }}
-              />
-              <ProjectCard
-                project={{
-                  id: "keya-the-urban-forest",
-                  title: "Keya The Urban Forest",
-                  subtitle: "2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore",
-                  priceConfigs: [
-                    { label: "2 BHK Apartment", price: "₹1.7 Cr" },
-                    { label: "3 BHK Apartment", price: "₹2.14 - 2.39 Cr" },
-                    { label: "4 BHK Apartment", price: "₹3 - 3.3 Cr" }
-                  ],
-                  nearby: ["BRS Global School", "Amrita Vishwa Vidyapeetam", "BRS Global School", "Centro", "Kempegowda International"],
-                  builder: "Keya Homes",
-                  status: "Under Construction · Completion in Dec, 2027",
-                  imageSrc: "/Keya_The_Urban_Forest.jpg",
-                  imageCount: "1/8",
-                  tag: "NEW BOOKING",
-                  badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
-                  description: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Keya The Urban Forest. This society is RERA approved and PRM/KA/RERA/1251/310/PR/200525/007759 is the RERA number. Prices of apartments in this project, vary between Rs. 1.7 - 3.3 Cr. Apartments in Keya The Urban Forest have SUPER area ranging between 1,351 - 2,610 sqft"
-                }}
-              />
-              <ProjectCard
-                project={{
-                  id: "vaishnavi-at-one-krishna-brindavan",
-                  title: "Vaishnavi AT One Krishna Brindavan",
-                  subtitle: "3, 4 BHK Apartment in Banashankari Stage 2, Bangalore",
-                  priceConfigs: [
-                    { label: "3 BHK Apartment", price: "₹3.5 - 3.54 Cr" },
-                    { label: "4 BHK Apartment", price: "₹5 Cr" }
-                  ],
-                  nearby: ["ORCHIDS The International School", "Dayananda Sagar University", "Manipal Hospitals Jayanagar", "Forum South Bengaluru", "Kempegowda International Airport"],
-                  builder: "Vaishnavi Group Bangalore",
-                  status: "New Launch · Completion in Jun, 2030",
-                  imageSrc: "/Vaishnavi_AT_One_Krishna_Brindavan.jpg",
-                  imageCount: "1/4",
-                  tag: "NEW BOOKING",
-                  badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
-                  description: "Beautiful 3,4 BHK apartments in Banashankari Stage 2, are now available in Vaishnavi AT One Krishna Brindavan housing project. Apartments in this complex are available in price range of Rs. 3.5 - 5 Cr. Vaishnavi AT One Krishna Brindavan 's RERA registration number is PRM/KA/RERA/1251/310/PR/081025/008140. Apartments in Vaishnavi AT One Krishna Brindavan have SUPER area ranging between 2,050 - 2,566 sqft"
-                }}
-              />
-              <ProjectCard
-                project={{
-                  id: "the-berries-for-birds",
-                  title: "The Berries For Birds",
-                  subtitle: "3, 4 BHK Villa in Whitefield, Bangalore",
-                  priceConfigs: [
-                    { label: "3 BHK Villa", price: "₹2.25 Cr" },
-                    { label: "4 BHK Villa", price: "₹2.33 - 4.28 Cr" }
-                  ],
-                  nearby: ["DPS Whitefield", "Rudrappa Healthcare", "Winmore academy Whitefield", "Arya Hub Mall", "Kempegowda International Airport"],
-                  builder: "Sanjeevini Group",
-                  status: "New Launch · Completion in Jul, 2028",
-                  imageSrc: "/The_Berries_For_Birds.jpg",
-                  imageCount: "1/7",
-                  tag: "NEW BOOKING",
-                  badges: ["RERA", "ZERO BROKERAGE", "3D"],
-                  description: "Spacious and elegant 3,4 BHK Villa are for sale in The Berries For Birds, Whitefield. Villas size in The Berries For Birds varies from 1,900 - 4,500 sqft. Swimming Pool, Gymnasium and Club House are some of the major amenities offered here. Villas in The Berries For Birds are New Launch"
-                }}
-              />
-              <ProjectCard
-                project={{
-                  id: "trifecta-veranza",
-                  title: "Trifecta Veranza",
-                  subtitle: "3, 4 BHK Apartment in East Bangalore, Bangalore",
-                  priceConfigs: [
-                    { label: "3 BHK Apartment", price: "₹1.48 - 1.63 Cr" },
-                    { label: "4 BHK Apartment", price: "₹2.29 Cr" }
-                  ],
-                  nearby: ["The International School", "National Highway 948A", "Wipro SEZ", "Greenwood International School", "Azim Premji University"],
-                  builder: "Trifecta Projects",
-                  status: "New Launch · Completion in Dec, 2029",
-                  imageSrc: "/Trifecta_Veranza.jpg",
-                  imageCount: "1/2",
-                  tag: "NEW BOOKING",
-                  badges: ["RERA", "ZERO BROKERAGE", "3D"],
-                  description: "Here are beautifully built 2,3 BHK apartments in Sarjapur, available for sale at Trifecta Veranza. Trifecta Veranza 's RERA registration number is PRM/KA/RERA/1251/308/PR/210126/008418. Apartments in this complex are available in price range of Rs. 1.08 - 1.67 Cr. Trifecta Veranza apartments are available in multiples sizes, ranging from 1,165 - 1,745 sqft SUPER area"
-                }}
-              />
-              <ProjectCard
-                project={{
-                  id: "global-edifice-the-clan",
-                  title: "Global Edifice The Clan",
-                  subtitle: "2, 3 BHK Apartment in Sarjapur Road, Bangalore",
-                  priceConfigs: [
-                    { label: "2 BHK Apartment", price: "₹83.79 L - 1 Cr" },
-                    { label: "3 BHK Apartment", price: "₹1.11 - 1.35 Cr" }
-                  ],
-                  nearby: ["Aikhyatha Public School", "Town Hospital Sarjapura", "Azim Premji University", "Clover Greens Golf Course", "Karmelaram Train Station"],
-                  builder: "Global Edifice",
-                  status: "Under Construction · Completion in Dec, 2027",
-                  imageSrc: "/Global_Edifice_The_Clan.jpg",
-                  imageCount: "1/8",
-                  tag: "NEW BOOKING",
-                  badges: ["RERA", "ZERO BROKERAGE", "SEEN"],
-                  description: "Global Edifice The Clan, one of the known housing societes in Bangalore East, brings classic yet modern 2,3 BHK apartments in Sarjapur Road. This society offers apartments in the price range of Rs. 83.79 L - 1.35 Cr. Apartments in Global Edifice The Clan have SUPER area ranging between 1,289 - 1,827 sqft. This society is RERA approved and PRM/KA/RERA/1251/308/PR/091025/008153 is the RERA number"
-                }}
-              />
-              <ProjectCard
-                project={{
-                  id: "amrutha-lake-vista",
-                  title: "Amrutha Lake Vista",
-                  subtitle: "3 BHK Apartment in Whitefield, Bangalore",
-                  priceConfigs: [
-                    { label: "3 BHK Apartment", price: "₹1.65 - 2.21 Cr" }
-                  ],
-                  nearby: ["Whitefield Station", "Kempegowda Intl Airport", "ITPB", "Forum Shantiniketan Mall", "Manipal Hospital"],
-                  builder: "Amrutha Shelters",
-                  status: "New Launch · Completion in Dec, 2028",
-                  imageSrc: "/Amrutha_Lake_Vista.jpg",
-                  imageCount: "1/5",
-                  tag: "NEW BOOKING",
-                  badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
-                  description: "Check out 3 BHK apartments in Whitefield, now available for sale at Amrutha Lake Vista. Here units have different sizes, mostly in range of 1,520 - 2,030 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/310/PR/210625/007861 is the RERA number. Apartments in this complex are available in price range of Rs. 1.65 - 2.21 Cr"
-                }}
-              />
+            <div className="flex flex-col gap-8 sm:gap-6">
+              {projects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
             </div>
           </div>
         </div>

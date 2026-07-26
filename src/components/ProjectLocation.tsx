@@ -1,11 +1,18 @@
-import { MapPin, GraduationCap, Train, Stethoscope, ShoppingBag } from 'lucide-react';
+import { MapPin, Bus, Train, GraduationCap, Building2, ShoppingBag } from 'lucide-react';
+import { ProjectData } from '../data/projects';
 
-export const ProjectLocation = () => {
-  const landmarks = [
-    { icon: <GraduationCap className="w-5 h-5 text-blue-500" />, name: 'Delhi Public School', distance: '2.5 km' },
-    { icon: <Train className="w-5 h-5 text-indigo-500" />, name: 'Bommasandra Metro Station', distance: '4.1 km' },
-    { icon: <Stethoscope className="w-5 h-5 text-rose-500" />, name: 'Narayana Health City', distance: '5.0 km' },
-    { icon: <ShoppingBag className="w-5 h-5 text-orange-500" />, name: 'Decathlon Sarjapur', distance: '6.2 km' },
+export const ProjectLocation = ({ project }: { project?: ProjectData }) => {
+  if (!project) return null;
+  // Fallback generic items if there are less than 6 nearby places
+  const allNearby = [...project.nearby, "City Center", "Local Market", "General Hospital", "Public School", "Bus Station", "Metro Station"];
+  
+  const nearbyPlaces = [
+    { icon: <Train className="w-4 h-4 text-gray-500" />, name: allNearby[0], distance: '1.2 km', time: '5 mins' },
+    { icon: <GraduationCap className="w-4 h-4 text-gray-500" />, name: allNearby[1], distance: '2.5 km', time: '8 mins' },
+    { icon: <Building2 className="w-4 h-4 text-gray-500" />, name: allNearby[2], distance: '3.0 km', time: '10 mins' },
+    { icon: <ShoppingBag className="w-4 h-4 text-gray-500" />, name: allNearby[3], distance: '4.5 km', time: '15 mins' },
+    { icon: <Bus className="w-4 h-4 text-gray-500" />, name: allNearby[4], distance: '0.5 km', time: '2 mins' },
+    { icon: <Building2 className="w-4 h-4 text-gray-500" />, name: allNearby[5], distance: '5.0 km', time: '18 mins' },
   ];
 
   return (
@@ -19,7 +26,7 @@ export const ProjectLocation = () => {
             <div className="text-center text-gray-500">
               <MapPin className="w-8 h-8 mx-auto mb-2 text-rose-500" />
               <p className="font-medium">Map View</p>
-              <p className="text-xs">Sarjapura Attibele Road, Bangalore</p>
+              <p className="text-xs">{project.subtitle}</p>
             </div>
           </div>
           <button className="absolute bottom-4 left-4 bg-white px-4 py-2 text-sm font-bold shadow-md rounded-md hover:bg-gray-50 transition-colors">
@@ -33,7 +40,7 @@ export const ProjectLocation = () => {
             Key Landmarks
           </h3>
           <ul className="space-y-4">
-            {landmarks.map((item, idx) => (
+            {nearbyPlaces.map((item, idx) => (
               <li key={idx} className="flex justify-between items-center pb-3 border-b border-gray-100 last:border-0">
                 <div className="flex items-center gap-3">
                   <div className="bg-gray-50 p-2 rounded-lg">
