@@ -19,6 +19,7 @@ export interface ProjectData {
   
   // Detail page specifics
   galleryImages?: string[];
+  videoLinks?: string[];
   aboutText?: string;
 }
 
@@ -45,7 +46,27 @@ export const projects: ProjectData[] = [
       '/GR%20Samskruthi/Gemini_Generated_Image_yxk4kkyxk4kkyxk4.png',
       '/GR%20Samskruthi/Screenshot%202026-07-26%20025156.png',
       '/GR%20Samskruthi/Screenshot%202026-07-26%20025208.png',
-      '/GR%20Samskruthi/Screenshot%202026-07-26%20025217.png'
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025217.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025231.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025243.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025251.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025300.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025311.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025319.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025328.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025337.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025344.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025352.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025359.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025407.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025456.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025511.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025533.png',
+      '/GR%20Samskruthi/Screenshot%202026-07-26%20025547.png'
+    ],
+    videoLinks: [
+      'https://youtu.be/OS1lqgmIAl0?si=KJX_ekcy3ucrY0_c',
+      'https://youtu.be/IJHuNi0mOrA?si=uat265QUiaXzYy_x'
     ],
     aboutText: "GR Samskruthi is a premium residential project located on Sarjapura Attibele Road, Bangalore. It is designed to offer a luxurious and serene lifestyle, combining modern architecture with vast open green spaces. Spread across a sprawling 2-acre landscape, the project features meticulously designed 2 and 3 BHK apartments that ensure optimal space utilization, natural light, and ventilation."
   },

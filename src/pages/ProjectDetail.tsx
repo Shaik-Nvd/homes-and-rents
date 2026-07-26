@@ -36,6 +36,7 @@ export const ProjectDetail = () => {
   const allImages = project.galleryImages?.length 
     ? project.galleryImages 
     : [project.imageSrc];
+  const allVideos = project.videoLinks || [];
 
   return (
     <div className="bg-white min-h-screen pb-16 font-sans">
@@ -70,7 +71,7 @@ export const ProjectDetail = () => {
                   <span>All Photos & Videos</span>
                 </div>
                 <div className="absolute bottom-3 right-3 bg-black/50 backdrop-blur-sm text-white px-2 py-1 rounded text-xs flex items-center gap-1.5">
-                  <ImageIcon className="w-3 h-3" /> {allImages.length}
+                  <ImageIcon className="w-3 h-3" /> {allImages.length + allVideos.length}
                 </div>
               </div>
               {allImages.length > 1 && (
@@ -86,7 +87,7 @@ export const ProjectDetail = () => {
                     </div>
                     <div className="absolute bottom-2 left-2 text-white font-medium text-xs">Videos</div>
                     <div className="absolute bottom-2 right-2 text-white font-medium text-xs flex items-center gap-1">
-                      <PlayCircle className="w-3 h-3" /> 3
+                      <PlayCircle className="w-3 h-3" /> {allVideos.length}
                     </div>
                   </div>
                   {allImages.length > 2 && (
@@ -334,16 +335,29 @@ export const ProjectDetail = () => {
       {showGallery && (
         <div className="fixed inset-0 z-[60] bg-black flex flex-col">
           <div className="flex justify-between items-center p-4 bg-black/50 text-white fixed top-0 w-full z-10">
-            <span className="font-medium text-lg">All Photos & Videos ({allImages.length})</span>
+            <span className="font-medium text-lg">All Photos & Videos ({allImages.length + allVideos.length})</span>
             <button onClick={() => setShowGallery(false)} className="hover:text-gray-300 p-2">
               <X className="w-8 h-8" />
             </button>
           </div>
           <div className="flex-1 overflow-y-auto pt-20 pb-10 px-4 sm:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-7xl mx-auto">
+              {allVideos.map((url, idx) => {
+                const videoId = url.split('youtu.be/')[1]?.split('?')[0];
+                return (
+                  <div key={`vid-${idx}`} className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-900 border border-gray-800">
+                    <iframe 
+                      src={`https://www.youtube.com/embed/${videoId}`}
+                      className="w-full h-full absolute inset-0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                );
+              })}
               {allImages.map((src, idx) => (
                 <div 
-                  key={idx} 
+                  key={`img-${idx}`} 
                   className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-900 border border-gray-800 cursor-pointer hover:border-gray-500 transition-colors"
                   onClick={() => setSelectedImageIndex(idx)}
                 >
