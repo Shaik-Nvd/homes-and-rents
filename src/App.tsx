@@ -341,6 +341,24 @@ const Home = () => {
                   description: "Global Edifice The Clan, one of the known housing societes in Bangalore East, brings classic yet modern 2,3 BHK apartments in Sarjapur Road. This society offers apartments in the price range of Rs. 83.79 L - 1.35 Cr. Apartments in Global Edifice The Clan have SUPER area ranging between 1,289 - 1,827 sqft. This society is RERA approved and PRM/KA/RERA/1251/308/PR/091025/008153 is the RERA number"
                 }}
               />
+              <ProjectCard
+                project={{
+                  id: "amrutha-lake-vista",
+                  title: "Amrutha Lake Vista",
+                  subtitle: "3 BHK Apartment in Whitefield, Bangalore",
+                  priceConfigs: [
+                    { label: "3 BHK Apartment", price: "₹1.65 - 2.21 Cr" }
+                  ],
+                  nearby: ["Whitefield Station", "Kempegowda Intl Airport", "ITPB", "Forum Shantiniketan Mall", "Manipal Hospital"],
+                  builder: "Amrutha Shelters",
+                  status: "New Launch · Completion in Dec, 2028",
+                  imageSrc: "/Amrutha_Lake_Vista.jpg",
+                  imageCount: "1/5",
+                  tag: "NEW BOOKING",
+                  badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
+                  description: "Check out 3 BHK apartments in Whitefield, now available for sale at Amrutha Lake Vista. Here units have different sizes, mostly in range of 1,520 - 2,030 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/310/PR/210625/007861 is the RERA number. Apartments in this complex are available in price range of Rs. 1.65 - 2.21 Cr"
+                }}
+              />
             </div>
           </div>
         </div>
