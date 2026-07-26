@@ -265,7 +265,7 @@ export const projects: ProjectData[] = [
       { label: "3 BHK Apartment", price: "₹2.03 - 2.85 Cr" },
       { label: "4 BHK Apartment", price: "₹3.37 - 4.18 Cr" }
     ],
-    nearby: ["Kshema Hospital", "Smrti Academy"],
+    nearby: ["Kshema Hospital", "Smrti Academy", "Wipro SEZ", "Huskur Road Metro Station", "State Highway 35"],
     builder: "Nambiar Builders",
     status: "New Launch · Completion in Jan, 2030",
     imageSrc: "/Nambiar_District_25.jpg",
