@@ -239,5 +239,21 @@ export const projects: ProjectData[] = [
     description: "Mythri Sity society now offers elegantly built 2,3,4 BHK apartments in Sarjapur Road. Apartments in this complex are available in price range of Rs. 1.07 - 2.3 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/446/PR/300525/007802 registration number. Mythri Sity apartments are available in multiples sizes, ranging from 1,178 - 2,531 sqft SUPER area",
     galleryImages: ['/Mythri_Sity.jpg'],
     aboutText: "Mythri Sity society now offers elegantly built 2,3,4 BHK apartments in Sarjapur Road. Apartments in this complex are available in price range of Rs. 1.07 - 2.3 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/446/PR/300525/007802 registration number. Mythri Sity apartments are available in multiples sizes, ranging from 1,178 - 2,531 sqft SUPER area"
+  },
+  {
+    id: "mythri-street",
+    title: "Mythri Street",
+    subtitle: "Property in Sarjapur Road, Bangalore",
+    priceConfigs: [],
+    nearby: ["Sarjapur Road", "Peripheral Ring Road", "Carmelaram Railway Station", "Punarjani Ayurvedic Hospital", "GSS Sports Arena"],
+    builder: "Mythri Builders",
+    status: "Under Construction · Completion in Dec, 2029",
+    imageSrc: "/Mythri_Street.jpg",
+    imageCount: "1/6",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE"],
+    description: "Mythri Street is an upcoming premium property strategically located on Sarjapur Road by Mythri Builders. Offering excellent connectivity to Peripheral Ring Road and Carmelaram Railway Station, the project is designed for modern urban living.",
+    galleryImages: ['/Mythri_Street.jpg'],
+    aboutText: "Mythri Street is an upcoming premium property strategically located on Sarjapur Road by Mythri Builders. Offering excellent connectivity to Peripheral Ring Road and Carmelaram Railway Station, the project is designed for modern urban living."
   }
 ];
