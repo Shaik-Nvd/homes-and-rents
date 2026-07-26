@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ProjectData } from './ProjectCard';
+import type { ProjectData } from './ProjectCard';
 
 export const ProjectFloorPlans = ({ project }: { project: ProjectData }) => {
   const [activeTabIndex, setActiveTabIndex] = useState(0);
