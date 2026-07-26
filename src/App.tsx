@@ -261,8 +261,8 @@ const Home = () => {
                   imageSrc: "/Keya_The_Urban_Forest.jpg",
                   imageCount: "1/8",
                   tag: "NEW BOOKING",
-                  badges: ["RERA", "ZERO BROKERAGE", "3D"],
-                  description: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Roa..."
+                  badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
+                  description: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Keya The Urban Forest. This society is RERA approved and PRM/KA/RERA/1251/310/PR/200525/007759 is the RERA number. Prices of apartments in this project, vary between Rs. 1.7 - 3.3 Cr. Apartments in Keya The Urban Forest have SUPER area ranging between 1,351 - 2,610 sqft"
                 }}
               />
               <ProjectCard
