@@ -315,7 +315,7 @@ const Home = () => {
                   nearby: ["The International School", "National Highway 948A", "Wipro SEZ", "Greenwood International School", "Azim Premji University"],
                   builder: "Trifecta Projects",
                   status: "New Launch · Completion in Dec, 2029",
-                  imageSrc: "/All%20Projects%20Cards/screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_18_50.png",
+                  imageSrc: "/Trifecta_Veranza.jpg",
                   imageCount: "1/2",
                   tag: "NEW BOOKING",
                   badges: ["RERA", "ZERO BROKERAGE", "3D"],
