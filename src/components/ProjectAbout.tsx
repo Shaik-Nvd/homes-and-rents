@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ProjectData } from '../data/projects';
+import type { ProjectData } from '../data/projects';
 
 export const ProjectAbout = ({ project }: { project?: ProjectData }) => {
   const [expanded, setExpanded] = useState(false);

@@ -1,5 +1,5 @@
 import { MapPin, Bus, Train, GraduationCap, Building2, ShoppingBag } from 'lucide-react';
-import { ProjectData } from '../data/projects';
+import type { ProjectData } from '../data/projects';
 
 export const ProjectLocation = ({ project }: { project?: ProjectData }) => {
   if (!project) return null;
