@@ -3,12 +3,14 @@ import { Upload, X, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
+import { RentalApprovalModal } from '../components/RentalApprovalModal';
 
 export const PostProperty = () => {
   const { user } = useAuth();
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [images, setImages] = useState<string[]>([]); // Preview URLs
   const navigate = useNavigate();
+  const [isRentalModalOpen, setIsRentalModalOpen] = useState(false);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -36,12 +38,23 @@ export const PostProperty = () => {
     setImageFiles(imageFiles.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleInitialSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) {
       alert("You must be logged in to post a property!");
       return;
     }
+    
+    // If it's a rental or lease, require approval first
+    if (formData.type === 'Rent out' || formData.type === 'Lease') {
+      setIsRentalModalOpen(true);
+    } else {
+      handleFinalSubmit();
+    }
+  };
+
+  const handleFinalSubmit = async () => {
+    if (!user) return;
     
     setLoading(true);
 
@@ -132,7 +145,7 @@ export const PostProperty = () => {
             <p className="text-primary-hover text-sm mt-1">Rent, Lease or Sell in Bangalore</p>
           </div>
           
-          <form className="p-8 space-y-8" onSubmit={handleSubmit}>
+          <form className="p-8 space-y-8" onSubmit={handleInitialSubmit}>
             
             {/* Category & Type */}
             <div>
@@ -267,6 +280,11 @@ export const PostProperty = () => {
           </form>
         </div>
       </div>
+      <RentalApprovalModal 
+        isOpen={isRentalModalOpen} 
+        onClose={() => setIsRentalModalOpen(false)} 
+        onVerifySuccess={handleFinalSubmit}
+      />
     </div>
   );
 };

@@ -30,7 +30,6 @@ import { PostProperty } from './pages/PostProperty';
 import { ProjectCard } from './components/ProjectCard';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthModal } from './components/AuthModal';
-import { RentalApprovalModal } from './components/RentalApprovalModal';
 
 // Mock Data removed, using Supabase
 
@@ -86,7 +85,7 @@ const TAGLINES = [
   "Finding Home Should Feel Easy."
 ];
 
-const SearchHero = ({ activeTab = 'Sale', setActiveTab, onOpenRentalModal }: { activeTab?: 'Rent' | 'Sale', setActiveTab?: (tab: 'Rent' | 'Sale') => void, onOpenRentalModal?: () => void }) => {
+const SearchHero = ({ activeTab = 'Sale', setActiveTab }: { activeTab?: 'Rent' | 'Sale', setActiveTab?: (tab: 'Rent' | 'Sale') => void }) => {
   const [taglineIndex, setTaglineIndex] = useState(0);
 
   useEffect(() => {
@@ -155,7 +154,6 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab, onOpenRentalModal }: { a
             <button 
               onClick={() => {
                 setActiveTab?.('Rent');
-                if (onOpenRentalModal) onOpenRentalModal();
               }}
               className={`flex-1 rounded-lg sm:rounded-2xl py-2 sm:py-3 font-extrabold text-[13px] sm:text-sm transition-all ${activeTab === 'Rent' ? 'bg-white text-indigo-950 shadow-[0_4px_14px_0_rgba(255,255,255,0.39)]' : 'text-indigo-200 hover:text-white hover:bg-white/5'}`}
             >
@@ -190,7 +188,7 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab, onOpenRentalModal }: { a
 };
 
 
-const Home = ({ onOpenRentalModal }: { onOpenRentalModal?: () => void }) => {
+const Home = () => {
   const [activeTab, setActiveTab] = useState<'Rent' | 'Sale'>('Sale'); // Default to Sale as requested
   const [selectedBuilder, setSelectedBuilder] = useState<string | null>(null);
 
@@ -209,7 +207,7 @@ const Home = ({ onOpenRentalModal }: { onOpenRentalModal?: () => void }) => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <SearchHero activeTab={activeTab} setActiveTab={setActiveTab} onOpenRentalModal={onOpenRentalModal} />
+      <SearchHero activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-grow w-full relative z-20 -mt-8 sm:-mt-12 px-2 sm:px-0">
         <div className="bg-gray-50 rounded-t-[2rem] pt-6 sm:pt-8 px-4 sm:px-6 lg:px-8 pb-6 max-w-5xl mx-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
           
@@ -284,14 +282,13 @@ const Home = ({ onOpenRentalModal }: { onOpenRentalModal?: () => void }) => {
 
 const AppContent = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [isRentalModalOpen, setIsRentalModalOpen] = useState(false);
 
   return (
     <BrowserRouter>
       <div className="min-h-screen flex flex-col font-sans pb-16 sm:pb-0">
         <Navbar onLoginClick={() => setIsAuthModalOpen(true)} />
         <Routes>
-          <Route path="/" element={<Home onOpenRentalModal={() => setIsRentalModalOpen(true)} />} />
+          <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/property/:id" element={<PropertyDetail />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
@@ -301,7 +298,6 @@ const AppContent = () => {
         <Analytics />
       </div>
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
-      <RentalApprovalModal isOpen={isRentalModalOpen} onClose={() => setIsRentalModalOpen(false)} />
     </BrowserRouter>
   );
 };

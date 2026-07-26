@@ -4,9 +4,10 @@ import { X, Mail, Phone, User, CreditCard } from 'lucide-react';
 interface RentalApprovalModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onVerifySuccess?: () => void;
 }
 
-export const RentalApprovalModal = ({ isOpen, onClose }: RentalApprovalModalProps) => {
+export const RentalApprovalModal = ({ isOpen, onClose, onVerifySuccess }: RentalApprovalModalProps) => {
   const [step, setStep] = useState<1 | 2>(1);
   const [formData, setFormData] = useState({
     name: '',
@@ -40,6 +41,9 @@ export const RentalApprovalModal = ({ isOpen, onClose }: RentalApprovalModalProp
       setLoading(false);
       if (formData.otp === '1234') {
         setSubmitted(true);
+        if (onVerifySuccess) {
+          onVerifySuccess();
+        }
         setTimeout(() => {
           onClose();
           setSubmitted(false);
