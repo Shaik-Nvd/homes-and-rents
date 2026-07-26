@@ -26,6 +26,7 @@ export interface ProjectData {
 export const ProjectCard = ({ project }: { project?: ProjectData }) => {
   const [showMoreNearby, setShowMoreNearby] = useState(false);
   const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState(false);
+  const [showDescriptionPopup, setShowDescriptionPopup] = useState(false);
 
   // Default to GR Samskruthi if no project is provided (backward compatibility)
   const data: ProjectData = project || {
@@ -146,37 +147,54 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
         </div>
 
         {/* Nearby */}
-        <div className="flex flex-wrap items-center gap-2 mb-6 text-sm relative">
-          <span className="text-[#0a192f] font-semibold">Nearby :</span>
-          {visibleNearby.map((loc, i) => (
-            <span key={i} className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs">{loc}</span>
-          ))}
-          
-          {hiddenNearby.length > 0 && (
-            <div 
-              className="relative z-20"
-              onMouseEnter={() => setShowMoreNearby(true)}
-              onMouseLeave={() => setShowMoreNearby(false)}
-            >
-              <span className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs cursor-pointer hover:bg-gray-200 transition-colors">
-                +{hiddenNearby.length}
-              </span>
-              
-              {showMoreNearby && (
-                <div className="absolute top-full left-0 mt-2 w-max max-w-xs bg-white border border-gray-200 shadow-xl rounded-lg p-3 z-10 flex flex-wrap gap-2">
-                  {hiddenNearby.map((loc, i) => (
-                    <span key={i} className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs">{loc}</span>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+        <div className="border border-gray-100 bg-white rounded-xl p-3 mb-6 shadow-sm">
+          <div className="flex flex-wrap items-center gap-2 text-sm relative">
+            <span className="text-[#0a192f] font-semibold mr-1">Nearby :</span>
+            {visibleNearby.map((loc, i) => (
+              <span key={i} className="bg-gray-50 border border-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs">{loc}</span>
+            ))}
+            
+            {hiddenNearby.length > 0 && (
+              <div 
+                className="relative z-20"
+                onMouseEnter={() => setShowMoreNearby(true)}
+                onMouseLeave={() => setShowMoreNearby(false)}
+              >
+                <span className="bg-gray-50 border border-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs cursor-pointer hover:bg-gray-100 transition-colors">
+                  +{hiddenNearby.length}
+                </span>
+                
+                {showMoreNearby && (
+                  <div className="absolute bottom-full left-0 mb-2 w-max max-w-xs bg-white border border-gray-200 shadow-xl rounded-lg p-3 z-10 flex flex-wrap gap-2">
+                    {hiddenNearby.map((loc, i) => (
+                      <span key={i} className="bg-gray-50 border border-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs">{loc}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         </div>
         
         {data.description && (
-          <div className="mb-4 text-sm text-gray-600 flex justify-between items-center group cursor-pointer">
-             <span>{data.description}</span>
-             <span className="text-gray-400 group-hover:text-gray-600">▼</span>
+          <div 
+            className="mb-4 text-sm text-gray-600 relative group cursor-pointer"
+            onMouseEnter={() => setShowDescriptionPopup(true)}
+            onMouseLeave={() => setShowDescriptionPopup(false)}
+          >
+             <div className="flex justify-between items-center">
+               <span className="truncate pr-4 block w-full">{data.description}</span>
+               <span className="text-gray-400 group-hover:text-gray-600 flex-shrink-0">▼</span>
+             </div>
+             
+             {showDescriptionPopup && (
+               <div className="absolute bottom-full left-0 mb-2 w-full bg-white border border-gray-200 shadow-xl rounded-lg p-4 z-30">
+                 <p className="text-gray-700 mb-3 text-sm leading-relaxed">{data.description}</p>
+                 <Link to={`/project/${data.id}`} className="text-blue-600 font-bold text-sm hover:underline">
+                   View all details →
+                 </Link>
+               </div>
+             )}
           </div>
         )}
 

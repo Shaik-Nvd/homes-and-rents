@@ -271,7 +271,7 @@ export const projects: ProjectData[] = [
     imageSrc: "/Nambiar_District_25.jpg",
     imageCount: "1/18",
     tag: "NEW BOOKING",
-    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
     description: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Nambiar District 25. This society offers apartments in the price range of Rs. 1.7 - 4.18 Cr. Nambiar District 25 apartments are available in multiples sizes, ranging from 1,245 - 2,996 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/308/PR/100125/007377 is the RERA number",
     galleryImages: ['/Nambiar_District_25.jpg'],
     aboutText: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Nambiar District 25. This society offers apartments in the price range of Rs. 1.7 - 4.18 Cr. Nambiar District 25 apartments are available in multiples sizes, ranging from 1,245 - 2,996 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/308/PR/100125/007377 is the RERA number"
