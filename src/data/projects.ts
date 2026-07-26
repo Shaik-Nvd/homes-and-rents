@@ -200,5 +200,24 @@ export const projects: ProjectData[] = [
     description: "Check out 3 BHK apartments in Whitefield, now available for sale at Amrutha Lake Vista. Here units have different sizes, mostly in range of 1,520 - 2,030 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/310/PR/210625/007861 is the RERA number. Apartments in this complex are available in price range of Rs. 1.65 - 2.21 Cr",
     galleryImages: ['/Amrutha_Lake_Vista.jpg'],
     aboutText: "Amrutha Lake Vista offers serene, lake-facing 3 BHK apartments in Whitefield. Experience tranquility away from the bustling city while staying connected to major tech parks, malls, and transit hubs."
+  },
+  {
+    id: "assetz-meru-and-meadow",
+    title: "Assetz Meru and Meadow",
+    subtitle: "2, 3 BHK Apartment in Devanahalli, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹93 L" },
+      { label: "3 BHK Apartment", price: "₹1.08 - 1.25 Cr" }
+    ],
+    nearby: ["Shanti Niketan Public School", "D-Mart", "Akash Hospital", "Kempegowda International Airport", "Devanahalli Business Park"],
+    builder: "Assetz Property Group",
+    status: "Under Construction · Completion in Mar, 2026",
+    imageSrc: "/Assetz_Meru_and_Meadow.jpg",
+    imageCount: "1/7",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "SEEN"],
+    description: "Located on the fast-developing Devanahalli Main Road, Assetz Meru and Meadow is an excellent residential community thoughtfully designed to suit your fast-paced lifestyle. This RERA certified project offers 2 & 3 BHK Vaastu compliant homes, surrounded by natural greens and state of the art amenities...",
+    galleryImages: ['/Assetz_Meru_and_Meadow.jpg'],
+    aboutText: "Located on the fast-developing Devanahalli Main Road, Assetz Meru and Meadow is an excellent residential community thoughtfully designed to suit your fast-paced lifestyle. This RERA certified project offers 2 & 3 BHK Vaastu compliant homes, surrounded by natural greens and state of the art amenities."
   }
 ];
