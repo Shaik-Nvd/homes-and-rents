@@ -238,7 +238,7 @@ const Home = () => {
                   nearby: ["Glentree Academy School", "Amrita Vishwa Vidyapeetam", "PNR felicity mall", "Narayana Hospital", "Kempegowda International Airport"],
                   builder: "Roach Lifescapes",
                   status: "New Launch · Completion in Dec, 2029",
-                  imageSrc: "/All%20Projects%20Cards/screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_12_15-2.png",
+                  imageSrc: "/Roach_Cicada.jpg",
                   imageCount: "1/8",
                   tag: "NEW BOOKING",
                   badges: ["RERA", "ZERO BROKERAGE", "3D"],
