@@ -219,5 +219,25 @@ export const projects: ProjectData[] = [
     description: "Located on the fast-developing Devanahalli Main Road, Assetz Meru and Meadow is an excellent residential community thoughtfully designed to suit your fast-paced lifestyle. This RERA certified project offers 2 & 3 BHK Vaastu compliant homes, surrounded by natural greens and state of the art amenities...",
     galleryImages: ['/Assetz_Meru_and_Meadow.jpg'],
     aboutText: "Located on the fast-developing Devanahalli Main Road, Assetz Meru and Meadow is an excellent residential community thoughtfully designed to suit your fast-paced lifestyle. This RERA certified project offers 2 & 3 BHK Vaastu compliant homes, surrounded by natural greens and state of the art amenities."
+  },
+  {
+    id: "mythri-sity",
+    title: "Mythri Sity",
+    subtitle: "2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹1.07 - 1.16 Cr" },
+      { label: "3 BHK Apartment", price: "₹1.13 - 1.87 Cr" },
+      { label: "4 BHK Apartment", price: "₹2.3 Cr" }
+    ],
+    nearby: ["Primus Public School", "Sparsh Hospital", "Bangalore Technical Institute", "Bengaluru Airport", "NH 44"],
+    builder: "Mythri Builders",
+    status: "New Launch · Completion in Aug, 2029",
+    imageSrc: "/Mythri_Sity.jpg",
+    imageCount: "1/5",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "SEEN"],
+    description: "Mythri Sity society now offers elegantly built 2,3,4 BHK apartments in Sarjapur Road. Apartments in this complex are available in price range of Rs. 1.07 - 2.3 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/446/PR/300525/007802 registration number. Mythri Sity apartments are available in multiples sizes, ranging from 1,178 - 2,531 sqft SUPER area",
+    galleryImages: ['/Mythri_Sity.jpg'],
+    aboutText: "Mythri Sity society now offers elegantly built 2,3,4 BHK apartments in Sarjapur Road. Apartments in this complex are available in price range of Rs. 1.07 - 2.3 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/446/PR/300525/007802 registration number. Mythri Sity apartments are available in multiples sizes, ranging from 1,178 - 2,531 sqft SUPER area"
   }
 ];
