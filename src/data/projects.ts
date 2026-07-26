@@ -373,5 +373,24 @@ export const projects: ProjectData[] = [
     description: "Beautiful 2,3 BHK apartments in Hoskote, are now available in House of Sapiens housing project. House of Sapiens has apartments in multiple configurations, in range of 1,120 - 2,210 sqft. This society offers apartments in the price range of Rs. 95.5 L - 1.88 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/310126/008441 is the RERA number",
     galleryImages: ['/House_of_Sapiens.jpg'],
     aboutText: "Beautiful 2,3 BHK apartments in Hoskote, are now available in House of Sapiens housing project. House of Sapiens has apartments in multiple configurations, in range of 1,120 - 2,210 sqft. This society offers apartments in the price range of Rs. 95.5 L - 1.88 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/310126/008441 is the RERA number"
+  },
+  {
+    id: "assetz-zen-and-sato",
+    title: "Assetz Zen and Sato",
+    subtitle: "3, 4 BHK Apartment in Yelahanka, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹2.7 - 2.76 Cr" },
+      { label: "4 BHK Apartment", price: "₹3.7 Cr" }
+    ],
+    nearby: ["REVA University", "Delhi Public School Bangalore North", "National Highway 44", "Sparsh Hospital Yelahanka", "The Galleria Mall"],
+    builder: "Assetz Property Group",
+    status: "New Launch · Completion in May, 2030",
+    imageSrc: "/Assetz_Zen_and_Sato.jpg",
+    imageCount: "1/4",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Check out 3,4 BHK apartments in Yelahanka, now available for sale at Assetz Zen and Sato. Assetz Zen and Sato apartments are available in multiples sizes, ranging from 2,159 - 2,955 sqft SUPER area. Assetz Zen and Sato 's RERA registration number is PRM/KA/RERA/1251/472/PR/080525/007728. Apartment prices in this housing society vary in the range of Rs. 2.7 - 3.7 Cr",
+    galleryImages: ['/Assetz_Zen_and_Sato.jpg'],
+    aboutText: "Check out 3,4 BHK apartments in Yelahanka, now available for sale at Assetz Zen and Sato. Assetz Zen and Sato apartments are available in multiples sizes, ranging from 2,159 - 2,955 sqft SUPER area. Assetz Zen and Sato 's RERA registration number is PRM/KA/RERA/1251/472/PR/080525/007728. Apartment prices in this housing society vary in the range of Rs. 2.7 - 3.7 Cr"
   }
 ];
