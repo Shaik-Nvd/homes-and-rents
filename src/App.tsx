@@ -307,10 +307,10 @@ const Home = () => {
                 project={{
                   id: "trifecta-veranza",
                   title: "Trifecta Veranza",
-                  subtitle: "2, 3 BHK Apartment in Sarjapur, Bangalore",
+                  subtitle: "3, 4 BHK Apartment in East Bangalore, Bangalore",
                   priceConfigs: [
-                    { label: "2 BHK Apartment", price: "₹1.08 Cr" },
-                    { label: "3 BHK Apartment", price: "₹1.23 - 1.67 Cr" }
+                    { label: "3 BHK Apartment", price: "₹1.48 - 1.63 Cr" },
+                    { label: "4 BHK Apartment", price: "₹2.29 Cr" }
                   ],
                   nearby: ["The International School", "National Highway 948A", "Wipro SEZ", "Greenwood International School", "Azim Premji University"],
                   builder: "Trifecta Projects",
@@ -322,10 +322,27 @@ const Home = () => {
                   description: "Here are beautifully built 2,3 BHK apartments in Sarjapur, available for sale at Trifecta Veranza. Trifecta Veranza 's RERA registration number is PRM/KA/RERA/1251/308/PR/210126/008418. Apartments in this complex are available in price range of Rs. 1.08 - 1.67 Cr. Trifecta Veranza apartments are available in multiples sizes, ranging from 1,165 - 1,745 sqft SUPER area"
                 }}
               />
+              <ProjectCard
+                project={{
+                  id: "global-edifice-the-clan",
+                  title: "Global Edifice The Clan",
+                  subtitle: "2, 3 BHK Apartment in Sarjapur Road, Bangalore",
+                  priceConfigs: [
+                    { label: "2 BHK Apartment", price: "₹83.79 L - 1 Cr" },
+                    { label: "3 BHK Apartment", price: "₹1.11 - 1.35 Cr" }
+                  ],
+                  nearby: ["Aikhyatha Public School", "Town Hospital Sarjapura", "Azim Premji University", "Clover Greens Golf Course", "Karmelaram Train Station"],
+                  builder: "Global Edifice",
+                  status: "Under Construction · Completion in Dec, 2027",
+                  imageSrc: "/Global_Edifice_The_Clan.jpg",
+                  imageCount: "1/8",
+                  tag: "NEW BOOKING",
+                  badges: ["RERA", "ZERO BROKERAGE", "SEEN"],
+                  description: "Global Edifice The Clan, one of the known housing societes in Bangalore East, brings classic yet modern 2,3 BHK apartments in Sarjapur Road. This society offers apartments in the price range of Rs. 83.79 L - 1.35 Cr. Apartments in Global Edifice The Clan have SUPER area ranging between 1,289 - 1,827 sqft. This society is RERA approved and PRM/KA/RERA/1251/308/PR/091025/008153 is the RERA number"
+                }}
+              />
             </div>
           </div>
-
-
         </div>
       </main>
     </div>
