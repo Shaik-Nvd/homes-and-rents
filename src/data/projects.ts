@@ -448,5 +448,24 @@ export const projects: ProjectData[] = [
     description: "SJ Park Ville brings 4 BHK Villa in Whitefield, one of the preferred locations in the city. Sizes of Villas vary in 2,955 - 2,985 sqft. Villas in SJ Park Ville are offered in the price range of Rs. 2.99 - 3.24 Cr. Villas in SJ Park Ville are New Launch",
     galleryImages: ['/SJ_Park_Ville.jpg'],
     aboutText: "SJ Park Ville brings 4 BHK Villa in Whitefield, one of the preferred locations in the city. Sizes of Villas vary in 2,955 - 2,985 sqft. Villas in SJ Park Ville are offered in the price range of Rs. 2.99 - 3.24 Cr. Villas in SJ Park Ville are New Launch"
+  },
+  {
+    id: "concorde-eleve",
+    title: "Concorde Eleve",
+    subtitle: "3, 4 BHK Apartment in KR Puram, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹2.22 - 2.25 Cr" },
+      { label: "4 BHK Apartment", price: "₹2.94 - 2.96 Cr" }
+    ],
+    nearby: ["James English School", "Geetha Hospital", "Garden City Uni", "Krishnarajapuram", "Kempegowda Airport"],
+    builder: "Concorde",
+    status: "New Launch · Completion in Dec, 2030",
+    imageSrc: "/Concorde_Eleve.jpg",
+    imageCount: "1/11",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Spacious 3,4 BHK apartments in KR Puram are available for sale.Check out latest property options at Concorde Eleve housing society. Here units have different sizes, mostly in range of 1,934 - 2,570 sqft SUPER area. Prices of apartments in this project, vary between Rs. 2.22 - 2.96 Cr. This society is RERA approved and PRM/KA/RERA/1251/446/PR/210325/007608 is the RERA number",
+    galleryImages: ['/Concorde_Eleve.jpg'],
+    aboutText: "Spacious 3,4 BHK apartments in KR Puram are available for sale.Check out latest property options at Concorde Eleve housing society. Here units have different sizes, mostly in range of 1,934 - 2,570 sqft SUPER area. Prices of apartments in this project, vary between Rs. 2.22 - 2.96 Cr. This society is RERA approved and PRM/KA/RERA/1251/446/PR/210325/007608 is the RERA number"
   }
 ];
