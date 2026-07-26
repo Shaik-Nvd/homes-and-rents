@@ -275,5 +275,25 @@ export const projects: ProjectData[] = [
     description: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Nambiar District 25. This society offers apartments in the price range of Rs. 1.7 - 4.18 Cr. Nambiar District 25 apartments are available in multiples sizes, ranging from 1,245 - 2,996 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/308/PR/100125/007377 is the RERA number",
     galleryImages: ['/Nambiar_District_25.jpg'],
     aboutText: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Nambiar District 25. This society offers apartments in the price range of Rs. 1.7 - 4.18 Cr. Nambiar District 25 apartments are available in multiples sizes, ranging from 1,245 - 2,996 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/308/PR/100125/007377 is the RERA number"
+  },
+  {
+    id: "northern-lights",
+    title: "Northern Lights by Puravankara KVN",
+    subtitle: "2, 3, 4 BHK Apartment in Bagalur, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹1.4 - 1.47 Cr" },
+      { label: "3 BHK Apartment", price: "₹1.85 - 2.16 Cr" },
+      { label: "4 BHK Apartment", price: "₹4.42 - 4.54 Cr" }
+    ],
+    nearby: ["The School of Raya", "Reva University", "Delhi Public School", "New Bangalore Hospital", "Manipal Hospitals"],
+    builder: "Puravankara",
+    status: "New Launch · Completion from Dec, 2029 onwards",
+    imageSrc: "/Northern_Lights_by_Puravankara_KVN.jpg",
+    imageCount: "1/5",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Here are beautifully built 2,3,4 BHK apartments in Bagalur, available for sale at Northern Lights by Puravankara KVN. Apartments in Northern Lights by Puravankara KVN have SUPER area ranging between 1,275 - 4,131 sqft. Prices of apartments in this project, vary between Rs. 1.4 - 4.54 Cr. This society is RERA approved and PRM/KA/RERA/1251/309/PR/120326/008525 is the RERA number",
+    galleryImages: ['/Northern_Lights_by_Puravankara_KVN.jpg'],
+    aboutText: "Here are beautifully built 2,3,4 BHK apartments in Bagalur, available for sale at Northern Lights by Puravankara KVN. Apartments in Northern Lights by Puravankara KVN have SUPER area ranging between 1,275 - 4,131 sqft. Prices of apartments in this project, vary between Rs. 1.4 - 4.54 Cr. This society is RERA approved and PRM/KA/RERA/1251/309/PR/120326/008525 is the RERA number"
   }
 ];
