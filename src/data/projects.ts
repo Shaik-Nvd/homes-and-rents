@@ -354,5 +354,24 @@ export const projects: ProjectData[] = [
     description: "Spacious 2,3 BHK apartments in Soukya Road are available for sale.Check out latest property options at Eeshanya Aaroha housing society. Here units have different sizes, mostly in range of 1,055 - 1,660 sqft SUPER area. Apartments in this complex are available in price range of Rs. 81.24 L - 1.28 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/150925/008093 is the RERA number",
     galleryImages: ['/Eeshanya_Aaroha.jpg'],
     aboutText: "Spacious 2,3 BHK apartments in Soukya Road are available for sale.Check out latest property options at Eeshanya Aaroha housing society. Here units have different sizes, mostly in range of 1,055 - 1,660 sqft SUPER area. Apartments in this complex are available in price range of Rs. 81.24 L - 1.28 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/150925/008093 is the RERA number"
+  },
+  {
+    id: "house-of-sapiens",
+    title: "House of Sapiens",
+    subtitle: "2, 3 BHK Apartment in Hoskote, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹95.5 L - 1.16 Cr" },
+      { label: "3 BHK Apartment", price: "₹1.36 - 1.88 Cr" }
+    ],
+    nearby: ["Capstone High School", "Silicon City Hospital", "Sri Channabyre Gowda Stadium", "National Highway 75", "Orion Uptown Mall"],
+    builder: "Ma Sarada Constructions Bangalore",
+    status: "New Launch · Completion in Jan, 2031",
+    imageSrc: "/House_of_Sapiens.jpg",
+    imageCount: "1/3",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Beautiful 2,3 BHK apartments in Hoskote, are now available in House of Sapiens housing project. House of Sapiens has apartments in multiple configurations, in range of 1,120 - 2,210 sqft. This society offers apartments in the price range of Rs. 95.5 L - 1.88 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/310126/008441 is the RERA number",
+    galleryImages: ['/House_of_Sapiens.jpg'],
+    aboutText: "Beautiful 2,3 BHK apartments in Hoskote, are now available in House of Sapiens housing project. House of Sapiens has apartments in multiple configurations, in range of 1,120 - 2,210 sqft. This society offers apartments in the price range of Rs. 95.5 L - 1.88 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/310126/008441 is the RERA number"
   }
 ];
