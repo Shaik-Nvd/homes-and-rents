@@ -209,7 +209,7 @@ export const ProjectDetail = () => {
             {/* New Sections */}
             <div className="flex flex-col gap-8 mt-8">
               <ProjectOverview />
-              <ProjectFloorPlans />
+              <ProjectFloorPlans project={project} />
               <ProjectAmenities />
               <ProjectAbout project={project} />
               <ProjectLocation project={project} />
