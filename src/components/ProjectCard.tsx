@@ -49,54 +49,55 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
   const hiddenNearby = data.nearby.slice(2);
 
   return (
-    <div className="flex flex-col md:flex-row bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow relative">
+    <div className="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 relative group">
       {/* Clickable Overlay */}
       <Link to={`/project/${data.id}`} className="absolute inset-0 z-[5]"></Link>
+      
       {/* Left Side: Image Container */}
-      <div className="relative h-64 md:h-auto md:w-[40%] flex-shrink-0 bg-gray-200 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none overflow-hidden">
+      <div className="relative h-72 sm:h-80 md:h-auto md:w-[40%] flex-shrink-0 bg-slate-100 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none overflow-hidden">
         <img
           src={data.imageSrc}
           alt={data.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
         />
         {/* Top Badges */}
-        <div className="absolute top-3 left-3 flex flex-wrap gap-1">
+        <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
           {data.badges.includes("RERA") && (
-            <span className="bg-[#0b1b32] text-[#00d8b6] text-[10px] font-bold px-2 py-1 rounded flex items-center gap-1">
-              <Info className="w-3 h-3" /> RERA
+            <span className="backdrop-blur-md bg-[#0b1b32]/90 border border-white/10 text-[#00d8b6] text-[10px] sm:text-xs font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 shadow-sm">
+              <Info className="w-3.5 h-3.5" /> RERA
             </span>
           )}
           {data.badges.includes("ZERO BROKERAGE") && (
-            <span className="bg-[#0b1b32] text-[#c9a0ff] text-[10px] font-bold px-2 py-1 rounded">
+            <span className="backdrop-blur-md bg-[#0b1b32]/90 border border-white/10 text-[#c9a0ff] text-[10px] sm:text-xs font-bold px-2.5 py-1.5 rounded-lg shadow-sm">
               ZERO BROKERAGE
             </span>
           )}
           {data.badges.includes("3D") && (
-            <span className="bg-[#0b1b32] text-white text-[10px] font-bold px-2 py-1 rounded flex items-center gap-1">
-              3D <div className="w-2 h-2 border border-white ml-0.5"></div>
+            <span className="backdrop-blur-md bg-[#0b1b32]/90 border border-white/10 text-white text-[10px] sm:text-xs font-bold px-2.5 py-1.5 rounded-lg flex items-center gap-1.5 shadow-sm">
+              3D <div className="w-2.5 h-2.5 border-1.5 border-white ml-0.5 rounded-sm"></div>
             </span>
           )}
         </div>
         {data.badges.includes("SEEN") && (
-          <div className="absolute top-9 left-3">
-            <span className="bg-[#0b1b32] text-white text-[10px] font-bold px-2 py-1 rounded">
+          <div className="absolute top-12 left-4 z-10 mt-1">
+            <span className="backdrop-blur-md bg-[#0b1b32]/90 border border-white/10 text-white text-[10px] sm:text-xs font-bold px-2.5 py-1.5 rounded-lg shadow-sm">
               SEEN
             </span>
           </div>
         )}
         {/* Heart Icon (ensure it stays on top of the link overlay) */}
-        <div className="absolute top-3 right-3 z-20">
-          <button className="text-white hover:text-red-500 transition-colors">
-            <Heart className="w-6 h-6 stroke-[1.5]" />
+        <div className="absolute top-4 right-4 z-20">
+          <button className="text-white hover:text-red-500 transition-colors drop-shadow-md hover:scale-110 duration-200">
+            <Heart className="w-6 h-6 sm:w-7 sm:h-7 stroke-[2]" />
           </button>
         </div>
         {/* Bottom Status */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent pt-8 pb-2 px-3 flex justify-between items-end">
-          <p className="text-white text-xs font-medium">
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent pt-12 pb-3 px-4 flex justify-between items-end z-10">
+          <p className="text-white text-xs sm:text-sm font-semibold tracking-wide text-shadow-sm">
             {data.status}
           </p>
           {data.imageCount && (
-            <span className="bg-black text-white text-xs px-2 py-0.5 rounded font-medium">
+            <span className="backdrop-blur-md bg-black/60 border border-white/20 text-white text-xs px-2.5 py-1 rounded-md font-medium">
               {data.imageCount}
             </span>
           )}
@@ -104,27 +105,27 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
       </div>
 
       {/* Right Side: Content Container */}
-      <div className="flex-1 flex flex-col p-4 md:p-5 relative">
-        <div className="flex justify-between items-start mb-2">
-          <div>
-            <h3 className="text-[22px] font-extrabold text-[#0a192f] leading-tight">
+      <div className="flex-1 flex flex-col p-5 sm:p-6 md:p-7 relative bg-white rounded-b-3xl md:rounded-br-3xl md:rounded-bl-none">
+        <div className="flex justify-between items-start mb-3 gap-4">
+          <div className="flex-1">
+            <h3 className="text-2xl sm:text-[28px] font-extrabold text-slate-900 leading-tight tracking-tight mb-1.5 group-hover:text-blue-600 transition-colors">
               {data.title}
             </h3>
-            <p className="text-sm text-gray-700 mt-1">
+            <p className="text-sm sm:text-base text-slate-500">
               {(() => {
                 const parts = data.subtitle.split(" in ");
                 return parts.length > 1 ? (
                   <>
-                    <span className="font-semibold text-gray-900">{parts[0]}</span> in {parts[1]}
+                    <span className="font-bold text-slate-800">{parts[0]}</span> <span className="mx-0.5 text-slate-400">in</span> <span className="font-medium text-slate-600">{parts[1]}</span>
                   </>
                 ) : (
-                  <span className="font-semibold text-gray-900">{data.subtitle}</span>
+                  <span className="font-bold text-slate-800">{data.subtitle}</span>
                 );
               })()}
             </p>
           </div>
           {data.tag && (
-            <span className="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 rounded whitespace-nowrap">
+            <span className="bg-blue-50/80 border border-blue-100 text-blue-600 text-[10px] sm:text-xs font-bold px-3 py-1.5 rounded-full whitespace-nowrap shadow-sm">
               {data.tag}
             </span>
           )}
