@@ -255,5 +255,25 @@ export const projects: ProjectData[] = [
     description: "Mythri Street is an upcoming premium property strategically located on Sarjapur Road by Mythri Builders. Offering excellent connectivity to Peripheral Ring Road and Carmelaram Railway Station, the project is designed for modern urban living.",
     galleryImages: ['/Mythri_Street.jpg'],
     aboutText: "Mythri Street is an upcoming premium property strategically located on Sarjapur Road by Mythri Builders. Offering excellent connectivity to Peripheral Ring Road and Carmelaram Railway Station, the project is designed for modern urban living."
+  },
+  {
+    id: "nambiar-district-25",
+    title: "Nambiar District 25",
+    subtitle: "2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹1.7 - 2.71 Cr" },
+      { label: "3 BHK Apartment", price: "₹2.03 - 2.85 Cr" },
+      { label: "4 BHK Apartment", price: "₹3.37 - 4.18 Cr" }
+    ],
+    nearby: ["Kshema Hospital", "Smrti Academy"],
+    builder: "Nambiar Builders",
+    status: "New Launch · Completion in Jan, 2030",
+    imageSrc: "/Nambiar_District_25.jpg",
+    imageCount: "1/18",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Nambiar District 25. This society offers apartments in the price range of Rs. 1.7 - 4.18 Cr. Nambiar District 25 apartments are available in multiples sizes, ranging from 1,245 - 2,996 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/308/PR/100125/007377 is the RERA number",
+    galleryImages: ['/Nambiar_District_25.jpg'],
+    aboutText: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Nambiar District 25. This society offers apartments in the price range of Rs. 1.7 - 4.18 Cr. Nambiar District 25 apartments are available in multiples sizes, ranging from 1,245 - 2,996 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/308/PR/100125/007377 is the RERA number"
   }
 ];
