@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Heart, Download, Info } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SiteVisitModal } from './SiteVisitModal';
 
 export interface PriceConfig {
   label: string;
@@ -24,6 +25,7 @@ export interface ProjectData {
 
 export const ProjectCard = ({ project }: { project?: ProjectData }) => {
   const [showMoreNearby, setShowMoreNearby] = useState(false);
+  const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState(false);
 
   // Default to GR Samskruthi if no project is provided (backward compatibility)
   const data: ProjectData = project || {
@@ -189,16 +191,30 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
           </div>
           
           <div className="flex w-full sm:w-auto gap-3">
-            <button className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors">
+            <a 
+              href={`https://wa.me/919739063840?text=Hi%2C%20I%20would%20like%20to%20request%20the%20brochure%20for%20${encodeURIComponent(data.title)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors"
+            >
               <Download className="w-4 h-4" strokeWidth={2.5} />
               Brochure
-            </button>
-            <button className="flex-1 sm:flex-none bg-blue-600 text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors shadow-sm">
-              View Number
+            </a>
+            <button 
+              onClick={() => setIsSiteVisitModalOpen(true)}
+              className="flex-1 sm:flex-none bg-blue-600 text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors shadow-sm"
+            >
+              Site Visit
             </button>
           </div>
         </div>
       </div>
+
+      <SiteVisitModal 
+        isOpen={isSiteVisitModalOpen} 
+        onClose={() => setIsSiteVisitModalOpen(false)} 
+        project={data} 
+      />
     </div>
   );
 };

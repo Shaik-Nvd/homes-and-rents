@@ -30,6 +30,7 @@ import { PostProperty } from './pages/PostProperty';
 import { ProjectCard } from './components/ProjectCard';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthModal } from './components/AuthModal';
+import { RentalApprovalModal } from './components/RentalApprovalModal';
 
 // Mock Data removed, using Supabase
 
@@ -85,7 +86,7 @@ const TAGLINES = [
   "Finding Home Should Feel Easy."
 ];
 
-const SearchHero = ({ activeTab = 'Sale', setActiveTab }: { activeTab?: 'Rent' | 'Sale', setActiveTab?: (tab: 'Rent' | 'Sale') => void }) => {
+const SearchHero = ({ activeTab = 'Sale', setActiveTab, onOpenRentalModal }: { activeTab?: 'Rent' | 'Sale', setActiveTab?: (tab: 'Rent' | 'Sale') => void, onOpenRentalModal?: () => void }) => {
   const [taglineIndex, setTaglineIndex] = useState(0);
 
   useEffect(() => {
@@ -152,7 +153,10 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab }: { activeTab?: 'Rent' |
           {/* Toggle */}
           <div className="bg-slate-900/50 p-1 sm:p-1.5 rounded-xl sm:rounded-3xl flex mb-2.5 sm:mb-4 border border-white/5">
             <button 
-              onClick={() => setActiveTab?.('Rent')}
+              onClick={() => {
+                setActiveTab?.('Rent');
+                if (onOpenRentalModal) onOpenRentalModal();
+              }}
               className={`flex-1 rounded-lg sm:rounded-2xl py-2 sm:py-3 font-extrabold text-[13px] sm:text-sm transition-all ${activeTab === 'Rent' ? 'bg-white text-indigo-950 shadow-[0_4px_14px_0_rgba(255,255,255,0.39)]' : 'text-indigo-200 hover:text-white hover:bg-white/5'}`}
             >
               Rent homes
@@ -186,8 +190,16 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab }: { activeTab?: 'Rent' |
 };
 
 
-const Home = () => {
+const Home = ({ onOpenRentalModal }: { onOpenRentalModal?: () => void }) => {
   const [activeTab, setActiveTab] = useState<'Rent' | 'Sale'>('Sale'); // Default to Sale as requested
+  const [selectedBuilder, setSelectedBuilder] = useState<string | null>(null);
+
+  // Extract unique builders
+  const builders = Array.from(new Set(projects.map(p => p.builder))).filter(Boolean);
+
+  const filteredProjects = selectedBuilder 
+    ? projects.filter(p => p.builder === selectedBuilder)
+    : projects;
 
   useEffect(() => {
     const handleTabChange = (e: any) => setActiveTab(e.detail);
@@ -197,20 +209,64 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <SearchHero activeTab={activeTab} setActiveTab={setActiveTab} />
+      <SearchHero activeTab={activeTab} setActiveTab={setActiveTab} onOpenRentalModal={onOpenRentalModal} />
       <main className="flex-grow w-full relative z-20 -mt-8 sm:-mt-12 px-2 sm:px-0">
         <div className="bg-gray-50 rounded-t-[2rem] pt-6 sm:pt-8 px-4 sm:px-6 lg:px-8 pb-6 max-w-5xl mx-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
           
-          {/* Recommended Projects Section */}
-          <div className="mb-10">
-            <h2 className="text-xl font-extrabold text-[#0a192f] tracking-tight mb-4">
-              Recommended Projects
-            </h2>
-            <div className="flex flex-col gap-8 sm:gap-6">
-              {projects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+          {/* Builder Filter Section */}
+          <div className="mb-8">
+            <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Browse by Builder</h3>
+            <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
+              <button
+                onClick={() => setSelectedBuilder(null)}
+                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold border transition-colors ${
+                  selectedBuilder === null 
+                    ? 'bg-[#0078d4] text-white border-[#0078d4]' 
+                    : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                }`}
+              >
+                All Projects
+              </button>
+              {builders.map((builder, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedBuilder(builder)}
+                  className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-bold border transition-colors flex items-center gap-2 ${
+                    selectedBuilder === builder 
+                      ? 'bg-[#0078d4] text-white border-[#0078d4]' 
+                      : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                  }`}
+                >
+                  <div className="w-5 h-5 rounded bg-gray-100 flex items-center justify-center text-[10px] font-extrabold text-gray-800">
+                    {builder.substring(0, 2).toUpperCase()}
+                  </div>
+                  {builder}
+                </button>
               ))}
             </div>
+          </div>
+
+          {/* Recommended Projects Section */}
+          <div className="mb-10">
+            <div className="flex justify-between items-end mb-4">
+              <h2 className="text-xl font-extrabold text-[#0a192f] tracking-tight">
+                {selectedBuilder ? `${selectedBuilder} Projects` : 'Recommended Projects'}
+              </h2>
+              <span className="text-sm font-bold text-gray-500 bg-gray-100 px-2 py-1 rounded-md">{filteredProjects.length} found</span>
+            </div>
+            
+            {filteredProjects.length === 0 ? (
+              <div className="text-center py-12 bg-white rounded-2xl border border-gray-200">
+                <p className="text-gray-500 font-medium">No projects found for {selectedBuilder}.</p>
+                <button onClick={() => setSelectedBuilder(null)} className="mt-4 text-[#0078d4] font-bold hover:underline">View all projects</button>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-8 sm:gap-6">
+                {filteredProjects.map((project) => (
+                  <ProjectCard key={project.id} project={project} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </main>
@@ -222,13 +278,14 @@ const Home = () => {
 
 const AppContent = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [isRentalModalOpen, setIsRentalModalOpen] = useState(false);
 
   return (
     <BrowserRouter>
       <div className="min-h-screen flex flex-col font-sans pb-16 sm:pb-0">
         <Navbar onLoginClick={() => setIsAuthModalOpen(true)} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home onOpenRentalModal={() => setIsRentalModalOpen(true)} />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/property/:id" element={<PropertyDetail />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
@@ -238,6 +295,7 @@ const AppContent = () => {
         <Analytics />
       </div>
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
+      <RentalApprovalModal isOpen={isRentalModalOpen} onClose={() => setIsRentalModalOpen(false)} />
     </BrowserRouter>
   );
 };

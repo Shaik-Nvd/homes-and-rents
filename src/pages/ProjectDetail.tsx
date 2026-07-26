@@ -7,6 +7,7 @@ import { ProjectAmenities } from '../components/ProjectAmenities';
 import { ProjectAbout } from '../components/ProjectAbout';
 import { ProjectLocation } from '../components/ProjectLocation';
 import { ProjectReviews } from '../components/ProjectReviews';
+import { SiteVisitModal } from '../components/SiteVisitModal';
 import { projects } from '../data/projects';
 
 
@@ -17,6 +18,7 @@ export const ProjectDetail = () => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
+  const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState(false);
 
   if (!project) {
     return (
@@ -123,8 +125,11 @@ export const ProjectDetail = () => {
                   </p>
                 </div>
               </div>
-              <button className="w-full sm:w-auto bg-[#0078d4] text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors">
-                View Number
+              <button 
+                onClick={() => setIsSiteVisitModalOpen(true)}
+                className="w-full sm:w-auto bg-[#0078d4] text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors"
+              >
+                Site Visit
               </button>
             </div>
 
@@ -166,7 +171,7 @@ export const ProjectDetail = () => {
                   </div>
                   <p className="text-[10px] text-gray-400 font-bold tracking-widest uppercase mt-1">Price Range</p>
                 </div>
-                <a href="/GR%20Samskruthi/GR%20Samskruthi_Brouchure.pdf" download target="_blank" rel="noreferrer" className="flex items-center gap-1.5 border border-[#0078d4] text-[#0078d4] px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors">
+                <a href={`https://wa.me/919739063840?text=Hi%2C%20I%20would%20like%20to%20request%20the%20brochure%20for%20${encodeURIComponent(project.title)}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 border border-[#0078d4] text-[#0078d4] px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors">
                   <Download className="w-4 h-4" strokeWidth={2.5} />
                   Download Brochure
                 </a>
@@ -387,6 +392,12 @@ export const ProjectDetail = () => {
           </div>
         </div>
       )}
+
+      <SiteVisitModal 
+        isOpen={isSiteVisitModalOpen} 
+        onClose={() => setIsSiteVisitModalOpen(false)} 
+        project={project} 
+      />
     </div>
   );
 };
