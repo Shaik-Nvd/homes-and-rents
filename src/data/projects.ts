@@ -392,5 +392,24 @@ export const projects: ProjectData[] = [
     description: "Check out 3,4 BHK apartments in Yelahanka, now available for sale at Assetz Zen and Sato. Assetz Zen and Sato apartments are available in multiples sizes, ranging from 2,159 - 2,955 sqft SUPER area. Assetz Zen and Sato 's RERA registration number is PRM/KA/RERA/1251/472/PR/080525/007728. Apartment prices in this housing society vary in the range of Rs. 2.7 - 3.7 Cr",
     galleryImages: ['/Assetz_Zen_and_Sato.jpg'],
     aboutText: "Check out 3,4 BHK apartments in Yelahanka, now available for sale at Assetz Zen and Sato. Assetz Zen and Sato apartments are available in multiples sizes, ranging from 2,159 - 2,955 sqft SUPER area. Assetz Zen and Sato 's RERA registration number is PRM/KA/RERA/1251/472/PR/080525/007728. Apartment prices in this housing society vary in the range of Rs. 2.7 - 3.7 Cr"
+  },
+  {
+    id: "aparna-wonderwoods",
+    title: "Aparna Wonderwoods",
+    subtitle: "2, 3 BHK Apartment in Mallasandra, Near Kanakpura Road, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹1.25 - 1.41 Cr" },
+      { label: "3 BHK Apartment", price: "₹1.52 - 2.03 Cr" }
+    ],
+    nearby: ["National Highway 48", "Sri Kumaran Public School", "Thalaghattapura Metro Station", "Forum South Mall", "Ashmitha Multispeciality Hospital"],
+    builder: "Aparna Constructions",
+    status: "New Launch · Completion in Feb, 2031",
+    imageSrc: "/Aparna_Wonderwoods.jpg",
+    imageCount: "1/11",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Choose your dream home from the wide variety of 2,3 BHK apartments in Mallasandra, available for sale in Aparna Wonderwoods. Apartments in this complex are available in price range of Rs. 1.25 - 2.03 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/310/PR/080626/008706 registration number. Aparna Wonderwoods has apartments in multiple configurations, in range of 1,292 - 2,092 sqft",
+    galleryImages: ['/Aparna_Wonderwoods.jpg'],
+    aboutText: "Choose your dream home from the wide variety of 2,3 BHK apartments in Mallasandra, available for sale in Aparna Wonderwoods. Apartments in this complex are available in price range of Rs. 1.25 - 2.03 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/310/PR/080626/008706 registration number. Aparna Wonderwoods has apartments in multiple configurations, in range of 1,292 - 2,092 sqft"
   }
 ];
