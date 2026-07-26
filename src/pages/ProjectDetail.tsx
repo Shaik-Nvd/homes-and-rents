@@ -163,15 +163,15 @@ export const ProjectDetail = () => {
 
             {/* Pricing Details */}
             <div className="border-t border-gray-100 pt-8 pb-4">
-              <div className="flex justify-between items-start mb-6">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
                 <div>
-                  <div className="flex items-center gap-2 text-[#0a192f] text-2xl font-extrabold">
-                    <span>{project.priceConfigs?.[0]?.price || "Price on Request"}</span>
-                    <span className="text-[#0078d4] text-xs font-bold bg-blue-50 px-2 py-0.5 rounded cursor-pointer">+ Charges</span>
+                  <div className="flex flex-wrap items-center gap-2 text-[#0a192f] text-2xl font-extrabold">
+                    <span className="whitespace-nowrap">{project.priceConfigs?.[0]?.price || "Price on Request"}</span>
+                    <span className="text-[#0078d4] text-xs font-bold bg-blue-50 px-2 py-0.5 rounded cursor-pointer whitespace-nowrap">+ Charges</span>
                   </div>
                   <p className="text-[10px] text-gray-400 font-bold tracking-widest uppercase mt-1">Price Range</p>
                 </div>
-                <a href={`https://wa.me/919739063840?text=Hi%2C%20I%20would%20like%20to%20request%20the%20brochure%20for%20${encodeURIComponent(project.title)}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 border border-[#0078d4] text-[#0078d4] px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors">
+                <a href={`https://wa.me/919739063840?text=Hi%2C%20I%20would%20like%20to%20request%20the%20brochure%20for%20${encodeURIComponent(project.title)}`} target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto flex justify-center items-center gap-1.5 border border-[#0078d4] text-[#0078d4] px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors whitespace-nowrap">
                   <Download className="w-4 h-4" strokeWidth={2.5} />
                   Download Brochure
                 </a>
