@@ -131,15 +131,15 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
         </div>
 
         {/* Pricing Config */}
-        <div className="flex gap-8 mt-4 mb-5">
+        <div className="flex flex-wrap items-center gap-y-4 gap-x-3 sm:gap-x-4 md:gap-x-6 mt-4 mb-5">
           {data.priceConfigs.map((config, index) => (
-            <div key={index} className="flex gap-8">
+            <div key={index} className="flex items-center gap-3 sm:gap-4 md:gap-6">
               <div>
-                <p className="text-xs text-gray-500 mb-1">{config.label}</p>
-                <p className="text-base font-bold text-[#0a192f]">{config.price}</p>
+                <p className="text-[11px] sm:text-xs text-gray-500 mb-1 whitespace-nowrap">{config.label}</p>
+                <p className="text-sm sm:text-base font-bold text-[#0a192f] whitespace-nowrap">{config.price}</p>
               </div>
               {index < data.priceConfigs.length - 1 && (
-                <div className="w-px bg-gray-200"></div>
+                <div className="h-8 sm:h-10 w-px bg-gray-200"></div>
               )}
             </div>
           ))}
