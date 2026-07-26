@@ -335,5 +335,24 @@ export const projects: ProjectData[] = [
     description: "Sumadhura Solea society now offers elegantly built 3,4 BHK apartments in Thanisandra. Apartments in Sumadhura Solea have SUPER area ranging between 1,560 - 2,155 sqft. Sumadhura Solea is a RERA- registered society and PRM/KA/RERA/1251/446/PR/100326/008517 is the RERA registration number. This society offers apartments in the price range of Rs. 2.08 - 2.87 Cr",
     galleryImages: ['/Sumadhura_Solea.jpg'],
     aboutText: "Sumadhura Solea society now offers elegantly built 3,4 BHK apartments in Thanisandra. Apartments in Sumadhura Solea have SUPER area ranging between 1,560 - 2,155 sqft. Sumadhura Solea is a RERA- registered society and PRM/KA/RERA/1251/446/PR/100326/008517 is the RERA registration number. This society offers apartments in the price range of Rs. 2.08 - 2.87 Cr"
+  },
+  {
+    id: "eeshanya-aaroha",
+    title: "Eeshanya Aaroha",
+    subtitle: "2, 3 BHK Apartment in Soukya Road, Whitefield, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹81.24 L" },
+      { label: "3 BHK Apartment", price: "₹1.04 - 1.28 Cr" }
+    ],
+    nearby: ["Bangalore International Academy", "National Highway 648", "MVJ College of Engineering", "Whitefield Railway Station", "Kadugodi Metro Station"],
+    builder: "Eeshanya Infra LLP",
+    status: "Under Construction · Completion in Jun, 2027",
+    imageSrc: "/Eeshanya_Aaroha.jpg",
+    imageCount: "1/5",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Spacious 2,3 BHK apartments in Soukya Road are available for sale.Check out latest property options at Eeshanya Aaroha housing society. Here units have different sizes, mostly in range of 1,055 - 1,660 sqft SUPER area. Apartments in this complex are available in price range of Rs. 81.24 L - 1.28 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/150925/008093 is the RERA number",
+    galleryImages: ['/Eeshanya_Aaroha.jpg'],
+    aboutText: "Spacious 2,3 BHK apartments in Soukya Road are available for sale.Check out latest property options at Eeshanya Aaroha housing society. Here units have different sizes, mostly in range of 1,055 - 1,660 sqft SUPER area. Apartments in this complex are available in price range of Rs. 81.24 L - 1.28 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/150925/008093 is the RERA number"
   }
 ];
