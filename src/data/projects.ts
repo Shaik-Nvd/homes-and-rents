@@ -411,5 +411,24 @@ export const projects: ProjectData[] = [
     description: "Choose your dream home from the wide variety of 2,3 BHK apartments in Mallasandra, available for sale in Aparna Wonderwoods. Apartments in this complex are available in price range of Rs. 1.25 - 2.03 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/310/PR/080626/008706 registration number. Aparna Wonderwoods has apartments in multiple configurations, in range of 1,292 - 2,092 sqft",
     galleryImages: ['/Aparna_Wonderwoods.jpg'],
     aboutText: "Choose your dream home from the wide variety of 2,3 BHK apartments in Mallasandra, available for sale in Aparna Wonderwoods. Apartments in this complex are available in price range of Rs. 1.25 - 2.03 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/310/PR/080626/008706 registration number. Aparna Wonderwoods has apartments in multiple configurations, in range of 1,292 - 2,092 sqft"
+  },
+  {
+    id: "vrushabadri-winter-park",
+    title: "Vrushabadri Winter Park",
+    subtitle: "2, 3 BHK Apartment in Sarjapur Road, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹88.9 - 92.4 L" },
+      { label: "3 BHK Apartment", price: "₹1 - 1.23 Cr" }
+    ],
+    nearby: ["State Highway 35", "The Foundation School", "Forum Value Mall", "Azim Premji University", "RGA Techpark"],
+    builder: "Vrushabadri Developers",
+    status: "New Launch · Completion in Dec, 2028",
+    imageSrc: "/Vrushabadri_Winter_Park.jpg",
+    imageCount: "1/5",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Beautiful 2,3 BHK apartments in Sarjapur Road, are now available in Vrushabadri Winter Park housing project. Vrushabadri Winter Park apartments are available in multiples sizes, ranging from 1,270 - 1,755 sqft SUPER area. Prices of apartments in this project, vary between Rs. 88.9 L - 1.23 Cr. Vrushabadri Winter Park is a RERA- registered society and PRM/KA/RERA/1251/308/PR/070526/008631 is the RERA registration number",
+    galleryImages: ['/Vrushabadri_Winter_Park.jpg'],
+    aboutText: "Beautiful 2,3 BHK apartments in Sarjapur Road, are now available in Vrushabadri Winter Park housing project. Vrushabadri Winter Park apartments are available in multiples sizes, ranging from 1,270 - 1,755 sqft SUPER area. Prices of apartments in this project, vary between Rs. 88.9 L - 1.23 Cr. Vrushabadri Winter Park is a RERA- registered society and PRM/KA/RERA/1251/308/PR/070526/008631 is the RERA registration number"
   }
 ];
