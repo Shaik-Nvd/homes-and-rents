@@ -219,7 +219,7 @@ const Home = () => {
                   nearby: ["Manipal Hospital Varthur Road", "Brookefield Mall", "CMR Institute of Technology", "National Highway 44", "Seetharam Palya Metro Station"],
                   builder: "Sumadhura Group",
                   status: "New Launch · Completion in Dec, 2029",
-                  imageSrc: "/All%20Projects%20Cards/screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_11_35.png",
+                  imageSrc: "/Sumadhura_Edition.jpg",
                   imageCount: "1/3",
                   tag: "NEW BOOKING",
                   badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
