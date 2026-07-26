@@ -296,7 +296,7 @@ const Home = () => {
                   nearby: ["DPS Whitefield", "Rudrappa Healthcare", "Winmore academy Whitefield", "Arya Hub Mall", "Kempegowda International Airport"],
                   builder: "Sanjeevini Group",
                   status: "New Launch · Completion in Jul, 2028",
-                  imageSrc: "/All%20Projects%20Cards/screencapture-99acres-search-property-buy-bangalore-new-launch-projects-2026-07-26-04_16_22.png",
+                  imageSrc: "/The_Berries_For_Birds.jpg",
                   imageCount: "1/7",
                   tag: "NEW BOOKING",
                   badges: ["RERA", "ZERO BROKERAGE", "3D"],
