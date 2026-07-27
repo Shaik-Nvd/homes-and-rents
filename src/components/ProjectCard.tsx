@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Heart, Download, Info } from 'lucide-react';
+import { Heart, Download, Info, Building2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SiteVisitModal } from './SiteVisitModal';
 
@@ -55,11 +55,10 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
       
       {/* Left Side: Image Container */}
       <div className="relative h-72 sm:h-80 md:h-auto md:w-[40%] flex-shrink-0 bg-slate-100 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none overflow-hidden">
-        <img
-          src={data.imageSrc}
-          alt={data.title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
-        />
+        <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 to-indigo-900 group-hover:scale-105 transition-transform duration-700 ease-in-out">
+          <Building2 className="w-20 h-20 text-white/40 mb-3" strokeWidth={1.5} />
+          <span className="text-white/60 font-medium text-lg px-6 text-center">{data.title}</span>
+        </div>
         {/* Top Badges */}
         <div className="absolute top-4 left-4 flex flex-wrap gap-2 z-10">
           {data.badges.includes("RERA") && (
