@@ -69,5 +69,403 @@ export const projects: ProjectData[] = [
       'https://youtu.be/IJHuNi0mOrA?si=uat265QUiaXzYy_x'
     ],
     aboutText: "GR Samskruthi is a premium residential project located on Sarjapura Attibele Road, Bangalore. It is designed to offer a luxurious and serene lifestyle, combining modern architecture with vast open green spaces. Spread across a sprawling 2-acre landscape, the project features meticulously designed 2 and 3 BHK apartments that ensure optimal space utilization, natural light, and ventilation."
+  },
+  {
+    id: "sumadhura-edition",
+    title: "Sumadhura Edition",
+    subtitle: "3, 4 BHK Apartment in Nallurhalli, Whitefield",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹2.54 - 3.88 Cr" },
+      { label: "4 BHK Apartment", price: "₹3.37 - 3.89 Cr" }
+    ],
+    nearby: ["Manipal Hospital Varthur Road", "Brookefield Mall", "CMR Institute of Technology", "National Highway 44", "Seetharam Palya Metro Station"],
+    builder: "Sumadhura Group",
+    status: "New Launch · Completion in Dec, 2029",
+    imageSrc: "/Sumadhura_Edition.jpg",
+    imageCount: "1/3",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
+    description: "Check out 3,4 BHK apartments in Nallurhalli, now available for...",
+    galleryImages: ['/Sumadhura_Edition.jpg'],
+    aboutText: "Sumadhura Edition brings ultra-luxury 3 and 4 BHK residences to the heart of Whitefield. Designed for modern connoisseurs, it blends exquisite design with state-of-the-art amenities to provide an unmatched lifestyle."
+  },
+  {
+    id: "roach-cicada",
+    title: "Roach Cicada",
+    subtitle: "3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹2.86 - 3.17 Cr" },
+      { label: "4 BHK Apartment", price: "₹3.6 - 3.9 Cr" }
+    ],
+    nearby: ["Glentree Academy School", "Amrita Vishwa Vidyapeetam", "PNR felicity mall", "Narayana Hospital", "Kempegowda International Airport"],
+    builder: "Roach Lifescapes",
+    status: "New Launch · Completion in Dec, 2029",
+    imageSrc: "/Roach_Cicada.jpg",
+    imageCount: "1/8",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Spacious 3,4 BHK apartments in Sarjapur Road are available for...",
+    galleryImages: ['/Roach_Cicada.jpg'],
+    aboutText: "Roach Cicada is an exclusive residential community on Sarjapur Road offering thoughtfully designed 3 and 4 BHK apartments. The project features a wide array of lifestyle amenities nestled within lush green surroundings."
+  },
+  {
+    id: "keya-the-urban-forest",
+    title: "Keya The Urban Forest",
+    subtitle: "2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹1.7 Cr" },
+      { label: "3 BHK Apartment", price: "₹2.14 - 2.39 Cr" },
+      { label: "4 BHK Apartment", price: "₹3 - 3.3 Cr" }
+    ],
+    nearby: ["BRS Global School", "Amrita Vishwa Vidyapeetam", "BRS Global School", "Centro", "Kempegowda International"],
+    builder: "Keya Homes",
+    status: "Under Construction · Completion in Dec, 2027",
+    imageSrc: "/Keya_The_Urban_Forest.jpg",
+    imageCount: "1/8",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
+    description: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Keya The Urban Forest. This society is RERA approved and PRM/KA/RERA/1251/310/PR/200525/007759 is the RERA number. Prices of apartments in this project, vary between Rs. 1.7 - 3.3 Cr. Apartments in Keya The Urban Forest have SUPER area ranging between 1,351 - 2,610 sqft",
+    galleryImages: ['/Keya_The_Urban_Forest.jpg'],
+    aboutText: "Keya The Urban Forest offers an eco-friendly living experience on Sarjapur Road. This meticulously planned project integrates nature with premium living, offering extensive green covers and sustainable features alongside 2, 3, and 4 BHK apartments."
+  },
+  {
+    id: "vaishnavi-at-one-krishna-brindavan",
+    title: "Vaishnavi AT One Krishna Brindavan",
+    subtitle: "3, 4 BHK Apartment in Banashankari Stage 2, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹3.5 - 3.54 Cr" },
+      { label: "4 BHK Apartment", price: "₹5 Cr" }
+    ],
+    nearby: ["ORCHIDS The International School", "Dayananda Sagar University", "Manipal Hospitals Jayanagar", "Forum South Bengaluru", "Kempegowda International Airport"],
+    builder: "Vaishnavi Group Bangalore",
+    status: "New Launch · Completion in Jun, 2030",
+    imageSrc: "/Vaishnavi_AT_One_Krishna_Brindavan.jpg",
+    imageCount: "1/4",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
+    description: "Beautiful 3,4 BHK apartments in Banashankari Stage 2, are now available in Vaishnavi AT One Krishna Brindavan housing project. Apartments in this complex are available in price range of Rs. 3.5 - 5 Cr. Vaishnavi AT One Krishna Brindavan 's RERA registration number is PRM/KA/RERA/1251/310/PR/081025/008140. Apartments in Vaishnavi AT One Krishna Brindavan have SUPER area ranging between 2,050 - 2,566 sqft",
+    galleryImages: ['/Vaishnavi_AT_One_Krishna_Brindavan.jpg'],
+    aboutText: "Vaishnavi AT One Krishna Brindavan is an upcoming landmark in Banashankari Stage 2. It offers expansive 3 and 4 BHK apartments with impeccable finishing, robust infrastructure, and seamless connectivity to prime city nodes."
+  },
+  {
+    id: "the-berries-for-birds",
+    title: "The Berries For Birds",
+    subtitle: "3, 4 BHK Villa in Whitefield, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Villa", price: "₹2.25 Cr" },
+      { label: "4 BHK Villa", price: "₹2.33 - 4.28 Cr" }
+    ],
+    nearby: ["DPS Whitefield", "Rudrappa Healthcare", "Winmore academy Whitefield", "Arya Hub Mall", "Kempegowda International Airport"],
+    builder: "Sanjeevini Group",
+    status: "New Launch · Completion in Jul, 2028",
+    imageSrc: "/The_Berries_For_Birds.jpg",
+    imageCount: "1/7",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Spacious and elegant 3,4 BHK Villa are for sale in The Berries For Birds, Whitefield. Villas size in The Berries For Birds varies from 1,900 - 4,500 sqft. Swimming Pool, Gymnasium and Club House are some of the major amenities offered here. Villas in The Berries For Birds are New Launch",
+    galleryImages: ['/The_Berries_For_Birds.jpg'],
+    aboutText: "The Berries For Birds introduces luxurious 3 and 4 BHK villas in Whitefield. Designed with a focus on elegance and comfort, the villas feature private spaces, premium amenities like a clubhouse and swimming pool, and an ideal location."
+  },
+  {
+    id: "trifecta-veranza",
+    title: "Trifecta Veranza",
+    subtitle: "3, 4 BHK Apartment in East Bangalore, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹1.48 - 1.63 Cr" },
+      { label: "4 BHK Apartment", price: "₹2.29 Cr" }
+    ],
+    nearby: ["The International School", "National Highway 948A", "Wipro SEZ", "Greenwood International School", "Azim Premji University"],
+    builder: "Trifecta Projects",
+    status: "New Launch · Completion in Dec, 2029",
+    imageSrc: "/Trifecta_Veranza.jpg",
+    imageCount: "1/2",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Here are beautifully built 3,4 BHK apartments in East Bangalore, available for sale at Trifecta Veranza. Trifecta Veranza 's RERA registration number is PRM/KA/RERA/1251/308/PR/210126/008418. Apartments in this complex are available in price range of Rs. 1.48 - 2.29 Cr. Trifecta Veranza apartments are available in multiples sizes.",
+    galleryImages: ['/Trifecta_Veranza.jpg'],
+    aboutText: "Trifecta Veranza offers an elevated lifestyle in East Bangalore with its thoughtfully crafted 3 and 4 BHK apartments. The project brings modern living and convenience together, featuring comprehensive lifestyle amenities."
+  },
+  {
+    id: "global-edifice-the-clan",
+    title: "Global Edifice The Clan",
+    subtitle: "2, 3 BHK Apartment in Sarjapur Road, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹83.79 L - 1 Cr" },
+      { label: "3 BHK Apartment", price: "₹1.11 - 1.35 Cr" }
+    ],
+    nearby: ["Aikhyatha Public School", "Town Hospital Sarjapura", "Azim Premji University", "Clover Greens Golf Course", "Karmelaram Train Station"],
+    builder: "Global Edifice",
+    status: "Under Construction · Completion in Dec, 2027",
+    imageSrc: "/Global_Edifice_The_Clan.jpg",
+    imageCount: "1/8",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "SEEN"],
+    description: "Global Edifice The Clan, one of the known housing societes in Bangalore East, brings classic yet modern 2,3 BHK apartments in Sarjapur Road. This society offers apartments in the price range of Rs. 83.79 L - 1.35 Cr. Apartments in Global Edifice The Clan have SUPER area ranging between 1,289 - 1,827 sqft. This society is RERA approved and PRM/KA/RERA/1251/308/PR/091025/008153 is the RERA number",
+    galleryImages: ['/Global_Edifice_The_Clan.jpg'],
+    aboutText: "Global Edifice The Clan is an esteemed housing society in Bangalore East, featuring classic and modern 2 and 3 BHK apartments. Enjoy robust community living with state-of-the-art facilities in a fast-growing neighborhood."
+  },
+  {
+    id: "amrutha-lake-vista",
+    title: "Amrutha Lake Vista",
+    subtitle: "3 BHK Apartment in Whitefield, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹1.65 - 2.21 Cr" }
+    ],
+    nearby: ["Whitefield Station", "Kempegowda Intl Airport", "ITPB", "Forum Shantiniketan Mall", "Manipal Hospital"],
+    builder: "Amrutha Shelters",
+    status: "New Launch · Completion in Dec, 2028",
+    imageSrc: "/Amrutha_Lake_Vista.jpg",
+    imageCount: "1/5",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D", "SEEN"],
+    description: "Check out 3 BHK apartments in Whitefield, now available for sale at Amrutha Lake Vista. Here units have different sizes, mostly in range of 1,520 - 2,030 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/310/PR/210625/007861 is the RERA number. Apartments in this complex are available in price range of Rs. 1.65 - 2.21 Cr",
+    galleryImages: ['/Amrutha_Lake_Vista.jpg'],
+    aboutText: "Amrutha Lake Vista offers serene, lake-facing 3 BHK apartments in Whitefield. Experience tranquility away from the bustling city while staying connected to major tech parks, malls, and transit hubs."
+  },
+  {
+    id: "assetz-meru-and-meadow",
+    title: "Assetz Meru and Meadow",
+    subtitle: "2, 3 BHK Apartment in Devanahalli, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹93 L" },
+      { label: "3 BHK Apartment", price: "₹1.08 - 1.25 Cr" }
+    ],
+    nearby: ["Shanti Niketan Public School", "D-Mart", "Akash Hospital", "Kempegowda International Airport", "Devanahalli Business Park"],
+    builder: "Assetz Property Group",
+    status: "Under Construction · Completion in Mar, 2026",
+    imageSrc: "/Assetz_Meru_and_Meadow.jpg",
+    imageCount: "1/7",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "SEEN"],
+    description: "Located on the fast-developing Devanahalli Main Road, Assetz Meru and Meadow is an excellent residential community thoughtfully designed to suit your fast-paced lifestyle. This RERA certified project offers 2 & 3 BHK Vaastu compliant homes, surrounded by natural greens and state of the art amenities...",
+    galleryImages: ['/Assetz_Meru_and_Meadow.jpg'],
+    aboutText: "Located on the fast-developing Devanahalli Main Road, Assetz Meru and Meadow is an excellent residential community thoughtfully designed to suit your fast-paced lifestyle. This RERA certified project offers 2 & 3 BHK Vaastu compliant homes, surrounded by natural greens and state of the art amenities."
+  },
+  {
+    id: "mythri-sity",
+    title: "Mythri Sity",
+    subtitle: "2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹1.07 - 1.16 Cr" },
+      { label: "3 BHK Apartment", price: "₹1.13 - 1.87 Cr" },
+      { label: "4 BHK Apartment", price: "₹2.3 Cr" }
+    ],
+    nearby: ["Primus Public School", "Sparsh Hospital", "Bangalore Technical Institute", "Bengaluru Airport", "NH 44"],
+    builder: "Mythri Builders",
+    status: "New Launch · Completion in Aug, 2029",
+    imageSrc: "/Mythri_Sity.jpg",
+    imageCount: "1/5",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "SEEN"],
+    description: "Mythri Sity society now offers elegantly built 2,3,4 BHK apartments in Sarjapur Road. Apartments in this complex are available in price range of Rs. 1.07 - 2.3 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/446/PR/300525/007802 registration number. Mythri Sity apartments are available in multiples sizes, ranging from 1,178 - 2,531 sqft SUPER area",
+    galleryImages: ['/Mythri_Sity.jpg'],
+    aboutText: "Mythri Sity society now offers elegantly built 2,3,4 BHK apartments in Sarjapur Road. Apartments in this complex are available in price range of Rs. 1.07 - 2.3 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/446/PR/300525/007802 registration number. Mythri Sity apartments are available in multiples sizes, ranging from 1,178 - 2,531 sqft SUPER area"
+  },
+  {
+    id: "mythri-street",
+    title: "Mythri Street",
+    subtitle: "Property in Sarjapur Road, Bangalore",
+    priceConfigs: [],
+    nearby: ["Sarjapur Road", "Peripheral Ring Road", "Carmelaram Railway Station", "Punarjani Ayurvedic Hospital", "GSS Sports Arena"],
+    builder: "Mythri Builders",
+    status: "Under Construction · Completion in Dec, 2029",
+    imageSrc: "/Mythri_Street.jpg",
+    imageCount: "1/6",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE"],
+    description: "Mythri Street is an upcoming premium property strategically located on Sarjapur Road by Mythri Builders. Offering excellent connectivity to Peripheral Ring Road and Carmelaram Railway Station, the project is designed for modern urban living.",
+    galleryImages: ['/Mythri_Street.jpg'],
+    aboutText: "Mythri Street is an upcoming premium property strategically located on Sarjapur Road by Mythri Builders. Offering excellent connectivity to Peripheral Ring Road and Carmelaram Railway Station, the project is designed for modern urban living."
+  },
+  {
+    id: "nambiar-district-25",
+    title: "Nambiar District 25",
+    subtitle: "2, 3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹1.7 - 2.71 Cr" },
+      { label: "3 BHK Apartment", price: "₹2.03 - 2.85 Cr" },
+      { label: "4 BHK Apartment", price: "₹3.37 - 4.18 Cr" }
+    ],
+    nearby: ["Kshema Hospital", "Smrti Academy", "Wipro SEZ", "Huskur Road Metro Station", "State Highway 35"],
+    builder: "Nambiar Builders",
+    status: "New Launch · Completion in Jan, 2030",
+    imageSrc: "/Nambiar_District_25.jpg",
+    imageCount: "1/18",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Nambiar District 25. This society offers apartments in the price range of Rs. 1.7 - 4.18 Cr. Nambiar District 25 apartments are available in multiples sizes, ranging from 1,245 - 2,996 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/308/PR/100125/007377 is the RERA number",
+    galleryImages: ['/Nambiar_District_25.jpg'],
+    aboutText: "Here are beautifully built 2,3,4 BHK apartments in Sarjapur Road, available for sale at Nambiar District 25. This society offers apartments in the price range of Rs. 1.7 - 4.18 Cr. Nambiar District 25 apartments are available in multiples sizes, ranging from 1,245 - 2,996 sqft SUPER area. This society is RERA approved and PRM/KA/RERA/1251/308/PR/100125/007377 is the RERA number"
+  },
+  {
+    id: "northern-lights",
+    title: "Northern Lights by Puravankara KVN",
+    subtitle: "2, 3, 4 BHK Apartment in Bagalur, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹1.4 - 1.47 Cr" },
+      { label: "3 BHK Apartment", price: "₹1.85 - 2.16 Cr" },
+      { label: "4 BHK Apartment", price: "₹4.42 - 4.54 Cr" }
+    ],
+    nearby: ["The School of Raya", "Reva University", "Delhi Public School", "New Bangalore Hospital", "Manipal Hospitals"],
+    builder: "Puravankara",
+    status: "New Launch · Completion from Dec, 2029 onwards",
+    imageSrc: "/Northern_Lights_by_Puravankara_KVN.jpg",
+    imageCount: "1/5",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Here are beautifully built 2,3,4 BHK apartments in Bagalur, available for sale at Northern Lights by Puravankara KVN. Apartments in Northern Lights by Puravankara KVN have SUPER area ranging between 1,275 - 4,131 sqft. Prices of apartments in this project, vary between Rs. 1.4 - 4.54 Cr. This society is RERA approved and PRM/KA/RERA/1251/309/PR/120326/008525 is the RERA number",
+    galleryImages: ['/Northern_Lights_by_Puravankara_KVN.jpg'],
+    aboutText: "Here are beautifully built 2,3,4 BHK apartments in Bagalur, available for sale at Northern Lights by Puravankara KVN. Apartments in Northern Lights by Puravankara KVN have SUPER area ranging between 1,275 - 4,131 sqft. Prices of apartments in this project, vary between Rs. 1.4 - 4.54 Cr. This society is RERA approved and PRM/KA/RERA/1251/309/PR/120326/008525 is the RERA number"
+  },
+  {
+    id: "sumadhura-solea",
+    title: "Sumadhura Solea",
+    subtitle: "3, 4 BHK Apartment in Thanisandra, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹2.08 - 2.38 Cr" },
+      { label: "4 BHK Apartment", price: "₹2.7 - 2.87 Cr" }
+    ],
+    nearby: ["North Hills International School", "HKBK College of Engineering", "Manipal Hospital Hebbal", "Elements Mall", "Kempegowda International Airport"],
+    builder: "Sumadhura Group",
+    status: "New Launch · Completion in Jun, 2029",
+    imageSrc: "/Sumadhura_Solea.jpg",
+    imageCount: "1/3",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Sumadhura Solea society now offers elegantly built 3,4 BHK apartments in Thanisandra. Apartments in Sumadhura Solea have SUPER area ranging between 1,560 - 2,155 sqft. Sumadhura Solea is a RERA- registered society and PRM/KA/RERA/1251/446/PR/100326/008517 is the RERA registration number. This society offers apartments in the price range of Rs. 2.08 - 2.87 Cr",
+    galleryImages: ['/Sumadhura_Solea.jpg'],
+    aboutText: "Sumadhura Solea society now offers elegantly built 3,4 BHK apartments in Thanisandra. Apartments in Sumadhura Solea have SUPER area ranging between 1,560 - 2,155 sqft. Sumadhura Solea is a RERA- registered society and PRM/KA/RERA/1251/446/PR/100326/008517 is the RERA registration number. This society offers apartments in the price range of Rs. 2.08 - 2.87 Cr"
+  },
+  {
+    id: "eeshanya-aaroha",
+    title: "Eeshanya Aaroha",
+    subtitle: "2, 3 BHK Apartment in Soukya Road, Whitefield, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹81.24 L" },
+      { label: "3 BHK Apartment", price: "₹1.04 - 1.28 Cr" }
+    ],
+    nearby: ["Bangalore International Academy", "National Highway 648", "MVJ College of Engineering", "Whitefield Railway Station", "Kadugodi Metro Station"],
+    builder: "Eeshanya Infra LLP",
+    status: "Under Construction · Completion in Jun, 2027",
+    imageSrc: "/Eeshanya_Aaroha.jpg",
+    imageCount: "1/5",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Spacious 2,3 BHK apartments in Soukya Road are available for sale.Check out latest property options at Eeshanya Aaroha housing society. Here units have different sizes, mostly in range of 1,055 - 1,660 sqft SUPER area. Apartments in this complex are available in price range of Rs. 81.24 L - 1.28 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/150925/008093 is the RERA number",
+    galleryImages: ['/Eeshanya_Aaroha.jpg'],
+    aboutText: "Spacious 2,3 BHK apartments in Soukya Road are available for sale.Check out latest property options at Eeshanya Aaroha housing society. Here units have different sizes, mostly in range of 1,055 - 1,660 sqft SUPER area. Apartments in this complex are available in price range of Rs. 81.24 L - 1.28 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/150925/008093 is the RERA number"
+  },
+  {
+    id: "house-of-sapiens",
+    title: "House of Sapiens",
+    subtitle: "2, 3 BHK Apartment in Hoskote, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹95.5 L - 1.16 Cr" },
+      { label: "3 BHK Apartment", price: "₹1.36 - 1.88 Cr" }
+    ],
+    nearby: ["Capstone High School", "Silicon City Hospital", "Sri Channabyre Gowda Stadium", "National Highway 75", "Orion Uptown Mall"],
+    builder: "Ma Sarada Constructions Bangalore",
+    status: "New Launch · Completion in Jan, 2031",
+    imageSrc: "/House_of_Sapiens.jpg",
+    imageCount: "1/3",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Beautiful 2,3 BHK apartments in Hoskote, are now available in House of Sapiens housing project. House of Sapiens has apartments in multiple configurations, in range of 1,120 - 2,210 sqft. This society offers apartments in the price range of Rs. 95.5 L - 1.88 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/310126/008441 is the RERA number",
+    galleryImages: ['/House_of_Sapiens.jpg'],
+    aboutText: "Beautiful 2,3 BHK apartments in Hoskote, are now available in House of Sapiens housing project. House of Sapiens has apartments in multiple configurations, in range of 1,120 - 2,210 sqft. This society offers apartments in the price range of Rs. 95.5 L - 1.88 Cr. This society is RERA approved and PRM/KA/RERA/1250/304/PR/310126/008441 is the RERA number"
+  },
+  {
+    id: "assetz-zen-and-sato",
+    title: "Assetz Zen and Sato",
+    subtitle: "3, 4 BHK Apartment in Yelahanka, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹2.7 - 2.76 Cr" },
+      { label: "4 BHK Apartment", price: "₹3.7 Cr" }
+    ],
+    nearby: ["REVA University", "Delhi Public School Bangalore North", "National Highway 44", "Sparsh Hospital Yelahanka", "The Galleria Mall"],
+    builder: "Assetz Property Group",
+    status: "New Launch · Completion in May, 2030",
+    imageSrc: "/Assetz_Zen_and_Sato.jpg",
+    imageCount: "1/4",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Check out 3,4 BHK apartments in Yelahanka, now available for sale at Assetz Zen and Sato. Assetz Zen and Sato apartments are available in multiples sizes, ranging from 2,159 - 2,955 sqft SUPER area. Assetz Zen and Sato 's RERA registration number is PRM/KA/RERA/1251/472/PR/080525/007728. Apartment prices in this housing society vary in the range of Rs. 2.7 - 3.7 Cr",
+    galleryImages: ['/Assetz_Zen_and_Sato.jpg'],
+    aboutText: "Check out 3,4 BHK apartments in Yelahanka, now available for sale at Assetz Zen and Sato. Assetz Zen and Sato apartments are available in multiples sizes, ranging from 2,159 - 2,955 sqft SUPER area. Assetz Zen and Sato 's RERA registration number is PRM/KA/RERA/1251/472/PR/080525/007728. Apartment prices in this housing society vary in the range of Rs. 2.7 - 3.7 Cr"
+  },
+  {
+    id: "aparna-wonderwoods",
+    title: "Aparna Wonderwoods",
+    subtitle: "2, 3 BHK Apartment in Mallasandra, Near Kanakpura Road, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹1.25 - 1.41 Cr" },
+      { label: "3 BHK Apartment", price: "₹1.52 - 2.03 Cr" }
+    ],
+    nearby: ["National Highway 48", "Sri Kumaran Public School", "Thalaghattapura Metro Station", "Forum South Mall", "Ashmitha Multispeciality Hospital"],
+    builder: "Aparna Constructions",
+    status: "New Launch · Completion in Feb, 2031",
+    imageSrc: "/Aparna_Wonderwoods.jpg",
+    imageCount: "1/11",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Choose your dream home from the wide variety of 2,3 BHK apartments in Mallasandra, available for sale in Aparna Wonderwoods. Apartments in this complex are available in price range of Rs. 1.25 - 2.03 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/310/PR/080626/008706 registration number. Aparna Wonderwoods has apartments in multiple configurations, in range of 1,292 - 2,092 sqft",
+    galleryImages: ['/Aparna_Wonderwoods.jpg'],
+    aboutText: "Choose your dream home from the wide variety of 2,3 BHK apartments in Mallasandra, available for sale in Aparna Wonderwoods. Apartments in this complex are available in price range of Rs. 1.25 - 2.03 Cr. The housing society is RERA-registered with PRM/KA/RERA/1251/310/PR/080626/008706 registration number. Aparna Wonderwoods has apartments in multiple configurations, in range of 1,292 - 2,092 sqft"
+  },
+  {
+    id: "vrushabadri-winter-park",
+    title: "Vrushabadri Winter Park",
+    subtitle: "2, 3 BHK Apartment in Sarjapur Road, Bangalore",
+    priceConfigs: [
+      { label: "2 BHK Apartment", price: "₹88.9 - 92.4 L" },
+      { label: "3 BHK Apartment", price: "₹1 - 1.23 Cr" }
+    ],
+    nearby: ["State Highway 35", "The Foundation School", "Forum Value Mall", "Azim Premji University", "RGA Techpark"],
+    builder: "Vrushabadri Developers",
+    status: "New Launch · Completion in Dec, 2028",
+    imageSrc: "/Vrushabadri_Winter_Park.jpg",
+    imageCount: "1/5",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Beautiful 2,3 BHK apartments in Sarjapur Road, are now available in Vrushabadri Winter Park housing project. Vrushabadri Winter Park apartments are available in multiples sizes, ranging from 1,270 - 1,755 sqft SUPER area. Prices of apartments in this project, vary between Rs. 88.9 L - 1.23 Cr. Vrushabadri Winter Park is a RERA- registered society and PRM/KA/RERA/1251/308/PR/070526/008631 is the RERA registration number",
+    galleryImages: ['/Vrushabadri_Winter_Park.jpg'],
+    aboutText: "Beautiful 2,3 BHK apartments in Sarjapur Road, are now available in Vrushabadri Winter Park housing project. Vrushabadri Winter Park apartments are available in multiples sizes, ranging from 1,270 - 1,755 sqft SUPER area. Prices of apartments in this project, vary between Rs. 88.9 L - 1.23 Cr. Vrushabadri Winter Park is a RERA- registered society and PRM/KA/RERA/1251/308/PR/070526/008631 is the RERA registration number"
+  },
+  {
+    id: "sj-park-ville",
+    title: "SJ Park Ville",
+    subtitle: "4 BHK Villa in Whitefield, Bangalore",
+    priceConfigs: [
+      { label: "4 BHK Villa", price: "₹2.99 - 3.24 Cr" }
+    ],
+    nearby: ["Pratham International School", "Euro School", "Sigma Tech Park", "ITPL", "Tesco"],
+    builder: "SJ Constructions",
+    status: "New Launch · Completion in Dec, 2029",
+    imageSrc: "/SJ_Park_Ville.jpg",
+    imageCount: "1/8",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "SJ Park Ville brings 4 BHK Villa in Whitefield, one of the preferred locations in the city. Sizes of Villas vary in 2,955 - 2,985 sqft. Villas in SJ Park Ville are offered in the price range of Rs. 2.99 - 3.24 Cr. Villas in SJ Park Ville are New Launch",
+    galleryImages: ['/SJ_Park_Ville.jpg'],
+    aboutText: "SJ Park Ville brings 4 BHK Villa in Whitefield, one of the preferred locations in the city. Sizes of Villas vary in 2,955 - 2,985 sqft. Villas in SJ Park Ville are offered in the price range of Rs. 2.99 - 3.24 Cr. Villas in SJ Park Ville are New Launch"
+  },
+  {
+    id: "concorde-eleve",
+    title: "Concorde Eleve",
+    subtitle: "3, 4 BHK Apartment in KR Puram, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹2.22 - 2.25 Cr" },
+      { label: "4 BHK Apartment", price: "₹2.94 - 2.96 Cr" }
+    ],
+    nearby: ["James English School", "Geetha Hospital", "Garden City Uni", "Krishnarajapuram", "Kempegowda Airport"],
+    builder: "Concorde",
+    status: "New Launch · Completion in Dec, 2030",
+    imageSrc: "/Concorde_Eleve.jpg",
+    imageCount: "1/11",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Spacious 3,4 BHK apartments in KR Puram are available for sale.Check out latest property options at Concorde Eleve housing society. Here units have different sizes, mostly in range of 1,934 - 2,570 sqft SUPER area. Prices of apartments in this project, vary between Rs. 2.22 - 2.96 Cr. This society is RERA approved and PRM/KA/RERA/1251/446/PR/210325/007608 is the RERA number",
+    galleryImages: ['/Concorde_Eleve.jpg'],
+    aboutText: "Spacious 3,4 BHK apartments in KR Puram are available for sale.Check out latest property options at Concorde Eleve housing society. Here units have different sizes, mostly in range of 1,934 - 2,570 sqft SUPER area. Prices of apartments in this project, vary between Rs. 2.22 - 2.96 Cr. This society is RERA approved and PRM/KA/RERA/1251/446/PR/210325/007608 is the RERA number"
   }
 ];
