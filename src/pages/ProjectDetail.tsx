@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Home, Heart, ChevronRight, Download, Image as ImageIcon, PlayCircle, X, Info, ChevronLeft, Building2, Wallet } from 'lucide-react';
+import { Home, Heart, ChevronRight, Download, Image as ImageIcon, X, Info, ChevronLeft, Building2, Wallet } from 'lucide-react';
 import { ProjectOverview } from '../components/ProjectOverview';
 import { ProjectFloorPlans } from '../components/ProjectFloorPlans';
 import { ProjectAmenities } from '../components/ProjectAmenities';
