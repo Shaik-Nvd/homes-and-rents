@@ -1920,7 +1920,6 @@ export const projects: ProjectData[] = [
     imageCount: "1/7",
     tag: "NEW BOOKING",
     badges: ["RERA", "ZERO BROKERAGE", "3D"],
-    offers: ["1 OFFER"],
     description: "Choose your dream home from the wide variety of 2,3 BHK apartments in Varthur, available for sale in RRL Palm Altezze. Apartments in this complex are available in price range of Rs. 97.86 L - 1.25 Cr. RRL Palm Altezze is a RERA- registered society and PRM/KA/RERA/1251/308/PR/141025/008167 is the RERA registration number. Apartments in RRL Palm Altezze have SUPER area ranging between 1,265 - 1,630 sqft",
     galleryImages: ['/RRL_Palm_Altezze.jpg'],
     aboutText: "Choose your dream home from the wide variety of 2,3 BHK apartments in Varthur, available for sale in RRL Palm Altezze. Apartments in this complex are available in price range of Rs. 97.86 L - 1.25 Cr. RRL Palm Altezze is a RERA- registered society and PRM/KA/RERA/1251/308/PR/141025/008167 is the RERA registration number. Apartments in RRL Palm Altezze have SUPER area ranging between 1,265 - 1,630 sqft"
