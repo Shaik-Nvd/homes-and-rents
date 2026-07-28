@@ -1371,5 +1371,24 @@ export const projects: ProjectData[] = [
     description: "Here are beautifully built 3,4 BHK apartments in Sarjapur Road, available for sale at Arvind Sylva. This society is RERA approved and PRM/KA/RERA/1251/446/PR/090726/008800 is the RERA number. Arvind Sylva apartments are available in multiples sizes, ranging from 1,450 - 2,400 sqft SUPER area. This society offers apartments in the price range of Rs. 1.96 - 3.24 Cr",
     galleryImages: ['/Arvind_Sylva.jpg'],
     aboutText: "Here are beautifully built 3,4 BHK apartments in Sarjapur Road, available for sale at Arvind Sylva. This society is RERA approved and PRM/KA/RERA/1251/446/PR/090726/008800 is the RERA number. Arvind Sylva apartments are available in multiples sizes, ranging from 1,450 - 2,400 sqft SUPER area. This society offers apartments in the price range of Rs. 1.96 - 3.24 Cr"
+  },
+  {
+    id: "eaton-park-at-the-prestige-city",
+    title: "Eaton Park at The Prestige City",
+    subtitle: "3, 4 BHK Apartment in Sarjapur Road, Bangalore",
+    priceConfigs: [
+      { label: "3 BHK Apartment", price: "₹2.2 - 2.84 Cr" },
+      { label: "4 BHK Apartment", price: "₹3.07 - 3.48 Cr" }
+    ],
+    nearby: ["Oakridge International School", "Belenus Champion Hospital", "Azim Premji University", "Forum The Prestige City", "Kempegowda International Airport"],
+    builder: "Prestige Group",
+    status: "New Launch · Completion in Jun, 2030",
+    imageSrc: "/Eaton_Park_at_The_Prestige_City.jpg",
+    imageCount: "1/2",
+    tag: "NEW BOOKING",
+    badges: ["RERA", "ZERO BROKERAGE", "3D"],
+    description: "Finest 3,4 BHK apartments in Sarjapur Road available for sale in Eaton Park at The Prestige City. Eaton Park at The Prestige City has apartments in multiple configurations, in range of 1,732 - 2,786 sqft. The housing society is RERA-registered with PRM/KA/RERA/1251/308/PR/180326/008537 registration number. This society offers apartments in the price range of Rs. 2.2 - 3.48 Cr",
+    galleryImages: ['/Eaton_Park_at_The_Prestige_City.jpg'],
+    aboutText: "Finest 3,4 BHK apartments in Sarjapur Road available for sale in Eaton Park at The Prestige City. Eaton Park at The Prestige City has apartments in multiple configurations, in range of 1,732 - 2,786 sqft. The housing society is RERA-registered with PRM/KA/RERA/1251/308/PR/180326/008537 registration number. This society offers apartments in the price range of Rs. 2.2 - 3.48 Cr"
   }
 ];
