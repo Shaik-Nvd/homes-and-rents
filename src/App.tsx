@@ -28,6 +28,8 @@ import { PropertyDetail } from './pages/PropertyDetail';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { PostProperty } from './pages/PostProperty';
 import { ProjectCard } from './components/ProjectCard';
+import { SuperCards } from './components/SuperCards';
+import type { SuperCardCategory } from './components/SuperCards';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthModal } from './components/AuthModal';
 
@@ -191,13 +193,27 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab }: { activeTab?: 'Rent' |
 const Home = () => {
   const [activeTab, setActiveTab] = useState<'Rent' | 'Sale'>('Sale'); // Default to Sale as requested
   const [selectedBuilder, setSelectedBuilder] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<SuperCardCategory>('All');
 
   // Extract unique builders
   const builders = Array.from(new Set(projects.map(p => p.builder))).filter(Boolean);
 
-  const filteredProjects = selectedBuilder 
-    ? projects.filter(p => p.builder === selectedBuilder)
-    : projects;
+  let filteredProjects = projects;
+  
+  if (selectedBuilder) {
+    filteredProjects = filteredProjects.filter(p => p.builder === selectedBuilder);
+  }
+
+  if (selectedCategory !== 'All' && selectedCategory !== 'Location') {
+    filteredProjects = filteredProjects.filter(p => {
+      const target = selectedCategory.toLowerCase();
+      // Check in subtitle and price configs
+      const inSubtitle = p.subtitle?.toLowerCase().includes(target);
+      const inPriceConfigs = p.priceConfigs?.some(c => c.label.toLowerCase().includes(target));
+      const inTitle = p.title.toLowerCase().includes(target);
+      return inSubtitle || inPriceConfigs || inTitle;
+    });
+  }
 
   useEffect(() => {
     const handleTabChange = (e: any) => setActiveTab(e.detail);
@@ -211,6 +227,8 @@ const Home = () => {
       <main className="flex-grow w-full relative z-20 -mt-8 sm:-mt-12 px-2 sm:px-0">
         <div className="bg-gray-50 rounded-t-[2rem] pt-6 sm:pt-8 px-4 sm:px-6 lg:px-8 pb-6 max-w-5xl mx-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
           
+          <SuperCards selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />
+
           {/* Builder Filter Section */}
           <div className="mb-8">
             <div className="text-[10px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-4 flex items-center gap-3">
