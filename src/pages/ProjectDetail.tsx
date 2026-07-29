@@ -242,39 +242,41 @@ export const ProjectDetail = () => {
             </div>
 
             {/* Pricing Details List */}
-            <div>
-              <div className="flex items-center justify-between mb-8">
-                <h3 className="text-2xl font-black text-slate-900">Unit Floor Plans & Pricing</h3>
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {project.priceConfigs?.map((config, idx) => (
-                  <div key={idx} className="bg-white rounded-3xl border border-slate-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="px-6 py-5 border-b border-slate-50 flex items-center justify-between relative z-10 bg-slate-50/50">
-                      <h4 className="text-slate-900 font-extrabold text-sm flex items-baseline gap-1.5">
-                        <span className="text-blue-600 text-xl font-black">{config.label.split(' ')[0]}</span> 
-                        <span className="text-slate-600">{config.label.split(' ').slice(1).join(' ')}</span>
-                      </h4>
-                      <div className="w-8 h-8 bg-white border border-blue-100 text-blue-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0 shadow-sm">
-                         <ChevronRight className="w-4 h-4" />
+            {project.tag !== 'Rent' && (
+              <div>
+                <div className="flex items-center justify-between mb-8">
+                  <h3 className="text-2xl font-black text-slate-900">Unit Floor Plans & Pricing</h3>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {project.priceConfigs?.map((config, idx) => (
+                    <div key={idx} className="bg-white rounded-3xl border border-slate-100 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_12px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 relative group overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                      <div className="px-6 py-5 border-b border-slate-50 flex items-center justify-between relative z-10 bg-slate-50/50">
+                        <h4 className="text-slate-900 font-extrabold text-sm flex items-baseline gap-1.5">
+                          <span className="text-blue-600 text-xl font-black">{config.label.split(' ')[0]}</span> 
+                          <span className="text-slate-600">{config.label.split(' ').slice(1).join(' ')}</span>
+                        </h4>
+                        <div className="w-8 h-8 bg-white border border-blue-100 text-blue-600 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0 shadow-sm">
+                           <ChevronRight className="w-4 h-4" />
+                        </div>
+                      </div>
+                      <div className="p-6 flex flex-col justify-between h-[120px] relative z-10">
+                        <p className="text-[11px] text-slate-400 font-bold tracking-widest uppercase mb-1">Estimated Cost</p>
+                        <div className="flex items-center justify-between mt-auto">
+                          <p className="text-slate-900 text-2xl font-black">{config.price}</p>
+                          <span className="text-blue-700 bg-blue-50 text-[10px] font-bold px-3 py-1.5 rounded-lg cursor-pointer hover:bg-blue-100 transition-colors border border-blue-100">Details</span>
+                        </div>
                       </div>
                     </div>
-                    <div className="p-6 flex flex-col justify-between h-[120px] relative z-10">
-                      <p className="text-[11px] text-slate-400 font-bold tracking-widest uppercase mb-1">Estimated Cost</p>
-                      <div className="flex items-center justify-between mt-auto">
-                        <p className="text-slate-900 text-2xl font-black">{config.price}</p>
-                        <span className="text-blue-700 bg-blue-50 text-[10px] font-bold px-3 py-1.5 rounded-lg cursor-pointer hover:bg-blue-100 transition-colors border border-blue-100">Details</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Other Sections */}
             <div className="flex flex-col gap-12 mt-4">
               <ProjectOverview />
-              <ProjectFloorPlans project={project} />
+              {project.tag !== 'Rent' && <ProjectFloorPlans project={project} />}
               {project.tag === 'Rent' ? (
                 <RentalAmenities />
               ) : (
