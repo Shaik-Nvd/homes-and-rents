@@ -41,7 +41,7 @@ export const ProjectDetail = () => {
     : [project.imageSrc];
   const allVideos = project.videoLinks || [];
 
-  const handleWhatsAppSubmit = (e: React.FormEvent) => {
+  const handleWhatsAppSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) return;
     const text = `Hi, I am interested in ${project.title}. My name is ${formData.name} and my contact number is ${formData.phone}. Please share the details and images.`;
