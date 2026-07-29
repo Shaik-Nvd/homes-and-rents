@@ -158,32 +158,34 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
         </div>
 
         {/* Nearby */}
-        <div className="flex flex-wrap items-center gap-2 mb-6 text-sm relative">
-          <span className="text-[#0a192f] font-semibold">Nearby :</span>
-          {visibleNearby.map((loc, i) => (
-            <span key={i} className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs">{loc}</span>
-          ))}
-          
-          {hiddenNearby.length > 0 && (
-            <div 
-              className="relative z-20"
-              onMouseEnter={() => setShowMoreNearby(true)}
-              onMouseLeave={() => setShowMoreNearby(false)}
-            >
-              <span className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs cursor-pointer hover:bg-gray-200 transition-colors">
-                +{hiddenNearby.length}
-              </span>
-              
-              {showMoreNearby && (
-                <div className="absolute top-full left-0 mt-2 w-max max-w-xs bg-white border border-gray-200 shadow-xl rounded-lg p-3 z-10 flex flex-wrap gap-2">
-                  {hiddenNearby.map((loc, i) => (
-                    <span key={i} className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs">{loc}</span>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+        {data.nearby && data.nearby.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2 mb-6 text-sm relative">
+            <span className="text-[#0a192f] font-semibold">Nearby :</span>
+            {visibleNearby.map((loc, i) => (
+              <span key={i} className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs">{loc}</span>
+            ))}
+            
+            {hiddenNearby.length > 0 && (
+              <div 
+                className="relative z-20"
+                onMouseEnter={() => setShowMoreNearby(true)}
+                onMouseLeave={() => setShowMoreNearby(false)}
+              >
+                <span className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs cursor-pointer hover:bg-gray-200 transition-colors">
+                  +{hiddenNearby.length}
+                </span>
+                
+                {showMoreNearby && (
+                  <div className="absolute top-full left-0 mt-2 w-max max-w-xs bg-white border border-gray-200 shadow-xl rounded-lg p-3 z-10 flex flex-wrap gap-2">
+                    {hiddenNearby.map((loc, i) => (
+                      <span key={i} className="bg-gray-100 text-gray-700 px-2.5 py-1 rounded-md text-xs">{loc}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
         
         {data.description && (
           <div className="mb-4 text-sm text-gray-600 flex justify-between items-center group cursor-pointer">
