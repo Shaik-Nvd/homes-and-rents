@@ -20,7 +20,7 @@ class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean,
   }
 }
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Home as HomeIcon, CheckCircle2, Search } from 'lucide-react';
+import { Home as HomeIcon, CheckCircle2, Search, MapPin } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { projects } from './data/projects';
 import { SearchPage } from './pages/Search';
@@ -87,8 +87,12 @@ const TAGLINES = [
   "Finding Home Should Feel Easy."
 ];
 
-const SearchHero = ({ activeTab = 'Sale', setActiveTab }: { activeTab?: 'Rent' | 'Sale', setActiveTab?: (tab: 'Rent' | 'Sale') => void }) => {
+const SearchHero = ({ activeTab = 'Sale', setActiveTab, searchQuery = '', setSearchQuery }: { activeTab?: 'Rent' | 'Sale', setActiveTab?: (tab: 'Rent' | 'Sale') => void, searchQuery?: string, setSearchQuery?: (query: string) => void }) => {
   const [taglineIndex, setTaglineIndex] = useState(0);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const POPULAR_LOCALITIES = ['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'];
+  const filteredLocalities = POPULAR_LOCALITIES.filter(loc => loc.toLowerCase().includes(searchQuery.toLowerCase()));
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -170,13 +174,39 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab }: { activeTab?: 'Rent' |
           </div>
 
           {/* Search Bar */}
-          <div className="flex gap-2 sm:gap-3">
-            <div className="flex-1 bg-white rounded-xl sm:rounded-2xl flex items-center px-3 sm:px-6 shadow-inner focus-within:ring-4 focus-within:ring-indigo-500/30 transition-all border border-gray-100">
-              <input 
-                type="text" 
-                placeholder="Search locality..." 
-                className="w-full outline-none text-[13px] sm:text-[15px] text-gray-800 bg-transparent placeholder-gray-400 py-2.5 sm:py-4.5 font-semibold" 
-              />
+          <div className="flex gap-2 sm:gap-3 relative z-50">
+            <div className="flex-1 bg-white rounded-xl sm:rounded-2xl flex flex-col shadow-inner focus-within:ring-4 focus-within:ring-indigo-500/30 transition-all border border-gray-100 relative">
+              <div className="flex items-center px-3 sm:px-6 h-full">
+                <input 
+                  type="text" 
+                  placeholder="Search locality..." 
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery?.(e.target.value);
+                    setShowSuggestions(true);
+                  }}
+                  onFocus={() => setShowSuggestions(true)}
+                  onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                  className="w-full outline-none text-[13px] sm:text-[15px] text-gray-800 bg-transparent placeholder-gray-400 py-2.5 sm:py-4.5 font-semibold h-full" 
+                />
+              </div>
+              {showSuggestions && filteredLocalities.length > 0 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-xl rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.2)] border border-gray-100/50 overflow-hidden z-50 max-h-60 overflow-y-auto">
+                  {filteredLocalities.map((loc, i) => (
+                    <div 
+                      key={i} 
+                      className="px-4 sm:px-6 py-3 hover:bg-indigo-50/80 cursor-pointer text-sm font-bold text-gray-700 transition-colors flex items-center border-b border-gray-50 last:border-0"
+                      onClick={() => {
+                        setSearchQuery?.(loc);
+                        setShowSuggestions(false);
+                      }}
+                    >
+                      <MapPin className="w-4 h-4 mr-3 text-indigo-500 flex-shrink-0" />
+                      {loc}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <button className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white px-4 sm:px-6 py-2.5 sm:py-4 rounded-xl sm:rounded-2xl shadow-[0_4px_14px_0_rgba(244,63,94,0.39)] flex-shrink-0 transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center">
               <Search className="w-4 h-4 sm:w-6 sm:h-6 stroke-[2.5]" />
@@ -191,7 +221,8 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab }: { activeTab?: 'Rent' |
 
 
 const Home = () => {
-  const [activeTab, setActiveTab] = useState<'Rent' | 'Sale'>('Sale'); // Default to Sale as requested
+  const [activeTab, setActiveTab] = useState<'Rent' | 'Sale'>('Sale');
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedBuilder, setSelectedBuilder] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<SuperCardCategory>('All');
 
@@ -200,6 +231,15 @@ const Home = () => {
 
   let filteredProjects = projects;
   
+  if (searchQuery.trim()) {
+    const q = searchQuery.toLowerCase();
+    filteredProjects = filteredProjects.filter(p => 
+      p.subtitle?.toLowerCase().includes(q) || 
+      p.title.toLowerCase().includes(q) ||
+      p.builder.toLowerCase().includes(q)
+    );
+  }
+
   if (selectedBuilder) {
     filteredProjects = filteredProjects.filter(p => p.builder === selectedBuilder);
   }
@@ -223,7 +263,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <SearchHero activeTab={activeTab} setActiveTab={setActiveTab} />
+      <SearchHero activeTab={activeTab} setActiveTab={setActiveTab} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <main className="flex-grow w-full relative z-20 -mt-8 sm:-mt-12 px-2 sm:px-0">
         <div className="bg-gray-50 rounded-t-[2rem] pt-6 sm:pt-8 px-4 sm:px-6 lg:px-8 pb-6 max-w-5xl mx-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
           
