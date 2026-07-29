@@ -296,6 +296,12 @@ const Home = () => {
   const builders = Array.from(new Set(allProjects.map(p => p.builder))).filter(Boolean);
 
   let filteredProjects = allProjects;
+
+  if (activeTab === 'Rent') {
+    filteredProjects = filteredProjects.filter(p => p.tag === 'Rent' || p.priceConfigs?.some(c => c.label.toLowerCase().includes('rent')));
+  } else {
+    filteredProjects = filteredProjects.filter(p => p.tag !== 'Rent' && !p.priceConfigs?.some(c => c.label.toLowerCase().includes('rent')));
+  }
   
   if (searchQuery.trim()) {
     const q = searchQuery.toLowerCase();
