@@ -15,6 +15,8 @@ import { SuperCards } from './components/SuperCards';
 import type { SuperCardCategory } from './components/SuperCards';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthModal } from './components/AuthModal';
+import type { ProjectData } from './data/projects';
+import { supabase } from './lib/supabase';
 
 // Mock Data removed, using Supabase
 
@@ -261,11 +263,39 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBuilder, setSelectedBuilder] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<SuperCardCategory>('All');
+  const [dbProjects, setDbProjects] = useState<ProjectData[]>([]);
+
+  useEffect(() => {
+    const fetchProperties = async () => {
+      const { data, error } = await supabase.from('properties').select('*').order('created_at', { ascending: false });
+      if (!error && data) {
+        const mapped: ProjectData[] = data.map(item => ({
+          id: item.id?.toString() || Math.random().toString(),
+          title: item.title || 'Untitled Property',
+          subtitle: `${item.bhk || 2} BHK in ${item.location || 'Bangalore'}`,
+          priceConfigs: [{ label: item.type === 'Rent' ? 'Rent' : 'Price', price: item.price || 'Contact for price' }],
+          nearby: [],
+          builder: 'Individual Owner',
+          status: 'Ready to Move',
+          imageSrc: (item.images && item.images.length > 0) ? item.images[0] : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1600',
+          imageCount: item.images?.length?.toString() || '1',
+          tag: item.type === 'Rent' ? 'Rent' : 'Sale',
+          badges: ['Verified'],
+          description: item.description,
+          galleryImages: item.images || []
+        }));
+        setDbProjects(mapped);
+      }
+    };
+    fetchProperties();
+  }, []);
+
+  const allProjects = [...projects, ...dbProjects];
 
   // Extract unique builders
-  const builders = Array.from(new Set(projects.map(p => p.builder))).filter(Boolean);
+  const builders = Array.from(new Set(allProjects.map(p => p.builder))).filter(Boolean);
 
-  let filteredProjects = projects;
+  let filteredProjects = allProjects;
   
   if (searchQuery.trim()) {
     const q = searchQuery.toLowerCase();
