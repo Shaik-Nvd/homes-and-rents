@@ -293,8 +293,11 @@ export const ProjectDetail = () => {
             </div>
             
             <div className="p-6 border-t border-slate-100 bg-white">
-              <button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 rounded-xl font-black text-[15px] hover:shadow-lg hover:shadow-blue-500/30 transition-all shadow-sm">
-                I'm interested in this project
+              <button 
+                onClick={() => window.open(`https://wa.me/919739063840?text=Hi%2C%20I%20am%20interested%20in%20${encodeURIComponent(project.title)}`, '_blank')}
+                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-4 rounded-xl font-black text-[15px] hover:shadow-lg hover:shadow-blue-500/30 transition-all shadow-sm"
+              >
+                Request Callback
               </button>
             </div>
           </div>
