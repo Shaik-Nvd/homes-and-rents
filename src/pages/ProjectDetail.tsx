@@ -8,6 +8,7 @@ import { ProjectAbout } from '../components/ProjectAbout';
 import { ProjectLocation } from '../components/ProjectLocation';
 import { ProjectReviews } from '../components/ProjectReviews';
 import { SiteVisitModal } from '../components/SiteVisitModal';
+import { RentalAmenities } from '../components/RentalAmenities';
 import { projects } from '../data/projects';
 import { supabase } from '../lib/supabase';
 import type { ProjectData } from '../data/projects';
@@ -274,7 +275,11 @@ export const ProjectDetail = () => {
             <div className="flex flex-col gap-12 mt-4">
               <ProjectOverview />
               <ProjectFloorPlans project={project} />
-              <ProjectAmenities />
+              {project.tag === 'Rent' ? (
+                <RentalAmenities />
+              ) : (
+                <ProjectAmenities />
+              )}
               <ProjectAbout project={project} />
               <ProjectLocation project={project} />
               <ProjectReviews />
