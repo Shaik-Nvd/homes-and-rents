@@ -93,6 +93,21 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab, searchQuery = '', setSea
   const [taglineIndex, setTaglineIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
+  const POPULAR_HUBS = [
+    { name: 'Whitefield', label: 'Whitefield (East IT Hub)' },
+    { name: 'HSR Layout', label: 'HSR Layout (Startup Capital)' },
+    { name: 'Bellandur', label: 'Bellandur / ORR (Financial District & IT Corridor)' },
+    { name: 'Electronic City', label: 'Electronic City (South IT Hub)' },
+    { name: 'Marathahalli', label: 'Marathahalli (Budget Techie Hub)' },
+    { name: 'Koramangala', label: 'Koramangala (Premium Lifestyle & Startups)' },
+    { name: 'Indiranagar', label: 'Indiranagar (Premium Lifestyle & Metro)' },
+    { name: 'Sarjapur Road', label: 'Sarjapur Road (Gated Community & Family Hub)' },
+    { name: 'BTM Layout', label: 'BTM Layout (Bachelor & Co-living Capital)' },
+    { name: 'JP Nagar', label: 'JP Nagar (South Family & Metro Hub)' },
+    { name: 'Hebbal', label: 'Hebbal / Thanisandra (North Tech / Manyata Hub)' },
+    { name: 'Yelahanka', label: 'Yelahanka (Airport Corridor & Green Living)' }
+  ];
+
   const allLocalities = Array.from(new Set(
     projects.map(p => {
       const match = p.subtitle?.match(/ in (.*?)(?:, Bangalore|$)/i);
@@ -100,7 +115,17 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab, searchQuery = '', setSea
     }).filter(Boolean) as string[]
   )).sort();
   
-  const filteredLocalities = allLocalities.filter(loc => loc.toLowerCase().includes(searchQuery.toLowerCase()));
+  const allSuggestions = [
+    ...POPULAR_HUBS,
+    ...allLocalities
+      .filter(loc => !POPULAR_HUBS.some(hub => hub.name.toLowerCase() === loc.toLowerCase() || hub.label.toLowerCase().includes(loc.toLowerCase())))
+      .map(loc => ({ name: loc, label: loc }))
+  ];
+
+  const filteredLocalities = allSuggestions.filter(loc => 
+    loc.label.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    loc.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -208,12 +233,12 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab, searchQuery = '', setSea
                       className="px-4 sm:px-6 py-3 hover:bg-indigo-50/80 cursor-pointer text-sm font-bold text-gray-700 transition-colors flex items-center border-b border-gray-50 last:border-0"
                       onMouseDown={(e) => {
                         e.preventDefault();
-                        setSearchQuery?.(loc);
+                        setSearchQuery?.(loc.name);
                         setShowSuggestions(false);
                       }}
                     >
                       <MapPin className="w-4 h-4 mr-3 text-indigo-500 flex-shrink-0" />
-                      {loc}
+                      {loc.label}
                     </div>
                   ))}
                 </div>
