@@ -18,6 +18,8 @@ export const ProjectDetail = () => {
   const [showGallery, setShowGallery] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState(false);
+  const [imageFailed, setImageFailed] = useState(false);
+  const [formData, setFormData] = useState({ name: '', phone: '' });
 
   if (!project) {
     return (
@@ -39,17 +41,59 @@ export const ProjectDetail = () => {
     : [project.imageSrc];
   const allVideos = project.videoLinks || [];
 
+  const handleWhatsAppSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.phone) return;
+    const text = `Hi, I am interested in ${project.title}. My name is ${formData.name} and my contact number is ${formData.phone}. Please share the details and images.`;
+    window.open(`https://wa.me/919739063840?text=${encodeURIComponent(text)}`, '_blank');
+  };
+
   return (
     <div className="bg-slate-50 min-h-screen pb-20 font-sans">
       
       {/* Hero Banner Section */}
-      <div className="relative w-full h-[50vh] md:h-[65vh] min-h-[400px]">
-        <img 
-          src={allImages[0]} 
-          alt={project.title} 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/40"></div>
+      <div className="relative w-full h-[50vh] md:h-[65vh] min-h-[500px]">
+        {!imageFailed ? (
+          <img 
+            src={allImages[0]} 
+            alt={project.title} 
+            className="w-full h-full object-cover"
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-slate-900 pt-10 pb-28 px-4">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 sm:p-8 rounded-3xl w-full max-w-md shadow-2xl z-20 relative">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 text-center">Request Project Details</h3>
+              <p className="text-white/70 text-xs sm:text-sm mb-6 text-center">Images for {project.title} are currently being updated. Fill the form below and we will WhatsApp you the details and photos instantly.</p>
+              <form onSubmit={handleWhatsAppSubmit} className="space-y-4">
+                <div>
+                  <input 
+                    type="text" 
+                    placeholder="Your Name" 
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all"
+                    required
+                  />
+                </div>
+                <div>
+                  <input 
+                    type="tel" 
+                    placeholder="Your Phone Number" 
+                    value={formData.phone}
+                    onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/50 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/30 transition-all"
+                    required
+                  />
+                </div>
+                <button type="submit" className="w-full bg-[#25D366] hover:bg-[#20b858] text-white font-bold py-3.5 rounded-xl shadow-lg shadow-[#25D366]/20 transition-all flex items-center justify-center gap-2">
+                  Get Details on WhatsApp
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-transparent to-slate-900/40 pointer-events-none"></div>
         
         {/* Breadcrumbs over Hero */}
         <div className="absolute top-6 left-0 right-0 z-10">

@@ -93,8 +93,14 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab, searchQuery = '', setSea
   const [taglineIndex, setTaglineIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
-  const POPULAR_LOCALITIES = ['Whitefield', 'HSR Layout', 'Koramangala', 'BTM Layout', 'JP Nagar', 'Electronic City', 'Marathahalli', 'Sarjapur Road', 'Bellandur', 'Hebbal', 'Thanisandra', 'Yelahanka', 'Indiranagar'];
-  const filteredLocalities = POPULAR_LOCALITIES.filter(loc => loc.toLowerCase().includes(searchQuery.toLowerCase()));
+  const allLocalities = Array.from(new Set(
+    projects.map(p => {
+      const match = p.subtitle?.match(/ in (.*?)(?:, Bangalore|$)/i);
+      return match ? match[1].trim() : null;
+    }).filter(Boolean) as string[]
+  )).sort();
+  
+  const filteredLocalities = allLocalities.filter(loc => loc.toLowerCase().includes(searchQuery.toLowerCase()));
 
   useEffect(() => {
     const interval = setInterval(() => {
