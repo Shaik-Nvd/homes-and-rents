@@ -52,7 +52,7 @@ export const ProjectDetail = () => {
     <div className="bg-slate-50 min-h-screen pb-20 font-sans">
       
       {/* Hero Banner Section */}
-      <div className="relative w-full h-[50vh] md:h-[65vh] min-h-[500px]">
+      <div className={`relative w-full ${!imageFailed ? 'h-[50vh] md:h-[65vh] min-h-[500px]' : 'min-h-[650px] sm:min-h-[500px] md:h-[65vh]'}`}>
         {!imageFailed ? (
           <img 
             src={allImages[0]} 
@@ -61,8 +61,8 @@ export const ProjectDetail = () => {
             onError={() => setImageFailed(true)}
           />
         ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center bg-slate-900 pt-10 pb-28 px-4">
-            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 sm:p-8 rounded-3xl w-full max-w-md shadow-2xl z-20 relative">
+          <div className="w-full h-full flex flex-col items-center justify-start sm:justify-center bg-slate-900 pt-24 sm:pt-10 pb-48 sm:pb-28 px-4">
+            <div className="bg-white/10 backdrop-blur-md border border-white/20 p-5 sm:p-8 rounded-3xl w-full max-w-md shadow-2xl z-20 relative">
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 text-center">Request Project Details</h3>
               <p className="text-white/70 text-xs sm:text-sm mb-6 text-center">Images for {project.title} are currently being updated. Fill the form below and we will WhatsApp you the details and photos instantly.</p>
               <form onSubmit={handleWhatsAppSubmit} className="space-y-4">
