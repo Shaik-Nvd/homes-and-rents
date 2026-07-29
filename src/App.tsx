@@ -292,7 +292,7 @@ const Home = () => {
               <div className="absolute top-0 left-0 w-8 h-full bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
               <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
               
-              <div className="flex animate-marquee gap-3 w-max items-center hover:[animation-play-state:paused]">
+              <div className="flex animate-marquee gap-3 w-max items-center hover:[animation-play-state:paused]" style={{ animationDuration: '45s' }}>
                 {[...[null, ...builders], ...[null, ...builders]].map((builder, idx) => (
                   <button
                     key={idx}
