@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Home, Heart, ChevronRight, Download, Image as ImageIcon, X, Info, ChevronLeft, Building2, Wallet } from 'lucide-react';
 import { ProjectOverview } from '../components/ProjectOverview';
@@ -9,10 +9,41 @@ import { ProjectLocation } from '../components/ProjectLocation';
 import { ProjectReviews } from '../components/ProjectReviews';
 import { SiteVisitModal } from '../components/SiteVisitModal';
 import { projects } from '../data/projects';
+import { supabase } from '../lib/supabase';
+import type { ProjectData } from '../data/projects';
 
 export const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const project = projects.find((p) => p.id === id);
+  const [project, setProject] = useState<ProjectData | null>(projects.find((p) => p.id === id) || null);
+  const [loading, setLoading] = useState(!project);
+
+  useEffect(() => {
+    if (!project && id) {
+      const fetchProject = async () => {
+        // Try fetching from Supabase if not in static list
+        const { data, error } = await supabase.from('properties').select('*').eq('id', id).single();
+        if (!error && data) {
+          setProject({
+            id: data.id?.toString(),
+            title: data.title || 'Untitled Property',
+            subtitle: `${data.bhk || 2} BHK in ${data.location || 'Bangalore'}`,
+            priceConfigs: [{ label: data.type === 'Rent' ? 'Rent' : 'Price', price: data.price || 'Contact for price' }],
+            nearby: [],
+            builder: 'Individual Owner',
+            status: 'Ready to Move',
+            imageSrc: (data.images && data.images.length > 0) ? data.images[0] : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1600',
+            imageCount: data.images?.length?.toString() || '1',
+            tag: data.type === 'Rent' ? 'Rent' : 'Sale',
+            badges: ['Verified'],
+            description: data.description,
+            galleryImages: data.images || []
+          });
+        }
+        setLoading(false);
+      };
+      fetchProject();
+    }
+  }, [id, project]);
 
   const [showAllFeatures, setShowAllFeatures] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
@@ -20,6 +51,14 @@ export const ProjectDetail = () => {
   const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '' });
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
+      </div>
+    );
+  }
 
   if (!project) {
     return (
