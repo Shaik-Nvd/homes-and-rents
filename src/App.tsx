@@ -102,10 +102,12 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab, searchQuery = '', setSea
   }, []);
 
   return (
-    <div className="bg-gradient-to-br from-indigo-950 via-indigo-900 to-slate-900 px-3 sm:px-4 pt-3 sm:pt-6 pb-8 sm:pb-12 w-full shadow-2xl relative overflow-hidden">
+    <div className="bg-gradient-to-br from-indigo-950 via-indigo-900 to-slate-900 px-3 sm:px-4 pt-3 sm:pt-6 pb-8 sm:pb-12 w-full shadow-2xl relative">
       {/* Decorative Blur Circles */}
-      <div className="absolute top-0 left-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-pink-600/20 rounded-full blur-[80px] sm:blur-[100px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-      <div className="absolute bottom-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-indigo-500/20 rounded-full blur-[80px] sm:blur-[100px] translate-x-1/4 translate-y-1/4 pointer-events-none"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-pink-600/20 rounded-full blur-[80px] sm:blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-indigo-500/20 rounded-full blur-[80px] sm:blur-[100px] translate-x-1/4 translate-y-1/4"></div>
+      </div>
       
       <div className="flex flex-col max-w-3xl mx-auto w-full relative z-10">
         
@@ -196,7 +198,8 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab, searchQuery = '', setSea
                     <div 
                       key={i} 
                       className="px-4 sm:px-6 py-3 hover:bg-indigo-50/80 cursor-pointer text-sm font-bold text-gray-700 transition-colors flex items-center border-b border-gray-50 last:border-0"
-                      onClick={() => {
+                      onMouseDown={(e) => {
+                        e.preventDefault();
                         setSearchQuery?.(loc);
                         setShowSuggestions(false);
                       }}
