@@ -1,6 +1,23 @@
 import { useEffect, useState, Component } from 'react';
 import type { ErrorInfo, ReactNode } from 'react';
 
+
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Home as HomeIcon, CheckCircle2, Search, MapPin } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
+import { projects } from './data/projects';
+import { SearchPage } from './pages/Search';
+import { PropertyDetail } from './pages/PropertyDetail';
+import { ProjectDetail } from './pages/ProjectDetail';
+import { PostProperty } from './pages/PostProperty';
+import { ProjectCard } from './components/ProjectCard';
+import { SuperCards } from './components/SuperCards';
+import type { SuperCardCategory } from './components/SuperCards';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import { AuthModal } from './components/AuthModal';
+
+// Mock Data removed, using Supabase
+
 class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean, error: Error | null}> {
   constructor(props: {children: ReactNode}) {
     super(props);
@@ -19,21 +36,6 @@ class ErrorBoundary extends Component<{children: ReactNode}, {hasError: boolean,
     return this.props.children;
   }
 }
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { Home as HomeIcon, CheckCircle2, Search, MapPin } from 'lucide-react';
-import { Analytics } from '@vercel/analytics/react';
-import { projects } from './data/projects';
-import { SearchPage } from './pages/Search';
-import { PropertyDetail } from './pages/PropertyDetail';
-import { ProjectDetail } from './pages/ProjectDetail';
-import { PostProperty } from './pages/PostProperty';
-import { ProjectCard } from './components/ProjectCard';
-import { SuperCards } from './components/SuperCards';
-import type { SuperCardCategory } from './components/SuperCards';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { AuthModal } from './components/AuthModal';
-
-// Mock Data removed, using Supabase
 
 const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
   const { user, signOut } = useAuth();
