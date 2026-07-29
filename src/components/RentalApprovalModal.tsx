@@ -130,8 +130,5 @@ export const RentalApprovalModal = ({ isOpen, onClose, onVerifySuccess }: Rental
         </div>
       </div>
     </div>
-        </div>
-      </div>
-    </div>
   );
 };
