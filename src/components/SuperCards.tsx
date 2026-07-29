@@ -32,30 +32,30 @@ export const SuperCards: React.FC<SuperCardsProps> = ({ selectedCategory, onSele
             <button
               key={cat.id}
               onClick={() => onSelectCategory(cat.id as SuperCardCategory)}
-              className={`flex flex-col items-center justify-start gap-2 sm:gap-3 transition-all transform hover:-translate-y-1 w-20 sm:w-auto ${
-                isSelected ? 'scale-105' : 'hover:scale-105'
+              className={`group flex flex-col items-center justify-start gap-2.5 sm:gap-3.5 transition-all duration-300 w-20 sm:w-24 ${
+                isSelected ? 'scale-105' : 'hover:-translate-y-1'
               }`}
             >
               <div
-                className={`w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center shadow-sm transition-all border-[3px] relative overflow-hidden ${
+                className={`w-16 h-16 sm:w-20 sm:h-20 rounded-[1.2rem] sm:rounded-[1.5rem] flex items-center justify-center transition-all duration-300 border-[2px] relative overflow-hidden ${
                   isSelected
-                    ? `border-indigo-500 shadow-md ${cat.bg}`
-                    : `border-transparent ${cat.bg} hover:shadow-md hover:border-gray-200`
+                    ? `border-indigo-500 shadow-[0_8px_20px_rgba(99,102,241,0.25)] ${cat.bg}`
+                    : `border-white/60 ${cat.bg} shadow-sm group-hover:shadow-md group-hover:border-${cat.color.split('-')[1]}-200`
                 }`}
               >
                 {/* Decorative background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/60 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-white/80 to-transparent pointer-events-none"></div>
                 
                 <Icon
                   strokeWidth={isSelected ? 2.5 : 2}
-                  className={`w-7 h-7 sm:w-9 sm:h-9 transition-colors relative z-10 ${
+                  className={`w-7 h-7 sm:w-8 sm:h-8 transition-colors relative z-10 ${
                     isSelected ? 'text-indigo-600' : cat.color
-                  }`}
+                  } group-hover:scale-110 duration-300`}
                 />
               </div>
               <span
-                className={`text-[11px] sm:text-xs font-bold text-center leading-tight ${
-                  isSelected ? 'text-indigo-700' : 'text-gray-700'
+                className={`text-[11px] sm:text-[13px] font-extrabold text-center leading-tight tracking-tight ${
+                  isSelected ? 'text-indigo-700 drop-shadow-sm' : 'text-gray-600 group-hover:text-gray-900'
                 }`}
               >
                 {cat.label}
