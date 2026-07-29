@@ -54,7 +54,7 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
       <Link to={`/project/${data.id}`} className="absolute inset-0 z-[5]"></Link>
       
       {/* Left Side: Image Container */}
-      <div className="relative h-72 sm:h-80 md:h-auto md:w-[40%] flex-shrink-0 bg-slate-100 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none overflow-hidden">
+      <div className="relative h-56 sm:h-72 md:h-auto md:w-[40%] flex-shrink-0 bg-slate-100 rounded-t-3xl md:rounded-l-3xl md:rounded-tr-none overflow-hidden">
         {data.imageSrc ? (
           <img 
             src={data.imageSrc} 
@@ -116,10 +116,10 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
       </div>
 
       {/* Right Side: Content Container */}
-      <div className="flex-1 flex flex-col p-5 sm:p-6 md:p-7 relative bg-white rounded-b-3xl md:rounded-br-3xl md:rounded-bl-none">
+      <div className="flex-1 flex flex-col p-4 sm:p-6 md:p-7 relative bg-white rounded-b-3xl md:rounded-br-3xl md:rounded-bl-none">
         <div className="flex justify-between items-start mb-3 gap-4">
           <div className="flex-1">
-            <h3 className="text-2xl sm:text-[28px] font-extrabold text-slate-900 leading-tight tracking-tight mb-1.5 group-hover:text-blue-600 transition-colors">
+            <h3 className="text-lg sm:text-[26px] font-extrabold text-slate-900 leading-tight tracking-tight mb-1.5 group-hover:text-blue-600 transition-colors">
               {data.title}
             </h3>
             <p className="text-sm sm:text-base text-slate-500">
@@ -188,9 +188,11 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
         )}
         
         {data.description && (
-          <div className="mb-4 text-sm text-gray-600 flex justify-between items-center group cursor-pointer">
-             <span>{data.description}</span>
-             <span className="text-gray-400 group-hover:text-gray-600">▼</span>
+          <div className="mb-4 text-sm text-gray-600 flex justify-between items-start group cursor-pointer" onClick={() => {
+            // Optional: You could add expand/collapse state here in the future
+          }}>
+             <span className="line-clamp-2 pr-2">{data.description}</span>
+             <span className="text-gray-400 group-hover:text-gray-600 mt-0.5 flex-shrink-0 text-xs">▼</span>
           </div>
         )}
 
