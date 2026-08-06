@@ -12,6 +12,7 @@ import { ProjectDetail } from './pages/ProjectDetail';
 import { PostProperty } from './pages/PostProperty';
 import { ProjectCard } from './components/ProjectCard';
 import { SuperCards } from './components/SuperCards';
+import { TrendingNow } from './components/TrendingNow';
 import type { SuperCardCategory } from './components/SuperCards';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthModal } from './components/AuthModal';
@@ -404,6 +405,7 @@ const Home = () => {
           </div>
         </div>
       </main>
+      <TrendingNow />
     </div>
   );
 };
