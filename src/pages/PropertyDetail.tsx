@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { MapPin, Home as HomeIcon, CheckCircle2, Phone, MessageSquare, Share2, Heart } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
+import { Helmet } from 'react-helmet-async';
+
 // Mock property removed
 
 export const PropertyDetail = () => {
@@ -41,6 +43,27 @@ export const PropertyDetail = () => {
   
   return (
     <div className="bg-gray-50 min-h-screen py-8">
+      <Helmet>
+        <title>{property.title} | Homes and Rents</title>
+        <meta name="description" content={`${property.bhk || 2} BHK in ${property.location}. Price: ${property.price}. ${property.description?.substring(0, 100)}...`} />
+        <meta property="og:title" content={`${property.title} | Homes and Rents`} />
+        <meta property="og:description" content={`${property.bhk || 2} BHK in ${property.location}. Price: ${property.price}.`} />
+        <meta property="og:image" content={property.images?.[0] || 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=1200'} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "RealEstateListing",
+            "name": property.title,
+            "description": property.description || `${property.bhk || 2} BHK in ${property.location}`,
+            "image": property.images?.[0],
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "INR",
+              "price": property.price?.replace(/[^0-9.]/g, '') || "0"
+            }
+          })}
+        </script>
+      </Helmet>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           

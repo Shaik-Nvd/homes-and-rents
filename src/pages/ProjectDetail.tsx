@@ -11,6 +11,7 @@ import { SiteVisitModal } from '../components/SiteVisitModal';
 import { RentalAmenities } from '../components/RentalAmenities';
 import { projects } from '../data/projects';
 import { supabase } from '../lib/supabase';
+import { Helmet } from 'react-helmet-async';
 import type { ProjectData } from '../data/projects';
 
 export const ProjectDetail = () => {
@@ -90,6 +91,27 @@ export const ProjectDetail = () => {
 
   return (
     <div className="bg-slate-50 min-h-screen pb-20 font-sans">
+      <Helmet>
+        <title>{project.title} | {project.subtitle} | Homes and Rents</title>
+        <meta name="description" content={`Check out ${project.title}, ${project.subtitle}. Explore price, floor plans, amenities, and more on Homes and Rents.`} />
+        <meta property="og:title" content={`${project.title} | Homes and Rents`} />
+        <meta property="og:description" content={`Explore ${project.title}. ${project.subtitle}. Starting from ${project.priceConfigs?.[0]?.price || 'On request'}.`} />
+        <meta property="og:image" content={project.imageSrc} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "RealEstateListing",
+            "name": project.title,
+            "description": project.description || `Properties at ${project.title}, ${project.subtitle}`,
+            "image": project.imageSrc,
+            "offers": {
+              "@type": "Offer",
+              "priceCurrency": "INR",
+              "price": project.priceConfigs?.[0]?.price?.replace(/[^0-9.]/g, '') || "0"
+            }
+          })}
+        </script>
+      </Helmet>
       
       {/* Hero Banner Section */}
       <div className={`relative w-full ${!imageFailed ? 'h-[50vh] md:h-[65vh] min-h-[500px]' : 'min-h-[650px] sm:min-h-[500px] md:h-[65vh]'}`}>

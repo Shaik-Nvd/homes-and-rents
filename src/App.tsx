@@ -3,6 +3,7 @@ import type { ErrorInfo, ReactNode } from 'react';
 
 
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Home as HomeIcon, CheckCircle2, Search, MapPin } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { projects } from './data/projects';
@@ -336,6 +337,14 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Helmet>
+        <title>Homes and Rents | Top Properties in Bangalore</title>
+        <meta name="description" content="Find the best flats for rent, new projects, and properties in Bangalore and Karnataka. Browse thousands of verified listings on Homes and Rents." />
+        <meta name="keywords" content="Bangalore real estate, flats for rent Bangalore, new projects Bangalore, Karnataka properties" />
+        <meta property="og:title" content="Homes and Rents | Top Properties in Bangalore" />
+        <meta property="og:description" content="Find the best flats for rent, new projects, and properties in Bangalore and Karnataka." />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <SearchHero activeTab={activeTab} setActiveTab={setActiveTab} searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       <main className="flex-grow w-full relative z-20 -mt-8 sm:-mt-12 px-2 sm:px-0">
         <div className="bg-gray-50 rounded-t-[2rem] pt-6 sm:pt-8 px-4 sm:px-6 lg:px-8 pb-6 max-w-5xl mx-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
