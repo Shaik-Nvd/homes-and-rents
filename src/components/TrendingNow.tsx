@@ -14,19 +14,40 @@ export const TrendingNow = () => {
 
   const fetchNews = async () => {
     try {
-      const rssUrl = encodeURIComponent('https://news.google.com/rss/search?q=real+estate+india&hl=en-IN&gl=IN&ceid=IN:en');
-      const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`);
-      const data = await res.json();
-      if (data.status === 'ok') {
-        const items = data.items.slice(0, 8).map((item: any) => ({
-          title: item.title.split(' - ')[0], // Remove the source from title
-          source: item.title.split(' - ')[1] || 'Real Estate News',
-          // Note: rss2json pubDate is usually "YYYY-MM-DD HH:mm:ss" UTC. We convert it to local string.
-          pubDate: new Date(item.pubDate.replace(' ', 'T') + 'Z').toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', month: 'short', day: 'numeric' }),
-          link: item.link
-        }));
-        setNews(items);
-      }
+      const queries = [
+        'real+estate+india',
+        'bangalore+property+real+estate',
+        'commercial+real+estate+india'
+      ];
+      
+      const promises = queries.map(q => {
+        const rssUrl = encodeURIComponent(`https://news.google.com/rss/search?q=${q}&hl=en-IN&gl=IN&ceid=IN:en`);
+        return fetch(`https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`).then(res => res.json());
+      });
+
+      const results = await Promise.all(promises);
+      
+      let allItems: any[] = [];
+      results.forEach(data => {
+        if (data.status === 'ok' && data.items) {
+          allItems = [...allItems, ...data.items];
+        }
+      });
+
+      // Remove duplicates by link
+      const uniqueItems = Array.from(new Map(allItems.map(item => [item.link, item])).values());
+
+      // Sort by publication date (newest first)
+      uniqueItems.sort((a, b) => new Date(b.pubDate.replace(' ', 'T') + 'Z').getTime() - new Date(a.pubDate.replace(' ', 'T') + 'Z').getTime());
+
+      const items = uniqueItems.slice(0, 10).map((item: any) => ({
+        title: item.title.split(' - ')[0],
+        source: item.title.split(' - ')[1] || 'Real Estate News',
+        pubDate: new Date(item.pubDate.replace(' ', 'T') + 'Z').toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', month: 'short', day: 'numeric' }),
+        link: item.link
+      }));
+      
+      setNews(items);
     } catch (error) {
       console.error('Failed to fetch trending news:', error);
     } finally {
