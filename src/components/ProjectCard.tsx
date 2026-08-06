@@ -51,7 +51,7 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
   const visibleNearby = data.nearby.slice(0, 2);
   const hiddenNearby = data.nearby.slice(2);
 
-  const isAdmin = !!user; // Show for any logged in user for now
+  const isAdmin = user?.email === 'admin@homesandrents.com';
 
   const handleDelete = async (e: React.MouseEvent) => {
     e.preventDefault();
