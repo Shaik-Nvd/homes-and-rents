@@ -10,6 +10,7 @@ import { projects } from './data/projects';
 import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
 import { ProjectDetail } from './pages/ProjectDetail';
+import { LocationSeoPage } from './pages/LocationSeoPage';
 import { PostProperty } from './pages/PostProperty';
 import { ProjectCard } from './components/ProjectCard';
 import { SuperCards } from './components/SuperCards';
@@ -414,6 +415,34 @@ const Home = () => {
           </div>
         </div>
       </main>
+
+      {/* Internal SEO Links for Localities */}
+      <section className="bg-white py-12 border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Popular Localities in Bangalore</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div>
+              <h3 className="font-bold text-slate-700 mb-3">Flats for Rent</h3>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/flats-for-rent-in-whitefield" className="text-blue-600 hover:underline">Flats in Whitefield</Link></li>
+                <li><Link to="/flats-for-rent-in-hsr-layout" className="text-blue-600 hover:underline">Flats in HSR Layout</Link></li>
+                <li><Link to="/flats-for-rent-in-indiranagar" className="text-blue-600 hover:underline">Flats in Indiranagar</Link></li>
+                <li><Link to="/flats-for-rent-in-koramangala" className="text-blue-600 hover:underline">Flats in Koramangala</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-bold text-slate-700 mb-3">Properties for Sale</h3>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/properties-for-sale-in-whitefield" className="text-blue-600 hover:underline">Sale in Whitefield</Link></li>
+                <li><Link to="/properties-for-sale-in-electronic-city" className="text-blue-600 hover:underline">Sale in Electronic City</Link></li>
+                <li><Link to="/properties-for-sale-in-marathahalli" className="text-blue-600 hover:underline">Sale in Marathahalli</Link></li>
+                <li><Link to="/properties-for-sale-in-bellandur" className="text-blue-600 hover:underline">Sale in Bellandur</Link></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <TrendingNow />
     </div>
   );
@@ -431,6 +460,8 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/flats-for-rent-in-:location" element={<LocationSeoPage type="rent" />} />
+          <Route path="/properties-for-sale-in-:location" element={<LocationSeoPage type="sale" />} />
           <Route path="/property/:id" element={<PropertyDetail />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/post" element={<PostProperty />} />

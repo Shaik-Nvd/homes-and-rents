@@ -16,4 +16,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  
+  <!-- Location Landing Pages (Rent) -->
+  <url><loc>https://homesandrents.com/flats-for-rent-in-whitefield</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://homesandrents.com/flats-for-rent-in-hsr-layout</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://homesandrents.com/flats-for-rent-in-indiranagar</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://homesandrents.com/flats-for-rent-in-koramangala</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+
+  <!-- Location Landing Pages (Sale) -->
+  <url><loc>https://homesandrents.com/properties-for-sale-in-whitefield</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://homesandrents.com/properties-for-sale-in-electronic-city</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://homesandrents.com/properties-for-sale-in-marathahalli</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://homesandrents.com/properties-for-sale-in-bellandur</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
 </urlset>
