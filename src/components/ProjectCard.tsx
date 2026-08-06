@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Heart, Download, Info, Building2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SiteVisitModal } from './SiteVisitModal';
+import { useAuth } from '../contexts/AuthContext';
+import { supabase } from '../lib/supabase';
 
 export interface PriceConfig {
   label: string;
@@ -26,6 +28,7 @@ export interface ProjectData {
 export const ProjectCard = ({ project }: { project?: ProjectData }) => {
   const [showMoreNearby, setShowMoreNearby] = useState(false);
   const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState(false);
+  const { user } = useAuth();
 
   // Default to GR Samskruthi if no project is provided (backward compatibility)
   const data: ProjectData = project || {
@@ -47,6 +50,34 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
 
   const visibleNearby = data.nearby.slice(0, 2);
   const hiddenNearby = data.nearby.slice(2);
+
+  const isAdmin = !!user; // Show for any logged in user for now
+
+  const handleDelete = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    if (!window.confirm('Are you sure you want to delete this property? This cannot be undone.')) {
+      return;
+    }
+    
+    // Only attempt to delete from Supabase if it's a UUID (mock data has simple text IDs)
+    if (data.id.includes('-') && data.id.length === 36) {
+      try {
+        const { error } = await supabase.from('properties').delete().eq('id', data.id);
+        if (error) {
+          alert('Error deleting property: ' + error.message);
+        } else {
+          alert('Property deleted successfully!');
+          window.location.reload();
+        }
+      } catch (err: any) {
+        alert('An unexpected error occurred: ' + err.message);
+      }
+    } else {
+      alert('This is a mock property from the codebase and cannot be deleted via the database.');
+    }
+  };
 
   return (
     <div className="flex flex-col md:flex-row bg-white rounded-3xl border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 relative group">
@@ -107,11 +138,21 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
           <p className="text-white text-xs sm:text-sm font-semibold tracking-wide text-shadow-sm">
             {data.status}
           </p>
-          {data.imageCount && (
-            <span className="backdrop-blur-md bg-black/60 border border-white/20 text-white text-xs px-2.5 py-1 rounded-md font-medium">
-              {data.imageCount}
-            </span>
-          )}
+          <div className="flex gap-2 items-center">
+            {isAdmin && (
+              <button 
+                onClick={handleDelete}
+                className="backdrop-blur-md bg-red-600/90 hover:bg-red-700 text-white text-xs px-2.5 py-1 rounded-md font-medium shadow-sm transition-colors z-30 relative"
+              >
+                Delete
+              </button>
+            )}
+            {data.imageCount && (
+              <span className="backdrop-blur-md bg-black/60 border border-white/20 text-white text-xs px-2.5 py-1 rounded-md font-medium">
+                {data.imageCount}
+              </span>
+            )}
+          </div>
         </div>
       </div>
 

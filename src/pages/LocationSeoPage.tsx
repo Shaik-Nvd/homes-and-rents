@@ -4,6 +4,7 @@ import { Home as HomeIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { supabase } from '../lib/supabase';
 import { ProjectCard } from '../components/ProjectCard';
+import { projects } from '../data/projects';
 
 interface LocationSeoPageProps {
   type: 'rent' | 'sale';
@@ -24,25 +25,51 @@ export const LocationSeoPage = ({ type }: LocationSeoPageProps) => {
     const fetchProperties = async () => {
       setLoading(true);
       try {
-        // Query properties matching the location
+        let dbFiltered: any[] = [];
+        
+        // Query properties matching the location from Supabase
         const { data, error } = await supabase
           .from('properties')
           .select('*')
           .ilike('location', `%${formattedLocation.split(' ')[0]}%`)
           .order('created_at', { ascending: false });
         
-        if (error) throw error;
-        
-        if (data) {
-          // Filter in memory for exact type matching
-          const filtered = data.filter(prop => {
+        if (!error && data) {
+          dbFiltered = data.filter(prop => {
             const propType = prop.type?.toLowerCase() || '';
             if (type === 'rent' && propType.includes('rent')) return true;
             if (type === 'sale' && (propType.includes('sale') || propType.includes('buy'))) return true;
             return false;
-          });
-          setProperties(filtered);
+          }).map(item => ({
+            id: item.id?.toString(),
+            title: item.title || 'Untitled Property',
+            subtitle: `${item.bhk || 2} BHK in ${item.location || formattedLocation}`,
+            priceConfigs: [{ label: item.type === 'Rent' ? 'Rent' : 'Price', price: item.price || 'Contact for price' }],
+            nearby: [],
+            builder: 'Individual Owner',
+            status: 'Ready to Move',
+            imageSrc: (item.images && item.images.length > 0) ? item.images[0] : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1600',
+            imageCount: item.images?.length?.toString() || '1',
+            tag: item.type === 'Rent' ? 'Rent' : 'Sale',
+            badges: ['Verified'],
+            description: item.description,
+            galleryImages: item.images || []
+          }));
         }
+
+        // Get local mock data
+        const locSearch = formattedLocation.split(' ')[0].toLowerCase();
+        const localFiltered = projects.filter(prop => {
+            const matchesLoc = prop.subtitle?.toLowerCase().includes(locSearch) || prop.title.toLowerCase().includes(locSearch);
+            if (!matchesLoc) return false;
+
+            const isRent = prop.tag === 'Rent' || prop.priceConfigs?.some(c => c.label.toLowerCase().includes('rent'));
+            if (type === 'rent' && isRent) return true;
+            if (type === 'sale' && !isRent) return true;
+            return false;
+        });
+
+        setProperties([...localFiltered, ...dbFiltered]);
       } catch (err) {
         console.error('Error fetching properties:', err);
       } finally {
@@ -130,19 +157,7 @@ export const LocationSeoPage = ({ type }: LocationSeoPageProps) => {
             {properties.map(property => (
               <ProjectCard 
                 key={property.id} 
-                project={{
-                  id: property.id?.toString(),
-                  title: property.title || 'Untitled Property',
-                  subtitle: `${property.bhk || 2} BHK in ${property.location || formattedLocation}`,
-                  priceConfigs: [{ label: property.type === 'Rent' ? 'Rent' : 'Price', price: property.price || 'Contact for price' }],
-                  nearby: [],
-                  builder: 'Individual Owner',
-                  status: 'Ready to Move',
-                  imageSrc: (property.images && property.images.length > 0) ? property.images[0] : 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1600',
-                  imageCount: property.images?.length?.toString() || '1',
-                  tag: property.type === 'Rent' ? 'Rent' : 'Sale',
-                  badges: ['Verified']
-                }} 
+                project={property} 
               />
             ))}
           </div>

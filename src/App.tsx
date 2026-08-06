@@ -424,19 +424,19 @@ const Home = () => {
             <div>
               <h3 className="font-bold text-slate-700 mb-3">Flats for Rent</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/flats-for-rent-in-whitefield" className="text-blue-600 hover:underline">Flats in Whitefield</Link></li>
-                <li><Link to="/flats-for-rent-in-hsr-layout" className="text-blue-600 hover:underline">Flats in HSR Layout</Link></li>
-                <li><Link to="/flats-for-rent-in-indiranagar" className="text-blue-600 hover:underline">Flats in Indiranagar</Link></li>
-                <li><Link to="/flats-for-rent-in-koramangala" className="text-blue-600 hover:underline">Flats in Koramangala</Link></li>
+                <li><Link to="/flats-for-rent/whitefield" className="text-blue-600 hover:underline">Flats in Whitefield</Link></li>
+                <li><Link to="/flats-for-rent/hsr-layout" className="text-blue-600 hover:underline">Flats in HSR Layout</Link></li>
+                <li><Link to="/flats-for-rent/indiranagar" className="text-blue-600 hover:underline">Flats in Indiranagar</Link></li>
+                <li><Link to="/flats-for-rent/koramangala" className="text-blue-600 hover:underline">Flats in Koramangala</Link></li>
               </ul>
             </div>
             <div>
               <h3 className="font-bold text-slate-700 mb-3">Properties for Sale</h3>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/properties-for-sale-in-whitefield" className="text-blue-600 hover:underline">Sale in Whitefield</Link></li>
-                <li><Link to="/properties-for-sale-in-electronic-city" className="text-blue-600 hover:underline">Sale in Electronic City</Link></li>
-                <li><Link to="/properties-for-sale-in-marathahalli" className="text-blue-600 hover:underline">Sale in Marathahalli</Link></li>
-                <li><Link to="/properties-for-sale-in-bellandur" className="text-blue-600 hover:underline">Sale in Bellandur</Link></li>
+                <li><Link to="/properties-for-sale/whitefield" className="text-blue-600 hover:underline">Sale in Whitefield</Link></li>
+                <li><Link to="/properties-for-sale/electronic-city" className="text-blue-600 hover:underline">Sale in Electronic City</Link></li>
+                <li><Link to="/properties-for-sale/marathahalli" className="text-blue-600 hover:underline">Sale in Marathahalli</Link></li>
+                <li><Link to="/properties-for-sale/bellandur" className="text-blue-600 hover:underline">Sale in Bellandur</Link></li>
               </ul>
             </div>
           </div>
@@ -460,8 +460,8 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
-          <Route path="/flats-for-rent-in-:location" element={<LocationSeoPage type="rent" />} />
-          <Route path="/properties-for-sale-in-:location" element={<LocationSeoPage type="sale" />} />
+          <Route path="/flats-for-rent/:location" element={<LocationSeoPage type="rent" />} />
+          <Route path="/properties-for-sale/:location" element={<LocationSeoPage type="sale" />} />
           <Route path="/property/:id" element={<PropertyDetail />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/post" element={<PostProperty />} />
