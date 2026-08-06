@@ -92,7 +92,7 @@ export const TrendingNow = () => {
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 flex items-center gap-3 tracking-tight">
               Trending Now <TrendingUp className="w-8 h-8 text-blue-600 stroke-[2.5]" />
             </h2>
-            <p className="text-slate-500 font-medium mt-2">The latest property & real estate market insights, updated every 30 seconds.</p>
+            <p className="text-slate-500 font-medium mt-2">Live market pulse: Stay ahead with breaking real estate trends.</p>
           </div>
         </div>
 
