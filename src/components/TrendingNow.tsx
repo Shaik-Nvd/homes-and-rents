@@ -40,9 +40,15 @@ export const TrendingNow = () => {
       // Sort by publication date (newest first)
       uniqueItems.sort((a, b) => new Date(b.pubDate.replace(' ', 'T') + 'Z').getTime() - new Date(a.pubDate.replace(' ', 'T') + 'Z').getTime());
 
-      const items = uniqueItems.slice(0, 10).map((item: any) => ({
-        title: item.title.split(' - ')[0],
-        source: item.title.split(' - ')[1] || 'Real Estate News',
+      const decodeHtml = (html: string) => {
+        const txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+      };
+
+      const items = uniqueItems.slice(0, 30).map((item: any) => ({
+        title: decodeHtml(item.title.split(' - ')[0]),
+        source: decodeHtml(item.title.split(' - ')[1] || 'Real Estate News'),
         pubDate: new Date(item.pubDate.replace(' ', 'T') + 'Z').toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', month: 'short', day: 'numeric' }),
         link: item.link
       }));
