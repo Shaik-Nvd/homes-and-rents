@@ -6,7 +6,6 @@ import { ProjectFloorPlans } from '../components/ProjectFloorPlans';
 import { ProjectAmenities } from '../components/ProjectAmenities';
 import { ProjectAbout } from '../components/ProjectAbout';
 import { ProjectLocation } from '../components/ProjectLocation';
-import { ProjectReviews } from '../components/ProjectReviews';
 import { SiteVisitModal } from '../components/SiteVisitModal';
 import { RentalAmenities } from '../components/RentalAmenities';
 import { projects } from '../data/projects';
@@ -18,6 +17,11 @@ export const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState<ProjectData | null>(projects.find((p) => p.id === id) || null);
   const [loading, setLoading] = useState(!project);
+
+  useEffect(() => {
+    // Ensure viewport starts at the top (photos and title/pricing) instead of jumping down
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [id]);
 
   useEffect(() => {
     if (!project && id) {
@@ -306,7 +310,6 @@ export const ProjectDetail = () => {
               )}
               <ProjectAbout project={project} />
               <ProjectLocation project={project} />
-              <ProjectReviews />
             </div>
 
           </div>

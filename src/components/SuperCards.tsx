@@ -1,7 +1,21 @@
 import React from 'react';
-import { MapPin, Home, Building2, Store, ArrowRight, Building, PlusSquare } from 'lucide-react';
+import { MapPin, Home, Building2, Store, ArrowRight, Building, PlusSquare, Rocket, Sparkles, CheckCircle2, Hammer, Repeat } from 'lucide-react';
 
-export type SuperCardCategory = 'Location' | '2 BHK' | '3 BHK' | '4 BHK' | '5 BHK' | 'Lands' | 'Plots' | 'Shops' | 'Offices' | 'All';
+export type SuperCardCategory = 
+  | 'Location' 
+  | '2 BHK' 
+  | '3 BHK' 
+  | '4 BHK' 
+  | 'New Launch' 
+  | 'Pre Launch' 
+  | 'Ready to Move' 
+  | 'Under Construction' 
+  | 'Lands' 
+  | 'Plots' 
+  | 'Re-Sell' 
+  | 'Shops' 
+  | 'Offices' 
+  | 'All';
 
 interface SuperCardsProps {
   selectedCategory: SuperCardCategory;
@@ -13,9 +27,13 @@ const CATEGORIES = [
   { id: '2 BHK', label: '2 BHK', icon: Home, color: 'text-blue-500', bg: 'bg-blue-50' },
   { id: '3 BHK', label: '3 BHK', icon: Home, color: 'text-indigo-500', bg: 'bg-indigo-50' },
   { id: '4 BHK', label: '4 BHK', icon: Building2, color: 'text-purple-500', bg: 'bg-purple-50' },
-  { id: '5 BHK', label: '5 BHK', icon: Building2, color: 'text-pink-500', bg: 'bg-pink-50' },
+  { id: 'New Launch', label: 'New Launch', icon: Rocket, color: 'text-rose-500', bg: 'bg-rose-50' },
+  { id: 'Pre Launch', label: 'Pre Launch', icon: Sparkles, color: 'text-violet-500', bg: 'bg-violet-50' },
+  { id: 'Ready to Move', label: 'Ready to Move', icon: CheckCircle2, color: 'text-emerald-500', bg: 'bg-emerald-50' },
+  { id: 'Under Construction', label: 'Under Construction', icon: Hammer, color: 'text-amber-500', bg: 'bg-amber-50' },
   { id: 'Lands', label: 'Lands', icon: MapPin, color: 'text-emerald-500', bg: 'bg-emerald-50' },
   { id: 'Plots', label: 'Plots', icon: PlusSquare, color: 'text-teal-500', bg: 'bg-teal-50' },
+  { id: 'Re-Sell', label: 'Re-Sell', icon: Repeat, color: 'text-cyan-500', bg: 'bg-cyan-50' },
   { id: 'Shops', label: 'Shops', icon: Store, color: 'text-amber-500', bg: 'bg-amber-50' },
   { id: 'Offices', label: 'Offices', icon: Building, color: 'text-orange-500', bg: 'bg-orange-50' },
   { id: 'All', label: 'View All', icon: ArrowRight, color: 'text-gray-600', bg: 'bg-gray-100' },
@@ -24,7 +42,7 @@ const CATEGORIES = [
 export const SuperCards: React.FC<SuperCardsProps> = ({ selectedCategory, onSelectCategory }) => {
   return (
     <div className="py-4 sm:py-6 px-1 sm:px-4 w-full">
-      <div className="grid grid-cols-5 gap-y-4 gap-x-2 sm:gap-6 justify-items-center max-w-4xl mx-auto">
+      <div className="grid grid-cols-4 sm:grid-cols-6 gap-y-4 gap-x-2 sm:gap-6 justify-items-center max-w-4xl mx-auto">
         {CATEGORIES.map((cat) => {
           const isSelected = selectedCategory === cat.id;
           const Icon = cat.icon;

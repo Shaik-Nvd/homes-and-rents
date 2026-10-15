@@ -12,24 +12,7 @@ export const PostProperty = () => {
   const navigate = useNavigate();
   const [isRentalModalOpen, setIsRentalModalOpen] = useState(false);
 
-  if (user?.email !== 'admin@homesandrents.com') {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full text-center border border-gray-100">
-          <h2 className="text-2xl font-bold text-red-600 mb-4">Access Denied</h2>
-          <p className="text-gray-600 mb-6">You must be logged in as an administrator to access the Control Panel.</p>
-          <div className="flex gap-3 justify-center">
-            <button onClick={() => navigate('/admin/login')} className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-colors">
-              Go to Admin Login
-            </button>
-            <button onClick={() => navigate('/')} className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-xl font-medium text-sm transition-colors">
-              Return Home
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  const isAdmin = user?.email === 'admin@homesandrents.com';
 
   // Form State
   const [formData, setFormData] = useState({
@@ -39,7 +22,8 @@ export const PostProperty = () => {
     price: '',
     location: '',
     title: '',
-    description: ''
+    description: '',
+    status: 'Ready to Move' // Admin can choose 'New Launch', 'Under Construction', 'Ready to Move', 'Pre Launch'
   });
   const [loading, setLoading] = useState(false);
 
@@ -119,7 +103,7 @@ export const PostProperty = () => {
     const insertData = {
       title: formData.title,
       description: formData.description,
-      price: `₹${formData.price} / month`, 
+      price: formData.type === 'Rent out' ? `₹${formData.price} / month` : `₹${formData.price}`, 
       location: formData.location,
       bhk: formData.bhk,
       type: formData.type === 'Rent out' ? 'Rent' : formData.type,
@@ -159,9 +143,11 @@ export const PostProperty = () => {
     <div className="bg-gray-50 min-h-screen py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-          <div className="bg-primary px-8 py-6 text-white text-center">
-            <h1 className="text-2xl font-bold">Admin Control Panel</h1>
-            <p className="text-primary-hover text-sm mt-1">Upload and manage properties</p>
+          <div className="bg-gradient-to-r from-indigo-700 to-purple-700 px-8 py-6 text-white text-center">
+            <h1 className="text-2xl font-bold">{isAdmin ? 'Admin Control Panel' : 'Post Your Property'}</h1>
+            <p className="text-indigo-200 text-sm mt-1">
+              {isAdmin ? 'Upload, manage, and feature listings across Bangalore' : 'List your property for Rent, Sale, or Lease for FREE'}
+            </p>
           </div>
           
           <form className="p-8 space-y-8" onSubmit={handleInitialSubmit}>

@@ -8,11 +8,22 @@ export const ProjectFloorPlans = ({ project }: { project: ProjectData }) => {
 
   const activeConfig = project.priceConfigs[activeTabIndex];
 
+  const handleWhatsAppInquiry = (_actionType?: string) => {
+    const text = `Hi Homes & Rents, I am interested in the floor plan & price breakup for ${project.title} (${activeConfig.label} - ${activeConfig.price}). Please share the details!`;
+    const whatsappUrl = `https://wa.me/919739063840?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold text-[#0a192f]">Floor Plan & Pricing</h2>
-        <a href="#" className="text-blue-600 text-sm font-medium hover:underline">Download all plans</a>
+        <button 
+          onClick={() => handleWhatsAppInquiry('Download All Plans')}
+          className="text-blue-600 text-sm font-semibold hover:underline"
+        >
+          Download all plans on WhatsApp
+        </button>
       </div>
       
       <div className="flex border-b border-gray-200 mb-6 overflow-x-auto hide-scrollbar">
@@ -31,9 +42,13 @@ export const ProjectFloorPlans = ({ project }: { project: ProjectData }) => {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div className="bg-gray-50 rounded-lg p-4 border border-gray-100 flex justify-center items-center h-48 overflow-hidden relative">
-          <div className="w-full h-full flex flex-col items-center justify-center border-2 border-dashed border-gray-200 rounded bg-gray-50/50">
-            <span className="text-gray-400 font-medium text-sm">Floor plan coming soon</span>
+        <div 
+          onClick={() => handleWhatsAppInquiry('View Floor Plan')}
+          className="bg-gray-50 rounded-lg p-4 border border-gray-100 flex justify-center items-center h-48 overflow-hidden relative cursor-pointer group hover:border-blue-400 hover:bg-blue-50/30 transition-all"
+        >
+          <div className="w-full h-full flex flex-col items-center justify-center border-2 border-dashed border-gray-200 group-hover:border-blue-400 rounded bg-gray-50/50 group-hover:bg-blue-50/20 transition-all">
+            <span className="text-blue-600 font-bold text-sm mb-1 group-hover:scale-105 transition-transform">Tap to Request Floor Plan</span>
+            <span className="text-gray-400 text-xs">Delivered instantly on WhatsApp</span>
           </div>
         </div>
         
@@ -50,8 +65,11 @@ export const ProjectFloorPlans = ({ project }: { project: ProjectData }) => {
               <p className="text-sm text-gray-500 font-medium">Price</p>
               <p className="font-bold text-[#0a192f] text-xl">{activeConfig.price}</p>
             </div>
-            <button className="bg-blue-50 text-[#0078d4] font-bold py-2 px-4 rounded-lg hover:bg-blue-100 transition-colors self-start text-sm">
-              Price Breakup
+            <button 
+              onClick={() => handleWhatsAppInquiry('Price Breakup')}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-5 rounded-xl shadow-md shadow-emerald-600/20 transition-all self-start text-sm flex items-center gap-2"
+            >
+              <span>Get Price Breakup on WhatsApp</span>
             </button>
           </div>
         </div>

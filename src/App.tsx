@@ -15,6 +15,7 @@ import { PostProperty } from './pages/PostProperty';
 import { AdminLoginPage } from './pages/AdminLogin';
 import { ProjectCard } from './components/ProjectCard';
 import { SuperCards } from './components/SuperCards';
+import { LaunchModal } from './components/LaunchModal';
 import { TrendingNow } from './components/TrendingNow';
 import type { SuperCardCategory } from './components/SuperCards';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -71,12 +72,15 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
                 <span className="hidden sm:inline">Login / Signup</span>
               </button>
             )}
-            {user?.email === 'admin@homesandrents.com' && (
-              <Link to="/post" className="flex items-center gap-1.5 bg-[#8b45f7] text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl font-bold text-[12px] sm:text-sm whitespace-nowrap">
-                <span>Control Panel</span>
-                <span className="bg-white/30 text-white text-[9px] sm:text-[10px] px-1 sm:px-1.5 py-0.5 rounded shadow-sm">ADMIN</span>
-              </Link>
-            )}
+            <Link 
+              to="/post" 
+              className="flex items-center gap-1.5 bg-[#8b45f7] hover:bg-[#7a35e6] text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl font-bold text-[12px] sm:text-sm whitespace-nowrap shadow-sm hover:shadow transition-all"
+            >
+              <span>{user?.email === 'admin@homesandrents.com' ? 'Control Panel' : 'Post Property'}</span>
+              <span className="bg-white/30 text-white text-[9px] sm:text-[10px] px-1 sm:px-1.5 py-0.5 rounded shadow-sm">
+                {user?.email === 'admin@homesandrents.com' ? 'ADMIN' : 'FREE'}
+              </span>
+            </Link>
             {user && (
               <div className="items-center gap-4 hidden sm:flex ml-4">
                 <span className="text-sm font-medium text-gray-600">{user.email}</span>
@@ -413,8 +417,48 @@ const Home = () => {
     filteredProjects = filteredProjects.filter(p => p.builder === selectedBuilder);
   }
 
+  const [isLaunchModalOpen, setIsLaunchModalOpen] = useState(false);
+  const [activeLaunchCategory, setActiveLaunchCategory] = useState<SuperCardCategory | null>(null);
+
+  const handleCategorySelect = (category: SuperCardCategory) => {
+    setSelectedCategory(category);
+    if (category === 'New Launch' || category === 'Pre Launch') {
+      setActiveLaunchCategory(category);
+      setIsLaunchModalOpen(true);
+    }
+  };
+
   if (selectedCategory !== 'All' && selectedCategory !== 'Location') {
     filteredProjects = filteredProjects.filter(p => {
+      if (selectedCategory === 'New Launch') {
+        const isNew = p.status?.toLowerCase().includes('new launch') || 
+                      p.tag?.toLowerCase().includes('new') ||
+                      p.badges?.some(b => b.toLowerCase().includes('new'));
+        return isNew;
+      }
+      if (selectedCategory === 'Pre Launch') {
+        const isPre = p.status?.toLowerCase().includes('pre launch') || 
+                      p.status?.toLowerCase().includes('under construction') ||
+                      p.tag?.toLowerCase().includes('pre') ||
+                      p.title?.toLowerCase().includes('pre-launch');
+        return isPre;
+      }
+
+      if (selectedCategory === 'Ready to Move') {
+        return p.status?.toLowerCase().includes('ready') || p.subtitle?.toLowerCase().includes('ready');
+      }
+      if (selectedCategory === 'Under Construction') {
+        return p.status?.toLowerCase().includes('construction') || p.subtitle?.toLowerCase().includes('construction');
+      }
+      if (selectedCategory === 'Re-Sell') {
+        return p.tag?.toLowerCase().includes('re-sell') || 
+               p.tag?.toLowerCase().includes('resell') || 
+               p.title?.toLowerCase().includes('resale') || 
+               p.title?.toLowerCase().includes('re-sell') ||
+               p.builder?.toLowerCase().includes('individual') ||
+               p.tag === 'Sale';
+      }
+
       const target = selectedCategory.toLowerCase();
       // Check in subtitle and price configs
       const inSubtitle = p.subtitle?.toLowerCase().includes(target);
@@ -444,7 +488,14 @@ const Home = () => {
       <main className="flex-grow w-full relative z-20 -mt-8 sm:-mt-12 px-2 sm:px-0">
         <div className="bg-gray-50 rounded-t-[2rem] pt-6 sm:pt-8 px-4 sm:px-6 lg:px-8 pb-6 max-w-5xl mx-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
           
-          <SuperCards selectedCategory={selectedCategory} onSelectCategory={setSelectedCategory} />
+          <SuperCards selectedCategory={selectedCategory} onSelectCategory={handleCategorySelect} />
+
+          <LaunchModal 
+            isOpen={isLaunchModalOpen} 
+            onClose={() => setIsLaunchModalOpen(false)} 
+            category={activeLaunchCategory}
+            count={filteredProjects.length}
+          />
 
           {/* Builder Filter Section */}
           <div className="mb-8">
@@ -543,7 +594,36 @@ const Home = () => {
                           <GripVertical className="w-4 h-4" />
                           <span>Position #{index + 1} • Drag to move</span>
                         </div>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {/* Top 10 Priority Quick Jump */}
+                          <div className="flex items-center gap-1 bg-white/10 px-2 py-0.5 rounded text-[11px]">
+                            <span className="text-amber-300 font-extrabold">Top:</span>
+                            <select
+                              value={index < 10 ? index + 1 : ''}
+                              onChange={(e) => {
+                                const targetRank = parseInt(e.target.value, 10);
+                                if (!targetRank) return;
+                                const fullOrderList = allProjects.map(p => p.id);
+                                const fromIdx = fullOrderList.indexOf(project.id);
+                                const targetProject = filteredProjects[targetRank - 1];
+                                if (!targetProject) return;
+                                const toIdx = fullOrderList.indexOf(targetProject.id);
+                                if (fromIdx !== -1 && toIdx !== -1) {
+                                  const updated = [...fullOrderList];
+                                  const [moved] = updated.splice(fromIdx, 1);
+                                  updated.splice(toIdx, 0, moved);
+                                  saveOrder(updated);
+                                }
+                              }}
+                              className="bg-slate-900 text-white rounded px-1 py-0.5 text-[11px] font-bold border border-white/20 outline-none cursor-pointer"
+                            >
+                              <option value="">Set Priority...</option>
+                              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(rank => (
+                                <option key={rank} value={rank}>Rank #{rank}</option>
+                              ))}
+                            </select>
+                          </div>
+                          <span className="text-gray-500">|</span>
                           <button
                             type="button"
                             onClick={(e) => {
