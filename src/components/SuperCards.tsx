@@ -11,7 +11,7 @@ export type SuperCardCategory =
   | 'Ready to Move' 
   | 'Under Construction' 
   | 'Lands' 
-  | 'Re-Sell' 
+  | 'Re-Sale' 
   | 'Shops' 
   | 'All';
 
@@ -30,7 +30,7 @@ const CATEGORIES = [
   { id: 'Ready to Move', label: 'Ready to Move', icon: CheckCircle2, color: 'text-emerald-500', bg: 'bg-emerald-50' },
   { id: 'Under Construction', label: 'Under Construction', icon: Hammer, color: 'text-amber-500', bg: 'bg-amber-50' },
   { id: 'Lands', label: 'Lands', icon: MapPin, color: 'text-emerald-500', bg: 'bg-emerald-50' },
-  { id: 'Re-Sell', label: 'Re-Sell', icon: Repeat, color: 'text-cyan-500', bg: 'bg-cyan-50' },
+  { id: 'Re-Sale', label: 'Re-Sale', icon: Repeat, color: 'text-cyan-500', bg: 'bg-cyan-50' },
   { id: 'Shops', label: 'Shops', icon: Store, color: 'text-amber-500', bg: 'bg-amber-50' },
 ] as const;
 

@@ -450,11 +450,14 @@ const Home = () => {
       if (selectedCategory === 'Under Construction') {
         return p.status?.toLowerCase().includes('construction') || p.subtitle?.toLowerCase().includes('construction');
       }
-      if (selectedCategory === 'Re-Sell') {
+      if (selectedCategory === 'Re-Sale') {
         return p.tag?.toLowerCase().includes('re-sell') || 
                p.tag?.toLowerCase().includes('resell') || 
+               p.tag?.toLowerCase().includes('re-sale') || 
+               p.tag?.toLowerCase().includes('resale') || 
                p.title?.toLowerCase().includes('resale') || 
                p.title?.toLowerCase().includes('re-sell') ||
+               p.title?.toLowerCase().includes('re-sale') ||
                p.builder?.toLowerCase().includes('individual') ||
                p.tag === 'Sale';
       }
