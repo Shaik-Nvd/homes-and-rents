@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Home, Building2, Store, ArrowRight, Building, PlusSquare, Rocket, Sparkles, CheckCircle2, Hammer, Repeat } from 'lucide-react';
+import { MapPin, Home, Building2, Store, Rocket, Sparkles, CheckCircle2, Hammer, Repeat } from 'lucide-react';
 
 export type SuperCardCategory = 
   | 'Location' 
@@ -11,10 +11,8 @@ export type SuperCardCategory =
   | 'Ready to Move' 
   | 'Under Construction' 
   | 'Lands' 
-  | 'Plots' 
   | 'Re-Sell' 
   | 'Shops' 
-  | 'Offices' 
   | 'All';
 
 interface SuperCardsProps {
@@ -32,17 +30,14 @@ const CATEGORIES = [
   { id: 'Ready to Move', label: 'Ready to Move', icon: CheckCircle2, color: 'text-emerald-500', bg: 'bg-emerald-50' },
   { id: 'Under Construction', label: 'Under Construction', icon: Hammer, color: 'text-amber-500', bg: 'bg-amber-50' },
   { id: 'Lands', label: 'Lands', icon: MapPin, color: 'text-emerald-500', bg: 'bg-emerald-50' },
-  { id: 'Plots', label: 'Plots', icon: PlusSquare, color: 'text-teal-500', bg: 'bg-teal-50' },
   { id: 'Re-Sell', label: 'Re-Sell', icon: Repeat, color: 'text-cyan-500', bg: 'bg-cyan-50' },
   { id: 'Shops', label: 'Shops', icon: Store, color: 'text-amber-500', bg: 'bg-amber-50' },
-  { id: 'Offices', label: 'Offices', icon: Building, color: 'text-orange-500', bg: 'bg-orange-50' },
-  { id: 'All', label: 'View All', icon: ArrowRight, color: 'text-gray-600', bg: 'bg-gray-100' },
 ] as const;
 
 export const SuperCards: React.FC<SuperCardsProps> = ({ selectedCategory, onSelectCategory }) => {
   return (
     <div className="py-4 sm:py-6 px-1 sm:px-4 w-full">
-      <div className="grid grid-cols-4 sm:grid-cols-6 gap-y-4 gap-x-2 sm:gap-6 justify-items-center max-w-4xl mx-auto">
+      <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-6 gap-y-4 gap-x-2 sm:gap-6 justify-items-center max-w-4xl mx-auto">
         {CATEGORIES.map((cat) => {
           const isSelected = selectedCategory === cat.id;
           const Icon = cat.icon;
