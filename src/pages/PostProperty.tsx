@@ -12,6 +12,18 @@ export const PostProperty = () => {
   const navigate = useNavigate();
   const [isRentalModalOpen, setIsRentalModalOpen] = useState(false);
 
+  if (user?.email !== 'admin@homesandrents.com') {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full text-center border border-gray-100">
+          <h2 className="text-2xl font-bold text-red-600 mb-4">Access Denied</h2>
+          <p className="text-gray-600 mb-6">You must be logged in as an administrator to access the Control Panel.</p>
+          <button onClick={() => navigate('/')} className="bg-blue-600 text-white px-6 py-2 rounded-xl font-medium">Return Home</button>
+        </div>
+      </div>
+    );
+  }
+
   // Form State
   const [formData, setFormData] = useState({
     type: 'Rent out',
@@ -141,8 +153,8 @@ export const PostProperty = () => {
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
           <div className="bg-primary px-8 py-6 text-white text-center">
-            <h1 className="text-2xl font-bold">Post your Property</h1>
-            <p className="text-primary-hover text-sm mt-1">Rent, Lease or Sell in Bangalore</p>
+            <h1 className="text-2xl font-bold">Admin Control Panel</h1>
+            <p className="text-primary-hover text-sm mt-1">Upload and manage properties</p>
           </div>
           
           <form className="p-8 space-y-8" onSubmit={handleInitialSubmit}>

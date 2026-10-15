@@ -7,19 +7,59 @@ import { ProjectCard } from '../components/ProjectCard';
 import { projects } from '../data/projects';
 
 interface LocationSeoPageProps {
-  type: 'rent' | 'sale';
+  type?: 'rent' | 'sale';
 }
 
-export const LocationSeoPage = ({ type }: LocationSeoPageProps) => {
-  const { location } = useParams<{ location: string }>();
+export const LocationSeoPage = ({ type: propType }: LocationSeoPageProps) => {
+  const { location, slug } = useParams<{ location?: string; slug?: string }>();
   const [properties, setProperties] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Format the URL slug back into a readable location name
-  // e.g., "hsr-layout" -> "HSR Layout"
-  const formattedLocation = location
-    ? location.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
-    : 'Bangalore';
+  // Parse custom 99acres-style slug: e.g. "2-bhk-flats-in-hebbal-bangalore-north-ffid"
+  const rawSlug = slug || location || '';
+  
+  const parsed = (() => {
+    let bhkFilter: string | null = null;
+    let cleanArea = rawSlug;
+    let zone: string | null = null;
+    let pageIntent: 'rent' | 'sale' = propType || 'rent';
+
+    // Check for "-ffid" suffix or similar
+    let working = cleanArea.replace(/-ffid$/i, '');
+
+    // Match BHK pattern: e.g. "2-bhk" or "3-bhk" or "4-bhk"
+    const bhkMatch = working.match(/^(\d+)-bhk-(flats|apartments|houses)?-in-(.+)$/i);
+    if (bhkMatch) {
+      bhkFilter = bhkMatch[1];
+      working = bhkMatch[3]; // e.g. "hebbal-bangalore-north" or "hebbal"
+    }
+
+    // Check if zone is attached (e.g. "hebbal-bangalore-north" -> area: hebbal, zone: north)
+    const zoneMatch = working.match(/^(.+?)-bangalore-(north|south|east|west|central)$/i);
+    if (zoneMatch) {
+      working = zoneMatch[1];
+      zone = zoneMatch[2];
+    } else {
+      // Remove trailing "-bangalore" if present
+      working = working.replace(/-bangalore$/i, '');
+    }
+
+    const formattedArea = working
+      ? working.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+      : 'Bangalore';
+
+    return {
+      bhk: bhkFilter,
+      area: formattedArea,
+      zone: zone ? zone.charAt(0).toUpperCase() + zone.slice(1) : null,
+      type: pageIntent
+    };
+  })();
+
+  const formattedLocation = parsed.area;
+  const currentBhk = parsed.bhk;
+  const currentZone = parsed.zone;
+  const currentType = parsed.type;
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -36,10 +76,15 @@ export const LocationSeoPage = ({ type }: LocationSeoPageProps) => {
         
         if (!error && data) {
           dbFiltered = data.filter(prop => {
-            const propType = prop.type?.toLowerCase() || '';
-            if (type === 'rent' && propType.includes('rent')) return true;
-            if (type === 'sale' && (propType.includes('sale') || propType.includes('buy'))) return true;
-            return false;
+            const pType = prop.type?.toLowerCase() || '';
+            const matchesType = currentType === 'rent' ? pType.includes('rent') : (pType.includes('sale') || pType.includes('buy'));
+            if (!matchesType) return false;
+
+            if (currentBhk) {
+              const propBhk = (prop.bhk || '').toString().toLowerCase();
+              if (!propBhk.includes(currentBhk)) return false;
+            }
+            return true;
           }).map(item => ({
             id: item.id?.toString(),
             title: item.title || 'Untitled Property',
@@ -60,13 +105,19 @@ export const LocationSeoPage = ({ type }: LocationSeoPageProps) => {
         // Get local mock data
         const locSearch = formattedLocation.split(' ')[0].toLowerCase();
         const localFiltered = projects.filter(prop => {
-            const matchesLoc = prop.subtitle?.toLowerCase().includes(locSearch) || prop.title.toLowerCase().includes(locSearch);
-            if (!matchesLoc) return false;
+          const matchesLoc = prop.subtitle?.toLowerCase().includes(locSearch) || prop.title.toLowerCase().includes(locSearch);
+          if (!matchesLoc) return false;
 
-            const isRent = prop.tag === 'Rent' || prop.priceConfigs?.some(c => c.label.toLowerCase().includes('rent'));
-            if (type === 'rent' && isRent) return true;
-            if (type === 'sale' && !isRent) return true;
-            return false;
+          const isRent = prop.tag === 'Rent' || prop.priceConfigs?.some(c => c.label.toLowerCase().includes('rent'));
+          if (currentType === 'rent' && !isRent) return false;
+          if (currentType === 'sale' && isRent) return false;
+
+          if (currentBhk) {
+            const hasBhk = prop.subtitle?.toLowerCase().includes(`${currentBhk} bhk`) || 
+                           prop.priceConfigs?.some(c => c.label.toLowerCase().includes(`${currentBhk} bhk`));
+            if (!hasBhk) return false;
+          }
+          return true;
         });
 
         setProperties([...localFiltered, ...dbFiltered]);
@@ -80,26 +131,29 @@ export const LocationSeoPage = ({ type }: LocationSeoPageProps) => {
     if (formattedLocation) {
       fetchProperties();
     }
-  }, [formattedLocation, type]);
+  }, [formattedLocation, currentBhk, currentZone, currentType]);
 
-  const pageTitle = type === 'rent' 
-    ? `Flats for Rent in ${formattedLocation}, Bangalore | Homes and Rents`
-    : `Properties for Sale in ${formattedLocation}, Bangalore | Homes and Rents`;
+  const prefix = currentBhk ? `${currentBhk} BHK ` : '';
+  const zoneSuffix = currentZone ? ` (${currentZone} Bangalore)` : '';
 
-  const pageDescription = type === 'rent'
-    ? `Find the best flats and apartments for rent in ${formattedLocation}, Bangalore. Browse verified listings without brokerage on Homes and Rents.`
-    : `Explore premium properties, flats, and villas for sale in ${formattedLocation}, Bangalore. Best real estate investments on Homes and Rents.`;
+  const pageTitle = currentType === 'rent' 
+    ? `${prefix}Flats for Rent in ${formattedLocation}${zoneSuffix} | Homes and Rents`
+    : `${prefix}Properties for Sale in ${formattedLocation}${zoneSuffix} | Homes and Rents`;
 
-  const headerTitle = type === 'rent'
-    ? `Flats & Apartments for Rent in ${formattedLocation}`
-    : `Properties for Sale in ${formattedLocation}`;
+  const pageDescription = currentType === 'rent'
+    ? `Find the best verified ${prefix}flats and apartments for rent in ${formattedLocation}${zoneSuffix}, Bangalore. Zero brokerage options on Homes and Rents.`
+    : `Explore premium verified ${prefix}properties, flats, and villas for sale in ${formattedLocation}${zoneSuffix}, Bangalore. Best deals on Homes and Rents.`;
+
+  const headerTitle = currentType === 'rent'
+    ? `${prefix}Flats & Apartments for Rent in ${formattedLocation}${zoneSuffix}`
+    : `${prefix}Properties for Sale in ${formattedLocation}${zoneSuffix}`;
 
   return (
     <div className="bg-gray-50 min-h-screen">
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta name="keywords" content={`${type === 'rent' ? 'rentals' : 'properties'}, flats in ${formattedLocation}, real estate ${formattedLocation} Bangalore, ${formattedLocation} properties`} />
+        <meta name="keywords" content={`${currentType === 'rent' ? 'rentals' : 'properties'}, flats in ${formattedLocation}, real estate ${formattedLocation} Bangalore, ${formattedLocation} properties`} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="website" />
