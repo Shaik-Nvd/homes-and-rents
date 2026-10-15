@@ -450,7 +450,13 @@ const Home = () => {
       if (selectedCategory === 'Under Construction') {
         return p.status?.toLowerCase().includes('construction') || p.subtitle?.toLowerCase().includes('construction');
       }
-      if (selectedCategory === 'Re-Sale') {
+      if (selectedCategory === 'Plots & Lands') {
+        return p.subtitle?.toLowerCase().includes('plot') || 
+               p.subtitle?.toLowerCase().includes('land') || 
+               p.title?.toLowerCase().includes('plot') || 
+               p.title?.toLowerCase().includes('land');
+      }
+      if (selectedCategory === 'Resale Properties') {
         return p.tag?.toLowerCase().includes('re-sell') || 
                p.tag?.toLowerCase().includes('resell') || 
                p.tag?.toLowerCase().includes('re-sale') || 
@@ -461,13 +467,15 @@ const Home = () => {
                p.builder?.toLowerCase().includes('individual') ||
                p.tag === 'Sale';
       }
+      if (selectedCategory === 'Commercial') {
+        return p.subtitle?.toLowerCase().includes('shop') || 
+               p.subtitle?.toLowerCase().includes('office') || 
+               p.subtitle?.toLowerCase().includes('commercial') || 
+               p.title?.toLowerCase().includes('shop') || 
+               p.title?.toLowerCase().includes('commercial');
+      }
 
-      const target = selectedCategory.toLowerCase();
-      // Check in subtitle and price configs
-      const inSubtitle = p.subtitle?.toLowerCase().includes(target);
-      const inPriceConfigs = p.priceConfigs?.some(c => c.label.toLowerCase().includes(target));
-      const inTitle = p.title.toLowerCase().includes(target);
-      return inSubtitle || inPriceConfigs || inTitle;
+      return true;
     });
   }
 

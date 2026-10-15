@@ -1,18 +1,14 @@
 import React from 'react';
-import { MapPin, Home, Building2, Store, Rocket, Sparkles, CheckCircle2, Hammer, Repeat } from 'lucide-react';
+import { Building2, Rocket, Sparkles, CheckCircle2, Hammer, Repeat, PlusSquare } from 'lucide-react';
 
 export type SuperCardCategory = 
-  | '1 BHK' 
-  | '2 BHK' 
-  | '3 BHK' 
-  | '4 BHK' 
-  | 'New Launch' 
   | 'Pre Launch' 
+  | 'New Launch' 
   | 'Ready to Move' 
   | 'Under Construction' 
-  | 'Lands' 
-  | 'Re-Sale' 
-  | 'Shops' 
+  | 'Plots & Lands' 
+  | 'Resale Properties' 
+  | 'Commercial' 
   | 'All';
 
 interface SuperCardsProps {
@@ -21,23 +17,19 @@ interface SuperCardsProps {
 }
 
 const CATEGORIES = [
-  { id: '1 BHK', label: '1 BHK', icon: Home, color: 'text-amber-500', bg: 'bg-amber-50' },
-  { id: '2 BHK', label: '2 BHK', icon: Home, color: 'text-blue-500', bg: 'bg-blue-50' },
-  { id: '3 BHK', label: '3 BHK', icon: Home, color: 'text-indigo-500', bg: 'bg-indigo-50' },
-  { id: '4 BHK', label: '4 BHK', icon: Building2, color: 'text-purple-500', bg: 'bg-purple-50' },
-  { id: 'New Launch', label: 'New Launch', icon: Rocket, color: 'text-rose-500', bg: 'bg-rose-50' },
   { id: 'Pre Launch', label: 'Pre Launch', icon: Sparkles, color: 'text-violet-500', bg: 'bg-violet-50' },
+  { id: 'New Launch', label: 'New Launch', icon: Rocket, color: 'text-rose-500', bg: 'bg-rose-50' },
   { id: 'Ready to Move', label: 'Ready to Move', icon: CheckCircle2, color: 'text-emerald-500', bg: 'bg-emerald-50' },
   { id: 'Under Construction', label: 'Under Construction', icon: Hammer, color: 'text-amber-500', bg: 'bg-amber-50' },
-  { id: 'Lands', label: 'Lands', icon: MapPin, color: 'text-emerald-500', bg: 'bg-emerald-50' },
-  { id: 'Re-Sale', label: 'Re-Sale', icon: Repeat, color: 'text-cyan-500', bg: 'bg-cyan-50' },
-  { id: 'Shops', label: 'Shops', icon: Store, color: 'text-amber-500', bg: 'bg-amber-50' },
+  { id: 'Plots & Lands', label: 'Plots & Lands', icon: PlusSquare, color: 'text-teal-500', bg: 'bg-teal-50' },
+  { id: 'Resale Properties', label: 'Resale Properties', icon: Repeat, color: 'text-cyan-500', bg: 'bg-cyan-50' },
+  { id: 'Commercial', label: 'Commercial', icon: Building2, color: 'text-blue-500', bg: 'bg-blue-50' },
 ] as const;
 
 export const SuperCards: React.FC<SuperCardsProps> = ({ selectedCategory, onSelectCategory }) => {
   return (
     <div className="py-4 sm:py-6 px-1 sm:px-4 w-full">
-      <div className="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-6 gap-y-4 gap-x-2 sm:gap-6 justify-items-center max-w-4xl mx-auto">
+      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 max-w-4xl mx-auto">
         {CATEGORIES.map((cat) => {
           const isSelected = selectedCategory === cat.id;
           const Icon = cat.icon;
