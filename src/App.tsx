@@ -428,7 +428,7 @@ const Home = () => {
     }
   };
 
-  if (selectedCategory !== 'All' && selectedCategory !== 'Location') {
+  if (selectedCategory !== 'All') {
     filteredProjects = filteredProjects.filter(p => {
       if (selectedCategory === 'New Launch') {
         const isNew = p.status?.toLowerCase().includes('new launch') || 

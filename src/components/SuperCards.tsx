@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPin, Home, Building2, Store, Rocket, Sparkles, CheckCircle2, Hammer, Repeat } from 'lucide-react';
 
 export type SuperCardCategory = 
-  | 'Location' 
+  | '1 BHK' 
   | '2 BHK' 
   | '3 BHK' 
   | '4 BHK' 
@@ -21,7 +21,7 @@ interface SuperCardsProps {
 }
 
 const CATEGORIES = [
-  { id: 'Location', label: 'Location', icon: MapPin, color: 'text-red-500', bg: 'bg-red-50' },
+  { id: '1 BHK', label: '1 BHK', icon: Home, color: 'text-amber-500', bg: 'bg-amber-50' },
   { id: '2 BHK', label: '2 BHK', icon: Home, color: 'text-blue-500', bg: 'bg-blue-50' },
   { id: '3 BHK', label: '3 BHK', icon: Home, color: 'text-indigo-500', bg: 'bg-indigo-50' },
   { id: '4 BHK', label: '4 BHK', icon: Building2, color: 'text-purple-500', bg: 'bg-purple-50' },
