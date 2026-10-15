@@ -4,7 +4,7 @@ import type { ErrorInfo, ReactNode } from 'react';
 
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Home as HomeIcon, CheckCircle2, Search, MapPin, ArrowUp, ArrowDown, GripVertical, RotateCcw, Check } from 'lucide-react';
+import { Home as HomeIcon, CheckCircle2, Search, MapPin, ArrowUp, ArrowDown, GripVertical, RotateCcw, Check, Eye, EyeOff } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
 import { projects } from './data/projects';
 import { SearchPage } from './pages/Search';
@@ -284,8 +284,29 @@ const Home = () => {
       return [];
     }
   });
+  const [hiddenProjects, setHiddenProjects] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem('admin_hidden_properties');
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  const [showHiddenToAdmin, setShowHiddenToAdmin] = useState(false);
   const [draggedId, setDraggedId] = useState<string | null>(null);
-  const [saveFeedback, setSaveFeedback] = useState(false);
+  const [saveFeedback, setSaveFeedback] = useState<string | null>(null);
+
+  const toggleHideProperty = (id: string) => {
+    const isCurrentlyHidden = hiddenProjects.includes(id);
+    const updated = isCurrentlyHidden 
+      ? hiddenProjects.filter(item => item !== id)
+      : [...hiddenProjects, id];
+    
+    setHiddenProjects(updated);
+    localStorage.setItem('admin_hidden_properties', JSON.stringify(updated));
+    setSaveFeedback(isCurrentlyHidden ? 'Property Unhidden' : 'Property Hidden');
+    setTimeout(() => setSaveFeedback(null), 2000);
+  };
 
   useEffect(() => {
     const fetchProperties = async () => {
@@ -327,8 +348,8 @@ const Home = () => {
   const saveOrder = (newOrder: string[]) => {
     setCustomOrder(newOrder);
     localStorage.setItem('admin_property_order', JSON.stringify(newOrder));
-    setSaveFeedback(true);
-    setTimeout(() => setSaveFeedback(false), 2000);
+    setSaveFeedback('Order Saved');
+    setTimeout(() => setSaveFeedback(null), 2000);
   };
 
   const handleMove = (id: string, direction: 'up' | 'down', currentList: ProjectData[]) => {
@@ -388,8 +409,8 @@ const Home = () => {
     if (window.confirm('Reset all properties back to default order?')) {
       setCustomOrder([]);
       localStorage.removeItem('admin_property_order');
-      setSaveFeedback(true);
-      setTimeout(() => setSaveFeedback(false), 2000);
+      setSaveFeedback('Order Reset');
+      setTimeout(() => setSaveFeedback(null), 2000);
     }
   };
 
@@ -397,6 +418,11 @@ const Home = () => {
   const builders = Array.from(new Set(allProjects.map(p => p.builder))).filter(Boolean);
 
   let filteredProjects = allProjects;
+
+  // Filter out hidden properties for general visitors; for admin, filter unless showHiddenToAdmin toggle is on
+  if (!isAdmin || !showHiddenToAdmin) {
+    filteredProjects = filteredProjects.filter(p => !hiddenProjects.includes(p.id));
+  }
 
   if (activeTab === 'Rent') {
     filteredProjects = filteredProjects.filter(p => p.tag === 'Rent' || p.priceConfigs?.some(c => c.label.toLowerCase().includes('rent')));
@@ -567,6 +593,20 @@ const Home = () => {
                     <Check className="w-3.5 h-3.5" /> Order Saved
                   </span>
                 )}
+                {isAdmin && hiddenProjects.length > 0 && (
+                  <button 
+                    onClick={() => setShowHiddenToAdmin(!showHiddenToAdmin)}
+                    className={`text-xs font-bold px-2.5 py-1 rounded-md flex items-center gap-1 transition-colors border ${
+                      showHiddenToAdmin 
+                        ? 'bg-amber-100 text-amber-900 border-amber-300' 
+                        : 'bg-gray-100 text-gray-700 hover:text-amber-700 hover:bg-amber-50 border-gray-200'
+                    }`}
+                    title={showHiddenToAdmin ? "Hide the hidden listings from view" : "Show hidden listings"}
+                  >
+                    {showHiddenToAdmin ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                    {showHiddenToAdmin ? `Showing Hidden (${hiddenProjects.length})` : `Show Hidden (${hiddenProjects.length})`}
+                  </button>
+                )}
                 {isAdmin && customOrder.length > 0 && (
                   <button 
                     onClick={handleResetOrder}
@@ -587,7 +627,9 @@ const Home = () => {
               </div>
             ) : (
               <div className="flex flex-col gap-8 sm:gap-6">
-                {filteredProjects.map((project, index) => (
+                {filteredProjects.map((project, index) => {
+                  const isHidden = hiddenProjects.includes(project.id);
+                  return (
                   <div
                     key={project.id}
                     draggable={isAdmin}
@@ -596,14 +638,25 @@ const Home = () => {
                     onDrop={(e) => isAdmin && handleDrop(e, project.id)}
                     className={`relative transition-all duration-200 ${
                       isAdmin ? 'group/admin hover:ring-2 hover:ring-indigo-400 rounded-3xl' : ''
-                    } ${draggedId === project.id ? 'opacity-40 scale-[0.98]' : ''}`}
+                    } ${draggedId === project.id ? 'opacity-40 scale-[0.98]' : ''} ${
+                      isHidden ? 'opacity-70 ring-2 ring-amber-400/80 rounded-3xl' : ''
+                    }`}
                   >
-                    {/* Admin Move & Drag Controls Overlay */}
+                    {/* Admin Move, Drag & Hide Controls Overlay */}
                     {isAdmin && (
-                      <div className="flex items-center justify-between bg-gradient-to-r from-slate-900 to-indigo-950 text-white px-4 py-1.5 rounded-t-2xl text-xs font-bold z-30 mb-[-10px] relative shadow-md">
+                      <div className={`flex items-center justify-between text-white px-4 py-1.5 rounded-t-2xl text-xs font-bold z-30 mb-[-10px] relative shadow-md ${
+                        isHidden 
+                          ? 'bg-gradient-to-r from-amber-950 via-slate-900 to-amber-900 border-b border-amber-500/30' 
+                          : 'bg-gradient-to-r from-slate-900 to-indigo-950'
+                      }`}>
                         <div className="flex items-center gap-1.5 cursor-grab active:cursor-grabbing text-indigo-200 hover:text-white">
                           <GripVertical className="w-4 h-4" />
                           <span>Position #{index + 1} • Drag to move</span>
+                          {isHidden && (
+                            <span className="ml-2 bg-amber-500/20 text-amber-300 text-[10px] font-extrabold px-1.5 py-0.5 rounded border border-amber-500/30 uppercase tracking-wide">
+                              Hidden from Public
+                            </span>
+                          )}
                         </div>
                         <div className="flex items-center gap-1.5 flex-wrap">
                           {/* Top 10 Priority Quick Jump */}
@@ -662,12 +715,32 @@ const Home = () => {
                           >
                             <ArrowDown className="w-3.5 h-3.5" /> Down
                           </button>
+                          <span className="text-gray-500">|</span>
+                          {/* Hide / Unhide Toggle Button */}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              toggleHideProperty(project.id);
+                            }}
+                            className={`px-2 py-0.5 rounded flex items-center gap-1 text-[11px] font-bold transition-colors ${
+                              isHidden 
+                                ? 'bg-amber-500 text-black hover:bg-amber-400 shadow-sm' 
+                                : 'bg-rose-500/20 text-rose-300 hover:bg-rose-500/40 hover:text-white border border-rose-500/30'
+                            }`}
+                            title={isHidden ? "Unhide this property (make visible to all)" : "Hide this property from public"}
+                          >
+                            {isHidden ? <Eye className="w-3 h-3" /> : <EyeOff className="w-3 h-3" />}
+                            <span>{isHidden ? 'Unhide' : 'Hide'}</span>
+                          </button>
                         </div>
                       </div>
                     )}
                     <ProjectCard project={project} />
                   </div>
-                ))}
+                );
+              })}
               </div>
             )}
           </div>
