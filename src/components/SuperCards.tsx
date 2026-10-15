@@ -23,8 +23,8 @@ const CATEGORIES = [
 
 export const SuperCards: React.FC<SuperCardsProps> = ({ selectedCategory, onSelectCategory }) => {
   return (
-    <div className="py-6 sm:py-8 px-4 sm:px-6 w-full overflow-x-auto no-scrollbar">
-      <div className="flex sm:grid sm:grid-cols-5 lg:grid-cols-10 gap-4 sm:gap-6 min-w-max sm:min-w-0">
+    <div className="py-4 sm:py-6 px-1 sm:px-4 w-full">
+      <div className="grid grid-cols-5 gap-y-4 gap-x-2 sm:gap-6 justify-items-center max-w-4xl mx-auto">
         {CATEGORIES.map((cat) => {
           const isSelected = selectedCategory === cat.id;
           const Icon = cat.icon;
@@ -32,15 +32,15 @@ export const SuperCards: React.FC<SuperCardsProps> = ({ selectedCategory, onSele
             <button
               key={cat.id}
               onClick={() => onSelectCategory(cat.id as SuperCardCategory)}
-              className={`group flex flex-col items-center justify-start gap-2.5 sm:gap-3.5 transition-all duration-300 w-20 sm:w-24 ${
+              className={`group flex flex-col items-center justify-start gap-1.5 sm:gap-3 transition-all duration-300 w-full max-w-[76px] sm:max-w-[96px] ${
                 isSelected ? 'scale-105' : 'hover:-translate-y-1'
               }`}
             >
               <div
-                className={`w-16 h-16 sm:w-20 sm:h-20 rounded-[1.2rem] sm:rounded-[1.5rem] flex items-center justify-center transition-all duration-300 border-[2px] relative overflow-hidden ${
+                className={`w-14 h-14 sm:w-20 sm:h-20 rounded-[1.1rem] sm:rounded-[1.5rem] flex items-center justify-center transition-all duration-300 border-[2px] relative overflow-hidden ${
                   isSelected
                     ? `border-indigo-500 shadow-[0_8px_20px_rgba(99,102,241,0.25)] ${cat.bg}`
-                    : `border-white/60 ${cat.bg} shadow-sm group-hover:shadow-md group-hover:border-${cat.color.split('-')[1]}-200`
+                    : `border-white/60 ${cat.bg} shadow-sm group-hover:shadow-md`
                 }`}
               >
                 {/* Decorative background gradient */}
@@ -48,14 +48,14 @@ export const SuperCards: React.FC<SuperCardsProps> = ({ selectedCategory, onSele
                 
                 <Icon
                   strokeWidth={isSelected ? 2.5 : 2}
-                  className={`w-7 h-7 sm:w-8 sm:h-8 transition-colors relative z-10 ${
+                  className={`w-6 h-6 sm:w-8 sm:h-8 transition-colors relative z-10 ${
                     isSelected ? 'text-indigo-600' : cat.color
                   } group-hover:scale-110 duration-300`}
                 />
               </div>
               <span
-                className={`text-[11px] sm:text-[13px] font-extrabold text-center leading-tight tracking-tight ${
-                  isSelected ? 'text-indigo-700 drop-shadow-sm' : 'text-gray-600 group-hover:text-gray-900'
+                className={`text-[10px] sm:text-[13px] font-extrabold text-center leading-tight tracking-tight ${
+                  isSelected ? 'text-indigo-700 drop-shadow-sm' : 'text-gray-700 group-hover:text-gray-900'
                 }`}
               >
                 {cat.label}
