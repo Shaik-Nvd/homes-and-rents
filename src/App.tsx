@@ -12,6 +12,7 @@ import { PropertyDetail } from './pages/PropertyDetail';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { LocationSeoPage } from './pages/LocationSeoPage';
 import { PostProperty } from './pages/PostProperty';
+import { AdminLoginPage } from './pages/AdminLogin';
 import { ProjectCard } from './components/ProjectCard';
 import { SuperCards } from './components/SuperCards';
 import { TrendingNow } from './components/TrendingNow';
@@ -641,6 +642,8 @@ const AppContent = () => {
           <Route path="/property/:id" element={<PropertyDetail />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/post" element={<PostProperty />} />
+          <Route path="/admin" element={<PostProperty />} />
+          <Route path="/admin/login" element={<AdminLoginPage />} />
           {/* 99acres style SEO URL pattern: e.g. /2-bhk-flats-in-hebbal-bangalore-north-ffid */}
           <Route path="/:slug" element={<LocationSeoPage />} />
           <Route path="*" element={<div className="p-12 text-center text-xl">Page Under Construction</div>} />

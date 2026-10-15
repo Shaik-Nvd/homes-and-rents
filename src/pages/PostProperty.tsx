@@ -18,7 +18,14 @@ export const PostProperty = () => {
         <div className="bg-white p-8 rounded-2xl shadow-xl max-w-md w-full text-center border border-gray-100">
           <h2 className="text-2xl font-bold text-red-600 mb-4">Access Denied</h2>
           <p className="text-gray-600 mb-6">You must be logged in as an administrator to access the Control Panel.</p>
-          <button onClick={() => navigate('/')} className="bg-blue-600 text-white px-6 py-2 rounded-xl font-medium">Return Home</button>
+          <div className="flex gap-3 justify-center">
+            <button onClick={() => navigate('/admin/login')} className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition-colors">
+              Go to Admin Login
+            </button>
+            <button onClick={() => navigate('/')} className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-2.5 rounded-xl font-medium text-sm transition-colors">
+              Return Home
+            </button>
+          </div>
         </div>
       </div>
     );
