@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Heart, Download, Info, Building2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { SiteVisitModal } from './SiteVisitModal';
+import { BrochureModal } from './BrochureModal';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 
@@ -28,6 +29,7 @@ export interface ProjectData {
 export const ProjectCard = ({ project }: { project?: ProjectData }) => {
   const [showMoreNearby, setShowMoreNearby] = useState(false);
   const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState(false);
+  const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const { user } = useAuth();
 
   // Default to GR Samskruthi if no project is provided (backward compatibility)
@@ -248,15 +250,14 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
           </div>
           
           <div className="flex w-full sm:w-auto gap-3">
-            <a 
-              href={`https://wa.me/919739063840?text=Hi%2C%20I%20would%20like%20to%20request%20the%20brochure%20for%20${encodeURIComponent(data.title)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors"
+            <button 
+              type="button"
+              onClick={() => setIsBrochureModalOpen(true)}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors cursor-pointer"
             >
               <Download className="w-4 h-4" strokeWidth={2.5} />
-              Brochure
-            </a>
+              Download Brochure
+            </button>
             <button 
               onClick={() => setIsSiteVisitModalOpen(true)}
               className="flex-1 sm:flex-none bg-blue-600 text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors shadow-sm"
@@ -266,6 +267,12 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
           </div>
         </div>
       </div>
+
+      <BrochureModal 
+        isOpen={isBrochureModalOpen}
+        onClose={() => setIsBrochureModalOpen(false)}
+        project={data}
+      />
 
       <SiteVisitModal 
         isOpen={isSiteVisitModalOpen} 

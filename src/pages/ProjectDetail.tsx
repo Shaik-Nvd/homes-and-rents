@@ -7,6 +7,7 @@ import { ProjectAmenities } from '../components/ProjectAmenities';
 import { ProjectAbout } from '../components/ProjectAbout';
 import { ProjectLocation } from '../components/ProjectLocation';
 import { SiteVisitModal } from '../components/SiteVisitModal';
+import { BrochureModal } from '../components/BrochureModal';
 import { RentalAmenities } from '../components/RentalAmenities';
 import { projects } from '../data/projects';
 import { supabase } from '../lib/supabase';
@@ -59,6 +60,7 @@ export const ProjectDetail = () => {
   const [showGallery, setShowGallery] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
   const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState(false);
+  const [isBrochureModalOpen, setIsBrochureModalOpen] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '' });
 
@@ -310,9 +312,13 @@ export const ProjectDetail = () => {
                        </div>
                      </div>
                      <div className="mt-6 flex gap-3 relative z-10">
-                        <a href={`https://wa.me/919739063840?text=Hi%2C%20I%20would%20like%20to%20request%20the%20brochure%20for%20${encodeURIComponent(project.title)}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1.5 text-xs font-bold text-white bg-purple-600 hover:bg-purple-700 transition-colors px-4 py-2.5 rounded-xl shadow-sm hover:shadow-md">
-                          <Download className="w-3.5 h-3.5" /> Get Brochure
-                        </a>
+                        <button 
+                          type="button"
+                          onClick={() => setIsBrochureModalOpen(true)}
+                          className="flex items-center justify-center gap-1.5 text-xs font-bold text-white bg-purple-600 hover:bg-purple-700 transition-colors px-4 py-2.5 rounded-xl shadow-sm hover:shadow-md cursor-pointer"
+                        >
+                          <Download className="w-3.5 h-3.5" /> Download Brochure
+                        </button>
                      </div>
                   </div>
                 )}
@@ -695,6 +701,12 @@ export const ProjectDetail = () => {
           </div>
         </div>
       )}
+
+      <BrochureModal 
+        isOpen={isBrochureModalOpen}
+        onClose={() => setIsBrochureModalOpen(false)}
+        project={project}
+      />
 
       <SiteVisitModal 
         isOpen={isSiteVisitModalOpen} 
