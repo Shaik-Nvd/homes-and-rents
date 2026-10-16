@@ -143,10 +143,19 @@ export const PostProperty = () => {
     <div className="bg-gray-50 min-h-screen py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
-          <div className="bg-gradient-to-r from-indigo-700 to-purple-700 px-8 py-6 text-white text-center">
-            <h1 className="text-2xl font-bold">{isAdmin ? 'Admin Control Panel' : 'Post Your Property'}</h1>
+          <div className="bg-gradient-to-r from-indigo-700 to-purple-700 px-8 py-6 text-white text-center relative">
+            {isAdmin && (
+              <button
+                type="button"
+                onClick={() => navigate('/admin')}
+                className="absolute left-4 top-4 sm:left-6 sm:top-6 bg-white/15 hover:bg-white/25 text-white text-xs font-bold px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 border border-white/20"
+              >
+                ← Admin Menu
+              </button>
+            )}
+            <h1 className="text-2xl font-bold">{isAdmin ? 'Admin Post Property' : 'Post Your Property'}</h1>
             <p className="text-indigo-200 text-sm mt-1">
-              {isAdmin ? 'Upload, manage, and feature listings across Bangalore' : 'List your property for Rent, Sale, or Lease for FREE'}
+              {isAdmin ? 'Upload and feature listings across Bangalore' : 'List your property for Rent, Sale, or Lease for FREE'}
             </p>
           </div>
           

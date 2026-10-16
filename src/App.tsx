@@ -12,6 +12,7 @@ import { PropertyDetail } from './pages/PropertyDetail';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { LocationSeoPage } from './pages/LocationSeoPage';
 import { PostProperty } from './pages/PostProperty';
+import { AdminDashboard } from './pages/AdminDashboard';
 import { AdminLoginPage } from './pages/AdminLogin';
 import { ProjectCard } from './components/ProjectCard';
 import { SuperCards } from './components/SuperCards';
@@ -73,10 +74,10 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
               </button>
             )}
             <Link 
-              to="/post" 
+              to={user?.email === 'admin@homesandrents.com' ? '/admin' : '/post'} 
               className="flex items-center gap-1.5 bg-[#8b45f7] hover:bg-[#7a35e6] text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl font-bold text-[12px] sm:text-sm whitespace-nowrap shadow-sm hover:shadow transition-all"
             >
-              <span>{user?.email === 'admin@homesandrents.com' ? 'Control Panel' : 'Post Property'}</span>
+              <span>{user?.email === 'admin@homesandrents.com' ? 'Admin Menu' : 'Post Property'}</span>
               <span className="bg-white/30 text-white text-[9px] sm:text-[10px] px-1 sm:px-1.5 py-0.5 rounded shadow-sm">
                 {user?.email === 'admin@homesandrents.com' ? 'ADMIN' : 'FREE'}
               </span>
@@ -806,7 +807,7 @@ const AppContent = () => {
           <Route path="/property/:id" element={<PropertyDetail />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/post" element={<PostProperty />} />
-          <Route path="/admin" element={<PostProperty />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/login" element={<AdminLoginPage />} />
           {/* 99acres style SEO URL pattern: e.g. /2-bhk-flats-in-hebbal-bangalore-north-ffid */}
           <Route path="/:slug" element={<LocationSeoPage />} />
