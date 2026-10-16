@@ -220,10 +220,16 @@ export const PostProperty = () => {
     }
 
     // Prepare data
+    const trimmedPrice = formData.price.trim();
+    const cleanPrice = trimmedPrice.startsWith('₹') ? trimmedPrice : `₹${trimmedPrice}`;
+    const formattedPrice = (formData.type === 'Rent out' && !cleanPrice.toLowerCase().includes('month'))
+      ? `${cleanPrice} / month`
+      : cleanPrice;
+
     const insertData = {
       title: formData.title,
       description: formData.description,
-      price: formData.type === 'Rent out' ? `₹${formData.price} / month` : `₹${formData.price}`, 
+      price: formattedPrice, 
       location: formData.location,
       bhk: formData.bhk,
       type: formData.type === 'Rent out' ? 'Rent' : formData.type,
@@ -260,7 +266,7 @@ export const PostProperty = () => {
           aboutText: aboutProjectText.trim() || formData.description,
           nearby: landmarksList.length > 0 ? landmarksList : [formData.location, 'Metro Station', 'Tech Park', 'School'],
           priceConfigs: [
-            { label: `${formData.bhk} BHK ${formData.propertyType}`, price: `₹${formData.price}` }
+            { label: `${formData.bhk} BHK ${formData.propertyType}`, price: cleanPrice }
           ],
           customSlug: customSlugInput.trim() ? customSlugInput.trim().toLowerCase().replace(/^\/+|\/+$/g, '').replace(/[^a-z0-9-/]+/g, '-') : undefined,
           category: formData.category,
@@ -496,15 +502,55 @@ export const PostProperty = () => {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Expected Price (₹)</label>
-                  <input 
-                    type="number" 
-                    placeholder="e.g. 45000" 
-                    className="w-full border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring-primary p-2.5 border" 
-                    value={formData.price}
-                    onChange={(e) => setFormData({...formData, price: e.target.value})}
-                    required
-                  />
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-sm font-medium text-gray-700">Expected Price</label>
+                    <div className="flex items-center gap-1">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const val = formData.price.trim();
+                          if (!val.toLowerCase().includes('cr')) setFormData({ ...formData, price: `${val} Cr`.trim() });
+                        }}
+                        className="text-[10px] bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded border border-indigo-200 transition-colors"
+                      >
+                        + Cr
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const val = formData.price.trim();
+                          if (!val.toLowerCase().includes('lk') && !val.toLowerCase().includes('lakh')) setFormData({ ...formData, price: `${val} Lk`.trim() });
+                        }}
+                        className="text-[10px] bg-emerald-50 hover:bg-emerald-100 text-emerald-700 font-bold px-1.5 py-0.5 rounded border border-emerald-200 transition-colors"
+                      >
+                        + Lk
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const val = formData.price.trim();
+                          if (!val.toLowerCase().includes('k')) setFormData({ ...formData, price: `${val}k / month`.trim() });
+                        }}
+                        className="text-[10px] bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold px-1.5 py-0.5 rounded border border-purple-200 transition-colors"
+                      >
+                        + k/mo
+                      </button>
+                    </div>
+                  </div>
+                  <div className="relative">
+                    <span className="absolute left-3 top-2.5 text-gray-500 font-bold text-sm">₹</span>
+                    <input 
+                      type="text" 
+                      placeholder="e.g. 1.25 Cr, 85 Lk, or 45,000" 
+                      className="w-full pl-7 pr-3 border-gray-300 rounded-lg shadow-sm focus:border-primary focus:ring-primary p-2.5 border text-sm font-semibold text-gray-900" 
+                      value={formData.price}
+                      onChange={(e) => setFormData({...formData, price: e.target.value})}
+                      required
+                    />
+                  </div>
+                  <p className="text-[10px] text-gray-500 mt-1">
+                    Accepts text with words like <strong>1.5 Cr</strong>, <strong>75 Lk</strong>, <strong>₹95 Lakhs</strong>, or exact numbers.
+                  </p>
                 </div>
                 <div className="col-span-2">
                   <label className="block text-sm font-bold text-indigo-900 mb-1 flex items-center justify-between">
