@@ -17,7 +17,6 @@ import {
   Trash2,
   RefreshCw,
   ExternalLink,
-  FileSpreadsheet,
   Calendar,
   Rocket,
   Store,
@@ -35,12 +34,19 @@ import { supabase } from '../lib/supabase';
 import { projects } from '../data/projects';
 
 import { MASTER_AMENITIES, DEFAULT_PROJECT_AMENITIES } from '../data/amenities';
+import { 
+  SECTION_DEFINITIONS, 
+  DEFAULT_SECTION_VISIBILITY, 
+  getSectionVisibility, 
+  setSectionVisibility 
+} from '../data/sectionVisibility';
+import type { SectionVisibilityMap } from '../data/sectionVisibility';
 
 export const AdminDashboard: React.FC = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
-  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities'>('hub');
+  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities' | 'sections'>('hub');
   const [hiddenIds, setHiddenIds] = useState<string[]>([]);
   const [customOrder, setCustomOrder] = useState<string[]>([]);
   const [dbProperties, setDbProperties] = useState<any[]>([]);
@@ -75,6 +81,62 @@ export const AdminDashboard: React.FC = () => {
   });
   const [amenitySearch, setAmenitySearch] = useState('');
   const [newCustomAmenity, setNewCustomAmenity] = useState('');
+
+  // Section Visibility State (All Properties & Per-Property)
+  const [activeSectionProject, setActiveSectionProject] = useState<string>('global');
+  const [currentSectionVis, setCurrentSectionVis] = useState<SectionVisibilityMap>(() => {
+    return getSectionVisibility('global');
+  });
+
+  const handleSelectSectionProject = (pId: string) => {
+    setActiveSectionProject(pId);
+    setCurrentSectionVis(getSectionVisibility(pId));
+  };
+
+  const toggleSectionItem = (sectionKey: keyof SectionVisibilityMap) => {
+    const currentVal = currentSectionVis[sectionKey] !== false; // default true
+    const updated = { ...currentSectionVis, [sectionKey]: !currentVal };
+    setCurrentSectionVis(updated);
+    setSectionVisibility(activeSectionProject, updated);
+    notify(`${sectionKey} set to ${!currentVal ? 'ON (Visible)' : 'OFF (Hidden)'} for ${activeSectionProject === 'global' ? 'All Properties (Default)' : 'this property'}`);
+  };
+
+  const handleApplySectionToAll = () => {
+    if (!window.confirm('Apply this 9-section configuration to ALL properties globally?')) return;
+    setSectionVisibility('global', currentSectionVis);
+    projects.forEach(p => setSectionVisibility(p.id, currentSectionVis));
+    dbProperties.forEach(p => setSectionVisibility(p.id?.toString(), currentSectionVis));
+    notify('Successfully applied 9-section visibility to ALL properties!');
+  };
+
+  const handleTurnAllSections = (val: boolean) => {
+    const updated: SectionVisibilityMap = {
+      overview: val,
+      constructionStatus: val,
+      startingPrice: val,
+      unitPricing: val,
+      floorPlans: val,
+      topFacilities: val,
+      about: val,
+      neighborhoodMap: val,
+      keyLandmarks: val,
+    };
+    setCurrentSectionVis(updated);
+    setSectionVisibility(activeSectionProject, updated);
+    notify(`All 9 sections turned ${val ? 'ON' : 'OFF'} for ${activeSectionProject === 'global' ? 'All Properties' : 'this property'}`);
+  };
+
+  const handleResetSectionDefaults = () => {
+    if (activeSectionProject === 'global') {
+      localStorage.removeItem('admin_section_visibility_global');
+      setCurrentSectionVis(DEFAULT_SECTION_VISIBILITY);
+      notify('Global section visibility reset to default (All ON)');
+    } else {
+      localStorage.removeItem(`admin_section_visibility_${activeSectionProject}`);
+      setCurrentSectionVis(getSectionVisibility(activeSectionProject));
+      notify('Property override cleared, reverting to global default');
+    }
+  };
 
   const isAdmin = user?.email === 'admin@homesandrents.com';
 
@@ -251,12 +313,12 @@ export const AdminDashboard: React.FC = () => {
       action: () => navigate('/')
     },
     {
-      id: 'floor_plan_enquiries',
-      title: 'Floor Plan WhatsApp Flow',
-      desc: 'Verify instant brochure & price breakup WhatsApp links',
-      icon: FileSpreadsheet,
+      id: 'section_controls',
+      title: 'Sections ON/OFF (All Properties)',
+      desc: 'Toggle 9 key sections (Landmarks, Map, Floor Plans, Price...) across all or small properties',
+      icon: Sliders,
       gradient: 'from-cyan-600 to-blue-700',
-      action: () => navigate('/project/gr-samskruthi')
+      action: () => setActiveTab('sections')
     },
     {
       id: 'site_visits',
@@ -450,6 +512,17 @@ export const AdminDashboard: React.FC = () => {
                 className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-extrabold text-sm px-5 py-3 rounded-2xl shadow-lg shadow-indigo-500/25 flex items-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 <PlusCircle className="w-5 h-5" /> Post New Property
+              </button>
+              <button
+                onClick={() => setActiveTab('sections')}
+                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer ${
+                  activeTab === 'sections' 
+                    ? 'bg-blue-600 text-white border-blue-500 shadow-md font-black' 
+                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
+                }`}
+              >
+                <Sliders className="w-4 h-4 text-blue-400" />
+                Sections ON/OFF (All Properties)
               </button>
               <button
                 onClick={() => setActiveTab('overview')}
@@ -696,6 +769,209 @@ export const AdminDashboard: React.FC = () => {
                 </table>
               </div>
             )}
+          </div>
+        )}
+
+        {/* TAB: Section Visibility Manager (All Properties & Individual) */}
+        {activeTab === 'sections' && (
+          <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
+              <div>
+                <button
+                  onClick={() => setActiveTab('hub')}
+                  className="text-xs text-indigo-400 hover:underline mb-1 font-bold block"
+                >
+                  ← Back to Admin Command Hub
+                </button>
+                <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+                  <Sliders className="w-6 h-6 text-blue-400" /> All Properties Section Visibility Manager
+                </h2>
+                <p className="text-xs text-slate-400 mt-1 max-w-2xl">
+                  Super Admin power to toggle ON and OFF sections for <strong>All Properties</strong> globally or for small/individual properties:
+                  Key Landmarks, Explore Neighborhood, Floor Plan &amp; Pricing, Overview, Construction Status, Starting Price, Unit Floor Plans &amp; Pricing, Top Facilities, About.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  onClick={() => handleTurnAllSections(true)}
+                  className="text-xs font-bold px-3 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-xl hover:bg-emerald-500/30 transition-colors"
+                >
+                  Turn All 9 ON
+                </button>
+                <button
+                  onClick={() => handleTurnAllSections(false)}
+                  className="text-xs font-bold px-3 py-1.5 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-xl hover:bg-rose-500/30 transition-colors"
+                >
+                  Turn All 9 OFF
+                </button>
+                <button
+                  onClick={handleApplySectionToAll}
+                  className="text-xs font-extrabold px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-md transition-colors"
+                >
+                  Apply to ALL Properties
+                </button>
+                <button
+                  onClick={handleResetSectionDefaults}
+                  className="text-xs font-bold px-3 py-1.5 bg-slate-800 text-slate-300 border border-slate-700 rounded-xl hover:bg-slate-700 transition-colors"
+                >
+                  Reset Defaults
+                </button>
+              </div>
+            </div>
+
+            {/* Target Property Picker */}
+            <div className="mb-6 p-4 rounded-2xl bg-slate-800/50 border border-slate-700/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+                <label className="text-xs font-bold text-slate-300 whitespace-nowrap">Editing Sections For:</label>
+                <select
+                  value={activeSectionProject}
+                  onChange={(e) => handleSelectSectionProject(e.target.value)}
+                  className="bg-slate-900 border border-slate-700 text-white text-xs font-bold rounded-xl px-3 py-2 outline-none cursor-pointer focus:border-blue-500 min-w-[280px]"
+                >
+                  <option value="global">★ Global Default (Applies to All Properties)</option>
+                  <optgroup label="Static Projects">
+                    {projects.map(p => (
+                      <option key={p.id} value={p.id}>{p.title} ({p.builder})</option>
+                    ))}
+                  </optgroup>
+                  {dbProperties.length > 0 && (
+                    <optgroup label="Database Properties">
+                      {dbProperties.map(p => (
+                        <option key={p.id} value={p.id}>{p.title || `Property #${p.id}`}</option>
+                      ))}
+                    </optgroup>
+                  )}
+                </select>
+              </div>
+
+              <div className="flex items-center gap-2">
+                {activeSectionProject !== 'global' && (
+                  <Link
+                    to={`/project/${activeSectionProject}`}
+                    target="_blank"
+                    className="text-xs font-bold text-blue-300 hover:text-white px-3 py-2 bg-blue-500/10 border border-blue-500/20 rounded-xl flex items-center gap-1.5 transition-colors"
+                  >
+                    <ExternalLink className="w-3.5 h-3.5" /> Preview Property Page
+                  </Link>
+                )}
+                <span className="text-xs text-blue-300 font-bold bg-blue-500/10 border border-blue-500/20 px-3 py-2 rounded-xl">
+                  Target: {activeSectionProject === 'global' ? 'All Properties (Global)' : 'Custom Property Override'}
+                </span>
+              </div>
+            </div>
+
+            {/* The 9 Sections Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+              {SECTION_DEFINITIONS.map((def) => {
+                const isVisible = currentSectionVis[def.id as keyof SectionVisibilityMap] !== false;
+                return (
+                  <div
+                    key={def.id}
+                    className={`p-5 rounded-2xl border transition-all flex flex-col justify-between ${
+                      isVisible
+                        ? 'bg-slate-800/60 border-slate-700/80 shadow-md'
+                        : 'bg-rose-950/20 border-rose-500/40 opacity-75'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded border ${
+                          isVisible
+                            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+                            : 'bg-rose-500/20 text-rose-300 border-rose-500/40'
+                        }`}>
+                          {isVisible ? 'ON (Visible)' : 'OFF (Hidden)'}
+                        </span>
+                        <span className="text-[10px] font-semibold text-slate-500">ID: {def.id}</span>
+                      </div>
+                      <h4 className="font-extrabold text-white text-base">{def.label}</h4>
+                      <p className="text-xs text-slate-400 mt-1 leading-relaxed">{def.desc}</p>
+                    </div>
+
+                    <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                      <span className="text-[11px] font-medium text-slate-400">
+                        {isVisible ? 'Section renders on page' : 'Section is hidden'}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => toggleSectionItem(def.id as keyof SectionVisibilityMap)}
+                        className={`px-3 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 shadow-sm ${
+                          isVisible
+                            ? 'bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30'
+                            : 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black'
+                        }`}
+                      >
+                        {isVisible ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                        <span>{isVisible ? 'Turn OFF' : 'Turn ON'}</span>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Quick Properties Overview Matrix */}
+            <div className="mt-8 pt-6 border-t border-slate-800">
+              <h3 className="text-base font-extrabold text-white mb-2 flex items-center gap-2">
+                <Building2 className="w-4 h-4 text-indigo-400" /> Property Section Management Matrix
+              </h3>
+              <p className="text-xs text-slate-400 mb-4">
+                Click any property below to switch editor to that property, or open its page to test live:
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                {[...projects, ...dbProperties.map(p => ({
+                  id: p.id?.toString(),
+                  title: p.title || 'DB Property',
+                  subtitle: p.location || 'Bangalore'
+                }))].map((item) => {
+                  const hasCustom = typeof localStorage !== 'undefined' && !!localStorage.getItem(`admin_section_visibility_${item.id}`);
+                  const isCurrent = activeSectionProject === item.id;
+                  return (
+                    <div
+                      key={item.id}
+                      className={`p-3 rounded-xl border flex items-center justify-between gap-3 transition-colors ${
+                        isCurrent
+                          ? 'bg-blue-600/20 border-blue-500'
+                          : 'bg-slate-850/60 border-slate-800 hover:border-slate-700'
+                      }`}
+                    >
+                      <div className="min-w-0">
+                        <h5 className="font-extrabold text-xs text-white truncate">{item.title}</h5>
+                        <div className="flex items-center gap-1.5 mt-0.5">
+                          <span className={`text-[9px] px-1.5 py-0.5 rounded font-bold uppercase ${
+                            hasCustom ? 'bg-amber-500/20 text-amber-300' : 'bg-slate-800 text-slate-400'
+                          }`}>
+                            {hasCustom ? 'Custom Override' : 'Using Global'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1 shrink-0">
+                        <button
+                          type="button"
+                          onClick={() => handleSelectSectionProject(item.id)}
+                          className={`text-[10px] font-black px-2.5 py-1 rounded-lg transition-colors ${
+                            isCurrent
+                              ? 'bg-blue-500 text-white'
+                              : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                          }`}
+                        >
+                          {isCurrent ? 'Editing' : 'Edit'}
+                        </button>
+                        <Link
+                          to={`/project/${item.id}`}
+                          target="_blank"
+                          className="p-1 text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg"
+                          title="Open Property Page"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         )}
 

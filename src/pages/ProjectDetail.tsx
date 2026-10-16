@@ -12,6 +12,10 @@ import { projects } from '../data/projects';
 import { supabase } from '../lib/supabase';
 import { Helmet } from 'react-helmet-async';
 import type { ProjectData } from '../data/projects';
+import { useAuth } from '../contexts/AuthContext';
+import { getSectionVisibility, setSectionVisibility, SECTION_DEFINITIONS } from '../data/sectionVisibility';
+import type { SectionVisibilityMap } from '../data/sectionVisibility';
+import { Sliders } from 'lucide-react';
 
 export const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -57,6 +61,24 @@ export const ProjectDetail = () => {
   const [isSiteVisitModalOpen, setIsSiteVisitModalOpen] = useState(false);
   const [imageFailed, setImageFailed] = useState(false);
   const [formData, setFormData] = useState({ name: '', phone: '' });
+
+  const { user } = useAuth();
+  const isAdmin = user?.email === 'admin@homesandrents.com';
+
+  const [sectionVis, setSectionVis] = useState<SectionVisibilityMap>(() => {
+    return getSectionVisibility(id || 'global');
+  });
+  const [isSectionManagerOpen, setIsSectionManagerOpen] = useState(false);
+  const [visFeedback, setVisFeedback] = useState<string | null>(null);
+
+  const toggleSection = (sectionKey: keyof SectionVisibilityMap) => {
+    const currentVal = sectionVis[sectionKey] !== false; // default true
+    const updated = { ...sectionVis, [sectionKey]: !currentVal };
+    setSectionVis(updated);
+    setSectionVisibility(id || 'global', updated);
+    setVisFeedback(`${sectionKey} turned ${!currentVal ? 'ON' : 'OFF'}`);
+    setTimeout(() => setVisFeedback(null), 2000);
+  };
 
   if (loading) {
     return (
@@ -234,41 +256,71 @@ export const ProjectDetail = () => {
           {/* Main Content (Left) */}
           <div className="lg:w-[65%] xl:w-[68%] space-y-12">
             
+            {/* Super Admin Section Visibility Quick Bar */}
+            {isAdmin && (
+              <div className="bg-slate-900 border border-slate-700/80 p-3.5 rounded-2xl flex flex-wrap items-center justify-between gap-3 text-white text-xs shadow-md">
+                <div className="flex items-center gap-2">
+                  <Sliders className="w-4 h-4 text-indigo-400" />
+                  <span className="font-extrabold">Super Admin Page Controls:</span>
+                  <span className="text-slate-300">Toggle sections ON/OFF for this property</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsSectionManagerOpen(true)}
+                  className="bg-indigo-600 hover:bg-indigo-500 text-white font-black px-3.5 py-1.5 rounded-xl shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Sliders className="w-3.5 h-3.5" /> Toggle Sections ON/OFF
+                </button>
+              </div>
+            )}
+
+            {visFeedback && (
+              <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold rounded-xl animate-pulse">
+                ✓ {visFeedback}
+              </div>
+            )}
+            
             {/* Construction Status & Pricing Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-4">
-              <div className="bg-gradient-to-br from-indigo-50 via-blue-50 to-white rounded-3xl p-6 sm:p-8 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300">
-                 <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity transform group-hover:scale-110 duration-500">
-                    <Building2 className="w-24 h-24 text-blue-800" />
-                 </div>
-                 <p className="text-xs text-blue-600 font-extrabold tracking-widest uppercase mb-4 opacity-80">Construction Status</p>
-                 <p className="text-slate-900 font-black text-2xl sm:text-3xl mb-2">{project.status.split('·')[0].trim()}</p>
-                 <p className="text-slate-600 text-sm font-medium flex items-center gap-1.5">
-                   <span className="w-2 h-2 rounded-full bg-blue-500"></span>
-                   {project.status.split('·')[1]?.trim()}
-                 </p>
+            {((sectionVis.constructionStatus !== false) || (sectionVis.startingPrice !== false)) && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-4">
+                {sectionVis.constructionStatus !== false && (
+                  <div className="bg-gradient-to-br from-indigo-50 via-blue-50 to-white rounded-3xl p-6 sm:p-8 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300">
+                     <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity transform group-hover:scale-110 duration-500">
+                        <Building2 className="w-24 h-24 text-blue-800" />
+                     </div>
+                     <p className="text-xs text-blue-600 font-extrabold tracking-widest uppercase mb-4 opacity-80">Construction Status</p>
+                     <p className="text-slate-900 font-black text-2xl sm:text-3xl mb-2">{project.status.split('·')[0].trim()}</p>
+                     <p className="text-slate-600 text-sm font-medium flex items-center gap-1.5">
+                       <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+                       {project.status.split('·')[1]?.trim()}
+                     </p>
+                  </div>
+                )}
+                
+                {sectionVis.startingPrice !== false && (
+                  <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-white rounded-3xl p-6 sm:p-8 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                     <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity transform group-hover:scale-110 duration-500">
+                        <Wallet className="w-24 h-24 text-purple-800" />
+                     </div>
+                     <div>
+                       <p className="text-xs text-purple-600 font-extrabold tracking-widest uppercase mb-4 opacity-80">Starting Price</p>
+                       <div className="flex flex-wrap items-end gap-3">
+                         <span className="text-slate-900 font-black text-2xl sm:text-3xl leading-none">{project.priceConfigs?.[0]?.price || "Price on Request"}</span>
+                         <span className="text-purple-700 text-[10px] font-bold bg-purple-100/50 px-2.5 py-1 rounded-md shadow-sm backdrop-blur-sm border border-purple-200/50">+ Charges</span>
+                       </div>
+                     </div>
+                     <div className="mt-6 flex gap-3 relative z-10">
+                        <a href={`https://wa.me/919739063840?text=Hi%2C%20I%20would%20like%20to%20request%20the%20brochure%20for%20${encodeURIComponent(project.title)}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1.5 text-xs font-bold text-white bg-purple-600 hover:bg-purple-700 transition-colors px-4 py-2.5 rounded-xl shadow-sm hover:shadow-md">
+                          <Download className="w-3.5 h-3.5" /> Get Brochure
+                        </a>
+                     </div>
+                  </div>
+                )}
               </div>
-              
-              <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-white rounded-3xl p-6 sm:p-8 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
-                 <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity transform group-hover:scale-110 duration-500">
-                    <Wallet className="w-24 h-24 text-purple-800" />
-                 </div>
-                 <div>
-                   <p className="text-xs text-purple-600 font-extrabold tracking-widest uppercase mb-4 opacity-80">Starting Price</p>
-                   <div className="flex flex-wrap items-end gap-3">
-                     <span className="text-slate-900 font-black text-2xl sm:text-3xl leading-none">{project.priceConfigs?.[0]?.price || "Price on Request"}</span>
-                     <span className="text-purple-700 text-[10px] font-bold bg-purple-100/50 px-2.5 py-1 rounded-md shadow-sm backdrop-blur-sm border border-purple-200/50">+ Charges</span>
-                   </div>
-                 </div>
-                 <div className="mt-6 flex gap-3 relative z-10">
-                    <a href={`https://wa.me/919739063840?text=Hi%2C%20I%20would%20like%20to%20request%20the%20brochure%20for%20${encodeURIComponent(project.title)}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-1.5 text-xs font-bold text-white bg-purple-600 hover:bg-purple-700 transition-colors px-4 py-2.5 rounded-xl shadow-sm hover:shadow-md">
-                      <Download className="w-3.5 h-3.5" /> Get Brochure
-                    </a>
-                 </div>
-              </div>
-            </div>
+            )}
 
             {/* Pricing Details List */}
-            {project.tag !== 'Rent' && (
+            {project.tag !== 'Rent' && sectionVis.unitPricing !== false && (
               <div>
                 <div className="flex items-center justify-between mb-8">
                   <h3 className="text-2xl font-black text-slate-900">Unit Floor Plans & Pricing</h3>
@@ -299,17 +351,25 @@ export const ProjectDetail = () => {
               </div>
             )}
 
-            {/* Other Sections */}
+            {/* Other Sections with ON/OFF visibility toggles */}
             <div className="flex flex-col gap-12 mt-4">
-              <ProjectOverview project={project} />
-              {project.tag !== 'Rent' && <ProjectFloorPlans project={project} />}
-              {project.tag === 'Rent' ? (
-                <RentalAmenities />
-              ) : (
-                <ProjectAmenities projectId={project.id} />
+              {sectionVis.overview !== false && <ProjectOverview project={project} />}
+              {project.tag !== 'Rent' && sectionVis.floorPlans !== false && <ProjectFloorPlans project={project} />}
+              {sectionVis.topFacilities !== false && (
+                project.tag === 'Rent' ? (
+                  <RentalAmenities />
+                ) : (
+                  <ProjectAmenities projectId={project.id} />
+                )
               )}
-              <ProjectAbout project={project} />
-              <ProjectLocation project={project} />
+              {sectionVis.about !== false && <ProjectAbout project={project} />}
+              {(sectionVis.neighborhoodMap !== false || sectionVis.keyLandmarks !== false) && (
+                <ProjectLocation 
+                  project={project} 
+                  showMap={sectionVis.neighborhoodMap !== false} 
+                  showLandmarks={sectionVis.keyLandmarks !== false} 
+                />
+              )}
             </div>
 
           </div>
@@ -494,6 +554,144 @@ export const ProjectDetail = () => {
           
           <div className="absolute bottom-8 text-white font-bold bg-white/10 px-4 py-2 rounded-full backdrop-blur-md">
             {selectedImageIndex + 1} / {allImages.length}
+          </div>
+        </div>
+      )}
+
+      {/* Super Admin Section Visibility Modal */}
+      {isAdmin && isSectionManagerOpen && (
+        <div className="fixed inset-0 z-[80] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-slate-900 border border-slate-700/80 rounded-3xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+            <div className="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-950/50">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+                  <Sliders className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-white">Section Visibility Controls</h3>
+                  <p className="text-xs text-slate-400">Customize sections for {project.title} (small/individual property)</p>
+                </div>
+              </div>
+              <button 
+                onClick={() => setIsSectionManagerOpen(false)}
+                className="text-slate-400 hover:text-white p-2 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="px-6 py-3 bg-slate-950/30 border-b border-slate-800 flex items-center justify-between gap-2 flex-wrap">
+              <span className="text-[11px] font-bold text-slate-400">Quick Actions:</span>
+              <div className="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const allOn: SectionVisibilityMap = {
+                      overview: true,
+                      constructionStatus: true,
+                      startingPrice: true,
+                      unitPricing: true,
+                      floorPlans: true,
+                      topFacilities: true,
+                      about: true,
+                      neighborhoodMap: true,
+                      keyLandmarks: true,
+                    };
+                    setSectionVis(allOn);
+                    setSectionVisibility(id || 'global', allOn);
+                  }}
+                  className="text-xs font-bold px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/30"
+                >
+                  Turn All ON
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const allOff: SectionVisibilityMap = {
+                      overview: false,
+                      constructionStatus: false,
+                      startingPrice: false,
+                      unitPricing: false,
+                      floorPlans: false,
+                      topFacilities: false,
+                      about: false,
+                      neighborhoodMap: false,
+                      keyLandmarks: false,
+                    };
+                    setSectionVis(allOff);
+                    setSectionVisibility(id || 'global', allOff);
+                  }}
+                  className="text-xs font-bold px-3 py-1 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-lg hover:bg-rose-500/30"
+                >
+                  Turn All OFF
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (id) {
+                      localStorage.removeItem(`admin_section_visibility_${id}`);
+                    }
+                    setSectionVis(getSectionVisibility(id || 'global'));
+                  }}
+                  className="text-xs font-bold px-3 py-1 bg-slate-800 text-slate-300 border border-slate-700 rounded-lg hover:bg-slate-700"
+                >
+                  Reset
+                </button>
+              </div>
+            </div>
+
+            <div className="p-6 overflow-y-auto space-y-3 flex-1">
+              {SECTION_DEFINITIONS.map((def) => {
+                const isVisible = sectionVis[def.id as keyof SectionVisibilityMap] !== false;
+                return (
+                  <div 
+                    key={def.id}
+                    className={`p-4 rounded-2xl border transition-all flex items-center justify-between gap-4 ${
+                      isVisible 
+                        ? 'bg-slate-800/60 border-slate-700/80' 
+                        : 'bg-slate-950/60 border-slate-800 opacity-60'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded border ${
+                          isVisible 
+                            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' 
+                            : 'bg-rose-500/20 text-rose-300 border-rose-500/30'
+                        }`}>
+                          {isVisible ? 'Visible (ON)' : 'Hidden (OFF)'}
+                        </span>
+                        <h4 className="text-white font-extrabold text-sm">{def.label}</h4>
+                      </div>
+                      <p className="text-xs text-slate-400 mt-1">{def.desc}</p>
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => toggleSection(def.id as keyof SectionVisibilityMap)}
+                      className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 shadow-sm whitespace-nowrap ${
+                        isVisible
+                          ? 'bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30'
+                          : 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black'
+                      }`}
+                    >
+                      {isVisible ? 'Turn OFF' : 'Turn ON'}
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="p-4 border-t border-slate-800 bg-slate-950/60 flex items-center justify-between">
+              <span className="text-xs text-slate-400">Settings save automatically to device storage</span>
+              <button
+                type="button"
+                onClick={() => setIsSectionManagerOpen(false)}
+                className="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs transition-colors"
+              >
+                Done
+              </button>
+            </div>
           </div>
         </div>
       )}
