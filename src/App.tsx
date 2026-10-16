@@ -14,6 +14,8 @@ import { LocationSeoPage } from './pages/LocationSeoPage';
 import { PostProperty } from './pages/PostProperty';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { AdminLoginPage } from './pages/AdminLogin';
+import { BlogsPage } from './pages/BlogsPage';
+import { BlogDetailPage } from './pages/BlogDetailPage';
 import { ProjectCard } from './components/ProjectCard';
 import { EditPropertyModal } from './components/EditPropertyModal';
 import { SuperCards } from './components/SuperCards';
@@ -64,11 +66,18 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
               Homes & Rents
             </span>
           </Link>
-          <div className="flex items-center flex-shrink-0">
+          <div className="flex items-center flex-shrink-0 gap-3 sm:gap-4">
+            <Link 
+              to="/blogs"
+              className="text-[13px] sm:text-sm font-bold text-gray-700 hover:text-indigo-600 transition-colors whitespace-nowrap flex items-center gap-1"
+            >
+              <span>Blogs</span>
+              <span className="bg-rose-100 text-rose-700 text-[10px] font-black px-1.5 py-0.2 rounded-full hidden sm:inline">SEO</span>
+            </Link>
             {!user && (
               <button 
                 onClick={onLoginClick}
-                className="text-[13px] sm:text-sm font-bold text-gray-700 hover:text-indigo-600 transition-colors mr-2 sm:mr-4 whitespace-nowrap"
+                className="text-[13px] sm:text-sm font-bold text-gray-700 hover:text-indigo-600 transition-colors whitespace-nowrap"
               >
                 <span className="sm:hidden">Login</span>
                 <span className="hidden sm:inline">Login / Signup</span>
@@ -840,6 +849,19 @@ const Home = () => {
                 <li><Link to="/properties-for-sale/bellandur" className="text-blue-600 hover:underline">Sale in Bellandur</Link></li>
               </ul>
             </div>
+            <div>
+              <h3 className="font-bold text-slate-700 mb-3 flex items-center justify-between">
+                <span>Homes & Rents Blog</span>
+                <Link to="/blogs" className="text-xs text-indigo-600 hover:underline font-bold">View All</Link>
+              </h3>
+              <ul className="space-y-2 text-sm">
+                <li><Link to="/blog/top-10-localities-to-rent-flats-in-bangalore" className="text-blue-600 hover:underline">Top 10 Rental Localities</Link></li>
+                <li><Link to="/blog/complete-guide-to-buying-apartments-in-whitefield-bangalore" className="text-blue-600 hover:underline">Whitefield Buying Guide</Link></li>
+                <li><Link to="/blog/why-sarjapur-road-is-the-best-hub-for-family-homes-and-rents" className="text-blue-600 hover:underline">Sarjapur Road Family Hub</Link></li>
+                <li><Link to="/blog/navigating-zero-brokerage-rentals-in-bangalore-with-homes-and-rents" className="text-blue-600 hover:underline">Zero Brokerage Tips</Link></li>
+                <li><Link to="/blog/rera-approved-properties-in-bangalore-why-verification-matters" className="text-blue-600 hover:underline">RERA Verification Guide</Link></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -866,6 +888,8 @@ const AppContent = () => {
           <Route path="/property/:id" element={<PropertyDetail />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/post" element={<PostProperty />} />
+          <Route path="/blogs" element={<BlogsPage />} />
+          <Route path="/blog/:slug" element={<BlogDetailPage />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/login" element={<AdminLoginPage />} />
           {/* 99acres style SEO URL pattern: e.g. /2-bhk-flats-in-hebbal-bangalore-north-ffid */}

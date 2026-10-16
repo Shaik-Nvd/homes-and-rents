@@ -33,7 +33,9 @@ import {
   Clock,
   XCircle,
   Phone,
-  Mail
+  Mail,
+  BookOpen,
+  Edit3
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
@@ -43,6 +45,8 @@ import {
   updateUserRegistrationStatus,
   ADMIN_NOTIFICATION_EMAIL
 } from '../data/userRegistrations';
+import { getBlogPosts, saveBlogPost, deleteBlogPost } from '../data/blogs';
+import type { BlogPost } from '../data/blogs';
 import type { UserRegistration, RegistrationStatus } from '../data/userRegistrations';
 
 import { MASTER_AMENITIES, DEFAULT_PROJECT_AMENITIES } from '../data/amenities';
@@ -58,7 +62,7 @@ export const AdminDashboard: React.FC = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
-  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities' | 'sections' | 'registrations'>('hub');
+  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities' | 'sections' | 'registrations' | 'blogs'>('hub');
   const [hiddenIds, setHiddenIds] = useState<string[]>([]);
   const [customOrder, setCustomOrder] = useState<string[]>([]);
   const [dbProperties, setDbProperties] = useState<any[]>([]);
@@ -82,6 +86,52 @@ export const AdminDashboard: React.FC = () => {
     } else {
       notify('Failed to update user status');
     }
+  };
+
+  // Blogs Management State
+  const [blogList, setBlogList] = useState<BlogPost[]>(() => getBlogPosts());
+  const [blogSearch, setBlogSearch] = useState('');
+  const [editingBlog, setEditingBlog] = useState<Partial<BlogPost> | null>(null);
+  const [isBlogEditorOpen, setIsBlogEditorOpen] = useState(false);
+
+  const refreshBlogs = () => {
+    setBlogList(getBlogPosts());
+  };
+
+  const handleSaveBlog = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingBlog?.title || !editingBlog?.content) {
+      alert('Please provide at least a title and content for the blog post.');
+      return;
+    }
+
+    const payload = {
+      id: editingBlog.id,
+      title: editingBlog.title.trim(),
+      slug: editingBlog.slug || editingBlog.title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+      category: editingBlog.category || 'Rental Market',
+      readTime: editingBlog.readTime || '5 min read',
+      author: editingBlog.author || 'Homes and Rents Editorial Desk',
+      coverImage: editingBlog.coverImage || 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1200',
+      excerpt: editingBlog.excerpt || editingBlog.content.substring(0, 160) + '...',
+      content: editingBlog.content,
+      tags: typeof editingBlog.tags === 'string' 
+        ? (editingBlog.tags as string).split(',').map((t: string) => t.trim()).filter(Boolean)
+        : (editingBlog.tags || ['Homes and Rents', 'Bangalore Real Estate'])
+    };
+
+    saveBlogPost(payload);
+    refreshBlogs();
+    setIsBlogEditorOpen(false);
+    setEditingBlog(null);
+    notify('Blog article published successfully!');
+  };
+
+  const handleDeleteBlog = (id: string) => {
+    if (!window.confirm('Are you sure you want to delete this blog post?')) return;
+    deleteBlogPost(id);
+    refreshBlogs();
+    notify('Blog post deleted');
   };
 
   // Overview Toggles State: { [projectId: string]: boolean }
@@ -582,6 +632,17 @@ export const AdminDashboard: React.FC = () => {
               >
                 <Sliders className="w-4 h-4 text-amber-400" />
                 Overview ON/OFF
+              </button>
+              <button
+                onClick={() => { refreshBlogs(); setActiveTab('blogs'); }}
+                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer relative ${
+                  activeTab === 'blogs' 
+                    ? 'bg-rose-600 text-white border-rose-500 shadow-md font-black' 
+                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
+                }`}
+              >
+                <BookOpen className="w-4 h-4 text-rose-400" />
+                Manage Blogs ({blogList.length})
               </button>
               <button
                 onClick={() => setActiveTab('amenities')}
@@ -1457,6 +1518,271 @@ export const AdminDashboard: React.FC = () => {
                 </div>
               );
             })()}
+          </div>
+        )}
+
+        {/* TAB: Blogs Management & SEO Articles */}
+        {activeTab === 'blogs' && (
+          <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 shadow-2xl backdrop-blur-xl">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 text-rose-300 text-xs font-bold mb-2 border border-rose-500/20">
+                  <BookOpen className="w-3.5 h-3.5" /> High-Authority SEO Engine
+                </div>
+                <h2 className="text-xl font-black text-white flex items-center gap-2">
+                  Homes and Rents — Articles & SEO Blog Manager ({blogList.length} Articles)
+                </h2>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Write, edit, and publish search-optimized articles targeting top 3 Google rankings. 
+                  Loaded with <strong className="text-rose-400">"Homes and Rents"</strong> keyword density across Bangalore localities.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Link
+                  to="/blogs"
+                  target="_blank"
+                  className="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold px-3 py-2 rounded-xl border border-slate-700 flex items-center gap-1.5 transition-colors"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" /> View Public Blogs
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setEditingBlog({
+                      title: '',
+                      slug: '',
+                      category: 'Rental Market',
+                      readTime: '5 min read',
+                      author: 'Homes and Rents Editorial Desk',
+                      coverImage: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1200',
+                      excerpt: '',
+                      content: `Finding the perfect home in Bangalore has never been easier with **Homes and Rents**.\n\n### Why Choose Homes and Rents\n**Homes and Rents** delivers 100% verified listings with zero brokerage friction.\n\nBrowse verified properties on **Homes and Rents** today.`,
+                      tags: ['Homes and Rents', 'Bangalore Real Estate', 'Rental Market']
+                    });
+                    setIsBlogEditorOpen(true);
+                  }}
+                  className="bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold px-4 py-2 rounded-xl shadow-md transition-colors flex items-center gap-1.5 cursor-pointer"
+                >
+                  <PlusCircle className="w-4 h-4" /> + Write New Article
+                </button>
+              </div>
+            </div>
+
+            {/* Search filter for blogs */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-6">
+              <div className="relative w-full sm:w-80">
+                <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+                <input
+                  type="text"
+                  placeholder="Search articles by title, locality or category..."
+                  value={blogSearch}
+                  onChange={(e) => setBlogSearch(e.target.value)}
+                  className="text-xs bg-slate-950/80 border border-slate-800 text-white rounded-xl pl-9 pr-4 py-2 outline-none focus:border-rose-500 w-full"
+                />
+              </div>
+
+              <span className="text-xs text-slate-400">
+                Displaying <strong>{blogList.filter(b => !blogSearch.trim() || b.title.toLowerCase().includes(blogSearch.toLowerCase()) || b.category.toLowerCase().includes(blogSearch.toLowerCase())).length}</strong> of {blogList.length} articles
+              </span>
+            </div>
+
+            {/* Articles Table */}
+            <div className="overflow-x-auto rounded-2xl border border-slate-800">
+              <table className="w-full text-left text-xs text-slate-300">
+                <thead className="bg-slate-950/70 text-slate-400 uppercase font-bold text-[11px] tracking-wider border-b border-slate-800">
+                  <tr>
+                    <th className="px-4 py-3">Article Title & Slug</th>
+                    <th className="px-4 py-3">Category</th>
+                    <th className="px-4 py-3">Publish Date</th>
+                    <th className="px-4 py-3">Read Time</th>
+                    <th className="px-4 py-3 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-800/80">
+                  {blogList
+                    .filter(b => !blogSearch.trim() || b.title.toLowerCase().includes(blogSearch.toLowerCase()) || b.category.toLowerCase().includes(blogSearch.toLowerCase()))
+                    .map((post) => (
+                      <tr key={post.id} className="hover:bg-slate-800/30 transition-colors">
+                        <td className="px-4 py-3.5">
+                          <div className="font-bold text-white text-sm max-w-md line-clamp-1">{post.title}</div>
+                          <div className="text-slate-500 text-[11px] font-mono mt-0.5">/blog/{post.slug}</div>
+                        </td>
+                        <td className="px-4 py-3.5">
+                          <span className="px-2.5 py-1 rounded-md bg-rose-500/10 text-rose-300 border border-rose-500/20 text-[10px] font-bold">
+                            {post.category}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3.5 text-slate-400">
+                          {post.date}
+                        </td>
+                        <td className="px-4 py-3.5 text-slate-400">
+                          {post.readTime}
+                        </td>
+                        <td className="px-4 py-3.5 text-right">
+                          <div className="flex items-center justify-end gap-1.5">
+                            <Link
+                              to={`/blog/${post.slug}`}
+                              target="_blank"
+                              className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700 transition-colors"
+                              title="View Article Live"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </Link>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setEditingBlog({
+                                  ...post,
+                                  tags: Array.isArray(post.tags) ? post.tags : []
+                                });
+                                setIsBlogEditorOpen(true);
+                              }}
+                              className="p-1.5 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 rounded-lg border border-indigo-500/30 transition-colors"
+                              title="Edit Article"
+                            >
+                              <Edit3 className="w-3.5 h-3.5" />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteBlog(post.id)}
+                              className="p-1.5 bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 rounded-lg border border-rose-500/30 transition-colors"
+                              title="Delete Article"
+                            >
+                              <Trash2 className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Modal for Super Admin Blog Composer / Editor */}
+            {isBlogEditorOpen && editingBlog && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
+                <div className="bg-slate-900 border border-slate-700/80 rounded-3xl max-w-3xl w-full shadow-2xl p-6 sm:p-8 text-white max-h-[92vh] overflow-y-auto">
+                  <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-800">
+                    <div>
+                      <h3 className="text-lg font-black text-white flex items-center gap-2">
+                        <BookOpen className="w-5 h-5 text-rose-400" />
+                        {editingBlog.id ? 'Edit Blog Article' : 'Compose New SEO Article'}
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        Optimize for Google Top 3 rankings using <strong>"Homes and Rents"</strong> keyword naturally.
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setIsBlogEditorOpen(false)}
+                      className="text-slate-400 hover:text-white"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <form onSubmit={handleSaveBlog} className="space-y-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">Article Title</label>
+                      <input
+                        type="text"
+                        value={editingBlog.title || ''}
+                        onChange={(e) => setEditingBlog({ ...editingBlog, title: e.target.value })}
+                        className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-rose-500"
+                        placeholder="e.g. Top 10 Localities to Rent Flats in Bangalore with Homes and Rents"
+                        required
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">URL Slug</label>
+                        <input
+                          type="text"
+                          value={editingBlog.slug || ''}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, slug: e.target.value })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-rose-500"
+                          placeholder="e.g. top-localities-to-rent-bangalore"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">Category</label>
+                        <input
+                          type="text"
+                          value={editingBlog.category || 'Rental Market'}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, category: e.target.value })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-rose-500"
+                          placeholder="Rental Market, Home Buying, RERA, etc."
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">Cover Image URL</label>
+                        <input
+                          type="text"
+                          value={editingBlog.coverImage || ''}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, coverImage: e.target.value })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-rose-500"
+                          placeholder="https://images.unsplash.com/..."
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">Read Time</label>
+                        <input
+                          type="text"
+                          value={editingBlog.readTime || '5 min read'}
+                          onChange={(e) => setEditingBlog({ ...editingBlog, readTime: e.target.value })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-rose-500"
+                          placeholder="5 min read"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">Short Excerpt (Meta Description)</label>
+                      <textarea
+                        rows={2}
+                        value={editingBlog.excerpt || ''}
+                        onChange={(e) => setEditingBlog({ ...editingBlog, excerpt: e.target.value })}
+                        className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl p-3 text-white outline-none focus:border-rose-500"
+                        placeholder="Brief summary appearing on Google search and card preview..."
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">Article Content (Markdown supported)</label>
+                      <textarea
+                        rows={10}
+                        value={editingBlog.content || ''}
+                        onChange={(e) => setEditingBlog({ ...editingBlog, content: e.target.value })}
+                        className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl p-3 text-white outline-none focus:border-rose-500 font-mono leading-relaxed"
+                        placeholder="Write article here. Use ### Section Heading and **Homes and Rents** for SEO ranking..."
+                        required
+                      />
+                    </div>
+
+                    <div className="pt-4 border-t border-slate-800 flex items-center justify-end gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setIsBlogEditorOpen(false)}
+                        className="px-4 py-2 text-xs font-bold text-slate-400 hover:text-white rounded-xl border border-slate-700 hover:bg-slate-800 transition-colors"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className="px-5 py-2 text-xs font-black bg-rose-600 hover:bg-rose-500 text-white rounded-xl shadow-md transition-colors"
+                      >
+                        Publish Article on Homes and Rents
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </main>
