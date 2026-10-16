@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, X, MapPin, Sliders, Sparkles, Check, ShieldCheck, Eye, Clock, Phone, MessageSquare } from 'lucide-react';
+import { Upload, X, MapPin, Sliders, Sparkles, Check, ShieldCheck, Eye, Clock, Phone, MessageSquare, Edit3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -9,6 +9,9 @@ import type { SectionVisibilityMap } from '../data/sectionVisibility';
 import { MASTER_AMENITIES, DEFAULT_PROJECT_AMENITIES } from '../data/amenities';
 import { getUserRegistrationStatus } from '../data/userRegistrations';
 import { RegistrationModal } from '../components/RegistrationModal';
+import { EditPropertyModal } from '../components/EditPropertyModal';
+import { projects, applyPropertyOverrides } from '../data/projects';
+import type { ProjectData } from '../data/projects';
 
 export const PostProperty = () => {
   const { user } = useAuth();
@@ -31,6 +34,7 @@ export const PostProperty = () => {
     rera: true,
     featured: false
   });
+  const [editingExistingProject, setEditingExistingProject] = useState<ProjectData | null>(null);
 
   const toggleSection = (key: keyof SectionVisibilityMap) => {
     setSectionToggles(prev => ({
@@ -505,6 +509,41 @@ export const PostProperty = () => {
                   </div>
                 </div>
 
+                {/* Edit Existing Properties Selector */}
+                <div className="bg-gradient-to-r from-purple-950/60 to-indigo-950/60 p-4 rounded-2xl border border-purple-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Edit3 className="w-4 h-4 text-purple-400" />
+                      <span className="font-extrabold text-sm text-white">Edit Any Existing Property Details</span>
+                    </div>
+                    <p className="text-xs text-purple-200/80 mt-0.5">
+                      Super admin can edit starting prices (numbers & texts), overview, construction status, 10 section toggles, amenities, and builder info for any property.
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 shrink-0">
+                    <select
+                      onChange={(e) => {
+                        const selectedId = e.target.value;
+                        if (!selectedId) return;
+                        const found = projects.find(p => p.id === selectedId);
+                        if (found) {
+                          setEditingExistingProject(applyPropertyOverrides(found));
+                        }
+                        e.target.value = '';
+                      }}
+                      className="bg-slate-900 text-white text-xs font-bold px-3 py-2 rounded-xl border border-purple-400/40 outline-none focus:border-purple-400 cursor-pointer"
+                    >
+                      <option value="">Select Property to Edit...</option>
+                      {projects.map(p => (
+                        <option key={p.id} value={p.id}>
+                          {p.title} ({p.builder})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
                 {/* 1. The 9 Section Visibility Toggles */}
                 <div>
                   <h4 className="text-xs font-extrabold uppercase tracking-wider text-indigo-300 mb-3 flex items-center gap-1.5">
@@ -696,6 +735,17 @@ export const PostProperty = () => {
         onClose={() => setIsRentalModalOpen(false)} 
         onVerifySuccess={handleFinalSubmit}
       />
+
+      {editingExistingProject && (
+        <EditPropertyModal
+          isOpen={!!editingExistingProject}
+          project={editingExistingProject}
+          onClose={() => setEditingExistingProject(null)}
+          onSaved={() => {
+            alert('Property details and pricing updated successfully!');
+          }}
+        />
+      )}
     </div>
   );
 };

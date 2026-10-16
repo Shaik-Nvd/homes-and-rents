@@ -30,12 +30,22 @@ export const ProjectOverview: React.FC<ProjectOverviewProps> = ({ project }) => 
     localStorage.setItem(storageKey, JSON.stringify(updated));
   };
 
+  // Read optional customized overview facts
+  const customOverviewData = (() => {
+    try {
+      const saved = localStorage.getItem(`admin_overview_data_${projectId}`);
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  })();
+
   const quickFacts = [
-    { icon: <Maximize2 className="w-5 h-5 text-gray-500" />, label: 'Project Area', value: '2 Acres' },
-    { icon: <Ruler className="w-5 h-5 text-gray-500" />, label: 'Sizes', value: '1000 - 1500 sq.ft.' },
-    { icon: <Construction className="w-5 h-5 text-gray-500" />, label: 'Project Size', value: '200 Units' },
-    { icon: <Calendar className="w-5 h-5 text-gray-500" />, label: 'Launch Date', value: 'Jan, 2023' },
-    { icon: <IndianRupee className="w-5 h-5 text-gray-500" />, label: 'Avg. Price', value: '₹5.5k/sq.ft.' },
+    { icon: <Maximize2 className="w-5 h-5 text-gray-500" />, label: 'Project Area', value: customOverviewData?.area || '2 Acres' },
+    { icon: <Ruler className="w-5 h-5 text-gray-500" />, label: 'Sizes', value: customOverviewData?.sizes || '1000 - 1500 sq.ft.' },
+    { icon: <Construction className="w-5 h-5 text-gray-500" />, label: 'Project Size', value: customOverviewData?.units || '200 Units' },
+    { icon: <Calendar className="w-5 h-5 text-gray-500" />, label: 'Launch Date', value: customOverviewData?.launch || 'Jan, 2023' },
+    { icon: <IndianRupee className="w-5 h-5 text-gray-500" />, label: 'Avg. Price', value: customOverviewData?.avgPrice || '₹5.5k/sq.ft.' },
     { icon: <CheckCircle2 className="w-5 h-5 text-gray-500" />, label: 'Status', value: project?.status ? project.status.split('·')[0].trim() : 'Ready to Move' },
   ];
 

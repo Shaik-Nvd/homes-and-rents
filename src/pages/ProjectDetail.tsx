@@ -9,7 +9,7 @@ import { ProjectLocation } from '../components/ProjectLocation';
 import { SiteVisitModal } from '../components/SiteVisitModal';
 import { BrochureModal } from '../components/BrochureModal';
 import { RentalAmenities } from '../components/RentalAmenities';
-import { projects } from '../data/projects';
+import { projects, applyPropertyOverrides } from '../data/projects';
 import { supabase } from '../lib/supabase';
 import { Helmet } from 'react-helmet-async';
 import type { ProjectData } from '../data/projects';
@@ -24,11 +24,29 @@ import {
 } from '../data/sectionVisibility';
 import type { SectionVisibilityMap, WhyConsiderConfig } from '../data/sectionVisibility';
 import { Sliders, Edit3 } from 'lucide-react';
+import { EditPropertyModal } from '../components/EditPropertyModal';
 
 export const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [project, setProject] = useState<ProjectData | null>(projects.find((p) => p.id === id) || null);
+  const [project, setProject] = useState<ProjectData | null>(() => {
+    const found = projects.find((p) => p.id === id);
+    return found ? applyPropertyOverrides(found) : null;
+  });
   const [loading, setLoading] = useState(!project);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOverrideUpdate = () => {
+      if (id) {
+        const found = projects.find((p) => p.id === id);
+        if (found) {
+          setProject(applyPropertyOverrides(found));
+        }
+      }
+    };
+    window.addEventListener('propertyOverrideUpdated', handleOverrideUpdate);
+    return () => window.removeEventListener('propertyOverrideUpdated', handleOverrideUpdate);
+  }, [id]);
 
   useEffect(() => {
     // Ensure viewport starts at the top (photos and title/pricing) instead of jumping down
@@ -41,7 +59,7 @@ export const ProjectDetail = () => {
         // Try fetching from Supabase if not in static list
         const { data, error } = await supabase.from('properties').select('*').eq('id', id).single();
         if (!error && data) {
-          setProject({
+          const rawItem: ProjectData = {
             id: data.id?.toString(),
             title: data.title || 'Untitled Property',
             subtitle: `${data.bhk || 2} BHK in ${data.location || 'Bangalore'}`,
@@ -55,7 +73,8 @@ export const ProjectDetail = () => {
             badges: ['Verified'],
             description: data.description,
             galleryImages: data.images || []
-          });
+          };
+          setProject(applyPropertyOverrides(rawItem));
         }
         setLoading(false);
       };
@@ -304,16 +323,41 @@ export const ProjectDetail = () => {
                 <div className="flex items-center gap-2">
                   <Sliders className="w-4 h-4 text-indigo-400" />
                   <span className="font-extrabold">Super Admin Page Controls:</span>
-                  <span className="text-slate-300">Toggle sections ON/OFF for this property</span>
+                  <span className="text-slate-300">Edit details, pricing, or toggle 10 sections</span>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setIsSectionManagerOpen(true)}
-                  className="bg-indigo-600 hover:bg-indigo-500 text-white font-black px-3.5 py-1.5 rounded-xl shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
-                >
-                  <Sliders className="w-3.5 h-3.5" /> Toggle Sections ON/OFF
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setIsEditModalOpen(true)}
+                    className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-black px-4 py-1.5 rounded-xl shadow-md transition-all flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <Edit3 className="w-3.5 h-3.5 text-purple-200" /> Edit Property Details & Prices
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsSectionManagerOpen(true)}
+                    className="bg-indigo-600 hover:bg-indigo-500 text-white font-black px-3.5 py-1.5 rounded-xl shadow-sm transition-all flex items-center gap-1.5 cursor-pointer"
+                  >
+                    <Sliders className="w-3.5 h-3.5" /> Toggle Sections ON/OFF
+                  </button>
+                </div>
               </div>
+            )}
+
+            {/* Edit Property Modal for Super Admin */}
+            {project && isEditModalOpen && (
+              <EditPropertyModal
+                isOpen={isEditModalOpen}
+                project={project}
+                onClose={() => setIsEditModalOpen(false)}
+                onSaved={() => {
+                  setVisFeedback('Property Details & Prices Updated Successfully!');
+                  setTimeout(() => setVisFeedback(null), 3000);
+                  const updated = applyPropertyOverrides(project);
+                  setProject(updated);
+                  setSectionVis(getSectionVisibility(project.id));
+                }}
+              />
             )}
 
             {visFeedback && (

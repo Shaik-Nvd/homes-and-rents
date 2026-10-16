@@ -2435,4 +2435,53 @@ export const projects: ProjectData[] = [
   }
 ];
 
+export interface PropertyOverrideData {
+  title?: string;
+  subtitle?: string;
+  builder?: string;
+  status?: string;
+  description?: string;
+  aboutText?: string;
+  priceConfigs?: PriceConfig[];
+  nearby?: string[];
+  badges?: string[];
+  imageSrc?: string;
+}
+
+export const getPropertyOverride = (id: string): PropertyOverrideData | null => {
+  try {
+    const raw = localStorage.getItem(`admin_property_override_${id}`);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+};
+
+export const setPropertyOverride = (id: string, override: PropertyOverrideData) => {
+  try {
+    localStorage.setItem(`admin_property_override_${id}`, JSON.stringify(override));
+    window.dispatchEvent(new Event('propertyOverrideUpdated'));
+  } catch (err) {
+    console.error('Error saving property override:', err);
+  }
+};
+
+export const applyPropertyOverrides = (project: ProjectData): ProjectData => {
+  const override = getPropertyOverride(project.id);
+  if (!override) return project;
+  return {
+    ...project,
+    title: override.title !== undefined && override.title.trim() ? override.title : project.title,
+    subtitle: override.subtitle !== undefined && override.subtitle.trim() ? override.subtitle : project.subtitle,
+    builder: override.builder !== undefined && override.builder.trim() ? override.builder : project.builder,
+    status: override.status !== undefined && override.status.trim() ? override.status : project.status,
+    description: override.description !== undefined ? override.description : project.description,
+    aboutText: override.aboutText !== undefined ? override.aboutText : project.aboutText,
+    priceConfigs: override.priceConfigs && override.priceConfigs.length > 0 ? override.priceConfigs : project.priceConfigs,
+    nearby: override.nearby && override.nearby.length > 0 ? override.nearby : project.nearby,
+    badges: override.badges && override.badges.length > 0 ? override.badges : project.badges,
+    imageSrc: override.imageSrc && override.imageSrc.trim() ? override.imageSrc : project.imageSrc,
+  };
+};
+
 

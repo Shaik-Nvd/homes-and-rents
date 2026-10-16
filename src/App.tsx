@@ -4,9 +4,9 @@ import type { ErrorInfo, ReactNode } from 'react';
 
 import { BrowserRouter, Routes, Route, Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Home as HomeIcon, CheckCircle2, Search, MapPin, ArrowUp, ArrowDown, GripVertical, RotateCcw, Check, Eye, EyeOff } from 'lucide-react';
+import { Home as HomeIcon, CheckCircle2, Search, MapPin, ArrowUp, ArrowDown, GripVertical, RotateCcw, Check, Eye, EyeOff, Edit3 } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
-import { projects } from './data/projects';
+import { projects, applyPropertyOverrides } from './data/projects';
 import { SearchPage } from './pages/Search';
 import { PropertyDetail } from './pages/PropertyDetail';
 import { ProjectDetail } from './pages/ProjectDetail';
@@ -15,6 +15,7 @@ import { PostProperty } from './pages/PostProperty';
 import { AdminDashboard } from './pages/AdminDashboard';
 import { AdminLoginPage } from './pages/AdminLogin';
 import { ProjectCard } from './components/ProjectCard';
+import { EditPropertyModal } from './components/EditPropertyModal';
 import { SuperCards } from './components/SuperCards';
 import { LaunchModal } from './components/LaunchModal';
 import { TrendingNow } from './components/TrendingNow';
@@ -304,6 +305,7 @@ const Home = () => {
   const [showHiddenToAdmin, setShowHiddenToAdmin] = useState(false);
   const [draggedId, setDraggedId] = useState<string | null>(null);
   const [saveFeedback, setSaveFeedback] = useState<string | null>(null);
+  const [editingProject, setEditingProject] = useState<ProjectData | null>(null);
 
   const toggleHideProperty = (id: string) => {
     const isCurrentlyHidden = hiddenProjects.includes(id);
@@ -342,7 +344,15 @@ const Home = () => {
     fetchProperties();
   }, []);
 
-  const rawProjects = [...projects, ...dbProjects];
+  const [overrideVersion, setOverrideVersion] = useState(0);
+
+  useEffect(() => {
+    const handleOverrideUpdate = () => setOverrideVersion(v => v + 1);
+    window.addEventListener('propertyOverrideUpdated', handleOverrideUpdate);
+    return () => window.removeEventListener('propertyOverrideUpdated', handleOverrideUpdate);
+  }, []);
+
+  const rawProjects = overrideVersion >= 0 ? [...projects, ...dbProjects].map(p => applyPropertyOverrides(p)) : [];
 
   // Apply custom order if present
   const allProjects = [...rawProjects].sort((a, b) => {
@@ -738,6 +748,20 @@ const Home = () => {
                           >
                             <ArrowDown className="w-3.5 h-3.5" /> Down
                           </button>
+                          {/* Super Admin Edit Property Button */}
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              setEditingProject(project);
+                            }}
+                            className="px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-200 hover:bg-indigo-600 hover:text-white border border-indigo-400/40 flex items-center gap-1 text-[11px] font-bold transition-all shadow-sm"
+                            title="Edit this property details, prices, and 10 section toggles"
+                          >
+                            <Edit3 className="w-3 h-3 text-indigo-300" />
+                            <span>Edit</span>
+                          </button>
                           <span className="text-gray-500">|</span>
                           {/* Hide / Unhide Toggle Button */}
                           <button
@@ -765,6 +789,19 @@ const Home = () => {
                 );
               })}
               </div>
+            )}
+
+            {/* Super Admin Edit Property Modal */}
+            {editingProject && (
+              <EditPropertyModal
+                isOpen={!!editingProject}
+                project={editingProject}
+                onClose={() => setEditingProject(null)}
+                onSaved={() => {
+                  setSaveFeedback('Property Updated Successfully');
+                  setTimeout(() => setSaveFeedback(null), 2500);
+                }}
+              />
             )}
           </div>
         </div>
