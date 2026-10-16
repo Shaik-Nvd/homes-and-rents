@@ -36,6 +36,8 @@ export const CustomAreaDetailView: React.FC = () => {
   const [eoiSubmitted, setEoiSubmitted] = useState(false);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     if (!slug) return;
     const found = getCustomAreaPageBySlug(slug);
     setPageData(found);

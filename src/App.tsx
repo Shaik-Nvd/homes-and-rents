@@ -2,7 +2,7 @@ import { useEffect, useState, Component } from 'react';
 import type { ErrorInfo, ReactNode } from 'react';
 
 
-import { BrowserRouter, Routes, Route, Link, useSearchParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useSearchParams, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Home as HomeIcon, CheckCircle2, Search, MapPin, ArrowUp, ArrowDown, GripVertical, RotateCcw, Check, Eye, EyeOff, Edit3 } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
@@ -884,11 +884,24 @@ const Home = () => {
 
 
 
+const ScrollToTop = () => {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.body.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname, search]);
+
+  return null;
+};
+
 const AppContent = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen flex flex-col font-sans pb-16 sm:pb-0">
         <Navbar onLoginClick={() => setIsAuthModalOpen(true)} />
         <Routes>

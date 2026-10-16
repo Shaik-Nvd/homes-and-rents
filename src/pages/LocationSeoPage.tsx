@@ -30,6 +30,11 @@ export const LocationSeoPage = ({ type: propType }: LocationSeoPageProps) => {
   if (matchedProject) {
     return <ProjectDetail />;
   }
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [rawSlug]);
   
   const parsed = (() => {
     let bhkFilter: string | null = null;
