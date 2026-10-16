@@ -187,7 +187,7 @@ export const AdminDashboard: React.FC = () => {
       desc: 'Inspect newly added upcoming builder developments',
       icon: Rocket,
       gradient: 'from-rose-600 to-orange-500',
-      action: () => navigate('/')
+      action: () => navigate('/?category=New%20Launch')
     },
     {
       id: 'commercial_resale',
@@ -195,7 +195,7 @@ export const AdminDashboard: React.FC = () => {
       desc: 'Filter plots, lands, shops and resale inventory',
       icon: Store,
       gradient: 'from-amber-500 to-yellow-600',
-      action: () => navigate('/')
+      action: () => navigate('/?category=Commercial')
     },
     {
       id: 'builder_showcase',
@@ -203,7 +203,7 @@ export const AdminDashboard: React.FC = () => {
       desc: 'Audit Prestige, Godrej, Sobha, Brigade showcase logos',
       icon: Tag,
       gradient: 'from-teal-600 to-emerald-700',
-      action: () => navigate('/')
+      action: () => navigate('/?builder=Prestige%20Group')
     },
 
     // --- 4. PROGRAMMATIC SEO & DISCOVERY ---

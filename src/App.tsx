@@ -2,7 +2,7 @@ import { useEffect, useState, Component } from 'react';
 import type { ErrorInfo, ReactNode } from 'react';
 
 
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Home as HomeIcon, CheckCircle2, Search, MapPin, ArrowUp, ArrowDown, GripVertical, RotateCcw, Check, Eye, EyeOff } from 'lucide-react';
 import { Analytics } from '@vercel/analytics/react';
@@ -272,10 +272,18 @@ const SearchHero = ({ activeTab = 'Sale', setActiveTab, searchQuery = '', setSea
 const Home = () => {
   const { user } = useAuth();
   const isAdmin = user?.email === 'admin@homesandrents.com';
-  const [activeTab, setActiveTab] = useState<'Rent' | 'Sale'>('Sale');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedBuilder, setSelectedBuilder] = useState<string | null>(null);
-  const [selectedCategory, setSelectedCategory] = useState<SuperCardCategory>('All');
+  const [searchParams] = useSearchParams();
+
+  const [activeTab, setActiveTab] = useState<'Rent' | 'Sale'>(() => {
+    const tabParam = searchParams.get('tab');
+    return tabParam === 'Rent' || tabParam === 'Sale' ? tabParam : 'Sale';
+  });
+  const [searchQuery, setSearchQuery] = useState(() => searchParams.get('q') || '');
+  const [selectedBuilder, setSelectedBuilder] = useState<string | null>(() => searchParams.get('builder'));
+  const [selectedCategory, setSelectedCategory] = useState<SuperCardCategory>(() => {
+    const cat = searchParams.get('category');
+    return (cat as SuperCardCategory) || 'All';
+  });
   const [dbProjects, setDbProjects] = useState<ProjectData[]>([]);
   const [customOrder, setCustomOrder] = useState<string[]>(() => {
     try {
@@ -511,6 +519,20 @@ const Home = () => {
     window.addEventListener('changeTab', handleTabChange);
     return () => window.removeEventListener('changeTab', handleTabChange);
   }, []);
+
+  useEffect(() => {
+    const cat = searchParams.get('category');
+    if (cat) setSelectedCategory(cat as SuperCardCategory);
+
+    const b = searchParams.get('builder');
+    if (b) setSelectedBuilder(b);
+
+    const t = searchParams.get('tab');
+    if (t === 'Rent' || t === 'Sale') setActiveTab(t);
+
+    const q = searchParams.get('q');
+    if (q) setSearchQuery(q);
+  }, [searchParams]);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
