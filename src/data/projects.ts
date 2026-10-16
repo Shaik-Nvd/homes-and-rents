@@ -18,6 +18,7 @@ export interface ProjectData {
   description?: string;
   
   customSlug?: string;
+  category?: 'Pre Launch' | 'New Launch' | 'Ready to Move' | 'Under Construction' | 'Plots & Lands' | 'Resale Properties' | 'Commercial';
   // Detail page specifics
   galleryImages?: string[];
   videoLinks?: string[];
@@ -2448,6 +2449,7 @@ export interface PropertyOverrideData {
   badges?: string[];
   imageSrc?: string;
   customSlug?: string;
+  category?: 'Pre Launch' | 'New Launch' | 'Ready to Move' | 'Under Construction' | 'Plots & Lands' | 'Resale Properties' | 'Commercial';
 }
 
 export const getPropertyOverride = (id: string): PropertyOverrideData | null => {
@@ -2484,6 +2486,7 @@ export const applyPropertyOverrides = (project: ProjectData): ProjectData => {
     badges: override.badges && override.badges.length > 0 ? override.badges : project.badges,
     imageSrc: override.imageSrc && override.imageSrc.trim() ? override.imageSrc : project.imageSrc,
     customSlug: override.customSlug !== undefined && override.customSlug.trim() ? override.customSlug.trim() : project.customSlug,
+    category: override.category !== undefined ? override.category : project.category,
   };
 };
 

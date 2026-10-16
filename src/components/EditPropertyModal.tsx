@@ -48,6 +48,9 @@ export const EditPropertyModal: React.FC<EditPropertyModalProps> = ({
   const [aboutText, setAboutText] = useState(project.aboutText || '');
   const [imageSrc, setImageSrc] = useState(project.imageSrc || '');
   const [customSlug, setCustomSlug] = useState(project.customSlug || '');
+  const [category, setCategory] = useState<'Pre Launch' | 'New Launch' | 'Ready to Move' | 'Under Construction' | 'Plots & Lands' | 'Resale Properties' | 'Commercial'>(
+    (project.category as any) || 'Ready to Move'
+  );
   
   // Landmarks / Nearby (comma separated or array)
   const [nearbyInput, setNearbyInput] = useState((project.nearby || []).join(', '));
@@ -102,6 +105,7 @@ export const EditPropertyModal: React.FC<EditPropertyModalProps> = ({
       setAboutText(override?.aboutText ?? project.aboutText ?? '');
       setImageSrc(override?.imageSrc ?? project.imageSrc ?? '');
       setCustomSlug(override?.customSlug ?? project.customSlug ?? '');
+      setCategory((override?.category as any) ?? (project.category as any) ?? 'Ready to Move');
       setNearbyInput((override?.nearby ?? project.nearby ?? []).join(', '));
 
       if (override?.priceConfigs && override.priceConfigs.length > 0) {
@@ -183,6 +187,7 @@ export const EditPropertyModal: React.FC<EditPropertyModalProps> = ({
       aboutText: aboutText.trim(),
       imageSrc: imageSrc.trim(),
       customSlug: customSlug.trim() ? customSlug.trim().toLowerCase().replace(/^\/+|\/+$/g, '').replace(/[^a-z0-9-/]+/g, '-') : undefined,
+      category: category,
       priceConfigs: priceConfigs.filter(p => p.label.trim() && p.price.trim()),
       nearby: cleanNearby
     };
@@ -428,6 +433,29 @@ export const EditPropertyModal: React.FC<EditPropertyModalProps> = ({
                 </div>
                 <span className="text-[10px] text-slate-400 mt-1 block">
                   Optional: Creates a clean, Google-friendly URL that opens this project directly.
+                </span>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1 flex items-center justify-between">
+                  <span>Project Category (Mapping for Homepage Filter)</span>
+                  <span className="text-[10px] text-indigo-400 font-normal">SuperCards & Search Category</span>
+                </label>
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value as any)}
+                  className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-indigo-500 font-bold"
+                >
+                  <option value="Pre Launch">Pre Launch</option>
+                  <option value="New Launch">New Launch</option>
+                  <option value="Ready to Move">Ready to Move</option>
+                  <option value="Under Construction">Under Construction</option>
+                  <option value="Plots & Lands">Plots & Lands</option>
+                  <option value="Resale Properties">Resale Properties</option>
+                  <option value="Commercial">Commercial</option>
+                </select>
+                <span className="text-[10px] text-slate-400 mt-1 block">
+                  Maps this property to the corresponding tab on the homepage carousel.
                 </span>
               </div>
 

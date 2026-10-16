@@ -142,7 +142,8 @@ export const PostProperty = () => {
     location: '',
     title: '',
     description: '',
-    status: 'Ready to Move' // Admin can choose 'New Launch', 'Under Construction', 'Ready to Move', 'Pre Launch'
+    category: 'Ready to Move' as 'Pre Launch' | 'New Launch' | 'Ready to Move' | 'Under Construction' | 'Plots & Lands' | 'Resale Properties' | 'Commercial',
+    status: 'Ready to Move' // Construction status description
   });
   const [loading, setLoading] = useState(false);
 
@@ -262,6 +263,7 @@ export const PostProperty = () => {
             { label: `${formData.bhk} BHK ${formData.propertyType}`, price: `₹${formData.price}` }
           ],
           customSlug: customSlugInput.trim() ? customSlugInput.trim().toLowerCase().replace(/^\/+|\/+$/g, '').replace(/[^a-z0-9-/]+/g, '-') : undefined,
+          category: formData.category,
           badges: [
             badges.rera ? 'RERA' : '',
             badges.zeroBrokerage ? 'ZERO BROKERAGE' : '',
@@ -503,6 +505,28 @@ export const PostProperty = () => {
                     onChange={(e) => setFormData({...formData, price: e.target.value})}
                     required
                   />
+                </div>
+                <div className="col-span-2">
+                  <label className="block text-sm font-bold text-indigo-900 mb-1 flex items-center justify-between">
+                    <span>Project Category (Mapping for Homepage Filter)</span>
+                    <span className="text-xs text-indigo-600 font-normal">SuperCards & Search Category</span>
+                  </label>
+                  <select 
+                    className="w-full border-indigo-300 rounded-lg shadow-sm focus:border-indigo-600 focus:ring-indigo-600 p-2.5 border bg-indigo-50/40 text-gray-900 font-semibold text-sm"
+                    value={formData.category}
+                    onChange={(e) => setFormData({...formData, category: e.target.value as any})}
+                  >
+                    <option value="Pre Launch">Pre Launch</option>
+                    <option value="New Launch">New Launch</option>
+                    <option value="Ready to Move">Ready to Move</option>
+                    <option value="Under Construction">Under Construction</option>
+                    <option value="Plots & Lands">Plots & Lands</option>
+                    <option value="Resale Properties">Resale Properties</option>
+                    <option value="Commercial">Commercial</option>
+                  </select>
+                  <p className="text-[11px] text-gray-500 mt-1">
+                    Select which category tab this property will be mapped and discovered under on the homepage and search filters.
+                  </p>
                 </div>
               </div>
             </div>

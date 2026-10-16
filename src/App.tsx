@@ -487,6 +487,11 @@ const Home = () => {
 
   if (selectedCategory !== 'All') {
     filteredProjects = filteredProjects.filter(p => {
+      // Direct explicit category match
+      if (p.category && p.category === selectedCategory) {
+        return true;
+      }
+
       if (selectedCategory === 'New Launch') {
         const isNew = p.status?.toLowerCase().includes('new launch') || 
                       p.tag?.toLowerCase().includes('new') ||
