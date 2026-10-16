@@ -14,9 +14,16 @@ import { supabase } from '../lib/supabase';
 import { Helmet } from 'react-helmet-async';
 import type { ProjectData } from '../data/projects';
 import { useAuth } from '../contexts/AuthContext';
-import { getSectionVisibility, setSectionVisibility, SECTION_DEFINITIONS } from '../data/sectionVisibility';
-import type { SectionVisibilityMap } from '../data/sectionVisibility';
-import { Sliders } from 'lucide-react';
+import { 
+  getSectionVisibility, 
+  setSectionVisibility, 
+  SECTION_DEFINITIONS,
+  getWhyConsiderData,
+  setWhyConsiderData,
+  DEFAULT_WHY_CONSIDER_POINTS
+} from '../data/sectionVisibility';
+import type { SectionVisibilityMap, WhyConsiderConfig } from '../data/sectionVisibility';
+import { Sliders, Edit3 } from 'lucide-react';
 
 export const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -72,6 +79,39 @@ export const ProjectDetail = () => {
   });
   const [isSectionManagerOpen, setIsSectionManagerOpen] = useState(false);
   const [visFeedback, setVisFeedback] = useState<string | null>(null);
+
+  // Why Consider State & Editor
+  const [whyConsiderConfig, setWhyConsiderConfig] = useState<WhyConsiderConfig>(() => {
+    return getWhyConsiderData(id || 'global');
+  });
+  const [isWhyConsiderEditorOpen, setIsWhyConsiderEditorOpen] = useState(false);
+  const [editWhyTitle, setEditWhyTitle] = useState('');
+  const [editWhyParagraphs, setEditWhyParagraphs] = useState('');
+
+  const handleOpenWhyEditor = () => {
+    setEditWhyTitle(whyConsiderConfig.title || `Why consider ${project?.title || 'this property'}?`);
+    setEditWhyParagraphs(whyConsiderConfig.points.join('\n\n'));
+    setIsWhyConsiderEditorOpen(true);
+  };
+
+  const handleSaveWhyConsider = (e: React.FormEvent) => {
+    e.preventDefault();
+    const parsedPoints = editWhyParagraphs
+      .split('\n')
+      .map(p => p.trim())
+      .filter(p => p.length > 0);
+
+    const updatedConfig: WhyConsiderConfig = {
+      title: editWhyTitle.trim(),
+      points: parsedPoints.length > 0 ? parsedPoints : DEFAULT_WHY_CONSIDER_POINTS
+    };
+
+    setWhyConsiderConfig(updatedConfig);
+    setWhyConsiderData(id || 'global', updatedConfig);
+    setIsWhyConsiderEditorOpen(false);
+    setVisFeedback('Why Consider answers & paragraphs saved successfully!');
+    setTimeout(() => setVisFeedback(null), 3000);
+  };
 
   const toggleSection = (sectionKey: keyof SectionVisibilityMap) => {
     const currentVal = sectionVis[sectionKey] !== false; // default true
@@ -384,52 +424,62 @@ export const ProjectDetail = () => {
           <div className="lg:w-[35%] xl:w-[32%] relative mt-8 lg:mt-0">
             <div className="sticky top-28 space-y-6">
               
-              {/* Why consider */}
-              <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl -z-10"></div>
-                
-                <div className="flex items-start gap-3 mb-8">
-                  <div className="text-orange-500 mt-1 bg-orange-50 p-2 rounded-xl">
-                    <Home className="w-5 h-5" fill="currentColor" />
-                  </div>
-                  <h4 className="text-xl font-black text-slate-900 leading-tight">
-                    Why consider {project.title}?
-                  </h4>
-                </div>
-                
-                <ul className="space-y-5 mb-8">
-                  <li className="flex items-start gap-4 text-[14px] text-slate-600 font-medium leading-relaxed">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0 ring-4 ring-slate-100"></span>
-                    Easily find Zen with yoga spaces and vast green covers.
-                  </li>
-                  <li className="flex items-start gap-4 text-[14px] text-slate-600 font-medium leading-relaxed">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0 ring-4 ring-slate-100"></span>
-                    Vastu compliant spacious homes with modern amenities.
-                  </li>
-                  <li className="flex items-start gap-4 text-[14px] text-slate-600 font-medium leading-relaxed">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0 ring-4 ring-slate-100"></span>
-                    Excellent connectivity to major IT hubs and transit.
-                  </li>
-                </ul>
-                
-                <button 
-                  onClick={() => setShowAllFeatures(true)}
-                  className="w-full text-blue-600 font-bold text-[14px] hover:text-blue-800 bg-blue-50/50 hover:bg-blue-50 py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
-                >
-                  View all highlights <ChevronRight className="w-4 h-4" />
-                </button>
+              {/* Why consider (Super Admin Toggleable) */}
+              {sectionVis.whyConsider !== false && (
+                <div className="bg-white/80 backdrop-blur-md rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white p-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl -z-10"></div>
+                  
+                  <div className="flex items-start justify-between gap-3 mb-8">
+                    <div className="flex items-start gap-3">
+                      <div className="text-orange-500 mt-1 bg-orange-50 p-2 rounded-xl">
+                        <Home className="w-5 h-5" fill="currentColor" />
+                      </div>
+                      <h4 className="text-xl font-black text-slate-900 leading-tight">
+                        {whyConsiderConfig.title || `Why consider ${project.title}?`}
+                      </h4>
+                    </div>
 
-                {/* Developer Info */}
-                <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
-                  <div>
-                    <p className="text-[10px] font-bold text-slate-400 tracking-widest uppercase mb-1.5">Developed By</p>
-                    <p className="text-[15px] font-black text-slate-900">{project.builder}</p>
+                    {isAdmin && (
+                      <button
+                        type="button"
+                        onClick={handleOpenWhyEditor}
+                        className="px-3 py-1.5 rounded-xl bg-orange-50 hover:bg-orange-100 text-orange-700 text-xs font-black border border-orange-200/80 shadow-xs flex items-center gap-1.5 transition-all shrink-0 cursor-pointer"
+                        title="Edit Why Consider points and builder paragraphs"
+                      >
+                        <Edit3 className="w-3.5 h-3.5" />
+                        <span>Edit Answers</span>
+                      </button>
+                    )}
                   </div>
-                  <div className="w-12 h-12 flex items-center justify-center bg-slate-50 rounded-full border border-slate-100 shadow-sm">
-                    <span className="text-sm font-black uppercase text-slate-500">{project.builder.substring(0,2)}</span>
+                  
+                  <ul className="space-y-5 mb-8">
+                    {whyConsiderConfig.points.slice(0, 3).map((point, idx) => (
+                      <li key={idx} className="flex items-start gap-4 text-[14px] text-slate-600 font-medium leading-relaxed">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-slate-400 flex-shrink-0 ring-4 ring-slate-100"></span>
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <button 
+                    onClick={() => setShowAllFeatures(true)}
+                    className="w-full text-blue-600 font-bold text-[14px] hover:text-blue-800 bg-blue-50/50 hover:bg-blue-50 py-3 rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    View all {whyConsiderConfig.points.length} highlights <ChevronRight className="w-4 h-4" />
+                  </button>
+
+                  {/* Developer Info */}
+                  <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
+                    <div>
+                      <p className="text-[10px] font-bold text-slate-400 tracking-widest uppercase mb-1.5">Developed By</p>
+                      <p className="text-[15px] font-black text-slate-900">{project.builder}</p>
+                    </div>
+                    <div className="w-12 h-12 flex items-center justify-center bg-slate-50 rounded-full border border-slate-100 shadow-sm">
+                      <span className="text-sm font-black uppercase text-slate-500">{project.builder.substring(0,2)}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
           
@@ -446,25 +496,21 @@ export const ProjectDetail = () => {
                 <div className="text-orange-500 mt-1 bg-white p-2 rounded-xl shadow-sm border border-slate-100">
                   <Home className="w-5 h-5" fill="currentColor" />
                 </div>
-                <h4 className="text-xl font-black text-slate-900 leading-tight">
-                  Why you should consider {project.title}?
-                </h4>
+                <div>
+                  <h4 className="text-xl font-black text-slate-900 leading-tight">
+                    {whyConsiderConfig.title || `Why consider ${project.title}?`}
+                  </h4>
+                  <p className="text-xs text-slate-500 mt-0.5">Developer: {project.builder}</p>
+                </div>
               </div>
-              <button onClick={() => setShowAllFeatures(false)} className="text-slate-400 hover:text-slate-900 transition-colors p-2 bg-white rounded-full shadow-sm border border-slate-100">
+              <button onClick={() => setShowAllFeatures(false)} className="text-slate-400 hover:text-slate-900 transition-colors p-2 bg-white rounded-full shadow-sm border border-slate-100 cursor-pointer">
                 <X className="w-5 h-5" />
               </button>
             </div>
             
             <div className="flex-1 overflow-y-auto p-8">
               <ul className="space-y-6">
-                {[
-                  "Easily find Zen with dedicated yoga and meditation spaces.",
-                  "Vastu compliant spacious homes with modern amenities.",
-                  "Prime connectivity to major hubs, schools, and hospitals.",
-                  "High-end co-working spaces within the resident community.",
-                  "360-degree ventilation for abundant natural light and air.",
-                  "24/7 security with 100% power backup available."
-                ].map((feature, idx) => (
+                {whyConsiderConfig.points.map((feature, idx) => (
                   <li key={idx} className="flex items-start gap-4 text-[15px] text-slate-600 font-medium leading-relaxed bg-slate-50 p-4 rounded-2xl border border-slate-100">
                     <span className="mt-1.5 w-2 h-2 rounded-full bg-blue-500 flex-shrink-0 shadow-sm shadow-blue-500/50"></span>
                     {feature}
@@ -593,6 +639,7 @@ export const ProjectDetail = () => {
                   type="button"
                   onClick={() => {
                     const allOn: SectionVisibilityMap = {
+                      whyConsider: true,
                       overview: true,
                       constructionStatus: true,
                       startingPrice: true,
@@ -614,6 +661,7 @@ export const ProjectDetail = () => {
                   type="button"
                   onClick={() => {
                     const allOff: SectionVisibilityMap = {
+                      whyConsider: false,
                       overview: false,
                       constructionStatus: false,
                       startingPrice: false,
@@ -698,6 +746,95 @@ export const ProjectDetail = () => {
                 Done
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Super Admin Why Consider Answers Editor Modal */}
+      {isAdmin && isWhyConsiderEditorOpen && (
+        <div className="fixed inset-0 z-[85] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="bg-slate-900 border border-slate-700/80 rounded-3xl w-full max-w-xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 text-white">
+            <div className="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-950/50">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-orange-500/20 border border-orange-500/30 flex items-center justify-center text-orange-400">
+                  <Edit3 className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-white">Edit "Why Consider" Answers & Highlights</h3>
+                  <p className="text-xs text-slate-400">Customize paragraphs and builder selling points for {project.title}</p>
+                </div>
+              </div>
+              <button 
+                type="button"
+                onClick={() => setIsWhyConsiderEditorOpen(false)}
+                className="text-slate-400 hover:text-white p-2 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveWhyConsider} className="p-6 overflow-y-auto space-y-5 flex-1">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">
+                  Section Headline / Question
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={editWhyTitle}
+                  onChange={(e) => setEditWhyTitle(e.target.value)}
+                  className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white outline-none focus:border-indigo-500 font-bold"
+                  placeholder={`Why consider ${project.title}?`}
+                />
+              </div>
+
+              <div>
+                <div className="flex items-center justify-between mb-1.5">
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+                    Answers & Selling Points (Paragraphs)
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setEditWhyParagraphs(DEFAULT_WHY_CONSIDER_POINTS.join('\n\n'))}
+                    className="text-[11px] font-bold text-indigo-400 hover:underline cursor-pointer"
+                  >
+                    Reset to Default Paragraphs
+                  </button>
+                </div>
+                <p className="text-xs text-slate-400 mb-2">
+                  Enter each answer or selling point as a paragraph (press Enter to separate points):
+                </p>
+                <textarea
+                  rows={8}
+                  required
+                  value={editWhyParagraphs}
+                  onChange={(e) => setEditWhyParagraphs(e.target.value)}
+                  className="w-full bg-slate-950 border border-slate-700 rounded-xl p-4 text-xs sm:text-sm text-white outline-none focus:border-indigo-500 font-medium leading-relaxed resize-y"
+                  placeholder="Easily find Zen with yoga spaces and vast green covers.&#10;&#10;Vastu compliant spacious homes with modern amenities.&#10;&#10;Excellent connectivity to major IT hubs and transit."
+                />
+              </div>
+
+              <div className="p-4 bg-slate-950/60 rounded-2xl border border-slate-800 text-xs text-slate-300 space-y-1">
+                <p className="font-bold text-indigo-300">💡 Super Admin Formatting Tip:</p>
+                <p>The top 3 paragraphs will be highlighted in the sidebar card, and all paragraphs will appear in the "View all highlights" drawer.</p>
+              </div>
+
+              <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={() => setIsWhyConsiderEditorOpen(false)}
+                  className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold text-xs cursor-pointer"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-xs shadow-lg shadow-blue-500/25 cursor-pointer"
+                >
+                  Save Answers & Paragraphs
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

@@ -351,6 +351,7 @@ export const PostProperty = () => {
                     <button
                       type="button"
                       onClick={() => setSectionToggles({
+                        whyConsider: true,
                         overview: true,
                         constructionStatus: true,
                         startingPrice: true,
@@ -363,11 +364,12 @@ export const PostProperty = () => {
                       })}
                       className="text-xs font-bold px-3 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-xl hover:bg-emerald-500/30 transition-colors cursor-pointer"
                     >
-                      Turn All 9 ON
+                      Turn All ON
                     </button>
                     <button
                       type="button"
                       onClick={() => setSectionToggles({
+                        whyConsider: false,
                         overview: false,
                         constructionStatus: false,
                         startingPrice: false,
@@ -380,7 +382,7 @@ export const PostProperty = () => {
                       })}
                       className="text-xs font-bold px-3 py-1.5 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-xl hover:bg-rose-500/30 transition-colors cursor-pointer"
                     >
-                      Turn All 9 OFF
+                      Turn All OFF
                     </button>
                   </div>
                 </div>

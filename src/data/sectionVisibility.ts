@@ -8,9 +8,11 @@ export interface SectionVisibilityMap {
   about?: boolean;
   neighborhoodMap?: boolean;
   keyLandmarks?: boolean;
+  whyConsider?: boolean;
 }
 
 export const SECTION_DEFINITIONS = [
+  { id: 'whyConsider', label: 'Why Consider (Builder & Highlights)', desc: 'Why consider developer highlights, selling points & developer badge' },
   { id: 'overview', label: 'Overview', desc: 'Project area, unit sizes, launch date, avg sq.ft price' },
   { id: 'constructionStatus', label: 'Construction Status', desc: 'Under Construction / Ready to Move card' },
   { id: 'startingPrice', label: 'Starting Price', desc: 'Starting budget price card & brochure download' },
@@ -23,6 +25,7 @@ export const SECTION_DEFINITIONS = [
 ] as const;
 
 export const DEFAULT_SECTION_VISIBILITY: SectionVisibilityMap = {
+  whyConsider: true,
   overview: true,
   constructionStatus: true,
   startingPrice: true,
@@ -32,6 +35,50 @@ export const DEFAULT_SECTION_VISIBILITY: SectionVisibilityMap = {
   about: true,
   neighborhoodMap: true,
   keyLandmarks: true,
+};
+
+export const DEFAULT_WHY_CONSIDER_POINTS = [
+  "Easily find Zen with yoga spaces and vast green covers.",
+  "Vastu compliant spacious homes with modern amenities.",
+  "Excellent connectivity to major IT hubs and transit.",
+  "High-end co-working spaces within the resident community.",
+  "360-degree ventilation for abundant natural light and air.",
+  "24/7 security with 100% power backup available."
+];
+
+export interface WhyConsiderConfig {
+  title?: string;
+  points: string[];
+}
+
+export const getWhyConsiderData = (projectId: string = 'global'): WhyConsiderConfig => {
+  try {
+    const specificKey = `admin_why_consider_${projectId}`;
+    const specificSaved = localStorage.getItem(specificKey);
+    if (specificSaved) return JSON.parse(specificSaved);
+
+    const globalSaved = localStorage.getItem('admin_why_consider_global');
+    if (globalSaved) return JSON.parse(globalSaved);
+
+    return {
+      title: '',
+      points: DEFAULT_WHY_CONSIDER_POINTS
+    };
+  } catch {
+    return {
+      title: '',
+      points: DEFAULT_WHY_CONSIDER_POINTS
+    };
+  }
+};
+
+export const setWhyConsiderData = (projectId: string, config: WhyConsiderConfig) => {
+  try {
+    const key = `admin_why_consider_${projectId}`;
+    localStorage.setItem(key, JSON.stringify(config));
+  } catch (err) {
+    console.error('Error saving why consider data:', err);
+  }
 };
 
 export const getSectionVisibility = (projectId: string = 'global'): SectionVisibilityMap => {
@@ -57,3 +104,4 @@ export const setSectionVisibility = (projectId: string, visibility: SectionVisib
     console.error('Error saving section visibility:', err);
   }
 };
+

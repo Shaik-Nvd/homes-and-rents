@@ -111,6 +111,7 @@ export const AdminDashboard: React.FC = () => {
 
   const handleTurnAllSections = (val: boolean) => {
     const updated: SectionVisibilityMap = {
+      whyConsider: val,
       overview: val,
       constructionStatus: val,
       startingPrice: val,
@@ -123,7 +124,7 @@ export const AdminDashboard: React.FC = () => {
     };
     setCurrentSectionVis(updated);
     setSectionVisibility(activeSectionProject, updated);
-    notify(`All 9 sections turned ${val ? 'ON' : 'OFF'} for ${activeSectionProject === 'global' ? 'All Properties' : 'this property'}`);
+    notify(`All sections turned ${val ? 'ON' : 'OFF'} for ${activeSectionProject === 'global' ? 'All Properties' : 'this property'}`);
   };
 
   const handleResetSectionDefaults = () => {
