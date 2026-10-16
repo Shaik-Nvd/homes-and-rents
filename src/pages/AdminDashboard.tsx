@@ -25,22 +25,56 @@ import {
   MapPin,
   DollarSign,
   Database,
-  ShieldCheck
+  ShieldCheck,
+  Eye,
+  Sliders,
+  Check
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 import { projects } from '../data/projects';
 
+import { MASTER_AMENITIES, DEFAULT_PROJECT_AMENITIES } from '../data/amenities';
+
 export const AdminDashboard: React.FC = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
-  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'leads'>('hub');
+  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities'>('hub');
   const [hiddenIds, setHiddenIds] = useState<string[]>([]);
   const [customOrder, setCustomOrder] = useState<string[]>([]);
   const [dbProperties, setDbProperties] = useState<any[]>([]);
   const [loadingDb, setLoadingDb] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
+
+  // Overview Toggles State: { [projectId: string]: boolean }
+  const [overviewToggles, setOverviewToggles] = useState<{ [key: string]: boolean }>(() => {
+    try {
+      const allKeys = Object.keys(localStorage).filter(k => k.startsWith('admin_overview_toggle_'));
+      const stateObj: { [key: string]: boolean } = {};
+      allKeys.forEach(key => {
+        const id = key.replace('admin_overview_toggle_', '');
+        const val = localStorage.getItem(key);
+        stateObj[id] = val !== null ? JSON.parse(val) : true;
+      });
+      return stateObj;
+    } catch {
+      return {};
+    }
+  });
+
+  // Global & Per-Project Amenities State
+  const [activeAmenityProject, setActiveAmenityProject] = useState<string>('global');
+  const [configuredAmenities, setConfiguredAmenities] = useState<string[]>(() => {
+    try {
+      const saved = localStorage.getItem('admin_amenities_global');
+      return saved ? JSON.parse(saved) : DEFAULT_PROJECT_AMENITIES;
+    } catch {
+      return DEFAULT_PROJECT_AMENITIES;
+    }
+  });
+  const [amenitySearch, setAmenitySearch] = useState('');
+  const [newCustomAmenity, setNewCustomAmenity] = useState('');
 
   const isAdmin = user?.email === 'admin@homesandrents.com';
 
@@ -105,6 +139,59 @@ export const AdminDashboard: React.FC = () => {
     localStorage.removeItem('admin_hidden_properties');
     setHiddenIds([]);
     notify('All properties unhidden');
+  };
+
+  // Toggle Overview ON/OFF for any property
+  const toggleProjectOverview = (projectId: string) => {
+    const currentVal = overviewToggles[projectId] !== false; // default true
+    const updatedVal = !currentVal;
+    const updatedMap = { ...overviewToggles, [projectId]: updatedVal };
+    setOverviewToggles(updatedMap);
+    localStorage.setItem(`admin_overview_toggle_${projectId}`, JSON.stringify(updatedVal));
+    notify(`Overview section turned ${updatedVal ? 'ON (Visible)' : 'OFF (Hidden)'} for this property`);
+  };
+
+  // Load amenities for specific project or global
+  const handleSelectAmenityProject = (pId: string) => {
+    setActiveAmenityProject(pId);
+    const key = `admin_amenities_${pId}`;
+    try {
+      const saved = localStorage.getItem(key);
+      if (saved) {
+        setConfiguredAmenities(JSON.parse(saved));
+      } else {
+        const globalSaved = localStorage.getItem('admin_amenities_global');
+        setConfiguredAmenities(globalSaved ? JSON.parse(globalSaved) : DEFAULT_PROJECT_AMENITIES);
+      }
+    } catch {
+      setConfiguredAmenities(DEFAULT_PROJECT_AMENITIES);
+    }
+  };
+
+  // Toggle amenity inclusion
+  const toggleAmenitySelection = (name: string) => {
+    const updated = configuredAmenities.includes(name)
+      ? configuredAmenities.filter(item => item !== name)
+      : [...configuredAmenities, name];
+    setConfiguredAmenities(updated);
+  };
+
+  // Save amenities configuration
+  const saveAmenitiesConfiguration = () => {
+    const key = `admin_amenities_${activeAmenityProject}`;
+    localStorage.setItem(key, JSON.stringify(configuredAmenities));
+    notify(`Saved ${configuredAmenities.length} amenities for ${activeAmenityProject === 'global' ? 'All Projects (Default)' : 'selected project'}`);
+  };
+
+  // Add custom amenity
+  const handleAddCustomAmenity = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newCustomAmenity.trim()) return;
+    const trimmed = newCustomAmenity.trim();
+    if (!configuredAmenities.includes(trimmed)) {
+      setConfiguredAmenities([...configuredAmenities, trimmed]);
+    }
+    setNewCustomAmenity('');
   };
 
   // 20 Relevant Action Buttons Config
@@ -360,19 +447,41 @@ export const AdminDashboard: React.FC = () => {
             <div className="flex flex-wrap gap-2.5">
               <button
                 onClick={() => navigate('/post')}
-                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-extrabold text-sm px-5 py-3 rounded-2xl shadow-lg shadow-indigo-500/25 flex items-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0"
+                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-extrabold text-sm px-5 py-3 rounded-2xl shadow-lg shadow-indigo-500/25 flex items-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 <PlusCircle className="w-5 h-5" /> Post New Property
               </button>
               <button
-                onClick={() => setActiveTab('hub')}
-                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors ${
-                  activeTab === 'hub' 
-                    ? 'bg-white text-slate-950 border-white' 
+                onClick={() => setActiveTab('overview')}
+                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer ${
+                  activeTab === 'overview' 
+                    ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md font-black' 
                     : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
                 }`}
               >
-                All 20 Actions
+                <Sliders className="w-4 h-4 text-amber-400" />
+                Overview ON/OFF
+              </button>
+              <button
+                onClick={() => setActiveTab('amenities')}
+                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer ${
+                  activeTab === 'amenities' 
+                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-md font-black' 
+                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
+                }`}
+              >
+                <Sparkles className="w-4 h-4 text-indigo-300" />
+                Manage Amenities (30+)
+              </button>
+              <button
+                onClick={() => setActiveTab('hub')}
+                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors cursor-pointer ${
+                  activeTab === 'hub' 
+                    ? 'bg-white text-slate-950 border-white font-black' 
+                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
+                }`}
+              >
+                All Actions
               </button>
             </div>
           </div>
@@ -587,6 +696,227 @@ export const AdminDashboard: React.FC = () => {
                 </table>
               </div>
             )}
+          </div>
+        )}
+
+        {/* TAB 4: Overview ON/OFF Toggle per Property */}
+        {activeTab === 'overview' && (
+          <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
+              <div>
+                <button
+                  onClick={() => setActiveTab('hub')}
+                  className="text-xs text-indigo-400 hover:underline mb-1 font-bold block"
+                >
+                  ← Back to Admin Command Hub
+                </button>
+                <h2 className="text-xl font-black text-white flex items-center gap-2">
+                  <Sliders className="w-5 h-5 text-amber-400" /> Property "Overview" ON / OFF Manager
+                </h2>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Turn the Project Overview section ON or OFF individually for each property listing.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    // Turn all ON
+                    projects.forEach(p => localStorage.setItem(`admin_overview_toggle_${p.id}`, JSON.stringify(true)));
+                    dbProperties.forEach(p => localStorage.setItem(`admin_overview_toggle_${p.id}`, JSON.stringify(true)));
+                    const allOn: any = {};
+                    projects.forEach(p => allOn[p.id] = true);
+                    dbProperties.forEach(p => allOn[p.id] = true);
+                    setOverviewToggles(allOn);
+                    notify('All property overviews turned ON');
+                  }}
+                  className="text-xs font-bold px-3 py-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-xl hover:bg-emerald-500/30 transition-colors"
+                >
+                  Turn All ON
+                </button>
+                <button
+                  onClick={() => {
+                    // Turn all OFF
+                    projects.forEach(p => localStorage.setItem(`admin_overview_toggle_${p.id}`, JSON.stringify(false)));
+                    dbProperties.forEach(p => localStorage.setItem(`admin_overview_toggle_${p.id}`, JSON.stringify(false)));
+                    const allOff: any = {};
+                    projects.forEach(p => allOff[p.id] = false);
+                    dbProperties.forEach(p => allOff[p.id] = false);
+                    setOverviewToggles(allOff);
+                    notify('All property overviews turned OFF');
+                  }}
+                  className="text-xs font-bold px-3 py-1.5 bg-rose-500/20 text-rose-300 border border-rose-500/30 rounded-xl hover:bg-rose-500/30 transition-colors"
+                >
+                  Turn All OFF
+                </button>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[...projects, ...dbProperties.map(p => ({
+                id: p.id?.toString(),
+                title: p.title || 'DB Property',
+                subtitle: p.location || 'Bangalore',
+                priceConfigs: [{ label: p.type || 'Price', price: p.price || 'Contact for price' }]
+              }))].map((item) => {
+                const isOverviewOn = overviewToggles[item.id] !== false; // default ON
+                return (
+                  <div
+                    key={item.id}
+                    className={`p-4 rounded-2xl border transition-all flex items-center justify-between gap-4 ${
+                      isOverviewOn
+                        ? 'bg-slate-800/60 border-slate-700/80'
+                        : 'bg-amber-950/20 border-amber-500/40'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded border ${
+                          isOverviewOn 
+                            ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' 
+                            : 'bg-amber-500/20 text-amber-300 border-amber-500/40'
+                        }`}>
+                          {isOverviewOn ? 'Overview: ON' : 'Overview: OFF (Hidden)'}
+                        </span>
+                      </div>
+                      <h4 className="font-extrabold text-white text-sm mt-1.5">{item.title}</h4>
+                      <p className="text-xs text-slate-400">{item.subtitle}</p>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <Link
+                        to={`/project/${item.id}`}
+                        target="_blank"
+                        className="p-2 text-xs font-bold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-xl border border-slate-700 transition-colors flex items-center gap-1"
+                        title="Preview Property Page"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </Link>
+                      <button
+                        onClick={() => toggleProjectOverview(item.id)}
+                        className={`px-3 py-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer flex items-center gap-1.5 shadow-md ${
+                          isOverviewOn
+                            ? 'bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/40'
+                            : 'bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black'
+                        }`}
+                      >
+                        {isOverviewOn ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                        <span>{isOverviewOn ? 'Turn OFF' : 'Turn ON'}</span>
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* TAB 5: Manage Amenities (30+ Catalog) */}
+        {activeTab === 'amenities' && (
+          <div className="bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-800">
+              <div>
+                <button
+                  onClick={() => setActiveTab('hub')}
+                  className="text-xs text-indigo-400 hover:underline mb-1 font-bold block"
+                >
+                  ← Back to Admin Command Hub
+                </button>
+                <h2 className="text-xl font-black text-white flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-indigo-400" /> Master Amenities Control (35+ Catalog)
+                </h2>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Select, add, or toggle amenities for all properties or customize for a specific project.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={saveAmenitiesConfiguration}
+                  className="text-xs font-extrabold px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl shadow-lg transition-colors flex items-center gap-1.5"
+                >
+                  <Check className="w-4 h-4" /> Save Amenities ({configuredAmenities.length})
+                </button>
+              </div>
+            </div>
+
+            {/* Target Property Picker */}
+            <div className="mb-6 p-4 rounded-2xl bg-slate-800/50 border border-slate-700/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">Editing Amenities For:</label>
+                <select
+                  value={activeAmenityProject}
+                  onChange={(e) => handleSelectAmenityProject(e.target.value)}
+                  className="bg-slate-900 border border-slate-700 text-white text-xs font-bold rounded-xl px-3 py-2 outline-none cursor-pointer focus:border-indigo-500"
+                >
+                  <option value="global">★ Default (All Projects)</option>
+                  {projects.map(p => (
+                    <option key={p.id} value={p.id}>{p.title} ({p.builder})</option>
+                  ))}
+                  {dbProperties.map(p => (
+                    <option key={p.id} value={p.id}>{p.title || `Property #${p.id}`}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="text-xs text-indigo-300 font-bold bg-indigo-500/10 border border-indigo-500/20 px-3 py-2 rounded-xl">
+                Currently Selected: {configuredAmenities.length} of {MASTER_AMENITIES.length} amenities
+              </div>
+            </div>
+
+            {/* Custom Amenity Adder */}
+            <form onSubmit={handleAddCustomAmenity} className="mb-5 flex gap-2">
+              <input
+                type="text"
+                placeholder="Add custom amenity (e.g. Squash Court, Helipad, Bowling Alley...)"
+                value={newCustomAmenity}
+                onChange={(e) => setNewCustomAmenity(e.target.value)}
+                className="flex-grow text-xs bg-slate-900 border border-slate-700 text-white rounded-xl px-4 py-2.5 outline-none focus:border-indigo-500"
+              />
+              <button
+                type="submit"
+                className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md transition-colors whitespace-nowrap"
+              >
+                + Add Custom Amenity
+              </button>
+            </form>
+
+            {/* Search filter for amenities */}
+            <div className="mb-4">
+              <input
+                type="text"
+                placeholder="Search amenities (e.g. pool, gym, security)..."
+                value={amenitySearch}
+                onChange={(e) => setAmenitySearch(e.target.value)}
+                className="w-full text-xs bg-slate-900/60 border border-slate-800 text-white rounded-xl px-4 py-2 outline-none focus:border-indigo-500"
+              />
+            </div>
+
+            {/* Master Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 max-h-96 overflow-y-auto p-1">
+              {MASTER_AMENITIES.filter(a => a.toLowerCase().includes(amenitySearch.toLowerCase())).map((name) => {
+                const isSelected = configuredAmenities.includes(name);
+                return (
+                  <button
+                    key={name}
+                    type="button"
+                    onClick={() => toggleAmenitySelection(name)}
+                    className={`p-3 rounded-2xl border text-left text-xs font-bold transition-all flex items-center justify-between cursor-pointer ${
+                      isSelected
+                        ? 'bg-indigo-600/25 border-indigo-500/60 text-white shadow-sm ring-1 ring-indigo-500/30'
+                        : 'bg-slate-800/40 border-slate-800 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
+                    }`}
+                  >
+                    <span>{name}</span>
+                    <span className={`w-5 h-5 rounded-lg flex items-center justify-center text-[11px] ${
+                      isSelected ? 'bg-indigo-500 text-white' : 'border border-slate-700'
+                    }`}>
+                      {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         )}
       </main>

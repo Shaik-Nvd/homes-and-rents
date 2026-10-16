@@ -301,12 +301,12 @@ export const ProjectDetail = () => {
 
             {/* Other Sections */}
             <div className="flex flex-col gap-12 mt-4">
-              <ProjectOverview />
+              <ProjectOverview project={project} />
               {project.tag !== 'Rent' && <ProjectFloorPlans project={project} />}
               {project.tag === 'Rent' ? (
                 <RentalAmenities />
               ) : (
-                <ProjectAmenities />
+                <ProjectAmenities projectId={project.id} />
               )}
               <ProjectAbout project={project} />
               <ProjectLocation project={project} />
