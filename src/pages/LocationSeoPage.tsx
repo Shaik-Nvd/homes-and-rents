@@ -4,9 +4,10 @@ import { Home as HomeIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { supabase } from '../lib/supabase';
 import { ProjectCard } from '../components/ProjectCard';
-import { projects } from '../data/projects';
+import { projects, findProjectBySlugOrId } from '../data/projects';
 import { getCustomAreaPageBySlug } from '../data/customAreaPages';
 import { CustomAreaDetailView } from './CustomAreaDetailView';
+import { ProjectDetail } from './ProjectDetail';
 
 interface LocationSeoPageProps {
   type?: 'rent' | 'sale';
@@ -22,6 +23,12 @@ export const LocationSeoPage = ({ type: propType }: LocationSeoPageProps) => {
   const customPage = getCustomAreaPageBySlug(rawSlug);
   if (customPage) {
     return <CustomAreaDetailView />;
+  }
+
+  // If this matches an individual project's custom slug or project ID, render ProjectDetail!
+  const matchedProject = findProjectBySlugOrId(rawSlug);
+  if (matchedProject) {
+    return <ProjectDetail />;
   }
   
   const parsed = (() => {

@@ -47,6 +47,7 @@ export const EditPropertyModal: React.FC<EditPropertyModalProps> = ({
   const [description, setDescription] = useState(project.description || '');
   const [aboutText, setAboutText] = useState(project.aboutText || '');
   const [imageSrc, setImageSrc] = useState(project.imageSrc || '');
+  const [customSlug, setCustomSlug] = useState(project.customSlug || '');
   
   // Landmarks / Nearby (comma separated or array)
   const [nearbyInput, setNearbyInput] = useState((project.nearby || []).join(', '));
@@ -100,6 +101,7 @@ export const EditPropertyModal: React.FC<EditPropertyModalProps> = ({
       setDescription(override?.description ?? project.description ?? '');
       setAboutText(override?.aboutText ?? project.aboutText ?? '');
       setImageSrc(override?.imageSrc ?? project.imageSrc ?? '');
+      setCustomSlug(override?.customSlug ?? project.customSlug ?? '');
       setNearbyInput((override?.nearby ?? project.nearby ?? []).join(', '));
 
       if (override?.priceConfigs && override.priceConfigs.length > 0) {
@@ -180,6 +182,7 @@ export const EditPropertyModal: React.FC<EditPropertyModalProps> = ({
       description: description.trim(),
       aboutText: aboutText.trim(),
       imageSrc: imageSrc.trim(),
+      customSlug: customSlug.trim() ? customSlug.trim().toLowerCase().replace(/^\/+|\/+$/g, '').replace(/[^a-z0-9-/]+/g, '-') : undefined,
       priceConfigs: priceConfigs.filter(p => p.label.trim() && p.price.trim()),
       nearby: cleanNearby
     };
@@ -407,6 +410,25 @@ export const EditPropertyModal: React.FC<EditPropertyModalProps> = ({
                     placeholder="e.g. /Trifecta_Veranza.jpg or https://..."
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 mb-1">
+                  Custom SEO URL Slug (Direct link: homesandrents.com/your-slug)
+                </label>
+                <div className="flex items-center bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-1.5 focus-within:border-indigo-500">
+                  <span className="text-xs text-slate-500 font-mono select-none">https://homesandrents.com/</span>
+                  <input
+                    type="text"
+                    value={customSlug}
+                    onChange={(e) => setCustomSlug(e.target.value)}
+                    className="w-full text-xs bg-transparent text-indigo-400 outline-none font-mono py-1 ml-1"
+                    placeholder="e.g. prestige-parklane-devanahalli"
+                  />
+                </div>
+                <span className="text-[10px] text-slate-400 mt-1 block">
+                  Optional: Creates a clean, Google-friendly URL that opens this project directly.
+                </span>
               </div>
 
               <div>

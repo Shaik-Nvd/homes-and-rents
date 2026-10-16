@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { 
   PlusCircle, 
   EyeOff, 
@@ -70,8 +70,24 @@ import type { SectionVisibilityMap } from '../data/sectionVisibility';
 export const AdminDashboard: React.FC = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialTabParam = searchParams.get('tab') as any;
 
-  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities' | 'sections' | 'registrations' | 'blogs' | 'custom_urls'>('hub');
+  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities' | 'sections' | 'registrations' | 'blogs' | 'custom_urls'>(
+    initialTabParam || 'hub'
+  );
+
+  useEffect(() => {
+    const tabParam = searchParams.get('tab') as any;
+    if (tabParam && tabParam !== activeTab) {
+      setActiveTab(tabParam);
+    }
+  }, [searchParams]);
+
+  const handleTabChange = (newTab: typeof activeTab) => {
+    setActiveTab(newTab);
+    setSearchParams(newTab === 'hub' ? {} : { tab: newTab });
+  };
   const [hiddenIds, setHiddenIds] = useState<string[]>([]);
   const [customOrder, setCustomOrder] = useState<string[]>([]);
   const [dbProperties, setDbProperties] = useState<any[]>([]);
@@ -679,7 +695,7 @@ export const AdminDashboard: React.FC = () => {
         {/* Clean, Organized Navigation Tabs Bar */}
         <div className="bg-slate-900/80 border border-slate-800 p-2 rounded-2xl sm:rounded-3xl shadow-xl mb-8 flex flex-wrap items-center gap-2">
           <button
-            onClick={() => setActiveTab('hub')}
+            onClick={() => handleTabChange('hub')}
             className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'hub'
                 ? 'bg-white text-slate-950 shadow-md scale-100'
@@ -691,7 +707,7 @@ export const AdminDashboard: React.FC = () => {
           </button>
 
           <button
-            onClick={() => { refreshCustomPages(); setActiveTab('custom_urls'); }}
+            onClick={() => { refreshCustomPages(); handleTabChange('custom_urls'); }}
             className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer relative ${
               activeTab === 'custom_urls'
                 ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25'
@@ -706,7 +722,7 @@ export const AdminDashboard: React.FC = () => {
           </button>
 
           <button
-            onClick={() => { refreshRegistrations(); setActiveTab('registrations'); }}
+            onClick={() => { refreshRegistrations(); handleTabChange('registrations'); }}
             className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer relative ${
               activeTab === 'registrations'
                 ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/25'
@@ -723,7 +739,7 @@ export const AdminDashboard: React.FC = () => {
           </button>
 
           <button
-            onClick={() => { refreshBlogs(); setActiveTab('blogs'); }}
+            onClick={() => { refreshBlogs(); handleTabChange('blogs'); }}
             className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer relative ${
               activeTab === 'blogs'
                 ? 'bg-rose-600 text-white shadow-lg shadow-rose-500/25'
@@ -735,7 +751,7 @@ export const AdminDashboard: React.FC = () => {
           </button>
 
           <button
-            onClick={() => setActiveTab('sections')}
+            onClick={() => handleTabChange('sections')}
             className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'sections'
                 ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
@@ -747,7 +763,7 @@ export const AdminDashboard: React.FC = () => {
           </button>
 
           <button
-            onClick={() => setActiveTab('overview')}
+            onClick={() => handleTabChange('overview')}
             className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'overview'
                 ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/25'
@@ -759,7 +775,7 @@ export const AdminDashboard: React.FC = () => {
           </button>
 
           <button
-            onClick={() => setActiveTab('amenities')}
+            onClick={() => handleTabChange('amenities')}
             className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
               activeTab === 'amenities'
                 ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25'

@@ -9,7 +9,7 @@ import { ProjectLocation } from '../components/ProjectLocation';
 import { SiteVisitModal } from '../components/SiteVisitModal';
 import { BrochureModal } from '../components/BrochureModal';
 import { RentalAmenities } from '../components/RentalAmenities';
-import { projects, applyPropertyOverrides } from '../data/projects';
+import { findProjectBySlugOrId, applyPropertyOverrides } from '../data/projects';
 import { supabase } from '../lib/supabase';
 import { Helmet } from 'react-helmet-async';
 import type { ProjectData } from '../data/projects';
@@ -29,8 +29,7 @@ import { EditPropertyModal } from '../components/EditPropertyModal';
 export const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState<ProjectData | null>(() => {
-    const found = projects.find((p) => p.id === id);
-    return found ? applyPropertyOverrides(found) : null;
+    return id ? findProjectBySlugOrId(id) : null;
   });
   const [loading, setLoading] = useState(!project);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -38,9 +37,9 @@ export const ProjectDetail = () => {
   useEffect(() => {
     const handleOverrideUpdate = () => {
       if (id) {
-        const found = projects.find((p) => p.id === id);
+        const found = findProjectBySlugOrId(id);
         if (found) {
-          setProject(applyPropertyOverrides(found));
+          setProject(found);
         }
       }
     };

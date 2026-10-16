@@ -17,6 +17,7 @@ export interface ProjectData {
   badges: string[];
   description?: string;
   
+  customSlug?: string;
   // Detail page specifics
   galleryImages?: string[];
   videoLinks?: string[];
@@ -2446,6 +2447,7 @@ export interface PropertyOverrideData {
   nearby?: string[];
   badges?: string[];
   imageSrc?: string;
+  customSlug?: string;
 }
 
 export const getPropertyOverride = (id: string): PropertyOverrideData | null => {
@@ -2481,7 +2483,26 @@ export const applyPropertyOverrides = (project: ProjectData): ProjectData => {
     nearby: override.nearby && override.nearby.length > 0 ? override.nearby : project.nearby,
     badges: override.badges && override.badges.length > 0 ? override.badges : project.badges,
     imageSrc: override.imageSrc && override.imageSrc.trim() ? override.imageSrc : project.imageSrc,
+    customSlug: override.customSlug !== undefined && override.customSlug.trim() ? override.customSlug.trim() : project.customSlug,
   };
 };
+
+export const findProjectBySlugOrId = (slugOrId: string): ProjectData | null => {
+  if (!slugOrId) return null;
+  const clean = slugOrId.toLowerCase().replace(/^\/+|\/+$/g, '');
+
+  for (const p of projects) {
+    const overridden = applyPropertyOverrides(p);
+    if (overridden.id.toLowerCase() === clean) return overridden;
+    if (overridden.customSlug && overridden.customSlug.toLowerCase().replace(/^\/+|\/+$/g, '') === clean) {
+      return overridden;
+    }
+    // Also check auto title slug
+    const autoSlug = overridden.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    if (autoSlug === clean) return overridden;
+  }
+  return null;
+};
+
 
 
