@@ -432,7 +432,6 @@ export const ProjectDetail = () => {
                         <p className="text-[11px] text-slate-400 font-bold tracking-widest uppercase mb-1">Estimated Cost</p>
                         <div className="flex items-center justify-between mt-auto">
                           <p className="text-slate-900 text-2xl font-black">{config.price}</p>
-                          <span className="text-blue-700 bg-blue-50 text-[10px] font-bold px-3 py-1.5 rounded-lg cursor-pointer hover:bg-blue-100 transition-colors border border-blue-100">Details</span>
                         </div>
                       </div>
                     </div>
