@@ -20,6 +20,7 @@ import { ProjectCard } from './components/ProjectCard';
 import { EditPropertyModal } from './components/EditPropertyModal';
 import { SuperCards } from './components/SuperCards';
 import { LaunchModal } from './components/LaunchModal';
+import { PromotionalPopups } from './components/PromotionalPopups';
 import { TrendingNow } from './components/TrendingNow';
 import type { SuperCardCategory } from './components/SuperCards';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -898,6 +899,7 @@ const AppContent = () => {
         </Routes>
         <Analytics />
       </div>
+      <PromotionalPopups />
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
     </BrowserRouter>
   );
