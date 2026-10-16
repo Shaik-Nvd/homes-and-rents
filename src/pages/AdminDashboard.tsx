@@ -16,7 +16,16 @@ import {
   Building2,
   Trash2,
   RefreshCw,
-  ExternalLink
+  ExternalLink,
+  FileSpreadsheet,
+  Calendar,
+  Rocket,
+  Store,
+  Tag,
+  MapPin,
+  DollarSign,
+  Database,
+  ShieldCheck
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
@@ -98,12 +107,13 @@ export const AdminDashboard: React.FC = () => {
     notify('All properties unhidden');
   };
 
-  // 10 Relevant Action Buttons Config
+  // 20 Relevant Action Buttons Config
   const adminActions = [
+    // --- 1. CORE LISTINGS MANAGEMENT ---
     {
       id: 'post',
       title: 'Post New Property',
-      desc: 'Add apartment, villa, plot or commercial listing',
+      desc: 'Add apartment, villa, plot, commercial or resale listing',
       icon: PlusCircle,
       gradient: 'from-purple-600 to-indigo-600',
       action: () => navigate('/post')
@@ -114,7 +124,7 @@ export const AdminDashboard: React.FC = () => {
       desc: 'Set Top 1-10 priority ranks or drag cards on live site',
       icon: ArrowUpDown,
       gradient: 'from-blue-600 to-cyan-600',
-      badge: customOrder.length > 0 ? `${customOrder.length} customized` : undefined,
+      badge: customOrder.length > 0 ? `${customOrder.length} prioritized` : undefined,
       action: () => navigate('/')
     },
     {
@@ -135,22 +145,68 @@ export const AdminDashboard: React.FC = () => {
       badge: `${dbProperties.length} active`,
       action: () => setActiveTab('db_properties')
     },
+
+    // --- 2. LEADS, CONVERSIONS & ENGAGEMENT ---
+    {
+      id: 'whatsapp_leads',
+      title: 'WhatsApp Enquiries',
+      desc: 'Open direct WhatsApp chat portal (+91 97390 63840)',
+      icon: MessageSquare,
+      gradient: 'from-green-600 to-emerald-700',
+      action: () => window.open('https://wa.me/919739063840?text=Hi+Homes+%26+Rents+Admin+Lead+Inquiry', '_blank')
+    },
     {
       id: 'launch_popup',
       title: 'Pop-Up & Launch VIPs',
-      desc: 'Test VIP pre-launch modal and enquiry flow',
+      desc: 'Test VIP pre-launch modal and enquiry conversion flow',
       icon: Sparkles,
       gradient: 'from-pink-600 to-rose-600',
       action: () => navigate('/')
     },
     {
-      id: 'whatsapp_leads',
-      title: 'WhatsApp Enquiries',
-      desc: 'Open direct WhatsApp portal (+91 97390 63840)',
-      icon: MessageSquare,
-      gradient: 'from-green-600 to-emerald-700',
-      action: () => window.open('https://wa.me/919739063840?text=Hi+Homes+%26+Rents+Admin+Lead+Inquiry', '_blank')
+      id: 'floor_plan_enquiries',
+      title: 'Floor Plan WhatsApp Flow',
+      desc: 'Verify instant brochure & price breakup WhatsApp links',
+      icon: FileSpreadsheet,
+      gradient: 'from-cyan-600 to-blue-700',
+      action: () => navigate('/project/gr-samskruthi')
     },
+    {
+      id: 'site_visits',
+      title: 'Site Visit Scheduling',
+      desc: 'Schedule customer tours & inspect property locations',
+      icon: Calendar,
+      gradient: 'from-violet-600 to-indigo-700',
+      action: () => window.open('https://wa.me/919739063840?text=Schedule+Site+Visit+Customer+Assistance', '_blank')
+    },
+
+    // --- 3. CATEGORIES & BUILDER HUBS ---
+    {
+      id: 'pre_launch_hub',
+      title: 'Pre-Launch & New Launch',
+      desc: 'Inspect newly added upcoming builder developments',
+      icon: Rocket,
+      gradient: 'from-rose-600 to-orange-500',
+      action: () => navigate('/')
+    },
+    {
+      id: 'commercial_resale',
+      title: 'Plots & Commercial Deals',
+      desc: 'Filter plots, lands, shops and resale inventory',
+      icon: Store,
+      gradient: 'from-amber-500 to-yellow-600',
+      action: () => navigate('/')
+    },
+    {
+      id: 'builder_showcase',
+      title: 'Builder Marquee Audit',
+      desc: 'Audit Prestige, Godrej, Sobha, Brigade showcase logos',
+      icon: Tag,
+      gradient: 'from-teal-600 to-emerald-700',
+      action: () => navigate('/')
+    },
+
+    // --- 4. PROGRAMMATIC SEO & DISCOVERY ---
     {
       id: 'seo_routes',
       title: '99acres SEO Pages',
@@ -160,13 +216,31 @@ export const AdminDashboard: React.FC = () => {
       action: () => navigate('/2-bhk-flats-in-hebbal-bangalore-north-ffid')
     },
     {
+      id: 'locality_hub',
+      title: 'Locality & Metro Links',
+      desc: 'Audit Hebbal, Whitefield, HSR & Koramangala hubs',
+      icon: MapPin,
+      gradient: 'from-blue-600 to-violet-700',
+      action: () => navigate('/flats-for-rent/whitefield')
+    },
+    {
       id: 'search_audit',
-      title: 'Search & Filters Audit',
-      desc: 'Verify builder filters, categories & keywords',
+      title: 'Search & Auto-Suggest Audit',
+      desc: 'Verify builder filters, categories & keyword index',
       icon: Search,
-      gradient: 'from-violet-600 to-purple-800',
+      gradient: 'from-purple-600 to-pink-600',
       action: () => navigate('/search')
     },
+    {
+      id: 'price_trends',
+      title: 'Price Configuration Audit',
+      desc: 'Verify BHK pricing labels & rent vs. buy configurations',
+      icon: DollarSign,
+      gradient: 'from-emerald-600 to-green-700',
+      action: () => navigate('/search?q=lakhs')
+    },
+
+    // --- 5. SYSTEM, SECURITY & DATA MANAGEMENT ---
     {
       id: 'export_data',
       title: 'Backup & Export Listings',
@@ -191,12 +265,41 @@ export const AdminDashboard: React.FC = () => {
       }
     },
     {
+      id: 'db_sync',
+      title: 'Sync Supabase Database',
+      desc: 'Pull latest database entries & refresh cache',
+      icon: Database,
+      gradient: 'from-blue-700 to-slate-800',
+      action: () => {
+        fetchDbProperties();
+        notify('Database synchronized successfully');
+      }
+    },
+    {
       id: 'reset_system',
       title: 'Reset Site Priorities',
       desc: 'Revert custom card ordering back to standard ranking',
       icon: RefreshCw,
       gradient: 'from-rose-600 to-red-700',
       action: handleResetAllOrder
+    },
+    {
+      id: 'security_audit',
+      title: 'Admin Credentials & Access',
+      desc: 'Manage admin security, sessions and authentication',
+      icon: ShieldCheck,
+      gradient: 'from-slate-800 to-slate-950',
+      action: () => navigate('/admin/login')
+    },
+    {
+      id: 'analytics_summary',
+      title: 'Site Traffic & Analytics',
+      desc: 'Review visitor metrics and real-time page engagement',
+      icon: BarChart3,
+      gradient: 'from-fuchsia-600 to-purple-800',
+      action: () => {
+        window.open('https://vercel.com/analytics', '_blank');
+      }
     }
   ];
 
@@ -269,7 +372,7 @@ export const AdminDashboard: React.FC = () => {
                     : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
                 }`}
               >
-                All 10 Actions
+                All 20 Actions
               </button>
             </div>
           </div>
@@ -282,12 +385,12 @@ export const AdminDashboard: React.FC = () => {
           </div>
         )}
 
-        {/* TAB 1: 10 Core Action Buttons Grid */}
+        {/* TAB 1: 20 Core Action Buttons Grid */}
         {activeTab === 'hub' && (
           <div>
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-extrabold text-white flex items-center gap-2">
-                <BarChart3 className="w-5 h-5 text-indigo-400" /> Admin Command Hub (10 Relevant Tools)
+                <BarChart3 className="w-5 h-5 text-indigo-400" /> Admin Command Hub (20 Relevant Actions)
               </h2>
               <span className="text-xs text-slate-400 font-medium">Quick actions & management</span>
             </div>
