@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, X, MapPin, Sliders, Sparkles, Check, ShieldCheck, Eye, Clock, Phone, MessageSquare, Edit3 } from 'lucide-react';
+import { Upload, X, MapPin, Sliders, Sparkles, Check, ShieldCheck, Eye, Clock, Phone, MessageSquare, Edit3, Globe } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -587,6 +587,30 @@ export const PostProperty = () => {
                         </option>
                       ))}
                     </select>
+                  </div>
+                </div>
+
+                {/* Custom Area URLs Quick Access */}
+                <div className="bg-gradient-to-r from-blue-950/60 to-cyan-950/60 p-4 rounded-2xl border border-blue-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <Globe className="w-4 h-4 text-cyan-400" />
+                      <span className="font-extrabold text-sm text-white">Customizable SEO URLs & Area Pages (40+ Active Corridors)</span>
+                    </div>
+                    <p className="text-xs text-blue-200/80 mt-0.5">
+                      Manage high-intent area landing pages for Devanahalli, Yelahanka, Sarjapur Road, Whitefield, Bannerghatta, Mysore Road, Koramangala & more.
+                    </p>
+                  </div>
+
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => navigate('/admin')}
+                      className="text-xs font-extrabold px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-xl shadow-md transition-all flex items-center gap-1.5"
+                    >
+                      <Globe className="w-3.5 h-3.5" />
+                      <span>Manage Custom URLs in Admin</span>
+                    </button>
                   </div>
                 </div>
 

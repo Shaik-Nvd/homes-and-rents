@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet-async';
 import { supabase } from '../lib/supabase';
 import { ProjectCard } from '../components/ProjectCard';
 import { projects } from '../data/projects';
+import { getCustomAreaPageBySlug } from '../data/customAreaPages';
+import { CustomAreaDetailView } from './CustomAreaDetailView';
 
 interface LocationSeoPageProps {
   type?: 'rent' | 'sale';
@@ -15,8 +17,12 @@ export const LocationSeoPage = ({ type: propType }: LocationSeoPageProps) => {
   const [properties, setProperties] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // Parse custom 99acres-style slug: e.g. "2-bhk-flats-in-hebbal-bangalore-north-ffid"
+  // If this matches an admin-customized area page, render the comprehensive rich SEO view!
   const rawSlug = slug || location || '';
+  const customPage = getCustomAreaPageBySlug(rawSlug);
+  if (customPage) {
+    return <CustomAreaDetailView />;
+  }
   
   const parsed = (() => {
     let bhkFilter: string | null = null;

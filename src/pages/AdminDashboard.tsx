@@ -35,7 +35,9 @@ import {
   Phone,
   Mail,
   BookOpen,
-  Edit3
+  Edit3,
+  Globe,
+  Link2
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
@@ -48,6 +50,13 @@ import {
 import { getBlogPosts, saveBlogPost, deleteBlogPost } from '../data/blogs';
 import type { BlogPost } from '../data/blogs';
 import type { UserRegistration, RegistrationStatus } from '../data/userRegistrations';
+
+import { 
+  getCustomAreaPages, 
+  saveCustomAreaPage, 
+  deleteCustomAreaPage
+} from '../data/customAreaPages';
+import type { CustomAreaPage } from '../data/customAreaPages';
 
 import { MASTER_AMENITIES, DEFAULT_PROJECT_AMENITIES } from '../data/amenities';
 import { 
@@ -62,7 +71,7 @@ export const AdminDashboard: React.FC = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
-  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities' | 'sections' | 'registrations' | 'blogs'>('hub');
+  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities' | 'sections' | 'registrations' | 'blogs' | 'custom_urls'>('hub');
   const [hiddenIds, setHiddenIds] = useState<string[]>([]);
   const [customOrder, setCustomOrder] = useState<string[]>([]);
   const [dbProperties, setDbProperties] = useState<any[]>([]);
@@ -132,6 +141,74 @@ export const AdminDashboard: React.FC = () => {
     deleteBlogPost(id);
     refreshBlogs();
     notify('Blog post deleted');
+  };
+
+  // Custom Area Pages & URLs State
+  const [customPages, setCustomPages] = useState<CustomAreaPage[]>(() => getCustomAreaPages());
+  const [urlSearch, setUrlSearch] = useState('');
+  const [urlZoneFilter, setUrlZoneFilter] = useState<string>('All');
+  const [editingPage, setEditingPage] = useState<Partial<CustomAreaPage> | null>(null);
+  const [isPageEditorOpen, setIsPageEditorOpen] = useState(false);
+
+  const refreshCustomPages = () => {
+    setCustomPages(getCustomAreaPages());
+  };
+
+  const handleSaveCustomPage = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingPage?.title || !editingPage?.slug) {
+      alert('Please provide at least a Page Title and URL Slug.');
+      return;
+    }
+
+    const cleanSlug = editingPage.slug.trim().toLowerCase().replace(/^\/+|\/+$/g, '').replace(/[^a-z0-9-/]+/g, '-');
+
+    const payload: CustomAreaPage = {
+      id: editingPage.id || `page_${Date.now()}`,
+      slug: cleanSlug,
+      title: editingPage.title.trim(),
+      zone: (editingPage.zone as any) || 'North Bangalore',
+      areaName: editingPage.areaName?.trim() || editingPage.title.replace(/^New Launch Projects in\s+/i, '').trim(),
+      priorityTag: editingPage.priorityTag || 'High Priority',
+      tagline: editingPage.tagline?.trim() || 'Upcoming Residential Developments & Metro Corridor',
+      metaDescription: editingPage.metaDescription?.trim() || `Explore new launch projects in ${editingPage.areaName || 'Bangalore'}. Verified prices and floor plans on Homes and Rents.`,
+      heroSnippet: editingPage.heroSnippet?.trim() || `${editingPage.areaName} is one of Bangalore’s high-growth corridors attracting premier residential and commercial developments.`,
+      whyInvest: Array.isArray(editingPage.whyInvest) 
+        ? editingPage.whyInvest 
+        : typeof editingPage.whyInvest === 'string'
+        ? (editingPage.whyInvest as string).split('\n').map((s: string) => s.trim()).filter(Boolean)
+        : ['High rental demand from tech employees', 'Rapid infrastructure and metro line expansion', 'Capital appreciation and RERA approved developments'],
+      connectivityHighlights: Array.isArray(editingPage.connectivityHighlights)
+        ? editingPage.connectivityHighlights
+        : typeof editingPage.connectivityHighlights === 'string'
+        ? (editingPage.connectivityHighlights as string).split('\n').map((s: string) => s.trim()).filter(Boolean)
+        : ['Major expressway & arterial road connectivity', 'Upcoming Namma Metro line access', 'Convenient transit to international airport and business parks'],
+      indicativePriceRange: editingPage.indicativePriceRange?.trim() || '₹65 Lakh - ₹2.50 Cr',
+      lastUpdated: 'October 2026',
+      status: (editingPage.status as any) || 'Published',
+      customKeywords: Array.isArray(editingPage.customKeywords)
+        ? editingPage.customKeywords
+        : typeof editingPage.customKeywords === 'string'
+        ? (editingPage.customKeywords as string).split(',').map((s: string) => s.trim()).filter(Boolean)
+        : [editingPage.title.trim()]
+    };
+
+    const ok = saveCustomAreaPage(payload);
+    if (ok) {
+      refreshCustomPages();
+      setIsPageEditorOpen(false);
+      setEditingPage(null);
+      notify(`Custom URL "/${payload.slug}" successfully saved & published!`);
+    } else {
+      notify('Failed to save custom page');
+    }
+  };
+
+  const handleDeleteCustomPage = (id: string, slug: string) => {
+    if (!window.confirm(`Are you sure you want to delete the custom URL "/${slug}"?`)) return;
+    deleteCustomAreaPage(id);
+    refreshCustomPages();
+    notify(`Custom URL "/${slug}" deleted`);
   };
 
   // Overview Toggles State: { [projectId: string]: boolean }
@@ -643,6 +720,17 @@ export const AdminDashboard: React.FC = () => {
               >
                 <BookOpen className="w-4 h-4 text-rose-400" />
                 Manage Blogs ({blogList.length})
+              </button>
+              <button
+                onClick={() => { refreshCustomPages(); setActiveTab('custom_urls'); }}
+                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer relative ${
+                  activeTab === 'custom_urls' 
+                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-blue-400 shadow-md font-black' 
+                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
+                }`}
+              >
+                <Globe className="w-4 h-4 text-blue-400" />
+                Custom URLs & SEO Pages ({customPages.length})
               </button>
               <button
                 onClick={() => setActiveTab('amenities')}
@@ -1777,6 +1865,380 @@ export const AdminDashboard: React.FC = () => {
                         className="px-5 py-2 text-xs font-black bg-rose-600 hover:bg-rose-500 text-white rounded-xl shadow-md transition-colors"
                       >
                         Publish Article on Homes and Rents
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* TAB 8: Custom URLs & SEO Area Pages Management */}
+        {activeTab === 'custom_urls' && (
+          <div className="bg-slate-900/60 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-xl backdrop-blur-xl">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-black uppercase tracking-wider mb-2">
+                  <Globe className="w-3.5 h-3.5" /> High-Intent Locality URLs & Area Landing Pages
+                </div>
+                <h2 className="text-xl sm:text-2xl font-black text-white flex items-center gap-2">
+                  Customizable URLs & Google SEO Pages
+                </h2>
+                <p className="text-xs text-slate-400 mt-1 max-w-2xl leading-relaxed">
+                  Super Admin can create, edit, customize slugs, titles, connectivity, and investment points for individual corridor pages across North, East, South, West & Central Bangalore.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => {
+                    setEditingPage({
+                      id: `page_${Date.now()}`,
+                      title: 'New Launch Projects in ',
+                      slug: 'new-launch-projects-in-',
+                      zone: 'North Bangalore',
+                      areaName: '',
+                      priorityTag: 'High Priority',
+                      tagline: 'Upcoming Residential Projects & Rapid Growth Corridor',
+                      metaDescription: 'Explore verified new launch apartments and gated communities on Homes and Rents.',
+                      heroSnippet: 'High-potential investment corridor with rapid transit, RERA approved towers and top amenities.',
+                      whyInvest: [
+                        'High capital appreciation driven by infrastructure expansion',
+                        'Proximity to major tech parks and employment hubs',
+                        'Exceptional rental returns and buyer demand'
+                      ],
+                      connectivityHighlights: [
+                        'Direct highway & expressway transit access',
+                        'Upcoming Metro connectivity',
+                        'Reputed schools and healthcare within 15 minutes'
+                      ],
+                      indicativePriceRange: '₹75 Lakh - ₹2.50 Cr',
+                      status: 'Published',
+                      customKeywords: ['New launch projects in Bangalore']
+                    });
+                    setIsPageEditorOpen(true);
+                  }}
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-extrabold text-xs shadow-lg shadow-blue-600/20 transition-all flex items-center gap-2 cursor-pointer"
+                >
+                  <PlusCircle className="w-4 h-4" />
+                  <span>Create Custom URL Page</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Filter & Search Bar */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+              {/* Zone Filter Chips */}
+              <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
+                {['All', 'North Bangalore', 'East Bangalore', 'South Bangalore', 'West Bangalore', 'Central and Established Bangalore', 'General Bangalore'].map(z => (
+                  <button
+                    key={z}
+                    onClick={() => setUrlZoneFilter(z)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-colors ${
+                      urlZoneFilter === z 
+                        ? 'bg-blue-600 text-white shadow-sm' 
+                        : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                    }`}
+                  >
+                    {z}
+                  </button>
+                ))}
+              </div>
+
+              {/* Search Box */}
+              <div className="relative w-full sm:w-72">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder="Search URLs, areas, titles..."
+                  value={urlSearch}
+                  onChange={(e) => setUrlSearch(e.target.value)}
+                  className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-3.5 py-2 text-white placeholder-slate-500 outline-none focus:border-blue-500"
+                />
+              </div>
+            </div>
+
+            {/* URL Pages Grid / Table */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {customPages
+                .filter(p => {
+                  const matchesZone = urlZoneFilter === 'All' || p.zone === urlZoneFilter;
+                  const q = urlSearch.toLowerCase();
+                  const matchesSearch = !q || 
+                    p.title.toLowerCase().includes(q) || 
+                    p.slug.toLowerCase().includes(q) || 
+                    p.areaName.toLowerCase().includes(q) ||
+                    p.zone.toLowerCase().includes(q);
+                  return matchesZone && matchesSearch;
+                })
+                .map(page => (
+                  <div
+                    key={page.id}
+                    className="rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-slate-700 p-5 flex flex-col justify-between transition-all group"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <span className="text-[10px] font-black uppercase px-2 py-0.5 rounded bg-blue-500/15 text-blue-300 border border-blue-500/25">
+                          {page.zone}
+                        </span>
+                        {page.priorityTag && (
+                          <span className="text-[9px] font-bold px-2 py-0.5 rounded bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                            {page.priorityTag}
+                          </span>
+                        )}
+                      </div>
+
+                      <h3 className="text-sm font-extrabold text-white leading-snug mb-1 group-hover:text-blue-300 transition-colors">
+                        {page.title}
+                      </h3>
+
+                      {/* Clean URL Link */}
+                      <div className="flex items-center gap-1.5 text-xs text-blue-400 font-mono mb-3 truncate">
+                        <Link2 className="w-3.5 h-3.5 shrink-0 text-slate-500" />
+                        <span className="truncate">/{page.slug}</span>
+                      </div>
+
+                      <p className="text-[11px] text-slate-400 line-clamp-2 leading-relaxed mb-4">
+                        {page.tagline}
+                      </p>
+
+                      <div className="bg-slate-900 rounded-xl p-2.5 border border-slate-800 text-[11px] space-y-1 mb-4">
+                        <div className="flex justify-between items-center text-slate-400">
+                          <span>Price Range:</span>
+                          <span className="text-emerald-400 font-bold">{page.indicativePriceRange.split('|')[0]}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-slate-400">
+                          <span>Why Invest Points:</span>
+                          <span className="text-white font-bold">{page.whyInvest.length} key points</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2">
+                      <Link
+                        to={`/${page.slug}`}
+                        target="_blank"
+                        className="text-xs text-slate-300 hover:text-white flex items-center gap-1 font-bold transition-colors"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+                        <span>Live Page</span>
+                      </Link>
+
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => {
+                            setEditingPage(page);
+                            setIsPageEditorOpen(true);
+                          }}
+                          className="px-2.5 py-1 text-xs font-bold text-blue-400 hover:text-white bg-blue-500/10 hover:bg-blue-500/25 border border-blue-500/20 rounded-lg transition-colors flex items-center gap-1"
+                        >
+                          <Edit3 className="w-3 h-3" /> Edit
+                        </button>
+                        <button
+                          onClick={() => handleDeleteCustomPage(page.id, page.slug)}
+                          className="p-1 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-rose-500/10 transition-colors"
+                          title="Delete URL"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+
+            {/* Custom URL Editor Modal */}
+            {isPageEditorOpen && editingPage && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
+                <div className="relative bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-3xl p-6 sm:p-8 shadow-2xl my-8 max-h-[90vh] overflow-y-auto">
+                  <div className="flex items-center justify-between pb-4 border-b border-slate-800 mb-6">
+                    <div>
+                      <h3 className="text-lg font-black text-white flex items-center gap-2">
+                        <Globe className="w-5 h-5 text-blue-400" />
+                        {editingPage.id && customPages.some(p => p.id === editingPage.id) ? 'Edit Custom Area URL' : 'Create New Custom Area URL'}
+                      </h3>
+                      <p className="text-xs text-slate-400 mt-0.5">
+                        Define high-intent Google ranking URL parameters, titles, connectivity, and investment details
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => setIsPageEditorOpen(false)}
+                      className="text-slate-400 hover:text-white p-2 rounded-xl hover:bg-slate-800 transition-colors"
+                    >
+                      ✕
+                    </button>
+                  </div>
+
+                  <form onSubmit={handleSaveCustomPage} className="space-y-4">
+                    {/* Zone & Priority */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">Bangalore Zone</label>
+                        <select
+                          value={editingPage.zone || 'North Bangalore'}
+                          onChange={(e) => setEditingPage({ ...editingPage, zone: e.target.value as any })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-blue-500 font-bold"
+                        >
+                          <option value="North Bangalore">North Bangalore (Airport Corridor & High Priority)</option>
+                          <option value="East Bangalore">East Bangalore (IT Corridor & Residential Growth)</option>
+                          <option value="South Bangalore">South Bangalore (Metro, Electronic City & Arteries)</option>
+                          <option value="West Bangalore">West Bangalore (Expressway, Metro & RR Nagar)</option>
+                          <option value="Central and Established Bangalore">Central and Established Bangalore (Koramangala, Indiranagar, etc.)</option>
+                          <option value="General Bangalore">General Bangalore (Macro Searches: 2026 Launches, EOI)</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">Priority Badge</label>
+                        <select
+                          value={editingPage.priorityTag || 'High Priority'}
+                          onChange={(e) => setEditingPage({ ...editingPage, priorityTag: e.target.value as any })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-blue-500 font-bold"
+                        >
+                          <option value="High Priority">High Priority</option>
+                          <option value="Growth Corridor">Growth Corridor</option>
+                          <option value="Prime Investment">Prime Investment</option>
+                          <option value="Hot Corridor">Hot Corridor</option>
+                          <option value="Established Metro">Established Metro</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Page Title & Area Name */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div className="sm:col-span-2">
+                        <label className="block text-xs font-bold text-slate-300 mb-1">
+                          Page Title (H1 Tag for Google) <span className="text-rose-400">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={editingPage.title || ''}
+                          onChange={(e) => setEditingPage({ ...editingPage, title: e.target.value })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-blue-500 font-bold"
+                          placeholder="e.g. New Launch Projects in Devanahalli"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">
+                          Area / Corridor Name
+                        </label>
+                        <input
+                          type="text"
+                          value={editingPage.areaName || ''}
+                          onChange={(e) => setEditingPage({ ...editingPage, areaName: e.target.value })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-blue-500"
+                          placeholder="e.g. Devanahalli"
+                        />
+                      </div>
+                    </div>
+
+                    {/* URL Slug */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">
+                        Custom URL Slug (Live at: homesandrents.com/slug) <span className="text-rose-400">*</span>
+                      </label>
+                      <div className="flex items-center bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-1.5 focus-within:border-blue-500">
+                        <span className="text-xs text-slate-500 font-mono select-none">https://homesandrents.com/</span>
+                        <input
+                          type="text"
+                          value={editingPage.slug || ''}
+                          onChange={(e) => setEditingPage({ ...editingPage, slug: e.target.value })}
+                          className="w-full text-xs bg-transparent text-blue-400 outline-none font-mono py-1 ml-1"
+                          placeholder="new-launch-projects-in-devanahalli"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    {/* Tagline & Indicative Price */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">Tagline / Key Feature</label>
+                        <input
+                          type="text"
+                          value={editingPage.tagline || ''}
+                          onChange={(e) => setEditingPage({ ...editingPage, tagline: e.target.value })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-blue-500"
+                          placeholder="e.g. Aerotropolis, KIADB Aerospace SEZ & STRR Highway Corridor"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">Indicative Price Range</label>
+                        <input
+                          type="text"
+                          value={editingPage.indicativePriceRange || ''}
+                          onChange={(e) => setEditingPage({ ...editingPage, indicativePriceRange: e.target.value })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-white outline-none focus:border-blue-500"
+                          placeholder="e.g. ₹65 Lakh - ₹3.50 Cr | ₹7,500 - ₹12,000 / sq.ft."
+                        />
+                      </div>
+                    </div>
+
+                    {/* Meta Description */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">Google Meta Description</label>
+                      <textarea
+                        rows={2}
+                        value={editingPage.metaDescription || ''}
+                        onChange={(e) => setEditingPage({ ...editingPage, metaDescription: e.target.value })}
+                        className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl p-3 text-white outline-none focus:border-blue-500 leading-relaxed"
+                        placeholder="Google search description snippet..."
+                      />
+                    </div>
+
+                    {/* Hero Snippet */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">Hero Introduction Paragraph</label>
+                      <textarea
+                        rows={2}
+                        value={editingPage.heroSnippet || ''}
+                        onChange={(e) => setEditingPage({ ...editingPage, heroSnippet: e.target.value })}
+                        className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl p-3 text-white outline-none focus:border-blue-500 leading-relaxed"
+                        placeholder="Comprehensive introductory paragraph explaining why this corridor is in high demand..."
+                      />
+                    </div>
+
+                    {/* Why Invest Points (Line by Line) */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">Why Invest Points (One per line)</label>
+                        <textarea
+                          rows={4}
+                          value={Array.isArray(editingPage.whyInvest) ? editingPage.whyInvest.join('\n') : (editingPage.whyInvest || '')}
+                          onChange={(e) => setEditingPage({ ...editingPage, whyInvest: e.target.value.split('\n') })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl p-3 text-white outline-none focus:border-blue-500 leading-relaxed font-mono"
+                          placeholder="Multi-billion dollar IT park\nHigh rental demand from techies\nUpcoming Metro connectivity"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-bold text-slate-300 mb-1">Connectivity Highlights (One per line)</label>
+                        <textarea
+                          rows={4}
+                          value={Array.isArray(editingPage.connectivityHighlights) ? editingPage.connectivityHighlights.join('\n') : (editingPage.connectivityHighlights || '')}
+                          onChange={(e) => setEditingPage({ ...editingPage, connectivityHighlights: e.target.value.split('\n') })}
+                          className="w-full text-xs bg-slate-950 border border-slate-700 rounded-xl p-3 text-white outline-none focus:border-blue-500 leading-relaxed font-mono"
+                          placeholder="Direct 30 mins access to Airport\nSTRR satellite ring road link\nPurple line metro interchange"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="pt-4 border-t border-slate-800 flex items-center justify-end gap-3">
+                      <button
+                        type="button"
+                        onClick={() => setIsPageEditorOpen(false)}
+                        className="px-4 py-2 text-xs font-bold text-slate-400 hover:text-white rounded-xl border border-slate-700 hover:bg-slate-800 transition-colors"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        type="submit"
+                        className="px-6 py-2.5 text-xs font-black bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white rounded-xl shadow-lg shadow-blue-600/25 transition-all"
+                      >
+                        Save & Publish Custom URL Page
                       </button>
                     </div>
                   </form>

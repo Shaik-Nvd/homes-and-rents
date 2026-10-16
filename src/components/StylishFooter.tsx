@@ -251,6 +251,124 @@ export const StylishFooter: React.FC = () => {
         </div>
       </div>
 
+      {/* High-Intent New Launch Corridors Section */}
+      <div className="border-t border-slate-900 bg-slate-950/80 py-10 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 pb-3 border-b border-slate-850">
+            <div>
+              <h4 className="text-sm font-black text-white uppercase tracking-wider flex items-center gap-2">
+                <span>New Launch & Pre-Launch Residential Corridors</span>
+                <span className="text-[10px] bg-blue-500/20 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded-full font-bold">SEO Index</span>
+              </h4>
+              <p className="text-xs text-slate-400 mt-0.5">
+                Targeted area searches for upcoming residential apartments, townhouses & luxury villas in Bangalore
+              </p>
+            </div>
+            <div className="flex items-center gap-3 text-xs">
+              <Link to="/new-launch-projects-in-bangalore" className="text-blue-400 hover:text-white font-bold transition-colors">
+                New Launch 2026
+              </Link>
+              <span className="text-slate-600">•</span>
+              <Link to="/upcoming-projects-in-bangalore" className="text-indigo-400 hover:text-white font-bold transition-colors">
+                Upcoming Projects
+              </Link>
+              <span className="text-slate-600">•</span>
+              <Link to="/pre-launch-projects-in-bangalore" className="text-purple-400 hover:text-white font-bold transition-colors">
+                Pre-Launch EOI
+              </Link>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 text-[11px] leading-relaxed">
+            {/* North Bangalore */}
+            <div>
+              <h5 className="font-extrabold text-indigo-300 uppercase tracking-wider mb-2.5">
+                North Bangalore
+              </h5>
+              <ul className="space-y-1.5 text-slate-400">
+                <li><Link to="/new-launch-projects-in-devanahalli" className="hover:text-white transition-colors">Devanahalli Airport</Link></li>
+                <li><Link to="/new-launch-projects-in-yelahanka" className="hover:text-white transition-colors">Yelahanka</Link></li>
+                <li><Link to="/new-launch-projects-in-thanisandra" className="hover:text-white transition-colors">Thanisandra Main Rd</Link></li>
+                <li><Link to="/new-launch-projects-in-jakkur" className="hover:text-white transition-colors">Jakkur Lake</Link></li>
+                <li><Link to="/new-launch-projects-in-bagalur" className="hover:text-white transition-colors">Bagalur Aerospace</Link></li>
+                <li><Link to="/new-launch-projects-in-hennur" className="hover:text-white transition-colors">Hennur Road</Link></li>
+                <li><Link to="/new-launch-projects-in-chikkajala" className="hover:text-white transition-colors">Chikkajala</Link></li>
+                <li><Link to="/new-launch-projects-in-doddaballapur-road" className="hover:text-white transition-colors">Doddaballapur STRR</Link></li>
+              </ul>
+            </div>
+
+            {/* East Bangalore */}
+            <div>
+              <h5 className="font-extrabold text-blue-300 uppercase tracking-wider mb-2.5">
+                East Bangalore
+              </h5>
+              <ul className="space-y-1.5 text-slate-400">
+                <li><Link to="/new-launch-projects-in-sarjapur-road" className="hover:text-white transition-colors">Sarjapur Road</Link></li>
+                <li><Link to="/new-launch-projects-in-whitefield" className="hover:text-white transition-colors">Whitefield ITPL</Link></li>
+                <li><Link to="/new-launch-projects-in-gunjur" className="hover:text-white transition-colors">Gunjur Corridor</Link></li>
+                <li><Link to="/new-launch-projects-in-panathur" className="hover:text-white transition-colors">Panathur ORR</Link></li>
+                <li><Link to="/new-launch-projects-in-varthur" className="hover:text-white transition-colors">Varthur Lake</Link></li>
+                <li><Link to="/new-launch-projects-in-budigere-cross" className="hover:text-white transition-colors">Budigere Cross OMR</Link></li>
+                <li><Link to="/new-launch-projects-in-kadugodi" className="hover:text-white transition-colors">Kadugodi Metro</Link></li>
+                <li><Link to="/new-launch-projects-in-hoskote" className="hover:text-white transition-colors">Hoskote Expressway</Link></li>
+                <li><Link to="/new-launch-projects-in-soukya-road" className="hover:text-white transition-colors">Soukya Road</Link></li>
+              </ul>
+            </div>
+
+            {/* South Bangalore */}
+            <div>
+              <h5 className="font-extrabold text-emerald-300 uppercase tracking-wider mb-2.5">
+                South Bangalore
+              </h5>
+              <ul className="space-y-1.5 text-slate-400">
+                <li><Link to="/new-launch-projects-in-bannerghatta-road" className="hover:text-white transition-colors">Bannerghatta Road</Link></li>
+                <li><Link to="/new-launch-projects-in-kanakapura-road" className="hover:text-white transition-colors">Kanakapura Road</Link></li>
+                <li><Link to="/new-launch-projects-in-begur" className="hover:text-white transition-colors">Begur</Link></li>
+                <li><Link to="/new-launch-projects-in-hosa-road" className="hover:text-white transition-colors">Hosa Road</Link></li>
+                <li><Link to="/new-launch-projects-in-chandapura" className="hover:text-white transition-colors">Chandapura STRR</Link></li>
+                <li><Link to="/new-launch-projects-in-bommasandra" className="hover:text-white transition-colors">Bommasandra Metro</Link></li>
+                <li><Link to="/new-launch-projects-in-jigani" className="hover:text-white transition-colors">Jigani Industrial</Link></li>
+                <li><Link to="/new-launch-projects-in-attibele" className="hover:text-white transition-colors">Attibele</Link></li>
+              </ul>
+            </div>
+
+            {/* West Bangalore */}
+            <div>
+              <h5 className="font-extrabold text-amber-300 uppercase tracking-wider mb-2.5">
+                West Bangalore
+              </h5>
+              <ul className="space-y-1.5 text-slate-400">
+                <li><Link to="/new-launch-projects-in-mysore-road" className="hover:text-white transition-colors">Mysore Road</Link></li>
+                <li><Link to="/new-launch-projects-in-rajarajeshwari-nagar" className="hover:text-white transition-colors">RR Nagar</Link></li>
+                <li><Link to="/new-launch-projects-in-kengeri" className="hover:text-white transition-colors">Kengeri Satellite</Link></li>
+                <li><Link to="/new-launch-projects-in-magadi-road" className="hover:text-white transition-colors">Magadi Road</Link></li>
+                <li><Link to="/new-launch-projects-in-nagarbhavi" className="hover:text-white transition-colors">Nagarbhavi</Link></li>
+                <li><Link to="/new-launch-projects-in-yeshwanthpur" className="hover:text-white transition-colors">Yeshwanthpur WTC</Link></li>
+                <li><Link to="/new-launch-projects-in-tumkur-road" className="hover:text-white transition-colors">Tumkur Road</Link></li>
+                <li><Link to="/new-launch-projects-in-kanakapura-extension" className="hover:text-white transition-colors">Kanakapura Ext</Link></li>
+              </ul>
+            </div>
+
+            {/* Central & Established */}
+            <div>
+              <h5 className="font-extrabold text-rose-300 uppercase tracking-wider mb-2.5">
+                Central & Prime
+              </h5>
+              <ul className="space-y-1.5 text-slate-400">
+                <li><Link to="/new-launch-projects-in-koramangala" className="hover:text-white transition-colors">Koramangala</Link></li>
+                <li><Link to="/new-launch-projects-in-indiranagar" className="hover:text-white transition-colors">Indiranagar</Link></li>
+                <li><Link to="/new-launch-projects-in-jayanagar" className="hover:text-white transition-colors">Jayanagar</Link></li>
+                <li><Link to="/new-launch-projects-in-jp-nagar" className="hover:text-white transition-colors">JP Nagar</Link></li>
+                <li><Link to="/new-launch-projects-in-old-airport-road" className="hover:text-white transition-colors">Old Airport Road</Link></li>
+                <li><Link to="/new-launch-projects-in-bellandur" className="hover:text-white transition-colors">Bellandur ORR</Link></li>
+                <li><Link to="/new-launch-projects-in-kr-puram" className="hover:text-white transition-colors">KR Puram Metro</Link></li>
+                <li><Link to="/new-launch-projects-in-mahadevapura" className="hover:text-white transition-colors">Mahadevapura</Link></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Stylish Bottom Bar */}
       <div className="border-t border-slate-900 bg-black/60 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
