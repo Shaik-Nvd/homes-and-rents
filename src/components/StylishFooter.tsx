@@ -178,7 +178,10 @@ export const StylishFooter: React.FC = () => {
           {/* Col 4: Top Real Estate Guides */}
           <div>
             <h3 className="text-xs font-black uppercase tracking-wider text-slate-200 mb-4 pb-2 border-b border-slate-800/80 flex items-center justify-between">
-              <span>Real Estate Blogs</span>
+              <span className="flex items-center gap-1.5">
+                <span>Real Estate Blogs</span>
+                <span className="bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[9px] font-black px-1.5 py-0.2 rounded-full">SEO</span>
+              </span>
               <Link to="/blogs" className="text-[10px] text-indigo-400 hover:underline font-bold">All 28 Guides</Link>
             </h3>
             <ul className="space-y-2.5 text-xs font-medium text-slate-400">

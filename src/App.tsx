@@ -70,13 +70,6 @@ const Navbar = ({ onLoginClick }: { onLoginClick: () => void }) => {
             </span>
           </Link>
           <div className="flex items-center flex-shrink-0 gap-3 sm:gap-4">
-            <Link 
-              to="/blogs"
-              className="text-[13px] sm:text-sm font-bold text-gray-700 hover:text-indigo-600 transition-colors whitespace-nowrap flex items-center gap-1"
-            >
-              <span>Blogs</span>
-              <span className="bg-rose-100 text-rose-700 text-[10px] font-black px-1.5 py-0.2 rounded-full hidden sm:inline">SEO</span>
-            </Link>
             {!user && (
               <button 
                 onClick={onLoginClick}
