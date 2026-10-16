@@ -22,6 +22,7 @@ import { SuperCards } from './components/SuperCards';
 import { LaunchModal } from './components/LaunchModal';
 import { PromotionalPopups } from './components/PromotionalPopups';
 import { StylishFooter } from './components/StylishFooter';
+import { NorthBangaloreBlock } from './components/NorthBangaloreBlock';
 import { TrendingNow } from './components/TrendingNow';
 import type { SuperCardCategory } from './components/SuperCards';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -867,6 +868,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* High Authority North Bangalore 2BHK, 3BHK, 4BHK Hub */}
+      <NorthBangaloreBlock />
 
       <TrendingNow />
     </div>
