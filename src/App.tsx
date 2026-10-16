@@ -21,6 +21,7 @@ import { EditPropertyModal } from './components/EditPropertyModal';
 import { SuperCards } from './components/SuperCards';
 import { LaunchModal } from './components/LaunchModal';
 import { PromotionalPopups } from './components/PromotionalPopups';
+import { StylishFooter } from './components/StylishFooter';
 import { TrendingNow } from './components/TrendingNow';
 import type { SuperCardCategory } from './components/SuperCards';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
@@ -897,6 +898,7 @@ const AppContent = () => {
           <Route path="/:slug" element={<LocationSeoPage />} />
           <Route path="*" element={<div className="p-12 text-center text-xl">Page Under Construction</div>} />
         </Routes>
+        <StylishFooter />
         <Analytics />
       </div>
       <PromotionalPopups />
