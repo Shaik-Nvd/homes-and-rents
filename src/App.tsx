@@ -19,7 +19,6 @@ import { BlogDetailPage } from './pages/BlogDetailPage';
 import { ProjectCard } from './components/ProjectCard';
 import { EditPropertyModal } from './components/EditPropertyModal';
 import { SuperCards } from './components/SuperCards';
-import { LaunchModal } from './components/LaunchModal';
 import { PromotionalPopups } from './components/PromotionalPopups';
 import { StylishFooter } from './components/StylishFooter';
 import { NorthBangaloreBlock } from './components/NorthBangaloreBlock';
@@ -467,15 +466,8 @@ const Home = () => {
     filteredProjects = filteredProjects.filter(p => p.builder === selectedBuilder);
   }
 
-  const [isLaunchModalOpen, setIsLaunchModalOpen] = useState(false);
-  const [activeLaunchCategory, setActiveLaunchCategory] = useState<SuperCardCategory | null>(null);
-
   const handleCategorySelect = (category: SuperCardCategory) => {
     setSelectedCategory(category);
-    if (category === 'New Launch' || category === 'Pre Launch') {
-      setActiveLaunchCategory(category);
-      setIsLaunchModalOpen(true);
-    }
   };
 
   if (selectedCategory !== 'All') {
@@ -569,13 +561,6 @@ const Home = () => {
         <div className="bg-gray-50 rounded-t-[2rem] pt-6 sm:pt-8 px-4 sm:px-6 lg:px-8 pb-6 max-w-5xl mx-auto shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
           
           <SuperCards selectedCategory={selectedCategory} onSelectCategory={handleCategorySelect} />
-
-          <LaunchModal 
-            isOpen={isLaunchModalOpen} 
-            onClose={() => setIsLaunchModalOpen(false)} 
-            category={activeLaunchCategory}
-            count={filteredProjects.length}
-          />
 
           {/* Builder Filter Section */}
           <div className="mb-8">
