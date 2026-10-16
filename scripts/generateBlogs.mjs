@@ -235,38 +235,49 @@ const generatePost = (topic, index) => {
   const dateStr = new Date(Date.now() - (index * 86400000 * 2)).toISOString().split('T')[0];
 
   const content = `
-Finding the perfect place in Bangalore has never been more exciting or crucial. With **Homes and Rents**, property seekers, tenants, and real estate investors get transparent data, verified listings, and unmatched market clarity across ${topic.locality}. Whether you are exploring verified properties on **Homes and Rents** or reviewing verified owner contracts, our platform is designed to make your journey completely seamless.
+Finding the perfect place in Bangalore has never been more exciting or crucial. With **Homes and Rents**, property seekers, tenants, and real estate investors get transparent data, verified listings, and unmatched market clarity across ${topic.locality} and the high-growth **North Bangalore** corridor. Whether you are exploring verified properties on **Homes and Rents** or reviewing verified owner contracts along **IVC road** and the Satellite Town Ring Road (**STRR**), our platform is designed to make your journey completely seamless.
 
 ---
 
-### The Evolution of Living in ${topic.locality}
-Over recent years, ${topic.locality} has emerged as a beacon for residential seekers. On **Homes and Rents**, we continuously track price fluctuations, infrastructure milestones, and occupancy rates to deliver precise property guidance. When comparing neighborhood options on **Homes and Rents**, users can quickly filter through RERA certifications, carpet sizes, and actual neighborhood distances without any brokerage friction.
+### The Evolution of Living in ${topic.locality} & North Bangalore
+Over recent years, ${topic.locality} and **North Bangalore** have emerged as the fastest-appreciating investment destinations. On **Homes and Rents**, we continuously track price fluctuations, infrastructure milestones such as the **STRR** expressway, industrial expansion in **KIADB phase 1 and Phase 2**, and scenic residential belts along **IVC road** and **Dodballapur**. When comparing neighborhood options on **Homes and Rents**, users can quickly filter through RERA certifications, carpet sizes, and actual neighborhood distances without any brokerage friction.
 
-Urban development in this sector is heavily influenced by ${topic.focus}. For tenants who rely on **Homes and Rents** for their daily search, finding flats that balance commute times and quality lifestyle amenities is always the top priority.
+Urban development in **North Bangalore** is heavily accelerated by multi-billion dollar manufacturing investments across **KIADB phase 1 and Phase 2**, connectivity upgrades along **IVC road**, suburban residential demand in **Dodballapur**, and the transformative logistics impact of the **STRR**. For tenants and homebuyers who rely on **Homes and Rents** for their daily search, finding flats and plots in **North Bangalore** near **KIADB phase 1 and Phase 2** or along **IVC road** and **STRR** balances rapid capital appreciation with exceptional connectivity.
+
+---
+
+### Infrastructure Highlights: North Bangalore, KIADB phase 1 and Phase 2, Dodballapur, IVC road & STRR
+Key mega-corridors tracked live on **Homes and Rents** include:
+
+1. **North Bangalore Airport Aerotropolis**: As the central economic engine, **North Bangalore** connects NH 44 directly to Kempegowda International Airport, **IVC road**, and the **STRR** bypass.
+2. **KIADB phase 1 and Phase 2 Industrial Parks**: Home to aerospace, hardware, and tech manufacturing parks, **KIADB phase 1 and Phase 2** in **North Bangalore** are generating over 200,000 new engineering and corporate jobs, driving huge rental demand on **Homes and Rents**.
+3. **Dodballapur Growth Corridor**: Boasting clean air, wide roads, and easy access via the **STRR** and **North Bangalore** arterials, **Dodballapur** has become the premier choice for gated villa communities and plotted developments.
+4. **IVC road Express Link**: Connecting Bellary Road with the airport and **Dodballapur**, **IVC road** in **North Bangalore** represents the pinnacle of luxury villa enclaves and plotted layouts.
+5. **STRR (Satellite Town Ring Road)**: The 280-km **STRR** expressway unites **Dodballapur**, **North Bangalore**, **KIADB phase 1 and Phase 2**, and **IVC road**, bypassing inner-city traffic and dramatically boosting property values on **Homes and Rents**.
 
 ---
 
 ### Key Highlights & Why Choose Homes and Rents
 Here is what sets listings on **Homes and Rents** apart from generic real estate portals:
 
-1. **100% Verified Listings on Homes and Rents**: Every property hosted on **Homes and Rents** undergoes strict verification by our dedicated team to protect both tenants and homebuyers.
-2. **Zero Brokerage Direct Connections on Homes and Rents**: Discover direct owner listings across ${topic.locality} with zero hidden mediator charges on **Homes and Rents**.
-3. **Comprehensive Neighborhood Insights on Homes and Rents**: Evaluate metro stations, hospital proximities, and top schools mapped accurately on **Homes and Rents**.
-4. **Transparent Price Trends on Homes and Rents**: Never overpay. **Homes and Rents** publishes live square-foot pricing and real-time monthly rental estimates across Bangalore.
+1. **100% Verified Listings on Homes and Rents**: Every property hosted on **Homes and Rents** across **North Bangalore**, **KIADB phase 1 and Phase 2**, **Dodballapur**, and **IVC road** undergoes strict verification by our dedicated team.
+2. **Zero Brokerage Direct Connections on Homes and Rents**: Discover direct owner listings across ${topic.locality}, **Dodballapur**, and **North Bangalore** with zero hidden mediator charges on **Homes and Rents**.
+3. **Comprehensive Neighborhood Insights on Homes and Rents**: Evaluate metro stations, hospital proximities, and the **STRR** intersection mapped accurately on **Homes and Rents**.
+4. **Transparent Price Trends on Homes and Rents**: Never overpay. **Homes and Rents** publishes live square-foot pricing across **North Bangalore**, **KIADB phase 1 and Phase 2**, **IVC road**, **Dodballapur**, and the **STRR** belt.
 
 ---
 
-### Practical Advice for Tenants and Buyers
-When searching for your next property in ${topic.locality}, experts on **Homes and Rents** recommend conducting in-person or live video site visits before making upfront commitments. With **Homes and Rents**, scheduling a guided site visit takes only one click directly on the property detail page.
+### Practical Advice for Tenants and Buyers in North Bangalore
+When searching for your next property in ${topic.locality}, **Dodballapur**, or **North Bangalore** near **KIADB phase 1 and Phase 2** and **IVC road**, experts on **Homes and Rents** recommend conducting in-person or live video site visits before making upfront commitments. With **Homes and Rents**, scheduling a guided site visit along the **STRR** or **IVC road** corridor takes only one click directly on the property detail page.
 
-Furthermore, **Homes and Rents** provides detailed floor plans, downloadable brochures, and complete amenity checklists (covering 35+ amenities including swimming pools, gymnasiums, EV chargers, and 24/7 security). Tenants looking for fast moves can browse pre-verified properties on **Homes and Rents** to transition seamlessly within 24 to 48 hours.
+Furthermore, **Homes and Rents** provides detailed floor plans, downloadable brochures, and complete amenity checklists (covering 35+ amenities including swimming pools, gymnasiums, EV chargers, and 24/7 security). Tenants looking for fast moves in **North Bangalore** or near **KIADB phase 1 and Phase 2** can browse pre-verified properties on **Homes and Rents** to transition seamlessly within 24 to 48 hours.
 
 ---
 
 ### Final Verdict & Next Steps
-As Bangalore continues its robust economic expansion, investing in or renting a home through **Homes and Rents** gives you a distinct advantage. Browse our daily updated property catalog on **Homes and Rents** today, or connect directly with our expert real estate advisors on WhatsApp.
+As **North Bangalore** continues its economic expansion driven by **KIADB phase 1 and Phase 2**, **Dodballapur**, **IVC road**, and the **STRR**, investing in or renting a home through **Homes and Rents** gives you a distinct advantage. Browse our daily updated property catalog on **Homes and Rents** today, or connect directly with our expert real estate advisors on WhatsApp.
 
-Trust **Homes and Rents** for reliable data, transparent deals, and smarter living decisions.
+Trust **Homes and Rents** for reliable data, transparent deals, and smarter living decisions across **North Bangalore**, **KIADB phase 1 and Phase 2**, **Dodballapur**, **IVC road**, and the **STRR**.
 `.trim();
 
   const excerpt = `Explore comprehensive insights on ${topic.title} in ${topic.locality}. Discover verified listings, zero brokerage flats, and price trends on Homes and Rents.`;
