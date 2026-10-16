@@ -2,6 +2,7 @@ export interface SectionVisibilityMap {
   overview?: boolean;
   constructionStatus?: boolean;
   startingPrice?: boolean;
+  downloadBrochure?: boolean;
   unitPricing?: boolean;
   floorPlans?: boolean;
   topFacilities?: boolean;
@@ -14,8 +15,9 @@ export interface SectionVisibilityMap {
 export const SECTION_DEFINITIONS = [
   { id: 'whyConsider', label: 'Why Consider (Builder & Highlights)', desc: 'Why consider developer highlights, selling points & developer badge' },
   { id: 'overview', label: 'Overview', desc: 'Project area, unit sizes, launch date, avg sq.ft price' },
+  { id: 'startingPrice', label: 'Starting Price', desc: 'Starting price headline, amount and badges (e.g. ₹2.54 - 3.88 Cr)' },
+  { id: 'downloadBrochure', label: 'Download Brochure Button', desc: 'Download Brochure action button on cards & detail pages' },
   { id: 'constructionStatus', label: 'Construction Status', desc: 'Under Construction / Ready to Move card' },
-  { id: 'startingPrice', label: 'Starting Price', desc: 'Starting budget price card & brochure download' },
   { id: 'unitPricing', label: 'Unit Floor Plans & Pricing', desc: 'BHK pricing breakdown & estimated cost list' },
   { id: 'floorPlans', label: 'Floor Plan & Pricing', desc: 'Architectural blueprint preview & WhatsApp plan delivery' },
   { id: 'topFacilities', label: 'Top Facilities (Amenities)', desc: 'Gym, pool, security, clubhouse, 35+ amenities' },
@@ -29,6 +31,7 @@ export const DEFAULT_SECTION_VISIBILITY: SectionVisibilityMap = {
   overview: true,
   constructionStatus: true,
   startingPrice: true,
+  downloadBrochure: true,
   unitPricing: true,
   floorPlans: true,
   topFacilities: true,

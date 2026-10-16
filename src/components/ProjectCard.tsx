@@ -5,6 +5,7 @@ import { SiteVisitModal } from './SiteVisitModal';
 import { BrochureModal } from './BrochureModal';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
+import { getSectionVisibility } from '../data/sectionVisibility';
 
 export interface PriceConfig {
   label: string;
@@ -53,6 +54,7 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
   const visibleNearby = data.nearby.slice(0, 2);
   const hiddenNearby = data.nearby.slice(2);
 
+  const sectionVis = getSectionVisibility(data.id);
   const isAdmin = user?.email === 'admin@homesandrents.com';
 
   const handleDelete = async (e: React.MouseEvent) => {
@@ -186,19 +188,21 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
         </div>
 
         {/* Pricing Config */}
-        <div className="flex flex-wrap items-center gap-y-4 gap-x-3 sm:gap-x-4 md:gap-x-6 mt-4 mb-5">
-          {data.priceConfigs.map((config, index) => (
-            <div key={index} className="flex items-center gap-3 sm:gap-4 md:gap-6">
-              <div>
-                <p className="text-[11px] sm:text-xs text-gray-500 mb-1 whitespace-nowrap">{config.label}</p>
-                <p className="text-sm sm:text-base font-bold text-[#0a192f] whitespace-nowrap">{config.price}</p>
+        {sectionVis.startingPrice !== false && data.priceConfigs && data.priceConfigs.length > 0 && (
+          <div className="flex flex-wrap items-center gap-y-4 gap-x-3 sm:gap-x-4 md:gap-x-6 mt-4 mb-5">
+            {data.priceConfigs.map((config, index) => (
+              <div key={index} className="flex items-center gap-3 sm:gap-4 md:gap-6">
+                <div>
+                  <p className="text-[11px] sm:text-xs text-gray-500 mb-1 whitespace-nowrap">{config.label}</p>
+                  <p className="text-sm sm:text-base font-bold text-[#0a192f] whitespace-nowrap">{config.price}</p>
+                </div>
+                {index < data.priceConfigs.length - 1 && (
+                  <div className="h-8 sm:h-10 w-px bg-gray-200"></div>
+                )}
               </div>
-              {index < data.priceConfigs.length - 1 && (
-                <div className="h-8 sm:h-10 w-px bg-gray-200"></div>
-              )}
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
 
         {/* Nearby */}
         {data.nearby && data.nearby.length > 0 && (
@@ -250,14 +254,16 @@ export const ProjectCard = ({ project }: { project?: ProjectData }) => {
           </div>
           
           <div className="flex w-full sm:w-auto gap-3">
-            <button 
-              type="button"
-              onClick={() => setIsBrochureModalOpen(true)}
-              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors cursor-pointer"
-            >
-              <Download className="w-4 h-4" strokeWidth={2.5} />
-              Download Brochure
-            </button>
+            {sectionVis.downloadBrochure !== false && (
+              <button 
+                type="button"
+                onClick={() => setIsBrochureModalOpen(true)}
+                className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 border-2 border-blue-600 text-blue-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-blue-50 transition-colors cursor-pointer"
+              >
+                <Download className="w-4 h-4" strokeWidth={2.5} />
+                Download Brochure
+              </button>
+            )}
             <button 
               onClick={() => setIsSiteVisitModalOpen(true)}
               className="flex-1 sm:flex-none bg-blue-600 text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-blue-700 transition-colors shadow-sm"

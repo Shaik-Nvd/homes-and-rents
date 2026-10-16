@@ -367,7 +367,7 @@ export const ProjectDetail = () => {
             )}
             
             {/* Construction Status & Pricing Cards */}
-            {((sectionVis.constructionStatus !== false) || (sectionVis.startingPrice !== false)) && (
+            {((sectionVis.constructionStatus !== false) || (sectionVis.startingPrice !== false) || (sectionVis.downloadBrochure !== false)) && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-4">
                 {sectionVis.constructionStatus !== false && (
                   <div className="bg-gradient-to-br from-indigo-50 via-blue-50 to-white rounded-3xl p-6 sm:p-8 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300">
@@ -383,27 +383,33 @@ export const ProjectDetail = () => {
                   </div>
                 )}
                 
-                {sectionVis.startingPrice !== false && (
-                  <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-white rounded-3xl p-6 sm:p-8 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group cursor-pointer hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                {(sectionVis.startingPrice !== false || sectionVis.downloadBrochure !== false) && (
+                  <div className="bg-gradient-to-br from-purple-50 via-pink-50 to-white rounded-3xl p-6 sm:p-8 border border-white shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden group hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
                      <div className="absolute top-0 right-0 p-6 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity transform group-hover:scale-110 duration-500">
                         <Wallet className="w-24 h-24 text-purple-800" />
                      </div>
                      <div>
-                       <p className="text-xs text-purple-600 font-extrabold tracking-widest uppercase mb-4 opacity-80">Starting Price</p>
-                       <div className="flex flex-wrap items-end gap-3">
-                         <span className="text-slate-900 font-black text-2xl sm:text-3xl leading-none">{project.priceConfigs?.[0]?.price || "Price on Request"}</span>
-                         <span className="text-purple-700 text-[10px] font-bold bg-purple-100/50 px-2.5 py-1 rounded-md shadow-sm backdrop-blur-sm border border-purple-200/50">+ Charges</span>
+                       {sectionVis.startingPrice !== false && (
+                         <>
+                           <p className="text-xs text-purple-600 font-extrabold tracking-widest uppercase mb-4 opacity-80">Starting Price</p>
+                           <div className="flex flex-wrap items-end gap-3">
+                             <span className="text-slate-900 font-black text-2xl sm:text-3xl leading-none">{project.priceConfigs?.[0]?.price || "Price on Request"}</span>
+                             <span className="text-purple-700 text-[10px] font-bold bg-purple-100/50 px-2.5 py-1 rounded-md shadow-sm backdrop-blur-sm border border-purple-200/50">+ Charges</span>
+                           </div>
+                         </>
+                       )}
+                     </div>
+                     {sectionVis.downloadBrochure !== false && (
+                       <div className="mt-6 flex gap-3 relative z-10">
+                          <button 
+                            type="button"
+                            onClick={() => setIsBrochureModalOpen(true)}
+                            className="flex items-center justify-center gap-1.5 text-xs font-bold text-white bg-purple-600 hover:bg-purple-700 transition-colors px-4 py-2.5 rounded-xl shadow-sm hover:shadow-md cursor-pointer"
+                          >
+                            <Download className="w-3.5 h-3.5" /> Download Brochure
+                          </button>
                        </div>
-                     </div>
-                     <div className="mt-6 flex gap-3 relative z-10">
-                        <button 
-                          type="button"
-                          onClick={() => setIsBrochureModalOpen(true)}
-                          className="flex items-center justify-center gap-1.5 text-xs font-bold text-white bg-purple-600 hover:bg-purple-700 transition-colors px-4 py-2.5 rounded-xl shadow-sm hover:shadow-md cursor-pointer"
-                        >
-                          <Download className="w-3.5 h-3.5" /> Download Brochure
-                        </button>
-                     </div>
+                     )}
                   </div>
                 )}
               </div>
