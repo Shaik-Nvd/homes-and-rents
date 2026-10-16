@@ -162,7 +162,7 @@ export const BlogsPage: React.FC = () => {
                     alt={featuredPost.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     onError={(e) => {
-                      (e.target as HTMLElement).style.display = 'none';
+                      (e.target as HTMLImageElement).src = '/gr-samskruthi.jpg';
                     }}
                   />
                   <div className="absolute top-4 left-4">
@@ -243,7 +243,7 @@ export const BlogsPage: React.FC = () => {
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => {
-                        (e.target as HTMLElement).style.display = 'none';
+                        (e.target as HTMLImageElement).src = '/Keya_The_Urban_Forest.jpg';
                       }}
                     />
                     <div className="absolute top-3 left-3">

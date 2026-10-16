@@ -160,7 +160,7 @@ export const BlogDetailPage: React.FC = () => {
               alt={post.title}
               className="w-full h-full object-cover"
               onError={(e) => {
-                (e.target as HTMLElement).style.display = 'none';
+                (e.target as HTMLImageElement).src = '/gr-samskruthi.jpg';
               }}
             />
           </div>

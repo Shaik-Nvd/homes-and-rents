@@ -200,6 +200,37 @@ const TOPICS = [
   }
 ];
 
+const REAL_PROPERTY_PHOTOS = [
+  '/gr-samskruthi.jpg',
+  '/Keya_The_Urban_Forest.jpg',
+  '/Vaishnavi_AT_One_Krishna_Brindavan.jpg',
+  '/The_Berries_For_Birds.jpg',
+  '/Sumadhura_Edition.jpg',
+  '/SJ_Park_Ville.jpg',
+  '/Amrutha_Lake_Vista.jpg',
+  '/Assetz_Zen_and_Sato.jpg',
+  '/Northern_Lights_by_Puravankara_KVN.jpg',
+  '/Nambiar_District_25.jpg',
+  '/Assetz_Meru_and_Meadow.jpg',
+  '/Mythri_Street.jpg',
+  '/Mythri_Sity.jpg',
+  '/Roach_Cicada.jpg',
+  '/Trifecta_Veranza.jpg',
+  '/Global_Edifice_The_Clan.jpg',
+  '/Eeshanya_Aaroha.jpg',
+  '/Sumadhura_Solea.jpg',
+  '/House_of_Sapiens.jpg',
+  '/AssetzZen_and_Sato.jpg',
+  '/Vrushabadri_Winter_Park.jpg',
+  '/Aparna_Wonderwoods.jpg',
+  '/Concorde_Eleve.jpg',
+  '/cozy_1bhk.png',
+  '/OUTDOORS_image_2_of_4 _Elevation.jpg',
+  '/8ekxnoc6_optOrig.jpg',
+  '/ty8a3m2_1728289913_523123995_optOrig.jpg',
+  '/ji1o2ft_1728289914_523124013_optOrig.jpg'
+];
+
 const generatePost = (topic, index) => {
   const dateStr = new Date(Date.now() - (index * 86400000 * 2)).toISOString().split('T')[0];
 
@@ -240,6 +271,8 @@ Trust **Homes and Rents** for reliable data, transparent deals, and smarter livi
 
   const excerpt = `Explore comprehensive insights on ${topic.title} in ${topic.locality}. Discover verified listings, zero brokerage flats, and price trends on Homes and Rents.`;
 
+  const coverImage = REAL_PROPERTY_PHOTOS[index % REAL_PROPERTY_PHOTOS.length];
+
   return {
     id: `blog_${topic.slug}`,
     slug: topic.slug,
@@ -248,7 +281,7 @@ Trust **Homes and Rents** for reliable data, transparent deals, and smarter livi
     readTime: `${4 + (index % 4)} min read`,
     date: dateStr,
     author: 'Homes and Rents Editorial Desk',
-    coverImage: `https://images.unsplash.com/photo-${1560518883 + (index * 1337)}?auto=format&fit=crop&q=80&w=1200`,
+    coverImage,
     excerpt,
     content,
     tags: ['Homes and Rents', 'Bangalore Real Estate', topic.locality, topic.category, 'Zero Brokerage']
