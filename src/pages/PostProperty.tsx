@@ -10,8 +10,9 @@ import { MASTER_AMENITIES, DEFAULT_PROJECT_AMENITIES } from '../data/amenities';
 import { getUserRegistrationStatus } from '../data/userRegistrations';
 import { RegistrationModal } from '../components/RegistrationModal';
 import { EditPropertyModal } from '../components/EditPropertyModal';
-import { projects, applyPropertyOverrides } from '../data/projects';
+import { projects, applyPropertyOverrides, setPropertyOverride } from '../data/projects';
 import type { ProjectData } from '../data/projects';
+import { setWhyConsiderData } from '../data/sectionVisibility';
 
 export const PostProperty = () => {
   const { user } = useAuth();
@@ -35,6 +36,14 @@ export const PostProperty = () => {
     featured: false
   });
   const [editingExistingProject, setEditingExistingProject] = useState<ProjectData | null>(null);
+
+  // Super Admin custom section content fields
+  const [builderName, setBuilderName] = useState('');
+  const [aboutProjectText, setAboutProjectText] = useState('');
+  const [keyLandmarksInput, setKeyLandmarksInput] = useState('');
+  const [whyConsiderParagraphs, setWhyConsiderParagraphs] = useState(
+    'Easily find Zen with yoga spaces and vast green covers.\nVastu compliant spacious homes with modern amenities.\nExcellent connectivity to major IT hubs and transit.'
+  );
 
   const toggleSection = (key: keyof SectionVisibilityMap) => {
     setSectionToggles(prev => ({
@@ -159,6 +168,43 @@ export const PostProperty = () => {
         localStorage.setItem(`admin_section_visibility_${newId}`, JSON.stringify(sectionToggles));
         localStorage.setItem(`admin_overview_toggle_${newId}`, JSON.stringify(sectionToggles.overview !== false));
         localStorage.setItem(`admin_amenities_${newId}`, JSON.stringify(selectedAmenities));
+
+        // Save detailed property overrides (Builder, About Project, Key Landmarks, Pricing)
+        const landmarksList = keyLandmarksInput
+          .split(',')
+          .map(l => l.trim())
+          .filter(l => l.length > 0);
+
+        setPropertyOverride(newId, {
+          title: formData.title,
+          subtitle: `${formData.bhk} BHK ${formData.propertyType} in ${formData.location}`,
+          builder: builderName.trim() || 'Homes and Rents Partner Developer',
+          status: `${formData.status} · Completion in 2026-2028`,
+          description: formData.description,
+          aboutText: aboutProjectText.trim() || formData.description,
+          nearby: landmarksList.length > 0 ? landmarksList : [formData.location, 'Metro Station', 'Tech Park', 'School'],
+          priceConfigs: [
+            { label: `${formData.bhk} BHK ${formData.propertyType}`, price: `₹${formData.price}` }
+          ],
+          badges: [
+            badges.rera ? 'RERA' : '',
+            badges.zeroBrokerage ? 'ZERO BROKERAGE' : '',
+            '3D'
+          ].filter(Boolean)
+        });
+
+        // Save Why Consider Builder Points
+        const whyPoints = whyConsiderParagraphs
+          .split('\n')
+          .map(p => p.trim())
+          .filter(p => p.length > 0);
+
+        if (whyPoints.length > 0) {
+          setWhyConsiderData(newId, {
+            title: `Why consider ${builderName.trim() || formData.title}?`,
+            points: whyPoints
+          });
+        }
 
         if (badges.featured) {
           try {
@@ -544,10 +590,10 @@ export const PostProperty = () => {
                   </div>
                 </div>
 
-                {/* 1. The 9 Section Visibility Toggles */}
+                {/* 1. The Section Visibility Toggles */}
                 <div>
                   <h4 className="text-xs font-extrabold uppercase tracking-wider text-indigo-300 mb-3 flex items-center gap-1.5">
-                    <Eye className="w-4 h-4" /> 1. Section Visibility Toggles (9 Sections)
+                    <Eye className="w-4 h-4" /> 1. Section Visibility Toggles (All Sections)
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                     {SECTION_DEFINITIONS.map((def) => {
@@ -592,10 +638,85 @@ export const PostProperty = () => {
                   </div>
                 </div>
 
-                {/* 2. Super Admin Badges & Flags */}
+                {/* 2. Super Admin Section Content & Text Editor */}
+                <div className="bg-slate-950/80 p-5 rounded-2xl border border-slate-800 space-y-4">
+                  <h4 className="text-xs font-extrabold uppercase tracking-wider text-purple-300 flex items-center gap-1.5">
+                    <Edit3 className="w-4 h-4" /> 2. Edit Section Details & Texts
+                  </h4>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">
+                        Developer / Builder Name
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Prestige Group / Sobha Limited / Brigade"
+                        value={builderName}
+                        onChange={(e) => setBuilderName(e.target.value)}
+                        className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-indigo-500 font-medium"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-300 mb-1">
+                        Key Landmarks & Connectivity (Comma-separated)
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Silk Board Metro, Manipal Hospital, Outer Ring Road, Forum Mall"
+                        value={keyLandmarksInput}
+                        onChange={(e) => setKeyLandmarksInput(e.target.value)}
+                        className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-indigo-500 font-medium"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-300 mb-1">
+                      About Project & Master Plan Narrative
+                    </label>
+                    <textarea
+                      rows={2}
+                      placeholder="Write an expansive, high-converting overview of the architecture, green acreage, and lifestyle..."
+                      value={aboutProjectText}
+                      onChange={(e) => setAboutProjectText(e.target.value)}
+                      className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-indigo-500 font-medium"
+                    />
+                  </div>
+
+                  <div>
+                    <div className="flex items-center justify-between mb-1">
+                      <label className="block text-xs font-bold text-slate-300">
+                        Why Consider Builder Highlights (Paragraphs)
+                      </label>
+                      <button
+                        type="button"
+                        onClick={() => setWhyConsiderParagraphs(
+                          'Easily find Zen with yoga spaces and vast green covers.\nVastu compliant spacious homes with modern amenities.\nExcellent connectivity to major IT hubs and transit.'
+                        )}
+                        className="text-[10px] text-indigo-400 hover:underline font-bold"
+                      >
+                        Reset to Defaults
+                      </button>
+                    </div>
+                    <textarea
+                      rows={3}
+                      placeholder="Enter paragraphs describing why buyers should consider this builder / property..."
+                      value={whyConsiderParagraphs}
+                      onChange={(e) => setWhyConsiderParagraphs(e.target.value)}
+                      className="w-full bg-slate-900 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-indigo-500 font-medium"
+                    />
+                    <p className="text-[10px] text-slate-400 mt-1">
+                      Tip: Separate distinct selling points with a new line or paragraph break.
+                    </p>
+                  </div>
+                </div>
+
+                {/* 3. Super Admin Badges & Flags */}
                 <div>
                   <h4 className="text-xs font-extrabold uppercase tracking-wider text-indigo-300 mb-3 flex items-center gap-1.5">
-                    <ShieldCheck className="w-4 h-4" /> 2. Badges & Priority Flags
+                    <ShieldCheck className="w-4 h-4" /> 3. Badges & Priority Flags
                   </h4>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     <label className={`p-3 rounded-xl border flex items-center justify-between cursor-pointer transition-all ${
