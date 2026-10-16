@@ -650,111 +650,125 @@ export const AdminDashboard: React.FC = () => {
       {/* Main Container */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 pt-8 pb-12 flex-grow w-full">
         {/* Banner */}
-        <div className="relative rounded-3xl bg-gradient-to-r from-indigo-900/80 via-purple-900/80 to-slate-900/90 border border-indigo-500/20 p-6 sm:p-8 mb-8 overflow-hidden shadow-2xl backdrop-blur-xl">
+        <div className="relative rounded-3xl bg-gradient-to-r from-indigo-900/80 via-purple-900/80 to-slate-900/90 border border-indigo-500/20 p-6 sm:p-8 mb-6 overflow-hidden shadow-2xl backdrop-blur-xl">
           <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold mb-3 border border-indigo-500/30">
-                <CheckCircle className="w-3.5 h-3.5" /> Logged In as Super Admin
+                <CheckCircle className="w-3.5 h-3.5 text-emerald-400" /> Logged In as Super Admin
               </div>
               <h1 className="text-2xl sm:text-3xl font-black text-white tracking-tight">
                 Admin Control Dashboard
               </h1>
               <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">
-                Choose an action below to post listings, control public visibility, reorder featured properties, or audit SEO hubs.
+                Super Admin command center: manage listings, customize SEO URLs & area pages, approve users, and configure section visibility.
               </p>
             </div>
 
-            {/* Quick Actions Primary */}
-            <div className="flex flex-wrap gap-2.5">
+            {/* Primary Action Button */}
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => navigate('/post')}
-                className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-extrabold text-sm px-5 py-3 rounded-2xl shadow-lg shadow-indigo-500/25 flex items-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-400 hover:to-pink-400 text-white font-extrabold text-sm px-6 py-3.5 rounded-2xl shadow-xl shadow-indigo-500/25 flex items-center gap-2.5 transition-transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 <PlusCircle className="w-5 h-5" /> Post New Property
               </button>
-              <button
-                onClick={() => { refreshRegistrations(); setActiveTab('registrations'); }}
-                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer relative ${
-                  activeTab === 'registrations' 
-                    ? 'bg-emerald-600 text-white border-emerald-500 shadow-md font-black' 
-                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
-                }`}
-              >
-                <UserCheck className="w-4 h-4 text-emerald-400" />
-                User Approvals
-                {registrations.filter(r => r.status === 'Pending Verification').length > 0 && (
-                  <span className="ml-1 bg-amber-500 text-slate-950 text-[10px] font-black px-1.5 py-0.2 rounded-full">
-                    {registrations.filter(r => r.status === 'Pending Verification').length}
-                  </span>
-                )}
-              </button>
-              <button
-                onClick={() => setActiveTab('sections')}
-                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer ${
-                  activeTab === 'sections' 
-                    ? 'bg-blue-600 text-white border-blue-500 shadow-md font-black' 
-                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
-                }`}
-              >
-                <Sliders className="w-4 h-4 text-blue-400" />
-                Sections ON/OFF (All Properties)
-              </button>
-              <button
-                onClick={() => setActiveTab('overview')}
-                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer ${
-                  activeTab === 'overview' 
-                    ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md font-black' 
-                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
-                }`}
-              >
-                <Sliders className="w-4 h-4 text-amber-400" />
-                Overview ON/OFF
-              </button>
-              <button
-                onClick={() => { refreshBlogs(); setActiveTab('blogs'); }}
-                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer relative ${
-                  activeTab === 'blogs' 
-                    ? 'bg-rose-600 text-white border-rose-500 shadow-md font-black' 
-                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
-                }`}
-              >
-                <BookOpen className="w-4 h-4 text-rose-400" />
-                Manage Blogs ({blogList.length})
-              </button>
-              <button
-                onClick={() => { refreshCustomPages(); setActiveTab('custom_urls'); }}
-                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer relative ${
-                  activeTab === 'custom_urls' 
-                    ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-blue-400 shadow-md font-black' 
-                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
-                }`}
-              >
-                <Globe className="w-4 h-4 text-blue-400" />
-                Custom URLs & SEO Pages ({customPages.length})
-              </button>
-              <button
-                onClick={() => setActiveTab('amenities')}
-                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer ${
-                  activeTab === 'amenities' 
-                    ? 'bg-indigo-600 text-white border-indigo-500 shadow-md font-black' 
-                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
-                }`}
-              >
-                <Sparkles className="w-4 h-4 text-indigo-300" />
-                Manage Amenities (30+)
-              </button>
-              <button
-                onClick={() => setActiveTab('hub')}
-                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors cursor-pointer ${
-                  activeTab === 'hub' 
-                    ? 'bg-white text-slate-950 border-white font-black' 
-                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
-                }`}
-              >
-                All Actions
-              </button>
             </div>
           </div>
+        </div>
+
+        {/* Clean, Organized Navigation Tabs Bar */}
+        <div className="bg-slate-900/80 border border-slate-800 p-2 rounded-2xl sm:rounded-3xl shadow-xl mb-8 flex flex-wrap items-center gap-2">
+          <button
+            onClick={() => setActiveTab('hub')}
+            className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
+              activeTab === 'hub'
+                ? 'bg-white text-slate-950 shadow-md scale-100'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            <BarChart3 className="w-4 h-4 text-indigo-500" />
+            <span>All Actions</span>
+          </button>
+
+          <button
+            onClick={() => { refreshCustomPages(); setActiveTab('custom_urls'); }}
+            className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer relative ${
+              activeTab === 'custom_urls'
+                ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            <Globe className="w-4 h-4 text-blue-400" />
+            <span>Custom URLs & SEO Pages</span>
+            <span className="bg-blue-400/20 text-blue-300 border border-blue-400/30 text-[10px] font-black px-1.5 py-0.2 rounded-full">
+              {customPages.length}
+            </span>
+          </button>
+
+          <button
+            onClick={() => { refreshRegistrations(); setActiveTab('registrations'); }}
+            className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer relative ${
+              activeTab === 'registrations'
+                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-500/25'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            <UserCheck className="w-4 h-4 text-emerald-400" />
+            <span>User Approvals</span>
+            {registrations.filter(r => r.status === 'Pending Verification').length > 0 && (
+              <span className="bg-amber-400 text-slate-950 text-[10px] font-black px-1.5 py-0.2 rounded-full">
+                {registrations.filter(r => r.status === 'Pending Verification').length}
+              </span>
+            )}
+          </button>
+
+          <button
+            onClick={() => { refreshBlogs(); setActiveTab('blogs'); }}
+            className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer relative ${
+              activeTab === 'blogs'
+                ? 'bg-rose-600 text-white shadow-lg shadow-rose-500/25'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            <BookOpen className="w-4 h-4 text-rose-400" />
+            <span>Blogs ({blogList.length})</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('sections')}
+            className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
+              activeTab === 'sections'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            <Sliders className="w-4 h-4 text-blue-400" />
+            <span>Sections ON/OFF</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('overview')}
+            className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
+              activeTab === 'overview'
+                ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/25'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            <Sliders className="w-4 h-4 text-amber-400" />
+            <span>Overview ON/OFF</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('amenities')}
+            className={`px-4 py-2.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
+              activeTab === 'amenities'
+                ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/25'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            <Sparkles className="w-4 h-4 text-purple-300" />
+            <span>Amenities (30+)</span>
+          </button>
         </div>
 
         {/* Feedback Alert */}
