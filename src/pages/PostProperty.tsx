@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, X, MapPin, Sliders, Sparkles, Check, ShieldCheck, Eye } from 'lucide-react';
+import { Upload, X, MapPin, Sliders, Sparkles, Check, ShieldCheck, Eye, Clock, Phone, MessageSquare } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import { useAuth } from '../contexts/AuthContext';
@@ -7,6 +7,8 @@ import { RentalApprovalModal } from '../components/RentalApprovalModal';
 import { SECTION_DEFINITIONS, DEFAULT_SECTION_VISIBILITY } from '../data/sectionVisibility';
 import type { SectionVisibilityMap } from '../data/sectionVisibility';
 import { MASTER_AMENITIES, DEFAULT_PROJECT_AMENITIES } from '../data/amenities';
+import { getUserRegistrationStatus } from '../data/userRegistrations';
+import { RegistrationModal } from '../components/RegistrationModal';
 
 export const PostProperty = () => {
   const { user } = useAuth();
@@ -171,17 +173,133 @@ export const PostProperty = () => {
     }
   };
 
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+  const regStatus = getUserRegistrationStatus(user?.email);
+
   if (!user) {
     return (
       <div className="bg-gray-50 min-h-screen py-12 flex items-center justify-center">
-        <div className="bg-white p-8 rounded-2xl shadow-sm text-center max-w-md w-full">
+        <div className="bg-white p-8 rounded-2xl shadow-sm text-center max-w-md w-full border border-gray-100">
           <div className="bg-orange-100 text-orange-600 p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
             <span className="font-bold text-2xl">!</span>
           </div>
-          <h2 className="text-xl font-bold mb-2">Login Required</h2>
-          <p className="text-gray-600 mb-6">You must be logged in to post a property. Please log in using the button in the top right corner.</p>
-          <button onClick={() => navigate('/')} className="text-secondary font-medium hover:underline">Go back Home</button>
+          <h2 className="text-xl font-bold mb-2">Registration Required</h2>
+          <p className="text-gray-600 mb-6 text-sm">
+            You must have an approved account to post properties on the Homes and Rents portal.
+          </p>
+          <div className="flex flex-col gap-3">
+            <button 
+              onClick={() => setIsRegisterModalOpen(true)}
+              className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm"
+            >
+              Register to Post Property (Free)
+            </button>
+            <button onClick={() => navigate('/')} className="text-gray-500 font-medium hover:underline text-sm">
+              Back to Home
+            </button>
+          </div>
         </div>
+
+        <RegistrationModal 
+          isOpen={isRegisterModalOpen} 
+          onClose={() => setIsRegisterModalOpen(false)}
+        />
+      </div>
+    );
+  }
+
+  // If not super admin and not approved, display pending verification notice or register prompt
+  if (!isAdmin && regStatus.status !== 'Approved') {
+    return (
+      <div className="bg-gray-50 min-h-screen py-12 flex items-center justify-center px-4">
+        <div className="bg-white p-8 rounded-2xl shadow-lg text-center max-w-lg w-full border border-gray-100">
+          {regStatus.status === 'Pending Verification' ? (
+            <>
+              <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 animate-pulse" />
+              </div>
+              <div className="inline-block px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full uppercase tracking-wider mb-3">
+                Status: Pending Verification
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Account Under Review</h2>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                Thank you for submitting your registration. Your account is currently under review by our verification team. Our team will verify your details within <strong>60 minutes</strong>.
+              </p>
+              <div className="bg-amber-50 rounded-xl p-4 text-xs text-amber-900 text-left border border-amber-200 mb-6 space-y-2">
+                <div className="flex items-center gap-2 font-bold">
+                  <Phone className="w-4 h-4 text-amber-700" />
+                  <span>Representative Call Expected</span>
+                </div>
+                <p>
+                  A representative from Homes and Rents will call you on your registered mobile number (<strong>{regStatus.registration?.mobile || 'submitted number'}</strong>) shortly.
+                </p>
+              </div>
+              <div className="flex flex-col gap-3">
+                <a
+                  href={`https://wa.me/919739063840?text=${encodeURIComponent(`Hi Homes and Rents Admin, I have submitted my registration for property posting with email: ${user.email}. Please approve my account.`)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all flex items-center justify-center gap-2 text-sm"
+                >
+                  <MessageSquare className="w-4 h-4" /> Fast-Track on WhatsApp
+                </a>
+                <button onClick={() => navigate('/')} className="text-gray-500 font-medium hover:underline text-sm">
+                  Back to Home
+                </button>
+              </div>
+            </>
+          ) : regStatus.status === 'Rejected' ? (
+            <>
+              <div className="w-16 h-16 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <X className="w-8 h-8" />
+              </div>
+              <div className="inline-block px-3 py-1 bg-rose-100 text-rose-800 text-xs font-bold rounded-full uppercase tracking-wider mb-3">
+                Status: Registration Rejected
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Registration Not Approved</h2>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                Your registration could not be approved at this time. Please contact our support desk for clarification or resubmit with verified credentials.
+              </p>
+              <div className="flex flex-col gap-3">
+                <button 
+                  onClick={() => setIsRegisterModalOpen(true)}
+                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl shadow-md transition-all text-sm"
+                >
+                  Resubmit Registration
+                </button>
+                <button onClick={() => navigate('/')} className="text-gray-500 font-medium hover:underline text-sm">
+                  Back to Home
+                </button>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <ShieldCheck className="w-8 h-8" />
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Complete Profile Registration</h2>
+              <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                To post properties on Homes and Rents, please complete the 9-point user registration form. Our admin team will verify and approve your profile within 60 minutes.
+              </p>
+              <div className="flex flex-col gap-3">
+                <button 
+                  onClick={() => setIsRegisterModalOpen(true)}
+                  className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-md transition-all text-sm"
+                >
+                  Complete Registration Form Now
+                </button>
+                <button onClick={() => navigate('/')} className="text-gray-500 font-medium hover:underline text-sm">
+                  Back to Home
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+
+        <RegistrationModal 
+          isOpen={isRegisterModalOpen} 
+          onClose={() => setIsRegisterModalOpen(false)}
+        />
       </div>
     );
   }

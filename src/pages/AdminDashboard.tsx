@@ -27,11 +27,23 @@ import {
   ShieldCheck,
   Eye,
   Sliders,
-  Check
+  Check,
+  UserCheck,
+  Users,
+  Clock,
+  XCircle,
+  Phone,
+  Mail
 } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 import { projects } from '../data/projects';
+import { 
+  getUserRegistrations, 
+  updateUserRegistrationStatus,
+  ADMIN_NOTIFICATION_EMAIL
+} from '../data/userRegistrations';
+import type { UserRegistration, RegistrationStatus } from '../data/userRegistrations';
 
 import { MASTER_AMENITIES, DEFAULT_PROJECT_AMENITIES } from '../data/amenities';
 import { 
@@ -46,12 +58,31 @@ export const AdminDashboard: React.FC = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
 
-  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities' | 'sections'>('hub');
+  const [activeTab, setActiveTab] = useState<'hub' | 'hidden' | 'db_properties' | 'overview' | 'amenities' | 'sections' | 'registrations'>('hub');
   const [hiddenIds, setHiddenIds] = useState<string[]>([]);
   const [customOrder, setCustomOrder] = useState<string[]>([]);
   const [dbProperties, setDbProperties] = useState<any[]>([]);
   const [loadingDb, setLoadingDb] = useState(false);
   const [feedback, setFeedback] = useState<string | null>(null);
+
+  // User Registrations & Approvals State
+  const [registrations, setRegistrations] = useState<UserRegistration[]>(() => getUserRegistrations());
+  const [regFilter, setRegFilter] = useState<'All' | 'Pending Verification' | 'Approved' | 'Rejected'>('All');
+  const [regSearch, setRegSearch] = useState('');
+
+  const refreshRegistrations = () => {
+    setRegistrations(getUserRegistrations());
+  };
+
+  const handleUpdateRegStatus = (id: string, status: RegistrationStatus) => {
+    const success = updateUserRegistrationStatus(id, status);
+    if (success) {
+      refreshRegistrations();
+      notify(`User status updated to "${status}"`);
+    } else {
+      notify('Failed to update user status');
+    }
+  };
 
   // Overview Toggles State: { [projectId: string]: boolean }
   const [overviewToggles, setOverviewToggles] = useState<{ [key: string]: boolean }>(() => {
@@ -513,6 +544,22 @@ export const AdminDashboard: React.FC = () => {
                 className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-extrabold text-sm px-5 py-3 rounded-2xl shadow-lg shadow-indigo-500/25 flex items-center gap-2 transition-transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
               >
                 <PlusCircle className="w-5 h-5" /> Post New Property
+              </button>
+              <button
+                onClick={() => { refreshRegistrations(); setActiveTab('registrations'); }}
+                className={`text-xs font-bold px-4 py-3 rounded-2xl border transition-colors flex items-center gap-1.5 cursor-pointer relative ${
+                  activeTab === 'registrations' 
+                    ? 'bg-emerald-600 text-white border-emerald-500 shadow-md font-black' 
+                    : 'bg-slate-900/60 text-slate-300 border-slate-700 hover:bg-slate-800'
+                }`}
+              >
+                <UserCheck className="w-4 h-4 text-emerald-400" />
+                User Approvals
+                {registrations.filter(r => r.status === 'Pending Verification').length > 0 && (
+                  <span className="ml-1 bg-amber-500 text-slate-950 text-[10px] font-black px-1.5 py-0.2 rounded-full">
+                    {registrations.filter(r => r.status === 'Pending Verification').length}
+                  </span>
+                )}
               </button>
               <button
                 onClick={() => setActiveTab('sections')}
@@ -1194,6 +1241,222 @@ export const AdminDashboard: React.FC = () => {
                 );
               })}
             </div>
+          </div>
+        )}
+
+        {/* TAB: User Registrations & Approvals */}
+        {activeTab === 'registrations' && (
+          <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-6 shadow-2xl backdrop-blur-xl">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 text-xs font-bold mb-2 border border-emerald-500/20">
+                  <UserCheck className="w-3.5 h-3.5" /> Homes & Rents Approval Desk
+                </div>
+                <h2 className="text-xl font-black text-white flex items-center gap-2">
+                  User Registration & Access Approvals
+                </h2>
+                <p className="text-xs text-slate-400 mt-0.5">
+                  Review new user requests, verify credentials, call applicants within 60 minutes, and grant property posting access.
+                  Submissions are also dispatched to <strong className="text-emerald-400">{ADMIN_NOTIFICATION_EMAIL}</strong>.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={refreshRegistrations}
+                  className="bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold px-3 py-2 rounded-xl border border-slate-700 flex items-center gap-1.5 transition-colors"
+                >
+                  <RefreshCw className="w-3.5 h-3.5" /> Refresh List
+                </button>
+              </div>
+            </div>
+
+            {/* Filter Pills and Search */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 mb-6">
+              <div className="flex items-center gap-1.5 bg-slate-950/60 p-1 rounded-2xl border border-slate-800">
+                {(['All', 'Pending Verification', 'Approved', 'Rejected'] as const).map(tab => {
+                  const count = tab === 'All' 
+                    ? registrations.length 
+                    : registrations.filter(r => r.status === tab).length;
+                  const isActive = regFilter === tab;
+                  return (
+                    <button
+                      key={tab}
+                      onClick={() => setRegFilter(tab)}
+                      className={`text-xs font-bold px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5 ${
+                        isActive
+                          ? tab === 'Pending Verification'
+                            ? 'bg-amber-500 text-slate-950 shadow-md font-black'
+                            : tab === 'Approved'
+                            ? 'bg-emerald-600 text-white shadow-md font-black'
+                            : tab === 'Rejected'
+                            ? 'bg-rose-600 text-white shadow-md font-black'
+                            : 'bg-white text-slate-950 shadow-md font-black'
+                          : 'text-slate-400 hover:text-white'
+                      }`}
+                    >
+                      <span>{tab}</span>
+                      <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-black ${
+                        isActive ? 'bg-black/20 text-current' : 'bg-slate-800 text-slate-400'
+                      }`}>
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="relative">
+                <Search className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+                <input
+                  type="text"
+                  placeholder="Search by name, email, phone, RERA..."
+                  value={regSearch}
+                  onChange={(e) => setRegSearch(e.target.value)}
+                  className="text-xs bg-slate-950/80 border border-slate-800 text-white rounded-xl pl-9 pr-4 py-2 outline-none focus:border-emerald-500 w-full sm:w-64"
+                />
+              </div>
+            </div>
+
+            {/* Registrations Table */}
+            {(() => {
+              const filtered = registrations
+                .filter(r => regFilter === 'All' ? true : r.status === regFilter)
+                .filter(r => {
+                  if (!regSearch.trim()) return true;
+                  const q = regSearch.toLowerCase();
+                  return (
+                    r.fullName.toLowerCase().includes(q) ||
+                    r.email.toLowerCase().includes(q) ||
+                    r.mobile.includes(q) ||
+                    r.whatsapp.includes(q) ||
+                    (r.companyName && r.companyName.toLowerCase().includes(q)) ||
+                    (r.reraNumber && r.reraNumber.toLowerCase().includes(q))
+                  );
+                });
+
+              if (filtered.length === 0) {
+                return (
+                  <div className="py-12 text-center text-slate-500 border border-dashed border-slate-800 rounded-2xl">
+                    <Users className="w-10 h-10 mx-auto mb-2 text-slate-600" />
+                    <p className="text-sm font-medium">No registrations found matching the criteria.</p>
+                  </div>
+                );
+              }
+
+              return (
+                <div className="overflow-x-auto rounded-2xl border border-slate-800">
+                  <table className="w-full text-left text-xs text-slate-300">
+                    <thead className="bg-slate-950/70 text-slate-400 uppercase font-bold text-[11px] tracking-wider border-b border-slate-800">
+                      <tr>
+                        <th className="px-4 py-3">Applicant & Role</th>
+                        <th className="px-4 py-3">Contact (Call / WA)</th>
+                        <th className="px-4 py-3">Company & RERA</th>
+                        <th className="px-4 py-3">City</th>
+                        <th className="px-4 py-3">Status</th>
+                        <th className="px-4 py-3">Registered At</th>
+                        <th className="px-4 py-3 text-right">Approval Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-800/80">
+                      {filtered.map(r => (
+                        <tr key={r.id} className="hover:bg-slate-800/30 transition-colors">
+                          <td className="px-4 py-3.5">
+                            <div className="font-bold text-white text-sm">{r.fullName}</div>
+                            <div className="text-slate-400 text-[11px]">{r.email}</div>
+                            <span className="inline-block mt-1 px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 text-[10px] font-bold">
+                              {r.userType}
+                            </span>
+                          </td>
+                          <td className="px-4 py-3.5 space-y-1">
+                            <div className="flex items-center gap-1.5">
+                              <a 
+                                href={`tel:${r.mobile}`}
+                                className="text-slate-200 hover:text-emerald-400 font-semibold flex items-center gap-1"
+                              >
+                                <Phone className="w-3 h-3 text-slate-500" /> +91 {r.mobile}
+                              </a>
+                            </div>
+                            <div className="flex items-center gap-1.5">
+                              <a
+                                href={`https://wa.me/91${r.whatsapp}?text=${encodeURIComponent(`Hi ${r.fullName}, this is Homes & Rents Admin regarding your property portal registration.`)}`}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-emerald-400 hover:underline flex items-center gap-1 text-[11px]"
+                              >
+                                <MessageSquare className="w-3 h-3" /> WA: +91 {r.whatsapp}
+                              </a>
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5">
+                            <div className="text-slate-200 font-medium">{r.companyName || '—'}</div>
+                            {r.reraNumber ? (
+                              <div className="text-[10px] text-slate-400 font-mono mt-0.5 bg-slate-800 px-1.5 py-0.5 rounded w-max">
+                                RERA: {r.reraNumber}
+                              </div>
+                            ) : (
+                              <div className="text-[10px] text-slate-500">No RERA</div>
+                            )}
+                          </td>
+                          <td className="px-4 py-3.5">
+                            <span className="text-slate-300 font-medium">{r.city}</span>
+                          </td>
+                          <td className="px-4 py-3.5">
+                            <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold ${
+                              r.status === 'Approved'
+                                ? 'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30'
+                                : r.status === 'Pending Verification'
+                                ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
+                                : 'bg-rose-500/15 text-rose-300 border border-rose-500/30'
+                            }`}>
+                              {r.status === 'Approved' && <CheckCircle className="w-3 h-3" />}
+                              {r.status === 'Pending Verification' && <Clock className="w-3 h-3" />}
+                              {r.status === 'Rejected' && <XCircle className="w-3 h-3" />}
+                              {r.status}
+                            </span>
+                          </td>
+                          <td className="px-4 py-3.5 text-slate-400 text-[11px]">
+                            {new Date(r.createdAt).toLocaleString(undefined, {
+                              month: 'short',
+                              day: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })}
+                          </td>
+                          <td className="px-4 py-3.5 text-right">
+                            <div className="flex items-center justify-end gap-1.5">
+                              {r.status !== 'Approved' && (
+                                <button
+                                  onClick={() => handleUpdateRegStatus(r.id, 'Approved')}
+                                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg text-xs shadow-md transition-colors flex items-center gap-1"
+                                >
+                                  <Check className="w-3.5 h-3.5" /> Approve
+                                </button>
+                              )}
+                              {r.status !== 'Rejected' && (
+                                <button
+                                  onClick={() => handleUpdateRegStatus(r.id, 'Rejected')}
+                                  className="bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 font-bold px-3 py-1.5 rounded-lg text-xs border border-rose-500/30 transition-colors flex items-center gap-1"
+                                >
+                                  <XCircle className="w-3.5 h-3.5" /> Reject
+                                </button>
+                              )}
+                              <a
+                                href={`mailto:${r.email}?subject=Homes%20and%20Rents%20Account%20Update&body=Hi%20${encodeURIComponent(r.fullName)},%0A%0AWe%20have%20reviewed%20your%20registration%20request%20on%20Homes%20and%20Rents.`}
+                                className="p-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700 transition-colors"
+                                title="Send Email"
+                              >
+                                <Mail className="w-3.5 h-3.5" />
+                              </a>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              );
+            })()}
           </div>
         )}
       </main>
